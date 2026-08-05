@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-sandal: #FAF6EE;
+    --bg-cream: #F5EFE4;
+    --bg-feature: #FFFDF9;
+    --bg-card: #FFFFFF;
+    --border-color: #E7DCC7;
+    --border-form: #DDD3C3;
+
+    --brand-primary: #5E2A84;
+    --brand-secondary: #7B3FA4;
+    --brand-dark: #43175F;
+    --brand-gold: #C8A248;
+    --brand-soft-gold: #DFC27D;
+
+    --nav-bg: #43175F;
+    --nav-text: #F8F3EA;
+    --nav-active: #DFC27D;
+    --nav-hover: #C8A248;
+    --nav-border: rgba(223, 194, 125, 0.18);
+
+    --footer-bg: #3A124F;
+    --footer-heading: #DFC27D;
+    --footer-link: #F7F3EA;
+    --footer-hover: #DFC27D;
+    --footer-border: rgba(223, 194, 125, 0.18);
+
+    --btn-secondary: #5E2A84;
+    --btn-secondary-hover: #43175F;
+
+    --heading-h1: #43175F;
+    --heading-h2: #5E2A84;
+    --heading-h3: #5E2A84;
+    --text-body: #5C5368;
+    --text-muted: #8F8896;
+
+    --link-normal: #5E2A84;
+    --link-hover: #C8A248;
+
+    --icon-primary: #5E2A84;
+    --icon-highlight: #C8A248;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #FAF6EE;
+    color: #5C5368;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-family: 'Cinzel', serif;
+    color: #43175F;
+  }
+
+  h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif;
+    color: #5E2A84;
+  }
+
+  .font-serif-heading {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-garamond {
+    font-family: 'Cormorant Garamond', serif;
+  }
+}
+
+/* Luxury Pure White & Soft Sandal Cards */
+.glass-card {
+  background: #FFFFFF;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #E7DCC7;
+  box-shadow: 0 20px 50px 0 rgba(94, 42, 132, 0.08), inset 0 1px 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.glass-card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card-hover:hover {
+  background: #FFFCF7;
+  border-color: #C8A248;
+  transform: translateY(-6px);
+  box-shadow: 0 25px 55px 0 rgba(94, 42, 132, 0.12), 0 0 20px 0 rgba(200, 162, 72, 0.2);
+}
+
+/* Premium Gold & Purple Text Styling */
+.gold-gradient-text {
+  color: #43175F;
+  background: linear-gradient(135deg, #43175F 0%, #5E2A84 40%, #C8A248 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.violet-gradient-text {
+  color: #5E2A84;
+  background: linear-gradient(135deg, #5E2A84 0%, #7B3FA4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.royal-gold-badge {
+  background: rgba(200, 162, 72, 0.12);
+  border: 1px solid rgba(200, 162, 72, 0.25);
+  color: #5E2A84;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(200, 162, 72, 0.15);
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, #C8A248, #DFC27D);
+  color: #FFFFFF;
+  box-shadow: 0 15px 40px rgba(200, 162, 72, 0.25);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #B88F30, #D5B561);
+  color: #FFFFFF;
+}
+
+.btn-secondary {
+  background-color: #5E2A84;
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #43175F;
+  color: #FFFFFF;
+}
+
+/* Glow Lighting FX */
+.glow-orb-purple {
+  background: radial-gradient(circle, rgba(123, 63, 164, 0.15) 0%, rgba(94, 42, 132, 0.05) 60%, transparent 100%);
+  filter: blur(100px);
+}
+
+.glow-orb-gold {
+  background: radial-gradient(circle, rgba(200, 162, 72, 0.18) 0%, rgba(223, 194, 125, 0.08) 60%, transparent 100%);
+  filter: blur(90px);
+}
+
+/* Orbit Animations */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinReverseSlow {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 28s linear infinite;
+}
+
+.animate-spin-reverse-slow {
+  animation: spinReverseSlow 36s linear infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF6EE;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5E2A84;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C8A248;
+}
