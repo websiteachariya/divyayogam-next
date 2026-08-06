@@ -20,16 +20,16 @@ import Contact from './pages/Contact';
 
 export default function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF6EE] text-[#5C5368] selection:bg-[#C8A248]/30 selection:text-[#5E2A84] relative">
-      {/* Fixed Divine Texture Background Layer in Warm Ivory #FAF6EE */}
-      <div 
-        className="fixed top-0 left-0 w-full h-screen -z-50 bg-[linear-gradient(rgba(250,246,238,0.94),rgba(250,246,238,0.98)),url('/images/bg-1.webp')] bg-cover bg-center bg-no-repeat pointer-events-none"
+    <div className="min-h-screen flex flex-col bg-[#FAF4E8] text-[#59493E] selection:bg-[#D48817]/30 selection:text-[#8C431F] relative">
+      {/* Fixed Divine Texture Background Layer in Warm Sandal #FAF4E8 */}
+      <div
+        className="fixed top-0 left-0 w-full h-screen -z-50 bg-[linear-gradient(rgba(250,244,232,0.94),rgba(250,244,232,0.98)),url('/images/bg-1.webp')] bg-cover bg-center bg-no-repeat pointer-events-none"
       />
 
       <ScrollProgress />
       <ScrollToTop />
       <Navbar />
-      
+
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />

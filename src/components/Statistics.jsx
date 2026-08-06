@@ -30,9 +30,9 @@ export default function Statistics() {
   ];
 
   return (
-    <section className="py-20 bg-[#F5EFE4] relative overflow-hidden">
+    <section className="py-20 bg-[#FBF8F1] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, idx) => {
             const IconComponent = stat.icon;
@@ -43,22 +43,22 @@ export default function Statistics() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="glass-card glass-card-hover rounded-3xl p-8 border-2 border-[#E7DCC7] text-center space-y-4 shadow-lg"
+                className="glass-card glass-card-hover rounded-3xl p-8 border-2 border-[#E2D8C3] text-center space-y-4 shadow-lg bg-white"
               >
-                <div className="w-14 h-14 mx-auto rounded-2xl bg-[#F5EFE4] border border-[#DDD3C3] flex items-center justify-center text-[#5E2A84] shadow-sm">
-                  <IconComponent className="w-7 h-7 text-[#C8A248]" />
+                <div className="w-14 h-14 mx-auto rounded-2xl bg-[#FBF8F1] border border-[#E2D8C3] flex items-center justify-center text-[#B68A3D] shadow-sm">
+                  <IconComponent className="w-7 h-7 text-[#B68A3D]" />
                 </div>
 
                 <div className="space-y-1">
-                  <span className="font-serif text-4xl sm:text-5xl font-extrabold text-[#5E2A84] block">
+                  <span className="font-serif text-4xl sm:text-5xl font-extrabold text-[#12372A] block">
                     {stat.value}
                   </span>
-                  <h3 className="font-serif text-lg font-bold text-[#5E2A84]">
+                  <h3 className="font-serif text-lg font-bold text-[#B68A3D]">
                     {stat.label}
                   </h3>
                 </div>
 
-                <p className="text-xs text-[#8F8896] font-light">
+                <p className="text-xs text-[#786B5A] font-light">
                   {stat.sub}
                 </p>
               </motion.div>

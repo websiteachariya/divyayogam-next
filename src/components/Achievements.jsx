@@ -36,25 +36,25 @@ export default function Achievements() {
   ];
 
   return (
-    <section className="py-24 bg-[#FAF6EE] relative overflow-hidden">
+    <section className="py-24 bg-[#FBF8F1] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full royal-gold-badge text-xs uppercase tracking-wider font-bold">
-            <Sparkles className="w-3.5 h-3.5 text-[#5E2A84]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#B68A3D]" />
             Our Journey
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#5E2A84]">
-            Key <span className="gold-gradient-text">Milestones</span>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#12372A]">
+            Key <span className="text-[#B68A3D]">Milestones</span>
           </h2>
-          <p className="text-[#5C5368] text-base font-light">
+          <p className="text-[#423629] text-base font-light">
             A timeline of spiritual evolution, service, and global impact.
           </p>
         </div>
 
         {/* Timeline */}
-        <div className="relative border-l-2 border-[#DFC27D] ml-4 sm:ml-32 space-y-12">
+        <div className="relative border-l-2 border-[#D0AD5C] ml-4 sm:ml-32 space-y-12">
           {milestones.map((item, idx) => {
             const IconComponent = item.icon;
             return (
@@ -67,26 +67,26 @@ export default function Achievements() {
                 className="relative pl-8 sm:pl-12 group"
               >
                 {/* Node Badge */}
-                <div className="absolute -left-[21px] top-0 w-10 h-10 rounded-full bg-[#5E2A84] border-2 border-[#C8A248] flex items-center justify-center text-[#DFC27D] shadow-md group-hover:scale-110 group-hover:bg-[#C8A248] group-hover:text-white transition-all">
+                <div className="absolute -left-[21px] top-0 w-10 h-10 rounded-full bg-[#12372A] border-2 border-[#D0AD5C] flex items-center justify-center text-[#D0AD5C] shadow-md group-hover:scale-110 group-hover:bg-[#B68A3D] group-hover:text-white transition-all">
                   <IconComponent className="w-5 h-5" />
                 </div>
 
                 {/* Year Label */}
                 <div className="hidden sm:block absolute -left-36 top-1 text-right w-24">
-                  <span className="font-serif text-2xl font-bold text-[#5E2A84]">
+                  <span className="font-serif text-2xl font-bold text-[#12372A]">
                     {item.year}
                   </span>
                 </div>
 
                 {/* Content Box */}
-                <div className="glass-card glass-card-hover rounded-2xl p-6 border-2 border-[#E7DCC7] space-y-2 shadow-lg">
-                  <span className="sm:hidden text-xs font-bold uppercase tracking-wider text-[#C8A248]">
+                <div className="glass-card glass-card-hover rounded-2xl p-6 border-2 border-[#E2D8C3] space-y-2 shadow-lg bg-white">
+                  <span className="sm:hidden text-xs font-bold uppercase tracking-wider text-[#B68A3D]">
                     {item.year}
                   </span>
-                  <h3 className="font-serif text-xl font-bold text-[#5E2A84] group-hover:text-[#7B3FA4] transition-colors">
+                  <h3 className="font-serif text-xl font-bold text-[#12372A] group-hover:text-[#B68A3D] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-[#5C5368] text-sm font-light leading-relaxed">
+                  <p className="text-[#423629] text-sm font-light leading-relaxed">
                     {item.desc}
                   </p>
                 </div>

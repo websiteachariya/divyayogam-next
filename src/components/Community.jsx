@@ -1,81 +1,79 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Sparkles, Users, Globe, Flame, Heart } from 'lucide-react';
+import { Sparkles, Users, Globe, Heart, Home, Play } from 'lucide-react';
 
 export default function Community() {
-  const highlights = [
-    { icon: Users, title: '100,000+ Practitioners', desc: 'Active meditators across continents practicing organ rejuvenation daily.' },
-    { icon: Globe, title: '15+ Countries', desc: 'Global satsangs and virtual candlelight peace gatherings every month.' },
-    { icon: Flame, title: '500+ Silent Retreats', desc: 'Immersive residential sanctuaries hosted by Arawindhan Ji.' },
-    { icon: Heart, title: '100% Non-Profit Service', desc: 'Selfless dissemination of authentic Vedic wisdom for global peace.' },
+  const stats = [
+    { number: '100,000+', label: 'Members', icon: Users },
+    { number: '500+', label: 'Meditation Centers', icon: Home },
+    { number: '25+', label: 'Countries', icon: Globe },
+    { number: 'Millions', label: 'Lives Impacted', icon: Heart },
   ];
 
   return (
-    <section className="py-24 bg-[#FAF6EE] relative overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] glow-orb-purple pointer-events-none" />
+    <section className="py-24 bg-[#FBF8F1] relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Main Banner */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="glass-card rounded-3xl p-8 sm:p-14 border-2 border-[#E7DCC7] relative overflow-hidden shadow-xl"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full royal-gold-badge text-xs uppercase tracking-wider font-bold">
-                <Sparkles className="w-3.5 h-3.5 text-[#5E2A84]" />
-                Global Family
-              </div>
-
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#5E2A84] leading-tight">
-                A Universal Community of <br />
-                <span className="gold-gradient-text">Awakened Seekers</span>
-              </h2>
-
-              <p className="text-[#5C5368] text-base sm:text-lg font-light leading-relaxed">
-                Divya Yogam brings together individuals from every walk of life—corporate leaders, healthcare professionals, educators, and spiritual aspirants—united in a shared commitment to inner growth and world peace.
-              </p>
-
-              <div className="pt-2">
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#C8A248] to-[#DFC27D] hover:from-[#B88F30] hover:to-[#D5B561] text-white font-bold text-sm shadow-[0_15px_40px_rgba(200,162,72,0.25)] hover:scale-105 transition-all duration-300"
-                >
-                  Join Our Global Sangha
-                </Link>
-              </div>
-            </div>
-
-            <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {highlights.map((item, idx) => {
-                const IconComponent = item.icon;
-                return (
-                  <div
-                    key={idx}
-                    className="p-5 rounded-2xl bg-[#FFFDF9] border border-[#E7DCC7] space-y-3 hover:border-[#C8A248] transition-colors shadow-sm"
-                  >
-                    <div className="w-10 h-10 rounded-xl bg-[#F5EFE4] border border-[#DDD3C3] flex items-center justify-center text-[#5E2A84]">
-                      <IconComponent className="w-5 h-5 text-[#5E2A84]" />
-                    </div>
-                    <h3 className="font-serif text-sm font-bold text-[#5E2A84]">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs text-[#8F8896] font-light leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto space-y-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full royal-gold-badge text-xs uppercase tracking-wider font-bold">
+            <Sparkles className="w-3.5 h-3.5 text-[#B68A3D]" />
+            Our Global Community
           </div>
-        </motion.div>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#12372A]">
+            A Family of <span className="text-[#B68A3D]">Awakened Souls</span>
+          </h2>
+        </div>
+
+        {/* Community Grid Layout matching Reference UI */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+          {/* Left Stats Grid */}
+          <div className="lg:col-span-6 grid grid-cols-2 gap-6">
+            {stats.map((stat, idx) => {
+              const IconComponent = stat.icon;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white p-6 rounded-3xl border border-[#E2D8C3] text-center space-y-3 shadow-md hover:shadow-lg transition-all"
+                >
+                  <div className="w-12 h-12 mx-auto rounded-2xl bg-[#FBF8F1] border border-[#E2D8C3] flex items-center justify-center text-[#B68A3D]">
+                    <IconComponent className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#12372A]">
+                    {stat.number}
+                  </h3>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-[#786B5A]">
+                    {stat.label}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Right Video Thumbnail Card matching Reference UI */}
+          <div className="lg:col-span-6">
+            <div className="relative rounded-3xl overflow-hidden glass-card border-2 border-[#E2D8C3] shadow-xl group aspect-[16/10]">
+              <img
+                src="/images/011A6549.webp"
+                alt="Divya Yogam Community Gathering"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex flex-col items-center justify-center p-6">
+                <Link
+                  to="/gallery"
+                  className="w-16 h-16 rounded-full bg-white/90 text-[#12372A] flex items-center justify-center shadow-2xl hover:scale-110 transition-transform mb-3 border-2 border-[#D0AD5C]"
+                >
+                  <Play className="w-7 h-7 fill-[#12372A] ml-1" />
+                </Link>
+                <span className="text-white font-bold text-sm tracking-wider uppercase drop-shadow-md">
+                  Watch Our Story
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
 
       </div>
     </section>

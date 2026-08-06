@@ -24,19 +24,19 @@ export default function Experience() {
   ];
 
   return (
-    <section className="py-24 bg-[#F5EFE4] relative overflow-hidden">
+    <section className="py-24 bg-[#FBF8F1] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full royal-gold-badge text-xs uppercase tracking-wider font-bold">
-            <Sparkles className="w-3.5 h-3.5 text-[#5E2A84]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#B68A3D]" />
             The Inner Journey
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#5E2A84]">
-            The Divya Yogam <span className="gold-gradient-text">Experience</span>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#12372A]">
+            The Divya Yogam <span className="text-[#B68A3D]">Experience</span>
           </h2>
-          <p className="text-[#5C5368] text-base font-light">
+          <p className="text-[#423629] text-base font-light">
             Empowering practitioners to experience tangible physical rejuvenation and quiet mind states.
           </p>
         </div>
@@ -52,22 +52,22 @@ export default function Experience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.15 }}
-                className="glass-card glass-card-hover rounded-3xl p-8 border-2 border-[#E7DCC7] space-y-6 relative overflow-hidden shadow-lg"
+                className="glass-card glass-card-hover rounded-3xl p-8 border-2 border-[#E2D8C3] space-y-6 relative overflow-hidden shadow-lg bg-white"
               >
-                <div className="w-14 h-14 rounded-2xl bg-[#F5EFE4] border border-[#DDD3C3] flex items-center justify-center text-[#5E2A84] shadow-sm">
-                  <IconComponent className="w-7 h-7 text-[#5E2A84]" />
+                <div className="w-14 h-14 rounded-2xl bg-[#FBF8F1] border border-[#E2D8C3] flex items-center justify-center text-[#B68A3D] shadow-sm">
+                  <IconComponent className="w-7 h-7 text-[#B68A3D]" />
                 </div>
 
                 <div className="space-y-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#C8A248]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#B68A3D]">
                     {exp.subtitle}
                   </span>
-                  <h3 className="font-serif text-2xl font-bold text-[#5E2A84]">
+                  <h3 className="font-serif text-2xl font-bold text-[#12372A]">
                     {exp.title}
                   </h3>
                 </div>
 
-                <p className="text-[#5C5368] text-sm font-light leading-relaxed">
+                <p className="text-[#423629] text-sm font-light leading-relaxed">
                   {exp.desc}
                 </p>
               </motion.div>

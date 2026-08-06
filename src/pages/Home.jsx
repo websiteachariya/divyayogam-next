@@ -20,7 +20,7 @@ export default function Home() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-[#F7F2E8]"
+      className="bg-[#FBF8F1]"
     >
       <Hero />
       <Founder />

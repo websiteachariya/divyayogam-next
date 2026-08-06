@@ -2,62 +2,66 @@
 
 @layer base {
   :root {
-    --bg-sandal: #FAF6EE;
-    --bg-cream: #F5EFE4;
-    --bg-feature: #FFFDF9;
+    --bg-sandal: #FBF8F1;
+    --bg-cream: #F4EFE6;
+    --bg-feature: #FFFDF8;
     --bg-card: #FFFFFF;
-    --border-color: #E7DCC7;
-    --border-form: #DDD3C3;
+    --border-color: #E2D8C3;
+    --border-form: #D8CDAF;
 
-    --brand-primary: #5E2A84;
-    --brand-secondary: #7B3FA4;
-    --brand-dark: #43175F;
-    --brand-gold: #C8A248;
-    --brand-soft-gold: #DFC27D;
+    --brand-primary: #B68A3D;
+    --brand-emerald: #12372A;
+    --brand-emerald-dark: #0C2B21;
+    --brand-gold: #D0AD5C;
+    --brand-soft-gold: #DFBE72;
 
-    --nav-bg: #43175F;
-    --nav-text: #F8F3EA;
-    --nav-active: #DFC27D;
-    --nav-hover: #C8A248;
-    --nav-border: rgba(223, 194, 125, 0.18);
+    --nav-bg: #12372A;
+    --nav-text: #FBF8F1;
+    --nav-active: #D0AD5C;
+    --nav-hover: #DFBE72;
+    --nav-border: rgba(208, 173, 92, 0.25);
 
-    --footer-bg: #3A124F;
-    --footer-heading: #DFC27D;
-    --footer-link: #F7F3EA;
-    --footer-hover: #DFC27D;
-    --footer-border: rgba(223, 194, 125, 0.18);
+    --footer-bg: #0C2B21;
+    --footer-heading: #D0AD5C;
+    --footer-link: #FBF8F1;
+    --footer-hover: #D0AD5C;
+    --footer-border: rgba(208, 173, 92, 0.25);
 
-    --btn-secondary: #5E2A84;
-    --btn-secondary-hover: #43175F;
+    --btn-secondary: #B68A3D;
+    --btn-secondary-hover: #12372A;
 
-    --heading-h1: #43175F;
-    --heading-h2: #5E2A84;
-    --heading-h3: #5E2A84;
-    --text-body: #5C5368;
-    --text-muted: #8F8896;
+    --heading-h1: #12372A;
+    --heading-h2: #B68A3D;
+    --heading-h3: #B68A3D;
+    --text-body: #423629;
+    --text-muted: #786B5A;
 
-    --link-normal: #5E2A84;
-    --link-hover: #C8A248;
+    --link-normal: #B68A3D;
+    --link-hover: #D0AD5C;
 
-    --icon-primary: #5E2A84;
-    --icon-highlight: #C8A248;
+    --icon-primary: #B68A3D;
+    --icon-highlight: #D0AD5C;
   }
 
   body {
     font-family: 'Inter', sans-serif;
-    background-color: #FAF6EE;
-    color: #5C5368;
+    background-color: #FBF8F1;
+    color: #423629;
     overflow-x: hidden;
   }
 
   h1 {
-    font-family: 'Cinzel', serif;
-    color: #43175F;
+    font-family: 'Cinzel', 'Playfair Display', serif;
+    color: #12372A;
   }
 
-  h2, h3, h4, h5, h6 {
-    font-family: 'Cinzel', serif;
-    color: #5E2A84;
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Cinzel', 'Playfair Display', serif;
+    color: #B68A3D;
   }
 
   .font-serif-heading {
@@ -74,8 +78,8 @@
   background: #FFFFFF;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid #E7DCC7;
-  box-shadow: 0 20px 50px 0 rgba(94, 42, 132, 0.08), inset 0 1px 1px 0 rgba(255, 255, 255, 0.8);
+  border: 1px solid #E2D8C3;
+  box-shadow: 0 20px 40px 0 rgba(182, 138, 61, 0.06), inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .glass-card-hover {
@@ -83,79 +87,104 @@
 }
 
 .glass-card-hover:hover {
-  background: #FFFCF7;
-  border-color: #C8A248;
+  background: #FFFDF8;
+  border-color: #D0AD5C;
   transform: translateY(-6px);
-  box-shadow: 0 25px 55px 0 rgba(94, 42, 132, 0.12), 0 0 20px 0 rgba(200, 162, 72, 0.2);
+  box-shadow: 0 25px 50px 0 rgba(182, 138, 61, 0.12), 0 0 20px 0 rgba(208, 173, 92, 0.2);
 }
 
-/* Premium Gold & Purple Text Styling */
+/* Premium Gold & Sandal Text Styling */
 .gold-gradient-text {
-  color: #43175F;
-  background: linear-gradient(135deg, #43175F 0%, #5E2A84 40%, #C8A248 100%);
+  color: #B68A3D;
+  background: linear-gradient(135deg, #B68A3D 0%, #D0AD5C 50%, #B68A3D 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+.sandal-gradient-text,
 .violet-gradient-text {
-  color: #5E2A84;
-  background: linear-gradient(135deg, #5E2A84 0%, #7B3FA4 100%);
+  color: #B68A3D;
+  background: linear-gradient(135deg, #12372A 0%, #B68A3D 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .royal-gold-badge {
-  background: rgba(200, 162, 72, 0.12);
-  border: 1px solid rgba(200, 162, 72, 0.25);
-  color: #5E2A84;
+  background: rgba(208, 173, 92, 0.12);
+  border: 1px solid rgba(208, 173, 92, 0.3);
+  color: #B68A3D;
   font-weight: 700;
-  box-shadow: 0 2px 8px rgba(200, 162, 72, 0.15);
+  box-shadow: 0 2px 8px rgba(208, 173, 92, 0.15);
 }
 
 /* Buttons */
 .btn-primary {
-  background: linear-gradient(135deg, #C8A248, #DFC27D);
+  background: linear-gradient(135deg, #B68A3D, #D0AD5C);
   color: #FFFFFF;
-  box-shadow: 0 15px 40px rgba(200, 162, 72, 0.25);
+  box-shadow: 0 15px 40px rgba(182, 138, 61, 0.25);
   transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #B88F30, #D5B561);
+  background: linear-gradient(135deg, #9C6E28, #C49E4B);
   color: #FFFFFF;
 }
 
+.btn-emerald {
+  background: #12372A;
+  color: #FFFFFF;
+  box-shadow: 0 15px 35px rgba(18, 55, 42, 0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-emerald:hover {
+  background: #0C2B21;
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(18, 55, 42, 0.3);
+}
+
 .btn-secondary {
-  background-color: #5E2A84;
+  background-color: #B68A3D;
   color: #FFFFFF;
   transition: all 0.3s ease;
 }
 
 .btn-secondary:hover {
-  background-color: #43175F;
+  background-color: #12372A;
   color: #FFFFFF;
 }
 
 /* Glow Lighting FX */
+.glow-orb-sandal,
 .glow-orb-purple {
-  background: radial-gradient(circle, rgba(123, 63, 164, 0.15) 0%, rgba(94, 42, 132, 0.05) 60%, transparent 100%);
+  background: radial-gradient(circle, rgba(182, 138, 61, 0.15) 0%, rgba(208, 173, 92, 0.08) 60%, transparent 100%);
   filter: blur(100px);
 }
 
 .glow-orb-gold {
-  background: radial-gradient(circle, rgba(200, 162, 72, 0.18) 0%, rgba(223, 194, 125, 0.08) 60%, transparent 100%);
+  background: radial-gradient(circle, rgba(208, 173, 92, 0.2) 0%, rgba(223, 190, 114, 0.1) 60%, transparent 100%);
   filter: blur(90px);
 }
 
 /* Orbit Animations */
 @keyframes spinSlow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes spinReverseSlow {
-  from { transform: rotate(360deg); }
-  to { transform: rotate(0deg); }
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
 }
 
 .animate-spin-slow {
@@ -172,14 +201,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #FAF6EE;
+  background: #FBF8F1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #5E2A84;
+  background: #B68A3D;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #C8A248;
+  background: #D0AD5C;
 }

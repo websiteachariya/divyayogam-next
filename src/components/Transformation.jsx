@@ -5,47 +5,38 @@ import { Sparkles, Star, Quote, ArrowRight } from 'lucide-react';
 export default function Transformation() {
   const testimonials = [
     {
-      quote: "Divya Yogam organ meditation transformed my chronic fatigue into vibrant vitality. Within 3 weeks of daily practice, I felt a deep sense of renewal and peace.",
-      name: "Radhika S.",
-      role: "Corporate Executive & Practitioner",
-      rating: 5,
-      avatar: "/images/service-10.webp",
+      quote: "Divya Yogam changed my life. I found inner peace and purpose.",
+      name: "Ananya S.",
+      location: "Bangalore, India",
     },
     {
-      quote: "Learning under Arawindhan Ji gave me clarity on balancing my professional ambitions with deep inner spiritual alignment. It is truly life-changing.",
-      name: "Vikram R.",
-      role: "Software Architect",
-      rating: 5,
-      avatar: "/images/service-8.webp",
+      quote: "The teachings are profound, yet simple to apply in daily life.",
+      name: "Rajesh K.",
+      location: "Mumbai, India",
     },
     {
-      quote: "The Pancha Kosha purification retreat allowed me to release emotional baggage I had carried for years. I returned home reborn in spirit.",
-      name: "Ananya M.",
-      role: "Wellness Coach",
-      rating: 5,
-      avatar: "/images/service-9.webp",
+      quote: "The retreats are life-changing experiences of love and wisdom.",
+      name: "Priya M.",
+      location: "London, UK",
     },
   ];
 
   return (
-    <section className="py-24 bg-[#F5EFE4] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="py-24 bg-[#F4EFE6] relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <div className="text-center max-w-3xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full royal-gold-badge text-xs uppercase tracking-wider font-bold">
-            <Sparkles className="w-3.5 h-3.5 text-[#5E2A84]" />
-            Seeker Experiences
+            <Sparkles className="w-3.5 h-3.5 text-[#B68A3D]" />
+            Voices of Transformation
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#5E2A84]">
-            Stories of <span className="gold-gradient-text">Transformation</span>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#12372A]">
+            Stories from <span className="text-[#B68A3D]">Our Seekers</span>
           </h2>
-          <p className="text-[#5C5368] text-base font-light">
-            Real experiences from practitioners who have walked the path of inner awakening.
-          </p>
         </div>
 
-        {/* Testimonials Grid */}
+        {/* 3 Testimonials Grid matching Reference UI */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((item, idx) => (
             <motion.div
@@ -54,50 +45,35 @@ export default function Transformation() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.15 }}
-              className="glass-card glass-card-hover rounded-3xl p-8 border-2 border-[#E7DCC7] flex flex-col justify-between relative group shadow-lg"
+              className="bg-white rounded-3xl p-8 border border-[#E2D8C3] flex flex-col justify-between relative group shadow-md hover:shadow-xl transition-all"
             >
               <div>
-                <div className="flex items-center gap-1 text-[#C8A248] mb-6">
-                  {[...Array(item.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#C8A248] text-[#C8A248]" />
-                  ))}
-                </div>
+                <span className="font-serif text-5xl text-[#B68A3D] opacity-80 block leading-none mb-3">
+                  “
+                </span>
 
-                <Quote className="w-8 h-8 text-[#C8A248]/50 mb-4" />
-
-                <p className="text-[#5C5368] text-sm font-light leading-relaxed italic mb-6">
-                  "{item.quote}"
+                <p className="text-[#423629] text-base font-light leading-relaxed mb-6">
+                  {item.quote}
                 </p>
               </div>
 
-              <div className="flex items-center gap-4 pt-4 border-t border-[#E7DCC7]">
-                <img
-                  src={item.avatar}
-                  alt={item.name}
-                  className="w-12 h-12 rounded-full object-cover border-2 border-[#C8A248] shadow-sm"
-                />
-                <div>
-                  <h4 className="font-serif text-base font-bold text-[#43175F]">
-                    {item.name}
-                  </h4>
-                  <p className="text-xs text-[#5E2A84] font-bold">
-                    {item.role}
-                  </p>
-                </div>
+              <div className="pt-4 border-t border-[#E2D8C3]">
+                <h4 className="font-serif text-base font-bold text-[#12372A]">
+                  — {item.name}
+                </h4>
+                <p className="text-xs text-[#786B5A] font-medium">
+                  {item.location}
+                </p>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* View All Testimonials CTA */}
-        <div className="mt-16 text-center">
-          <Link
-            to="/testimonials"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#C8A248] to-[#DFC27D] hover:from-[#B88F30] hover:to-[#D5B561] text-white font-bold text-sm shadow-[0_15px_40px_rgba(200,162,72,0.25)] hover:scale-105 transition-all duration-300"
-          >
-            <span>Read All Testimonials & Stories</span>
-            <ArrowRight className="w-4 h-4 text-white" />
-          </Link>
+        {/* Pagination Dots matching Reference UI */}
+        <div className="flex items-center justify-center gap-2 pt-4">
+          <span className="w-3 h-3 rounded-full bg-[#B68A3D]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#E2D8C3]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#E2D8C3]" />
         </div>
 
       </div>

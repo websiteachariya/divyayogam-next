@@ -47,37 +47,45 @@ export default function OrganMeditation() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-[#FAF6EE]"
+      className="bg-[#FBF8F1]"
     >
-      {/* Page Hero Header in Dark Purple #43175F */}
-      <section className="pt-28 pb-10 relative overflow-hidden bg-gradient-to-b from-[#43175F] to-[#3A124F] text-center border-b border-[rgba(223,194,125,0.18)]">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#C8A248]/10 rounded-full blur-[140px] pointer-events-none" />
+      {/* Page Hero Header in Deep Emerald Green #12372A with SVG Lotus Overlay */}
+      <section className="pt-28 pb-12 relative overflow-hidden bg-gradient-to-b from-[#12372A] to-[#0C2B21] text-center border-b border-[rgba(208,173,92,0.25)]">
+        
+        {/* Background SVG Lotus Overlay */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none">
+          <svg width="450" height="450" viewBox="0 0 100 100" fill="none" stroke="#D0AD5C" strokeWidth="0.8">
+            <circle cx="50" cy="50" r="45" />
+            <circle cx="50" cy="50" r="35" strokeDasharray="2 2" />
+            <path d="M50 5 C60 25 75 40 95 50 C75 60 60 75 50 95 C40 75 25 60 5 50 C25 40 40 25 50 5 Z" />
+          </svg>
+        </div>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 space-y-3">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full royal-gold-badge text-xs font-bold uppercase tracking-wider shadow-md">
-            <Sparkles className="w-3.5 h-3.5 text-[#5E2A84]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#B68A3D]" />
             Cellular Rejuvenation Science
           </div>
 
           <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
-            Scientific <span className="text-[#DFC27D]">Organ Meditation</span>
+            Scientific <span className="text-[#D0AD5C]">Organ Meditation</span>
           </h1>
 
-          <p className="text-[#F7F3EA] text-base sm:text-lg font-garamond italic max-w-2xl mx-auto font-medium">
+          <p className="text-[#FBF8F1] text-base sm:text-lg font-garamond italic max-w-2xl mx-auto font-medium">
             Directing conscious breath, sound frequency, and loving awareness into vital internal organs to eliminate toxic emotion and restore health.
           </p>
         </div>
       </section>
 
       {/* Organs Section */}
-      <section className="py-24 bg-[#FAF6EE]">
+      <section className="py-24 bg-[#FBF8F1]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          
+
           <div className="text-center max-w-3xl mx-auto space-y-4">
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#43175F]">
-              The 5 Core <span className="gold-gradient-text">Organ Systems</span>
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#12372A]">
+              The 5 Core <span className="text-[#B68A3D]">Organ Systems</span>
             </h2>
-            <p className="text-[#5C5368] text-base font-light">
+            <p className="text-[#423629] text-base font-light">
               Each organ holds specific emotional vibrations and cellular memory. Organ meditation restores their innate balance.
             </p>
           </div>
@@ -90,14 +98,14 @@ export default function OrganMeditation() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="glass-card glass-card-hover rounded-3xl p-8 border-2 border-[#E7DCC7] flex flex-col justify-between group shadow-lg"
+                className="glass-card glass-card-hover rounded-3xl p-8 border-2 border-[#E2D8C3] flex flex-col justify-between group shadow-lg bg-white"
               >
                 <div className="space-y-6">
-                  <div className="relative w-28 h-28 mx-auto flex items-center justify-center p-2 rounded-2xl bg-[#F5EFE4] border border-[#DDD3C3] group-hover:scale-110 transition-transform shadow-sm">
+                  <div className="relative w-28 h-28 mx-auto flex items-center justify-center p-2 rounded-2xl bg-[#FBF8F1] border border-[#E2D8C3] group-hover:scale-110 transition-transform shadow-sm">
                     <img
                       src={organ.img}
                       alt={organ.name}
-                      className="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(200,162,72,0.3)]"
+                      className="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(208,173,92,0.3)]"
                     />
                   </div>
 
@@ -105,29 +113,29 @@ export default function OrganMeditation() {
                     <span className="px-3 py-1 rounded-full royal-gold-badge text-[11px] font-bold uppercase tracking-wider">
                       {organ.element}
                     </span>
-                    
-                    <h3 className="font-serif text-2xl font-bold text-[#5E2A84]">
+
+                    <h3 className="font-serif text-2xl font-bold text-[#12372A]">
                       {organ.name}
                     </h3>
                   </div>
 
-                  <p className="text-[#5C5368] text-sm font-light leading-relaxed text-center">
+                  <p className="text-[#423629] text-sm font-light leading-relaxed text-center">
                     {organ.desc}
                   </p>
 
-                  <div className="p-3 rounded-xl bg-[#FFFDF9] border border-[#E7DCC7] text-xs text-[#5E2A84] font-semibold flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#C8A248] shrink-0" />
+                  <div className="p-3 rounded-xl bg-[#FFFDF8] border border-[#E2D8C3] text-xs text-[#12372A] font-semibold flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#B68A3D] shrink-0" />
                     <span>{organ.emotion}</span>
                   </div>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-[#E7DCC7] text-center">
+                <div className="pt-6 mt-6 border-t border-[#E2D8C3] text-center">
                   <Link
                     to="/contact"
-                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#5E2A84] hover:text-[#C8A248] transition-colors"
+                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#B68A3D] hover:text-[#12372A] transition-colors"
                   >
                     <span>Practice Organ Meditation</span>
-                    <ArrowRight className="w-4 h-4 text-[#5E2A84] group-hover:text-[#C8A248]" />
+                    <ArrowRight className="w-4 h-4 text-[#B68A3D]" />
                   </Link>
                 </div>
               </motion.div>
