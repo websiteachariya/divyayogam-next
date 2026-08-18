@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Mail, MapPin, Sparkles, Facebook, Instagram, Youtube, MessageCircle } from 'lucide-react';
+import { Mail, MapPin, Sparkles, Facebook, Instagram, Youtube } from 'lucide-react';
 
 interface TopBarProps {
   isScrolled?: boolean;
@@ -54,10 +54,10 @@ export default function TopBar({ isScrolled = false }: TopBarProps) {
         </Link>
       </div>
 
-      {/* Right Social Links & WhatsApp CTA (Full details: 1300px+) */}
+      {/* Right Social Links (Full details: 1300px+) */}
       <div className="topbar-full-only items-center gap-4 relative z-10 shrink-0">
         {/* Social Icons */}
-        <div className="flex items-center gap-2 border-r border-[#DFC47A]/30 pr-4">
+        <div className="flex items-center gap-2">
           <span className="text-[10px] uppercase font-semibold text-[#DFC47A] tracking-wider hidden 2xl:inline">Follow Us:</span>
           <a
             href="https://facebook.com"
@@ -87,17 +87,6 @@ export default function TopBar({ isScrolled = false }: TopBarProps) {
             <Youtube className="w-3.5 h-3.5" />
           </a>
         </div>
-
-        {/* WhatsApp Direct Action Button */}
-        <a
-          href="https://wa.me/918001089642"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#25D366]/20 border border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all text-[11px] font-semibold tracking-wide shadow-sm group"
-        >
-          <MessageCircle className="w-3.5 h-3.5 text-[#25D366] group-hover:text-white transition-colors" />
-          <span>WhatsApp</span>
-        </a>
       </div>
     </div>
   );
