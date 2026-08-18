@@ -175,20 +175,20 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               title="Experience Shambala Music App on Google Play"
-              className="hidden lg:flex relative group items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-[#DFC47A] hover:text-[#47206A] border-2 border-[#DFC47A]/80 hover:border-[#47206A] text-xs font-bold tracking-wider transition-all duration-300 shadow-md hover:scale-105 group font-body whitespace-nowrap overflow-hidden"
+              className="hidden lg:flex relative items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#47206A] text-[#DFC47A] border-2 border-[#DFC47A]/80 text-xs font-bold tracking-wider shadow-md font-body whitespace-nowrap overflow-hidden"
             >
               {/* Modern Audio Wave Equalizer Icon */}
               <div className="relative z-10 flex items-center gap-[2.5px] h-3.5 w-3.5 shrink-0">
-                <span className="w-[2px] h-3.5 bg-[#DFC47A] group-hover:bg-[#47206A] rounded-full animate-[pulse_1s_ease-in-out_infinite] transition-colors" />
-                <span className="w-[2px] h-2 bg-[#DFC47A] group-hover:bg-[#47206A] rounded-full animate-[pulse_1.4s_ease-in-out_infinite_200ms] transition-colors" />
-                <span className="w-[2px] h-3 bg-[#DFC47A] group-hover:bg-[#47206A] rounded-full animate-[pulse_1.1s_ease-in-out_infinite_400ms] transition-colors" />
+                <span className="w-[2px] h-3.5 bg-[#DFC47A] rounded-full animate-[pulse_1s_ease-in-out_infinite]" />
+                <span className="w-[2px] h-2 bg-[#DFC47A] rounded-full animate-[pulse_1.4s_ease-in-out_infinite_200ms]" />
+                <span className="w-[2px] h-3 bg-[#DFC47A] rounded-full animate-[pulse_1.1s_ease-in-out_infinite_400ms]" />
               </div>
 
               <span className="relative z-10 text-[11px] font-extrabold tracking-wider uppercase">
                 Shambala App
               </span>
 
-              <span className="relative z-10 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-[#DFC47A]/20 group-hover:bg-[#47206A]/20 text-[#DFC47A] group-hover:text-[#47206A] transition-colors leading-none flex items-center gap-0.5 border border-[#DFC47A]/40">
+              <span className="relative z-10 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-[#DFC47A]/20 text-[#DFC47A] leading-none flex items-center gap-0.5 border border-[#DFC47A]/40">
                 <span>Music</span>
                 <ExternalLink className="w-2.5 h-2.5 inline" />
               </span>
@@ -328,15 +328,15 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsMobileOpen(false)}
-                    className="w-full py-3 px-6 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-[#DFC47A] hover:text-[#47206A] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2.5 transition-all duration-300 font-body border-2 border-[#DFC47A]/80 shadow-md group"
+                    className="w-full py-3 px-6 rounded-full bg-[#47206A] text-[#DFC47A] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2.5 font-body border-2 border-[#DFC47A]/80 shadow-md"
                   >
                     <div className="flex items-center gap-[2.5px] h-3.5 w-3.5 shrink-0">
-                      <span className="w-[2px] h-3.5 bg-[#DFC47A] group-hover:bg-[#47206A] rounded-full animate-[pulse_1s_ease-in-out_infinite]" />
-                      <span className="w-[2px] h-2 bg-[#DFC47A] group-hover:bg-[#47206A] rounded-full animate-[pulse_1.4s_ease-in-out_infinite_200ms]" />
-                      <span className="w-[2px] h-3 bg-[#DFC47A] group-hover:bg-[#47206A] rounded-full animate-[pulse_1.1s_ease-in-out_infinite_400ms]" />
+                      <span className="w-[2px] h-3.5 bg-[#DFC47A] rounded-full animate-[pulse_1s_ease-in-out_infinite]" />
+                      <span className="w-[2px] h-2 bg-[#DFC47A] rounded-full animate-[pulse_1.4s_ease-in-out_infinite_200ms]" />
+                      <span className="w-[2px] h-3 bg-[#DFC47A] rounded-full animate-[pulse_1.1s_ease-in-out_infinite_400ms]" />
                     </div>
                     <span>Shambala Music App</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-[#DFC47A] group-hover:text-[#47206A]" />
+                    <ExternalLink className="w-3.5 h-3.5 text-[#DFC47A]" />
                   </a>
                 </div>
               </div>
