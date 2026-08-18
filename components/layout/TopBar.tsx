@@ -2,13 +2,15 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Mail, MapPin, Sparkles, Facebook, Instagram, Youtube, ExternalLink } from 'lucide-react';
+import { Mail, MapPin, Sparkles, Facebook, Instagram, Youtube, MessageCircle, Music } from 'lucide-react';
 
 interface TopBarProps {
   isScrolled?: boolean;
 }
 
 export default function TopBar({ isScrolled = false }: TopBarProps) {
+  const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.ignitelabs.music_app';
+
   return (
     <div
       className={`topbar-container items-center justify-between text-xs text-[#F8F2E8] bg-gradient-to-r from-[#2D1A39] via-[#47206A] to-[#352043] border-b border-[#DFC47A]/30 px-3 sm:px-6 lg:px-8 font-body relative z-20 transition-all duration-300 overflow-hidden ${
@@ -39,7 +41,7 @@ export default function TopBar({ isScrolled = false }: TopBarProps) {
         </div>
       </div>
 
-      {/* Center Live Masterclass Announcement Line (Displayed on ALL screens: Mobile <700px, Mid 700px-1299px, Desktop 1300px+) */}
+      {/* Center Live Masterclass Announcement Line */}
       <div className="flex items-center gap-1.5 sm:gap-2 relative z-10 px-1 text-center truncate max-w-full justify-center">
         <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#C8A34A]/25 border border-[#DFC47A]/40 text-[#DFC47A] text-[9px] sm:text-[10px] font-bold uppercase tracking-wider animate-pulse shrink-0">
           <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#DFC47A]" />
@@ -54,10 +56,10 @@ export default function TopBar({ isScrolled = false }: TopBarProps) {
         </Link>
       </div>
 
-      {/* Right Social Links & WhatsApp CTA (Full details: 1300px+) */}
-      <div className="topbar-full-only items-center gap-4 relative z-10 shrink-0">
+      {/* Right Social Links, Shambala App & WhatsApp CTA (Top Right Side) */}
+      <div className="topbar-full-only items-center gap-3 relative z-10 shrink-0">
         {/* Social Icons */}
-        <div className="flex items-center gap-2 border-r border-[#DFC47A]/30 pr-4">
+        <div className="flex items-center gap-2 border-r border-[#DFC47A]/30 pr-3">
           <span className="text-[10px] uppercase font-semibold text-[#DFC47A] tracking-wider hidden 2xl:inline">Follow Us:</span>
           <a
             href="https://facebook.com"
@@ -90,19 +92,24 @@ export default function TopBar({ isScrolled = false }: TopBarProps) {
 
         {/* Shambala Music App Button */}
         <a
-          href="https://play.google.com/store/apps/details?id=com.ignitelabs.music_app"
+          href={playStoreUrl}
           target="_blank"
           rel="noopener noreferrer"
-          title="Experience Shambala Music App on Google Play"
-          className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C8A34A]/20 border border-[#DFC47A]/50 text-[#DFC47A] hover:bg-[#C8A34A] hover:text-[#20052C] transition-all text-[11px] font-bold tracking-wide shadow-sm group"
+          className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C8A34A]/20 border border-[#DFC47A]/50 text-[#DFC47A] hover:bg-[#C8A34A] hover:text-[#20052C] transition-all text-[11px] font-semibold tracking-wide shadow-sm group shrink-0"
         >
-          <div className="flex items-center gap-[2px] h-3 w-3 shrink-0">
-            <span className="w-[1.5px] h-3 bg-[#DFC47A] group-hover:bg-[#20052C] rounded-full animate-[pulse_1s_ease-in-out_infinite]" />
-            <span className="w-[1.5px] h-1.5 bg-[#DFC47A] group-hover:bg-[#20052C] rounded-full animate-[pulse_1.4s_ease-in-out_infinite_200ms]" />
-            <span className="w-[1.5px] h-2.5 bg-[#DFC47A] group-hover:bg-[#20052C] rounded-full animate-[pulse_1.1s_ease-in-out_infinite_400ms]" />
-          </div>
-          <span>Shambala Music App</span>
-          <ExternalLink className="w-3 h-3 text-[#DFC47A] group-hover:text-[#20052C]" />
+          <Music className="w-3.5 h-3.5 text-[#DFC47A] group-hover:text-[#20052C] transition-colors" />
+          <span>Shambala App</span>
+        </a>
+
+        {/* WhatsApp Direct Action Button */}
+        <a
+          href="https://wa.me/918001089642"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#25D366]/20 border border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all text-[11px] font-semibold tracking-wide shadow-sm group shrink-0"
+        >
+          <MessageCircle className="w-3.5 h-3.5 text-[#25D366] group-hover:text-white transition-colors" />
+          <span>WhatsApp</span>
         </a>
       </div>
     </div>

@@ -169,6 +169,31 @@ export default function Navbar() {
 
           {/* Right Action & Menu Button */}
           <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+            {/* Shambala Music App - Solid Royal Purple & Gold Pill */}
+            <a
+              href={playStoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Experience Shambala Music App on Google Play"
+              className="hidden lg:flex relative items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#47206A] text-[#DFC47A] border-2 border-[#DFC47A]/80 text-xs font-bold tracking-wider shadow-md font-body whitespace-nowrap overflow-hidden"
+            >
+              {/* Modern Audio Wave Equalizer Icon */}
+              <div className="relative z-10 flex items-center gap-[2.5px] h-3.5 w-3.5 shrink-0">
+                <span className="w-[2px] h-3.5 bg-[#DFC47A] rounded-full animate-[pulse_1s_ease-in-out_infinite]" />
+                <span className="w-[2px] h-2 bg-[#DFC47A] rounded-full animate-[pulse_1.4s_ease-in-out_infinite_200ms]" />
+                <span className="w-[2px] h-3 bg-[#DFC47A] rounded-full animate-[pulse_1.1s_ease-in-out_infinite_400ms]" />
+              </div>
+
+              <span className="relative z-10 text-[11px] font-extrabold tracking-wider uppercase">
+                Shambala App
+              </span>
+
+              <span className="relative z-10 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-[#DFC47A]/20 text-[#DFC47A] leading-none flex items-center gap-0.5 border border-[#DFC47A]/40">
+                <span>Music</span>
+                <ExternalLink className="w-2.5 h-2.5 inline" />
+              </span>
+            </a>
+
             {/* Join Us Action Button */}
             <Link
               href="/contact"
