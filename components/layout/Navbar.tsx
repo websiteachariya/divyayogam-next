@@ -169,29 +169,26 @@ export default function Navbar() {
 
           {/* Right Action & Menu Button */}
           <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
-            {/* Shambala Music App - Ultra-Modern Dark Velvet Pill with Soundwave */}
+            {/* Shambala Music App - Elegant Gold-Bordered White Glass Pill */}
             <a
               href={playStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
               title="Experience Shambala Music App on Google Play"
-              className="hidden lg:flex relative group items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#20052C] via-[#351246] to-[#20052C] text-[#DFC47A] border border-[#DFC47A]/40 hover:border-[#DFC47A] text-xs font-semibold tracking-wider transition-all duration-300 shadow-[0_4px_16px_rgba(71,32,106,0.3)] hover:shadow-[0_0_20px_rgba(200,163,74,0.4)] hover:scale-105 group font-body whitespace-nowrap overflow-hidden"
+              className="hidden lg:flex relative group items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 hover:bg-[#47206A] text-[#47206A] hover:text-[#DFC47A] border-2 border-[#C8A34A] hover:border-[#47206A] text-xs font-bold tracking-wider transition-all duration-300 shadow-sm hover:shadow-md group font-body whitespace-nowrap overflow-hidden"
             >
-              {/* Shimmer Ambient Light Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#DFC47A]/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
-
               {/* Modern Audio Wave Equalizer Icon */}
               <div className="relative z-10 flex items-center gap-[2.5px] h-3.5 w-3.5 shrink-0">
-                <span className="w-[2px] h-3.5 bg-[#DFC47A] rounded-full animate-[pulse_1s_ease-in-out_infinite]" />
-                <span className="w-[2px] h-2 bg-[#DFC47A] rounded-full animate-[pulse_1.4s_ease-in-out_infinite_200ms]" />
-                <span className="w-[2px] h-3 bg-[#DFC47A] rounded-full animate-[pulse_1.1s_ease-in-out_infinite_400ms]" />
+                <span className="w-[2px] h-3.5 bg-[#C8A34A] group-hover:bg-[#DFC47A] rounded-full animate-[pulse_1s_ease-in-out_infinite] transition-colors" />
+                <span className="w-[2px] h-2 bg-[#C8A34A] group-hover:bg-[#DFC47A] rounded-full animate-[pulse_1.4s_ease-in-out_infinite_200ms] transition-colors" />
+                <span className="w-[2px] h-3 bg-[#C8A34A] group-hover:bg-[#DFC47A] rounded-full animate-[pulse_1.1s_ease-in-out_infinite_400ms] transition-colors" />
               </div>
 
-              <span className="relative z-10 text-[11px] font-extrabold tracking-wider uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#DFC47A] via-[#FFF5D6] to-[#C8A34A]">
+              <span className="relative z-10 text-[11px] font-extrabold tracking-wider uppercase">
                 Shambala App
               </span>
 
-              <span className="relative z-10 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-[#C8A34A]/25 text-[#DFC47A] border border-[#DFC47A]/30 group-hover:bg-[#C8A34A] group-hover:text-[#20052C] transition-colors leading-none flex items-center gap-0.5">
+              <span className="relative z-10 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-[#C8A34A]/15 group-hover:bg-[#DFC47A]/25 text-[#8C5D00] group-hover:text-[#DFC47A] transition-colors leading-none flex items-center gap-0.5 border border-[#C8A34A]/30">
                 <span>Music</span>
                 <ExternalLink className="w-2.5 h-2.5 inline" />
               </span>
@@ -331,17 +328,15 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsMobileOpen(false)}
-                    className="w-full py-3 px-6 rounded-full bg-gradient-to-r from-[#20052C] via-[#351246] to-[#20052C] text-[#DFC47A] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2.5 transition-all duration-300 font-body border border-[#DFC47A]/50 shadow-md group relative overflow-hidden"
+                    className="w-full py-3 px-6 rounded-full bg-white hover:bg-[#47206A] text-[#47206A] hover:text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2.5 transition-all duration-300 font-body border-2 border-[#C8A34A] shadow-sm group"
                   >
                     <div className="flex items-center gap-[2.5px] h-3.5 w-3.5 shrink-0">
-                      <span className="w-[2px] h-3.5 bg-[#DFC47A] rounded-full animate-[pulse_1s_ease-in-out_infinite]" />
-                      <span className="w-[2px] h-2 bg-[#DFC47A] rounded-full animate-[pulse_1.4s_ease-in-out_infinite_200ms]" />
-                      <span className="w-[2px] h-3 bg-[#DFC47A] rounded-full animate-[pulse_1.1s_ease-in-out_infinite_400ms]" />
+                      <span className="w-[2px] h-3.5 bg-[#C8A34A] group-hover:bg-[#DFC47A] rounded-full animate-[pulse_1s_ease-in-out_infinite]" />
+                      <span className="w-[2px] h-2 bg-[#C8A34A] group-hover:bg-[#DFC47A] rounded-full animate-[pulse_1.4s_ease-in-out_infinite_200ms]" />
+                      <span className="w-[2px] h-3 bg-[#C8A34A] group-hover:bg-[#DFC47A] rounded-full animate-[pulse_1.1s_ease-in-out_infinite_400ms]" />
                     </div>
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#DFC47A] via-[#FFF5D6] to-[#C8A34A]">
-                      Shambala Music App
-                    </span>
-                    <ExternalLink className="w-3.5 h-3.5 text-[#DFC47A] opacity-80" />
+                    <span>Shambala Music App</span>
+                    <ExternalLink className="w-3.5 h-3.5 text-[#C8A34A] group-hover:text-[#DFC47A]" />
                   </a>
                 </div>
               </div>
