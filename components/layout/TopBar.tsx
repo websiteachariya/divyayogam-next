@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Mail, MapPin, Sparkles, Facebook, Instagram, Youtube } from 'lucide-react';
+import { Mail, MapPin, Sparkles, Facebook, Instagram, Youtube, ExternalLink } from 'lucide-react';
 
 interface TopBarProps {
   isScrolled?: boolean;
@@ -54,10 +54,10 @@ export default function TopBar({ isScrolled = false }: TopBarProps) {
         </Link>
       </div>
 
-      {/* Right Social Links (Full details: 1300px+) */}
+      {/* Right Social Links & WhatsApp CTA (Full details: 1300px+) */}
       <div className="topbar-full-only items-center gap-4 relative z-10 shrink-0">
         {/* Social Icons */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 border-r border-[#DFC47A]/30 pr-4">
           <span className="text-[10px] uppercase font-semibold text-[#DFC47A] tracking-wider hidden 2xl:inline">Follow Us:</span>
           <a
             href="https://facebook.com"
@@ -87,6 +87,23 @@ export default function TopBar({ isScrolled = false }: TopBarProps) {
             <Youtube className="w-3.5 h-3.5" />
           </a>
         </div>
+
+        {/* Shambala Music App Button */}
+        <a
+          href="https://play.google.com/store/apps/details?id=com.ignitelabs.music_app"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Experience Shambala Music App on Google Play"
+          className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C8A34A]/20 border border-[#DFC47A]/50 text-[#DFC47A] hover:bg-[#C8A34A] hover:text-[#20052C] transition-all text-[11px] font-bold tracking-wide shadow-sm group"
+        >
+          <div className="flex items-center gap-[2px] h-3 w-3 shrink-0">
+            <span className="w-[1.5px] h-3 bg-[#DFC47A] group-hover:bg-[#20052C] rounded-full animate-[pulse_1s_ease-in-out_infinite]" />
+            <span className="w-[1.5px] h-1.5 bg-[#DFC47A] group-hover:bg-[#20052C] rounded-full animate-[pulse_1.4s_ease-in-out_infinite_200ms]" />
+            <span className="w-[1.5px] h-2.5 bg-[#DFC47A] group-hover:bg-[#20052C] rounded-full animate-[pulse_1.1s_ease-in-out_infinite_400ms]" />
+          </div>
+          <span>Shambala Music App</span>
+          <ExternalLink className="w-3 h-3 text-[#DFC47A] group-hover:text-[#20052C]" />
+        </a>
       </div>
     </div>
   );
