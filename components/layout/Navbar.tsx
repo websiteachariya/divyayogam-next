@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowRight, ChevronDown, Music } from 'lucide-react';
+import { Menu, X, ArrowRight, ChevronDown, Music, Headphones, ExternalLink } from 'lucide-react';
 import { NAV_LINKS, NavItem } from '@/constants/navigation';
 import TopBar from './TopBar';
 
@@ -169,6 +169,24 @@ export default function Navbar() {
 
           {/* Right Action & Menu Button */}
           <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+            {/* Shambala Music App Link & Button */}
+            <a
+              href={playStoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Listen on Shambala Music App"
+              className="hidden lg:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF5EC] hover:bg-[#47206A] text-[#47206A] hover:text-[#DFC47A] border border-[#C8A34A]/50 hover:border-[#C8A34A] text-xs font-semibold tracking-wider transition-all duration-300 shadow-xs hover:shadow-md group font-body whitespace-nowrap"
+            >
+              <div className="relative flex items-center justify-center">
+                <Headphones className="w-3.5 h-3.5 text-[#C8A34A] group-hover:text-[#DFC47A] transition-colors" />
+                <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-[#C8A34A] rounded-full animate-ping opacity-75" />
+                <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-[#C8A34A] rounded-full" />
+              </div>
+              <span className="text-[11px] font-bold tracking-wide uppercase">Shambala Music</span>
+              <ExternalLink className="w-3 h-3 text-[#C8A34A] group-hover:text-[#DFC47A] opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
+            </a>
+
+            {/* Join Us Action Button */}
             <Link
               href="/contact"
               className="hidden sm:flex px-4 lg:px-5 py-2 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 items-center gap-1.5 font-body group whitespace-nowrap"
@@ -176,20 +194,6 @@ export default function Navbar() {
               <span>Join Us</span>
               <ArrowRight className="w-3.5 h-3.5 text-[#DFC47A] group-hover:text-[#47206A] transition-colors" />
             </Link>
-
-            {/* Shambala Music App Link & Button */}
-            <a
-              href={playStoreUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Download Shambala Music App on Google Play"
-              className="hidden md:flex relative group items-center gap-2 px-3.5 xl:px-4 py-2 rounded-full bg-gradient-to-r from-[#C8A34A] via-[#E6CB80] to-[#C8A34A] text-[#22122F] font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-[0_0_20px_rgba(200,163,74,0.6)] hover:scale-105 transition-all duration-300 whitespace-nowrap border border-[#DFC47A] font-body"
-            >
-              <div className="w-5 h-5 rounded-full bg-[#22122F] text-[#DFC47A] flex items-center justify-center shrink-0 group-hover:bg-white group-hover:text-[#47206A] transition-colors shadow-xs">
-                <Music className="w-3 h-3" />
-              </div>
-              <span>Shambala App</span>
-            </a>
 
             {/* Premium Royal Gold & Purple Mobile Menu Toggle Button */}
             <button
@@ -316,12 +320,11 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsMobileOpen(false)}
-                    className="w-full py-3 px-6 rounded-full bg-gradient-to-r from-[#C8A34A] via-[#E6CB80] to-[#C8A34A] text-[#22122F] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all duration-300 font-body border border-[#DFC47A]"
+                    className="w-full py-3 px-6 rounded-full bg-[#47206A]/5 hover:bg-[#47206A] text-[#47206A] hover:text-[#DFC47A] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 font-body border border-[#C8A34A]/40 group shadow-xs"
                   >
-                    <div className="w-5 h-5 rounded-full bg-[#22122F] text-[#DFC47A] flex items-center justify-center shrink-0">
-                      <Music className="w-3 h-3" />
-                    </div>
+                    <Headphones className="w-4 h-4 text-[#C8A34A] group-hover:text-[#DFC47A]" />
                     <span>Shambala Music App</span>
+                    <ExternalLink className="w-3.5 h-3.5 text-[#C8A34A] group-hover:text-[#DFC47A] opacity-70" />
                   </a>
                 </div>
               </div>
