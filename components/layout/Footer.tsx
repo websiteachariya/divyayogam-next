@@ -80,15 +80,19 @@ export default function Footer() {
 
           {/* Brand Logo & Description */}
           <div className="lg:col-span-4 space-y-3">
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="p-0.5 rounded-full bg-gradient-to-tr from-[#C8A34A] to-[#DFC47A]">
-                <Image
-                  src="/images/logo.png.webp"
-                  alt="Divya Yogam"
-                  width={40}
-                  height={40}
-                  className="w-10 h-10 rounded-full object-cover bg-white"
-                />
+            <Link href="/" className="flex items-center gap-3 group relative">
+              <div className="relative">
+                {/* Subtle Golden Glow Aura around Footer Logo */}
+                <div className="absolute -inset-1 rounded-full bg-gradient-to-tr from-[#C8A34A] via-[#DFC47A] to-[#C8A34A] opacity-75 blur-sm group-hover:opacity-100 group-hover:blur-md transition-all duration-300" />
+                <div className="relative p-0.5 rounded-full bg-gradient-to-tr from-[#C8A34A] to-[#DFC47A] shadow-md">
+                  <Image
+                    src="/images/logo.png.webp"
+                    alt="Divya Yogam"
+                    width={40}
+                    height={40}
+                    className="w-10 h-10 rounded-full object-cover bg-white group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
               </div>
               <div className="flex flex-col">
                 <span className="font-heading text-xl font-bold tracking-wider text-[#C8A34A]">

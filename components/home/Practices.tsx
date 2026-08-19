@@ -176,7 +176,7 @@ export default function Practices() {
         </div>
 
         {/* 3 White Floating Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-10 pt-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-14 sm:gap-16 md:gap-8 lg:gap-10 pt-10 sm:pt-12">
           {practicesList.map((practice, idx) => {
             const BadgeIcon = practice.badgeIcon;
             return (
@@ -186,14 +186,14 @@ export default function Practices() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.15 }}
-                className="bg-white rounded-[28px] border border-[#EBE4D8] shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-400 relative pt-12 pb-7 px-6 sm:px-7 flex flex-col justify-between group overflow-visible text-center"
+                className="bg-white rounded-[28px] border border-[#EBE4D8] shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-400 relative pt-14 pb-7 px-6 sm:px-7 flex flex-col justify-between group overflow-visible text-center"
               >
                 {/* Floating Top Circular Badge (Overlapping Top Edge) */}
                 <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full bg-[#FAF0DD] border-2 border-[#DFC47A] flex items-center justify-center shadow-md group-hover:scale-110 group-hover:border-[#C8A34A] transition-transform duration-300 z-20">
                   <BadgeIcon />
                 </div>
 
-                <div className="space-y-3.5 pt-2">
+                <div className="space-y-3.5 pt-3">
                   {/* Category Pill Tag */}
                   <div>
                     <span className="text-[10px] font-bold text-[#C8A34A] uppercase tracking-widest bg-[#FAF0DD] px-3.5 py-1 rounded-full border border-[#DFC47A]/40 inline-block shadow-2xs">

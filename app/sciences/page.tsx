@@ -47,7 +47,7 @@ export default function SciencesPage() {
       {/* ═══ HERO SECTION ═══ */}
       <header className="relative bg-gradient-to-b from-[#351A4A] via-[#2A133B] to-[#200D2E] pt-32 pb-24 text-center text-white overflow-hidden">
         {/* Left Side Accent Image (test-1.webp) */}
-        <div className="absolute top-1/2 left-0 -translate-y-1/2 opacity-35 sm:opacity-60 md:opacity-85 pointer-events-none w-32 h-32 sm:w-52 sm:h-52 md:w-72 md:h-72 lg:w-96 lg:h-96 xl:w-[420px] xl:h-[420px] transition-all duration-300">
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 opacity-25 sm:opacity-40 md:opacity-55 lg:opacity-70 min-[1100px]:opacity-85 pointer-events-none w-20 h-20 sm:w-28 sm:h-28 md:w-44 md:h-44 lg:w-56 lg:h-56 min-[1100px]:w-[420px] min-[1100px]:h-[420px] -translate-x-1/3 sm:translate-x-0 transition-all duration-300">
           <Image
             src="/images/test-1.webp"
             alt="Left Sacred Ornament"
@@ -58,7 +58,7 @@ export default function SciencesPage() {
         </div>
 
         {/* Right Side Accent Image (test-1.webp mirrored) */}
-        <div className="absolute top-1/2 right-0 -translate-y-1/2 opacity-35 sm:opacity-60 md:opacity-85 pointer-events-none w-32 h-32 sm:w-52 sm:h-52 md:w-72 md:h-72 lg:w-96 lg:h-96 xl:w-[420px] xl:h-[420px] scale-x-[-1] transition-all duration-300">
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 opacity-25 sm:opacity-40 md:opacity-55 lg:opacity-70 min-[1100px]:opacity-85 pointer-events-none w-20 h-20 sm:w-28 sm:h-28 md:w-44 md:h-44 lg:w-56 lg:h-56 min-[1100px]:w-[420px] min-[1100px]:h-[420px] translate-x-1/3 sm:translate-x-0 scale-x-[-1] transition-all duration-300">
           <Image
             src="/images/test-1.webp"
             alt="Right Sacred Ornament"
@@ -130,7 +130,7 @@ export default function SciencesPage() {
       {/* ═══ SECTION 1: SCIENTIFIC VS SPIRITUAL ═══ */}
       <section className="py-16 sm:py-24 bg-transparent relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -139,7 +139,7 @@ export default function SciencesPage() {
             className="bg-white rounded-[32px] p-6 sm:p-10 lg:p-12 border-2 border-[#DFC47A]/60 shadow-xl relative overflow-hidden"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-              
+
               {/* Left Intricate Vector Art */}
               <div className="lg:col-span-5 flex justify-center items-center">
                 <div className="relative w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center">
@@ -201,7 +201,7 @@ export default function SciencesPage() {
 
           {/* ═══ SECTION 2: DEEP DIVE METHODOLOGIES (WHY SPIRAL & WHY ORGAN) ═══ */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
-            
+
             {/* Card 1: Why Spiral Meditation? */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}

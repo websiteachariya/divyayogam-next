@@ -45,7 +45,7 @@ export default function ShambalaApp() {
       </div>
 
       {/* Background Decorative Golden Mandala Right */}
-      <div className="absolute -bottom-24 -right-24 opacity-25 pointer-events-none w-[500px] h-[500px]">
+      <div className="absolute -bottom-24 -right-24 opacity-15 sm:opacity-20 md:opacity-25 pointer-events-none w-[340px] sm:w-[420px] lg:w-[500px] h-[340px] sm:h-[420px] lg:h-[500px]">
         <Image
           src="/images/deco-21.webp"
           alt="Golden Corner Watermark Right"

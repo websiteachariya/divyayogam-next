@@ -8,25 +8,25 @@ import { Sparkles } from 'lucide-react';
 export default function AboutHero() {
   return (
     <header className="relative bg-gradient-to-b from-[#2B083A] via-[#3B104E] to-[#20052C] pt-28 sm:pt-36 pb-20 sm:pb-24 text-center text-white overflow-hidden font-body">
-      
-      {/* Left Side Ornate Gold & Purple Floral Flourish (test-1.webp) */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 pointer-events-none w-44 h-44 sm:w-72 sm:h-72 lg:w-[450px] lg:h-[450px] z-10 opacity-95 transition-all duration-300">
+
+      {/* Left Side Accent Image (test-1.webp) */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 opacity-25 sm:opacity-40 md:opacity-55 lg:opacity-70 min-[1100px]:opacity-85 pointer-events-none w-20 h-20 sm:w-28 sm:h-28 md:w-44 md:h-44 lg:w-56 lg:h-56 min-[1100px]:w-[420px] min-[1100px]:h-[420px] -translate-x-1/3 sm:translate-x-0 transition-all duration-300">
         <Image
           src="/images/test-1.webp"
-          alt="Left Ornate Sacred Flourish"
+          alt="Left Sacred Ornament"
           fill
-          className="object-contain object-left drop-shadow-[0_0_20px_rgba(223,196,122,0.25)]"
+          className="object-contain object-left"
           priority
         />
       </div>
 
-      {/* Right Side Ornate Gold & Purple Floral Flourish (test-1.webp Mirrored) */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 pointer-events-none w-44 h-44 sm:w-72 sm:h-72 lg:w-[450px] lg:h-[450px] scale-x-[-1] z-10 opacity-95 transition-all duration-300">
+      {/* Right Side Accent Image (test-1.webp mirrored) */}
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 opacity-25 sm:opacity-40 md:opacity-55 lg:opacity-70 min-[1100px]:opacity-85 pointer-events-none w-20 h-20 sm:w-28 sm:h-28 md:w-44 md:h-44 lg:w-56 lg:h-56 min-[1100px]:w-[420px] min-[1100px]:h-[420px] translate-x-1/3 sm:translate-x-0 scale-x-[-1] transition-all duration-300">
         <Image
           src="/images/test-1.webp"
-          alt="Right Ornate Sacred Flourish"
+          alt="Right Sacred Ornament"
           fill
-          className="object-contain object-right drop-shadow-[0_0_20px_rgba(223,196,122,0.25)]"
+          className="object-contain object-right"
           priority
         />
       </div>
@@ -53,7 +53,7 @@ export default function AboutHero() {
 
       {/* Banner Content Container */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-20 space-y-5">
-        
+
         {/* Top Header Pill Badge */}
         <motion.div
           initial={{ opacity: 0, y: -15 }}

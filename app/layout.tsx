@@ -58,9 +58,13 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: '/images/favicon.webp',
-    shortcut: '/images/favicon.webp',
-    apple: '/images/logo.png.webp',
+    icon: [
+      { url: '/favicon.png', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/images/favicon-circle.webp', type: 'image/webp' },
+    ],
+    shortcut: '/favicon.png',
+    apple: '/images/favicon-circle.webp',
   },
   openGraph: {
     title: 'Divya Yogam — Awaken Within | Organ Meditation & Sacred Sciences',

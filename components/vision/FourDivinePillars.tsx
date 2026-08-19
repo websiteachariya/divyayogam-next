@@ -122,12 +122,12 @@ export default function FourDivinePillars() {
             THE EVOLUTIONARY PATHWAY
           </span>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-base sm:text-xl font-bold font-heading text-[#352043]">
+          <div className="flex flex-wrap items-center justify-center gap-1.5 min-[380px]:gap-3 sm:gap-6 text-xs min-[380px]:text-sm sm:text-xl font-bold font-heading text-[#352043]">
             {flowSteps.map((stepName, sIdx) => (
-              <div key={sIdx} className="flex items-center gap-3 sm:gap-6">
+              <div key={sIdx} className="flex items-center gap-1.5 min-[380px]:gap-3 sm:gap-6">
                 <span className="hover:text-[#8C5D00] transition-colors">{stepName}</span>
                 {sIdx < flowSteps.length - 1 && (
-                  <span className="text-[#8C5D00] text-sm">→</span>
+                  <span className="text-[#8C5D00] text-xs sm:text-sm">→</span>
                 )}
               </div>
             ))}

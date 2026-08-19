@@ -67,7 +67,7 @@ export default function InnerJourney() {
       {/* 2. Bottom-Right Golden Decorative Watermark (design-1.png) - Moved a little bit up */}
       <div className="absolute bottom-6 sm:bottom-12 lg:bottom-16 -right-6 sm:-right-8 lg:-right-10 w-[350px] sm:w-[480px] lg:w-[620px] h-[350px] sm:h-[480px] lg:h-[620px] pointer-events-none z-0 opacity-80">
         <Image
-          src="/images/design-1.png"
+          src="/images/design-1.webp"
           alt="Golden Decorative Watermark"
           fill
           className="object-contain object-right-bottom drop-shadow-[0_0_15px_rgba(223,196,122,0.35)]"
@@ -91,7 +91,7 @@ export default function InnerJourney() {
             {/* Clean Arch Frame matching reference styling */}
             <div className="relative w-full max-w-sm sm:max-w-md aspect-[1063/1400] rounded-r-full rounded-l-[28px] overflow-hidden luxury-card border-2 border-[#E9DED3] shadow-xl bg-[#FFFDF9] group">
               <Image
-                src="/images/design-3.png"
+                src="/images/design-3.webp"
                 alt="A Call to the Inner Journey - Meditating Woman"
                 fill
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700"

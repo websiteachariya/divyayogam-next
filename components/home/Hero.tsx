@@ -19,13 +19,13 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#F8F2E8] via-[#F8F2E8] via-[#F8F2E8]/90 to-transparent lg:w-[54%] min-[1100px]:w-[56%] min-[1400px]:w-[50%] z-10" />
       </div>
 
-      {/* LEFT SIDE BACKGROUND DECO-13 GOLDEN LOTUS MANDALA (Visible on 350px-1000px & 1650px+, hidden only between 1000px and 1650px) */}
-      <div className="absolute top-1/2 -translate-y-1/2 mt-4 sm:mt-6 lg:mt-8 -left-28 sm:-left-36 lg:-left-44 opacity-30 sm:opacity-40 pointer-events-none w-[340px] sm:w-[460px] lg:w-[540px] h-[340px] sm:h-[460px] lg:h-[540px] z-10 block min-[1000px]:hidden min-[1650px]:block">
+      {/* LEFT SIDE BACKGROUND DECO-13 GOLDEN LOTUS MANDALA */}
+      <div className="absolute top-1/2 -translate-y-1/2 mt-4 sm:mt-6 lg:mt-8 -left-36 sm:-left-44 lg:-left-52 opacity-15 sm:opacity-25 md:opacity-35 pointer-events-none w-[280px] sm:w-[400px] lg:w-[540px] h-[280px] sm:h-[400px] lg:h-[540px] z-10 block min-[1000px]:hidden min-[1650px]:block">
         <Image
           src="/images/deco-13.webp"
           alt="Sacred Golden Lotus Mandala Deco"
           fill
-          className="object-contain drop-shadow-[0_0_25px_rgba(223,196,122,0.35)]"
+          className="object-contain drop-shadow-[0_0_15px_rgba(223,196,122,0.2)]"
           priority
         />
       </div>
@@ -37,6 +37,9 @@ export default function Hero() {
             src="/images/banner-4.webp"
             alt="Awaken Within - Divya Yogam Meditation"
             fill
+            sizes="100vw"
+            quality={100}
+            unoptimized
             className="object-cover object-[85%_center]"
             priority
           />

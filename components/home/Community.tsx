@@ -375,7 +375,7 @@ export default function Community() {
         <div className="rounded-[36px] bg-gradient-to-r from-[#47206A] via-[#352043] to-[#47206A] p-8 sm:p-12 text-center text-white space-y-6 relative overflow-hidden shadow-2xl border-2 border-[#C8A34A]/50">
           
           <div
-            className="absolute inset-0 opacity-30 pointer-events-none bg-cover bg-center"
+            className="absolute inset-0 opacity-15 sm:opacity-20 md:opacity-25 lg:opacity-35 pointer-events-none bg-cover bg-right sm:bg-center transition-opacity duration-300"
             style={{ backgroundImage: "url('/images/deco-21.webp')" }}
           />
           <div className="absolute inset-0 bg-[radial-gradient(#DFC47A_1px,transparent_1px)] [background-size:20px_20px] opacity-10 pointer-events-none" />

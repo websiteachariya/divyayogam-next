@@ -7,7 +7,7 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function VisionHero() {
   return (
-    <section className="relative w-full min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden font-body pt-24 pb-16">
+    <section className="relative w-full min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden font-body pt-28 sm:pt-36 pb-24 sm:pb-32 lg:pb-36">
       {/* Background Image - Full Width Hero */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -65,7 +65,7 @@ export default function VisionHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.25 }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-white/10 border border-[#DFC47A]/40 text-[#DFC47A] text-xs sm:text-sm font-semibold tracking-wide backdrop-blur-md"
+            className="inline-flex flex-wrap items-center justify-center gap-1.5 min-[380px]:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-2xl bg-white/10 border border-[#DFC47A]/40 text-[#DFC47A] text-[11px] min-[380px]:text-xs sm:text-sm font-semibold tracking-wide backdrop-blur-md text-center"
           >
             <span>From self-awareness</span>
             <span>→</span>

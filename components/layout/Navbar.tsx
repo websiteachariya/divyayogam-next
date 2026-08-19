@@ -90,7 +90,7 @@ export default function Navbar() {
           </Link>
 
           {/* Center Desktop Navigation Links with Dropdowns */}
-          <nav className="hidden lg:flex items-center justify-center flex-1 gap-4 xl:gap-7 font-body mx-2 xl:mx-6">
+          <nav className="hidden xl:flex items-center justify-center flex-1 gap-4 xl:gap-7 font-body mx-2 xl:mx-6">
             {menuLinks.map((link) => {
               const hasChildren = link.children && link.children.length > 0;
               const parentActive = isParentActive(link);
@@ -175,7 +175,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               title="Experience Shambala Music App on Google Play"
-              className="hidden lg:flex relative items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#47206A] text-[#DFC47A] border-2 border-[#DFC47A]/80 text-xs font-bold tracking-wider shadow-md font-body whitespace-nowrap overflow-hidden"
+              className="hidden xl:flex relative items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#47206A] text-[#DFC47A] border-2 border-[#DFC47A]/80 text-xs font-bold tracking-wider shadow-md font-body whitespace-nowrap overflow-hidden"
             >
               {/* Modern Audio Wave Equalizer Icon */}
               <div className="relative z-10 flex items-center gap-[2.5px] h-3.5 w-3.5 shrink-0">
@@ -197,7 +197,7 @@ export default function Navbar() {
             {/* Join Us Action Button */}
             <Link
               href="/contact"
-              className="hidden sm:flex px-4 lg:px-5 py-2 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 items-center gap-1.5 font-body group whitespace-nowrap"
+              className="hidden xl:flex px-4 lg:px-5 py-2 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 items-center gap-1.5 font-body group whitespace-nowrap"
             >
               <span>Join Us</span>
               <ArrowRight className="w-3.5 h-3.5 text-[#DFC47A] group-hover:text-[#47206A] transition-colors" />
@@ -206,20 +206,19 @@ export default function Navbar() {
             {/* Premium Royal Gold & Purple Mobile Menu Toggle Button */}
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className="lg:hidden relative group flex items-center gap-2 px-3.5 py-2 rounded-full bg-gradient-to-r from-[#47206A] via-[#3B104E] to-[#20052C] text-[#DFC47A] border-2 border-[#DFC47A]/80 shadow-md hover:shadow-lg hover:border-[#C8A34A] transition-all duration-300 active:scale-95"
+              className="xl:hidden relative group flex items-center gap-2 px-3.5 py-2 rounded-full bg-gradient-to-r from-[#47206A] via-[#3B104E] to-[#20052C] text-[#DFC47A] border-2 border-[#DFC47A]/80 shadow-md hover:shadow-lg hover:border-[#C8A34A] transition-all duration-300 active:scale-95"
               aria-label="Toggle menu"
             >
               {/* Outer Golden Aura Glow on Hover */}
               <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-[#C8A34A] to-[#DFC47A] opacity-0 group-hover:opacity-40 blur-xs transition-opacity duration-300 pointer-events-none" />
 
-              {/* Animated Custom Sacred 3-Bar / X Icon */}
+              {/* Custom 2-Bar / X Icon matching reference image */}
               <div className="relative z-10 flex flex-col justify-center items-center w-4 h-4">
                 {isMobileOpen ? (
                   <X className="w-4 h-4 text-[#DFC47A]" />
                 ) : (
-                  <div className="flex flex-col justify-between w-4 h-3.5">
+                  <div className="flex flex-col justify-center gap-1.5 w-4">
                     <span className="block w-full h-[2px] bg-[#DFC47A] rounded-full group-hover:bg-white transition-colors" />
-                    <span className="block w-2.5/4 h-[2px] bg-[#DFC47A] rounded-full group-hover:w-full group-hover:bg-white transition-all duration-300 ml-auto" />
                     <span className="block w-full h-[2px] bg-[#DFC47A] rounded-full group-hover:bg-white transition-colors" />
                   </div>
                 )}
@@ -240,9 +239,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-md flex items-start justify-center p-4 overflow-y-auto transition-all duration-300 ${
-              isScrolled ? 'top-[65px]' : 'navbar-overlay-offset'
-            }`}
+            className="absolute top-full left-0 right-0 h-[calc(100vh-100%)] z-40 bg-black/70 backdrop-blur-md flex items-start justify-center p-3 sm:p-6 overflow-y-auto"
             onClick={() => setIsMobileOpen(false)}
           >
             <motion.div
@@ -251,30 +248,30 @@ export default function Navbar() {
               exit={{ opacity: 0, scale: 0.95, y: -10 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-md bg-[#FAF7F2] rounded-3xl border-2 border-[#DFC47A] shadow-2xl p-6 sm:p-8 my-4 text-center relative overflow-hidden"
+              className="w-full max-w-sm sm:max-w-md bg-[#FAF7F2] rounded-3xl border-2 border-[#DFC47A] shadow-2xl p-4 sm:p-6 my-1 sm:my-3 text-center relative overflow-y-auto max-h-[calc(100vh-80px)] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
             >
               {/* Rich Visible Background Image Layer (nav-1.png) */}
               <div
                 className="absolute inset-0 opacity-90 pointer-events-none bg-cover bg-center bg-no-repeat z-0"
-                style={{ backgroundImage: "url('/images/nav-2.png')" }}
+                style={{ backgroundImage: "url('/images/nav-2.webp')" }}
               />
               <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/40 via-[#FAF5EF]/20 to-[#FAF7F2]/45 pointer-events-none z-0" />
 
               {/* Subtle Golden Inner Border */}
               <div className="absolute inset-2 rounded-2xl border border-[#DFC47A]/40 pointer-events-none z-0" />
 
-              <div className="relative z-10 flex flex-col gap-3 font-heading">
+              <div className="relative z-10 flex flex-col gap-2 font-heading">
                 {menuLinks.map((link) => {
                   const hasChildren = link.children && link.children.length > 0;
                   const parentActive = isParentActive(link);
 
                   if (hasChildren) {
                     return (
-                      <div key={link.name} className="space-y-1.5 py-1">
-                        <div className="text-xs font-bold text-[#8C5D00] uppercase tracking-[0.2em] border-b border-[#E9DED3] pb-1 mb-1">
+                      <div key={link.name} className="space-y-1 py-0.5">
+                        <div className="text-xs sm:text-sm font-extrabold text-[#8C5D00] uppercase tracking-[0.2em] border-b border-[#E9DED3] pb-0.5 mb-0.5">
                           {link.name}
                         </div>
-                        <div className="space-y-1 pl-2">
+                        <div className="space-y-0.5 pl-2">
                           {link.children?.map((subItem) => {
                             const childActive = isActive(subItem.path);
                             return (
@@ -282,9 +279,9 @@ export default function Navbar() {
                                 key={subItem.path}
                                 href={subItem.path}
                                 onClick={() => setIsMobileOpen(false)}
-                                className={`block text-sm tracking-wider font-semibold uppercase py-1.5 px-3 rounded-lg transition-all duration-200 ${
+                                className={`block text-sm sm:text-base tracking-wider font-bold uppercase py-1 px-3 rounded-lg transition-all duration-200 ${
                                   childActive
-                                    ? 'text-[#C8A34A] bg-[#47206A]/5 font-bold'
+                                    ? 'text-[#C8A34A] bg-[#47206A]/5 font-extrabold'
                                     : 'text-[#47206A] hover:text-[#C8A34A]'
                                 }`}
                               >
@@ -302,9 +299,9 @@ export default function Navbar() {
                       key={link.path}
                       href={link.path || '#'}
                       onClick={() => setIsMobileOpen(false)}
-                      className={`text-sm tracking-[0.15em] font-semibold uppercase transition-all duration-300 py-1.5 px-4 rounded-lg w-full text-center ${
+                      className={`text-sm sm:text-base tracking-[0.15em] font-bold uppercase transition-all duration-300 py-1 px-3 rounded-lg w-full text-center ${
                         parentActive
-                          ? 'text-[#C8A34A] font-bold'
+                          ? 'text-[#C8A34A] font-extrabold'
                           : 'text-[#47206A] hover:text-[#C8A34A]'
                       }`}
                     >
@@ -313,14 +310,14 @@ export default function Navbar() {
                   );
                 })}
 
-                <div className="w-full pt-4 mt-2 border-t border-[#E9DED3] flex flex-col items-center gap-3">
+                <div className="w-full pt-3 mt-1 border-t border-[#E9DED3] flex flex-col items-center gap-2">
                   <Link
                     href="/contact"
                     onClick={() => setIsMobileOpen(false)}
-                    className="w-full py-3 px-6 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all duration-300 font-body group"
+                    className="w-full py-2.5 px-4 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-all duration-300 font-body group"
                   >
                     <span>Join Us</span>
-                    <ArrowRight className="w-4 h-4 text-[#DFC47A] group-hover:text-[#47206A]" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#DFC47A] group-hover:text-[#47206A]" />
                   </Link>
 
                   <a
@@ -328,7 +325,7 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsMobileOpen(false)}
-                    className="w-full py-3 px-6 rounded-full bg-[#47206A] text-[#DFC47A] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2.5 font-body border-2 border-[#DFC47A]/80 shadow-md"
+                    className="w-full py-2.5 px-4 rounded-full bg-[#47206A] text-[#DFC47A] font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 font-body border-2 border-[#DFC47A]/80 shadow-sm"
                   >
                     <div className="flex items-center gap-[2.5px] h-3.5 w-3.5 shrink-0">
                       <span className="w-[2px] h-3.5 bg-[#DFC47A] rounded-full animate-[pulse_1s_ease-in-out_infinite]" />

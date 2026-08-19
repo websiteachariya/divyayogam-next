@@ -94,11 +94,11 @@ export default function FoundationStoryPage() {
 
   return (
     <div className="bg-[#FAF7F2] font-body min-h-screen text-[#352043] relative overflow-hidden">
-      
+
       {/* Purpose-1 Background Image Layer */}
       <div
         className="absolute inset-0 pointer-events-none z-0 bg-cover bg-center bg-no-repeat opacity-35 mix-blend-multiply"
-        style={{ backgroundImage: "url('/images/purpose-1.png')" }}
+        style={{ backgroundImage: "url('/images/purpose-1.webp')" }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#FAF7F2]/40 to-[#FAF7F2]/60 pointer-events-none z-0" />
 
@@ -106,25 +106,25 @@ export default function FoundationStoryPage() {
       {/* HERO BANNER SECTION (MATCHING MASTER BANNER DESIGN) */}
       {/* ======================================================================== */}
       <header className="relative bg-gradient-to-b from-[#2B083A] via-[#3B104E] to-[#20052C] pt-28 sm:pt-36 pb-20 sm:pb-24 text-center text-white overflow-hidden font-body">
-        
-        {/* Left Side Ornate Gold & Purple Floral Flourish (test-1.webp) */}
-        <div className="absolute top-1/2 left-0 -translate-y-1/2 pointer-events-none w-44 h-44 sm:w-72 sm:h-72 lg:w-[450px] lg:h-[450px] z-10 opacity-95 transition-all duration-300">
+
+        {/* Left Side Accent Image (test-1.webp) */}
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 opacity-25 sm:opacity-40 md:opacity-55 lg:opacity-70 min-[1100px]:opacity-85 pointer-events-none w-20 h-20 sm:w-28 sm:h-28 md:w-44 md:h-44 lg:w-56 lg:h-56 min-[1100px]:w-[420px] min-[1100px]:h-[420px] -translate-x-1/3 sm:translate-x-0 transition-all duration-300">
           <Image
             src="/images/test-1.webp"
-            alt="Left Ornate Sacred Flourish"
+            alt="Left Sacred Ornament"
             fill
-            className="object-contain object-left drop-shadow-[0_0_20px_rgba(223,196,122,0.25)]"
+            className="object-contain object-left"
             priority
           />
         </div>
 
-        {/* Right Side Ornate Gold & Purple Floral Flourish (test-1.webp Mirrored) */}
-        <div className="absolute top-1/2 right-0 -translate-y-1/2 pointer-events-none w-44 h-44 sm:w-72 sm:h-72 lg:w-[450px] lg:h-[450px] scale-x-[-1] z-10 opacity-95 transition-all duration-300">
+        {/* Right Side Accent Image (test-1.webp mirrored) */}
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 opacity-25 sm:opacity-40 md:opacity-55 lg:opacity-70 min-[1100px]:opacity-85 pointer-events-none w-20 h-20 sm:w-28 sm:h-28 md:w-44 md:h-44 lg:w-56 lg:h-56 min-[1100px]:w-[420px] min-[1100px]:h-[420px] translate-x-1/3 sm:translate-x-0 scale-x-[-1] transition-all duration-300">
           <Image
             src="/images/test-1.webp"
-            alt="Right Ornate Sacred Flourish"
+            alt="Right Sacred Ornament"
             fill
-            className="object-contain object-right drop-shadow-[0_0_20px_rgba(223,196,122,0.25)]"
+            className="object-contain object-right"
             priority
           />
         </div>
@@ -151,7 +151,7 @@ export default function FoundationStoryPage() {
 
         {/* Banner Content Container */}
         <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-20 space-y-5">
-          
+
           {/* Top Header Pill Badge */}
           <motion.div
             initial={{ opacity: 0, y: -15 }}
@@ -226,7 +226,7 @@ export default function FoundationStoryPage() {
         {/* SECTION 1: FOUNDATION STORY & FOUNDER SPOTLIGHT FRAME */}
         {/* ======================================================================== */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
+
           {/* Left Column: Founder Arch Spotlight Frame (with Pending Upload Toggle) */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -324,7 +324,7 @@ export default function FoundationStoryPage() {
               <p className="text-base sm:text-lg font-medium text-[#352043]">
                 The world teaches us how to move forward. Divya Yogam creates a space to look within.
               </p>
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-center">
                 <div className="p-5 rounded-2xl bg-white/90 border border-[#DFC47A]/50 shadow-xs space-y-2">
                   <div className="w-10 h-10 rounded-full bg-[#FAF5EF] text-[#8C5D00] flex items-center justify-center mx-auto">
@@ -362,7 +362,7 @@ export default function FoundationStoryPage() {
         {/* SECTION 3: THE INSPIRATION, VISION & INCEPTION */}
         {/* ======================================================================== */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          
+
           {/* Card 1: THE INSPIRATION */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}

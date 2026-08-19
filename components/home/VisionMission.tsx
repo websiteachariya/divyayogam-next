@@ -156,7 +156,6 @@ export default function VisionMission() {
 
             {/* Master Quote Box */}
             <div className="p-5 sm:p-6 rounded-[24px] bg-gradient-to-r from-[#FFFDF9] via-[#FAF5EF] to-[#FFFDF9] border-2 border-[#E9DED3] shadow-md space-y-1 relative text-left">
-              <Quote className="w-5 h-5 text-[#8C5D00]" />
               <p className="font-serif italic text-base sm:text-lg text-[#351A4A] font-semibold">
                 “The Divine is not far away. The journey to experience it begins within.”
               </p>
@@ -195,7 +194,7 @@ export default function VisionMission() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="luxury-card rounded-[32px] p-7 sm:p-9 border-2 border-[#E9DED3] bg-white space-y-6 shadow-lg flex flex-col justify-between"
+            className="luxury-card rounded-[32px] p-5 sm:p-9 border-2 border-[#E9DED3] bg-white space-y-6 shadow-lg flex flex-col justify-between"
           >
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#8C5D00]/10 text-[#8C5D00] text-xs font-bold uppercase tracking-widest">
@@ -233,7 +232,7 @@ export default function VisionMission() {
               <span className="text-[10px] font-extrabold text-[#8C5D00] uppercase tracking-widest block">
                 Let your transformation become a source of goodness for others
               </span>
-              <div className="flex flex-wrap items-center justify-between text-xs sm:text-sm font-bold font-heading text-[#352043] bg-[#F8F2E8] p-3 rounded-xl border border-[#DFC47A]/40">
+              <div className="flex items-center justify-between whitespace-nowrap text-[9.5px] min-[350px]:text-[10.5px] min-[380px]:text-[11.5px] min-[420px]:text-xs sm:text-sm font-bold font-heading text-[#352043] bg-[#F8F2E8] px-1.5 min-[350px]:px-2.5 py-2.5 sm:px-3 sm:py-3 rounded-xl border border-[#DFC47A]/40 gap-0.5 min-[350px]:gap-1 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                 <span>Know</span>
                 <span className="text-[#8C5D00]">→</span>
                 <span>Awaken</span>

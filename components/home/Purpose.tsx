@@ -254,7 +254,7 @@ export default function Purpose() {
       {/* Purpose-1 Background Image Layer */}
       <div
         className="absolute inset-0 pointer-events-none z-0 bg-cover bg-center bg-no-repeat opacity-35 mix-blend-multiply"
-        style={{ backgroundImage: "url('/images/purpose-1.png')" }}
+        style={{ backgroundImage: "url('/images/purpose-1.webp')" }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/60 via-transparent to-[#FAF7F2]/60 pointer-events-none z-0" />
 
@@ -423,7 +423,6 @@ export default function Purpose() {
 
               {/* Quote Card */}
               <div className="mt-4 p-4 sm:p-4.5 rounded-2xl bg-white/90 backdrop-blur-md border border-[#EEDEEB] shadow-xs relative overflow-hidden flex items-start gap-3">
-                <Quote className="w-6 h-6 text-[#4A1460] shrink-0 fill-[#4A1460]/10" />
                 <p className="text-xs font-medium text-[#4A1460] italic leading-relaxed">
                   “True transformation begins the moment you choose to look within.”
                 </p>

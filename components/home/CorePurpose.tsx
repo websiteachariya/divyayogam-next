@@ -205,7 +205,6 @@ export default function CorePurpose() {
           </p>
 
           <div className="pt-4 border-t border-[#E9DED3] flex items-center justify-center gap-3 max-w-xl mx-auto">
-            <Quote className="w-5 h-5 text-[#8C5D00] shrink-0" />
             <p className="font-serif italic text-base sm:text-lg text-[#351A4A] font-semibold">
               “It is not a belief system to be followed. It is an experience to be explored.”
             </p>
