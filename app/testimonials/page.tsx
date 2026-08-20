@@ -144,15 +144,6 @@ export default function TestimonialsPage() {
                 >
                   {/* Video Container with matching asymmetric leaf curve */}
                   <div className="relative w-full aspect-video rounded-tl-[38px] rounded-br-[38px] rounded-tr-[12px] rounded-bl-[12px] overflow-hidden bg-black border border-[#DFC47A]/40 shadow-inner">
-                    {/* Happy Shambala Logo Top-Right Badge */}
-                    <div className="absolute top-2.5 right-2.5 z-20 bg-white/95 backdrop-blur-md p-1.5 rounded-xl shadow-md border border-[#DFC47A]/60 flex items-center justify-center">
-                      <img
-                        src="/images/logo.png.webp"
-                        alt="Happy Shambala Logo"
-                        className="w-5 h-5 object-contain rounded-full"
-                      />
-                    </div>
-
                     {isPlaying ? (
                       <iframe
                         src={`https://www.youtube.com/embed/${id}?autoplay=1`}
