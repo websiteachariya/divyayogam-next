@@ -122,24 +122,24 @@ export default function GalleryPage() {
         <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden bg-gradient-to-b from-[#2A0E3D]/80 via-[#1E092D]/80 to-[#2B1439]/80" />
         <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#5E2B7E]/40 via-transparent to-transparent" />
 
-        {/* Left Royal Golden Floral Ornament (gallery-2.png) */}
-        <div className="absolute left-0 top-0 bottom-2 sm:bottom-4 md:bottom-6 w-[160px] sm:w-[240px] md:w-[300px] lg:w-[380px] h-full pointer-events-none z-10 opacity-90 sm:opacity-95">
+        {/* Left Side Accent Image (test-1.webp) */}
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 opacity-60 sm:opacity-70 md:opacity-75 lg:opacity-80 xl:opacity-85 pointer-events-none w-20 h-20 min-[420px]:w-28 min-[420px]:h-28 sm:w-36 sm:h-36 md:w-52 md:h-52 lg:w-[320px] lg:h-[320px] xl:w-[440px] xl:h-[440px] 2xl:w-[520px] 2xl:h-[520px] -translate-x-1/4 sm:translate-x-0 transition-all duration-300">
           <Image
-            src="/images/gallery-2.webp"
-            alt="Royal Golden Floral Art Left"
+            src="/images/test-1.webp"
+            alt="Left Sacred Ornament"
             fill
-            className="object-contain object-left-bottom drop-shadow-[0_0_25px_rgba(200,163,74,0.4)]"
+            className="object-contain object-left"
             priority
           />
         </div>
 
-        {/* Right Royal Golden Floral Ornament (gallery-2.1.png) - Identical Matching Styles */}
-        <div className="absolute right-0 top-0 bottom-2 sm:bottom-4 md:bottom-6 w-[160px] sm:w-[240px] md:w-[300px] lg:w-[380px] h-full pointer-events-none z-10 opacity-90 sm:opacity-95">
+        {/* Right Side Accent Image (test-1.webp mirrored) */}
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 opacity-60 sm:opacity-70 md:opacity-75 lg:opacity-80 xl:opacity-85 pointer-events-none w-20 h-20 min-[420px]:w-28 min-[420px]:h-28 sm:w-36 sm:h-36 md:w-52 md:h-52 lg:w-[320px] lg:h-[320px] xl:w-[440px] xl:h-[440px] 2xl:w-[520px] 2xl:h-[520px] translate-x-1/4 sm:translate-x-0 scale-x-[-1] transition-all duration-300">
           <Image
-            src="/images/gallery-2.1.webp"
-            alt="Royal Golden Floral Art Right"
+            src="/images/test-1.webp"
+            alt="Right Sacred Ornament"
             fill
-            className="object-contain object-right-bottom drop-shadow-[0_0_25px_rgba(200,163,74,0.4)]"
+            className="object-contain object-right"
             priority
           />
         </div>
@@ -260,36 +260,38 @@ export default function GalleryPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.05 }}
                   onClick={() => setSelectedImg(item)}
-                  className="relative group rounded-3xl overflow-hidden border-2 border-[#E9DED3] aspect-[4/3] cursor-pointer shadow-md hover:shadow-2xl hover:border-[#DFC47A] transition-all duration-500 bg-black/10"
+                  className="relative group rounded-3xl p-1.5 sm:p-2 bg-gradient-to-br from-[#DFC47A] via-[#47206A] to-[#C8A34A] hover:from-[#C8A34A] hover:via-[#6B2D9C] hover:to-[#DFC47A] cursor-pointer shadow-lg hover:shadow-[0_18px_40px_rgba(71,32,106,0.4)] hover:-translate-y-1.5 transition-all duration-500"
                 >
-                  {/* Photo Image */}
-                  <Image
-                    src={item.src}
-                    alt={item.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                    priority={idx < 3}
-                  />
+                  {/* Inner Rectangular Container (Clean edge-to-edge image, no inside borders) */}
+                  <div className="relative w-full aspect-[4/3] rounded-[20px] overflow-hidden bg-[#2B1439]">
+                    {/* Photo Image */}
+                    <Image
+                      src={item.src}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      priority={idx < 3}
+                    />
 
-                  {/* Gradient Overlay for Text Readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent group-hover:from-black/80 transition-colors duration-300" />
+                    {/* Gradient Overlay for Text Readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#2B1439]/90 via-black/20 to-transparent group-hover:from-[#2B1439]/95 transition-all duration-300" />
 
-                  {/* Bottom Translucent Category Badge Pill */}
-                  <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 z-10 flex items-center justify-between pointer-events-none">
-                    <div className="inline-flex items-center gap-2.5 sm:gap-3 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-[#2B1439]/90 backdrop-blur-md border border-[#DFC47A]/40 shadow-lg text-white">
-                      <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white/10 border border-[#DFC47A]/40 flex items-center justify-center text-[#DFC47A] shrink-0">
-                        <IconComp className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                    {/* Bottom Category Badge Pill with Gold/Violet Styling */}
+                    <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 z-20 flex items-center justify-between pointer-events-none">
+                      <div className="inline-flex items-center gap-2.5 sm:gap-3 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-[#47206A]/95 via-[#3B104E]/95 to-[#20052C]/95 backdrop-blur-md border border-[#DFC47A]/50 group-hover:border-[#DFC47A] shadow-lg text-white transition-all duration-300">
+                        <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#C8A34A]/20 border border-[#DFC47A]/60 flex items-center justify-center text-[#DFC47A] shrink-0">
+                          <IconComp className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                        </div>
+                        <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-[#DFC47A] group-hover:text-white transition-colors truncate">
+                          {item.category}
+                        </span>
                       </div>
-                      <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-white truncate">
-                        {item.category}
-                      </span>
-                    </div>
 
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 shrink-0">
-                      <Maximize2 className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                      <div className="w-8 h-8 rounded-full bg-[#47206A]/90 backdrop-blur-md border border-[#DFC47A]/60 flex items-center justify-center text-[#DFC47A] opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 shrink-0 shadow-md">
+                        <Maximize2 className="w-3.5 h-3.5" />
+                      </div>
                     </div>
                   </div>
-
                 </motion.div>
               );
             })}

@@ -11,12 +11,17 @@ export default function Hero() {
 
       {/* DESKTOP LAYOUT BACKGROUND IMAGE (>= 1024px / lg:) */}
       <div className="hidden lg:block absolute inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
-        <div
-          className="absolute inset-0 w-full h-full bg-cover bg-[55%_center] min-[1100px]:bg-[72%_center] min-[1400px]:bg-[90%_center] 2xl:bg-[95%_center] bg-no-repeat transition-all duration-700 opacity-95"
-          style={{ backgroundImage: "url('/images/banner-4.webp')" }}
+        <Image
+          src="/images/banner-4.webp"
+          alt="Awaken Within - Divya Yogam Meditation"
+          fill
+          quality={100}
+          unoptimized
+          decoding="async"
+          className="object-cover object-[55%_center] min-[1100px]:object-[72%_center] min-[1400px]:object-[90%_center] 2xl:object-[95%_center] opacity-95 transition-all duration-700 contrast-[1.02] saturate-[1.03]"
         />
-        {/* Solid Sandal Gradient Overlay on Left Side for 100% Text Contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#F8F2E8] via-[#F8F2E8] via-[#F8F2E8]/90 to-transparent lg:w-[54%] min-[1100px]:w-[56%] min-[1400px]:w-[50%] z-10" />
+        {/* Solid Sandal Gradient Overlay on Left Side for 100% Text Readability & Contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#F8F2E8] via-[#F8F2E8] via-[#F8F2E8]/90 to-transparent lg:w-[56%] min-[1100px]:w-[58%] min-[1400px]:w-[52%] z-10 pointer-events-none" />
       </div>
 
       {/* LEFT SIDE BACKGROUND DECO-13 GOLDEN LOTUS MANDALA */}
@@ -25,8 +30,8 @@ export default function Hero() {
           src="/images/deco-13.webp"
           alt="Sacred Golden Lotus Mandala Deco"
           fill
+          decoding="async"
           className="object-contain drop-shadow-[0_0_15px_rgba(223,196,122,0.2)]"
-          priority
         />
       </div>
 
@@ -40,8 +45,9 @@ export default function Hero() {
             sizes="100vw"
             quality={100}
             unoptimized
-            className="object-cover object-[85%_center]"
             priority
+            decoding="async"
+            className="object-cover object-[85%_center] contrast-[1.02] saturate-[1.03]"
           />
           {/* Subtle Bottom Gradient Fade into #F8F2E8 */}
           <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 bg-gradient-to-b from-transparent to-[#F8F2E8]" />
@@ -54,10 +60,10 @@ export default function Hero() {
 
           {/* Left Text Column */}
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-7 xl:col-span-6 space-y-6 text-center sm:text-left pt-2 sm:pt-4 max-w-xl mx-auto sm:mx-0"
+            transition={{ duration: 0.3 }}
+            className="lg:col-span-7 xl:col-span-6 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start pt-2 sm:pt-4 max-w-xl mx-auto lg:mx-0"
           >
             {/* Guidance Eyebrow Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full royal-gold-badge text-xs uppercase tracking-widest font-semibold shadow-xs">
@@ -72,7 +78,7 @@ export default function Hero() {
             </h1>
 
             {/* Sub-headline */}
-            <p className="font-serif italic text-lg sm:text-xl font-medium text-[#8C5D00] leading-snug">
+            <p className="font-serif italic text-lg sm:text-xl font-bold text-[#351A4A] drop-shadow-[0_1px_2px_rgba(255,255,255,0.8)] leading-snug">
               A journey of self-discovery, inner awakening and conscious living
             </p>
 
@@ -82,7 +88,7 @@ export default function Hero() {
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-4 pt-2 font-body">
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2 font-body">
               <Link
                 href="/practices"
                 className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-xs uppercase tracking-wider shadow-[0_15px_35px_rgba(71,32,106,0.25)] hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"

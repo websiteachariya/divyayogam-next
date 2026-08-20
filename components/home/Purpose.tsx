@@ -118,7 +118,7 @@ function CenterMandalaEmblem() {
     <div className="relative w-44 h-44 sm:w-52 sm:h-52 mx-auto flex items-center justify-center">
       {/* Outer Dashed Orbiting Ring */}
       <div className="absolute inset-0 rounded-full border border-dashed border-[#C8A34A]/40 animate-[spin_40s_linear_infinite]" />
-      
+
       {/* Orbiting Decorative Dots */}
       <div className="absolute inset-2 rounded-full border border-[#DFC47A]/20">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#C8A34A] shadow-[0_0_8px_#C8A34A]" />
@@ -131,7 +131,7 @@ function CenterMandalaEmblem() {
       <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-gradient-to-br from-[#4A1460] via-[#3B104E] to-[#250634] border-2 border-[#DFC47A]/50 shadow-[0_0_35px_rgba(74,20,96,0.35)] flex items-center justify-center relative overflow-hidden group hover:scale-105 transition-transform duration-500">
         {/* Subtle Radial Shimmer Overlay */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(223,196,122,0.25)_0%,transparent_70%)] pointer-events-none" />
-        
+
         {/* Center Golden Lotus Graphic */}
         <div className="relative z-10 text-[#FCE8A6] flex flex-col items-center">
           <GoldenLotusIcon className="w-14 h-14 sm:w-16 sm:h-16 text-[#FCE8A6] drop-shadow-[0_0_12px_rgba(252,232,166,0.6)]" strokeWidth={1.5} />
@@ -250,7 +250,7 @@ export default function Purpose() {
 
   return (
     <section className="py-16 sm:py-24 bg-[#FAF7F2] relative overflow-hidden font-body text-[#352043]">
-      
+
       {/* Purpose-1 Background Image Layer */}
       <div
         className="absolute inset-0 pointer-events-none z-0 bg-cover bg-center bg-no-repeat opacity-35 mix-blend-multiply"
@@ -274,7 +274,7 @@ export default function Purpose() {
         {/* SECTION 1: THE SEVEN-STEP INNER JOURNEY */}
         {/* ======================================================================== */}
         <div className="space-y-12">
-          
+
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto space-y-2">
             <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white/90 border border-[#E5DACD] text-[#8C6B28] text-[11px] font-semibold tracking-[0.2em] uppercase shadow-xs">
@@ -400,14 +400,14 @@ export default function Purpose() {
           </svg>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-            
+
             {/* Left Column: Heading, Subtitle & Quote Box */}
             <div className="lg:col-span-5 space-y-4 text-center lg:text-left">
               <div>
                 <span className="inline-block px-3 py-1 rounded-full bg-white/90 border border-[#E5DACD] text-[#8C6B28] text-[10px] font-semibold tracking-[0.2em] uppercase shadow-2xs mb-2">
                   THE JOURNEY WITHIN
                 </span>
-                
+
                 <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#3B104E]">
                   A Shift <span className="text-[#C8A34A] italic font-serif font-normal">Within</span>
                 </h3>
@@ -468,7 +468,7 @@ export default function Purpose() {
         {/* SECTION 3: STEPS OF INNER AWAKENING & CTA BANNER */}
         {/* ======================================================================== */}
         <div className="space-y-12">
-          
+
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto space-y-2">
             <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white/90 border border-[#E5DACD] text-[#8C6B28] text-[11px] font-semibold tracking-[0.2em] uppercase shadow-xs">

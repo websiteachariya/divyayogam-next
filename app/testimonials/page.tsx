@@ -44,7 +44,7 @@ export default function TestimonialsPage() {
       {/* HERO SECTION */}
       <header className="relative bg-gradient-to-b from-[#351A4A] via-[#2A133B] to-[#200D2E] pt-32 pb-24 text-center text-white overflow-hidden">
         {/* Left Side Accent Image (test-1.webp) */}
-        <div className="absolute top-1/2 left-0 -translate-y-1/2 opacity-25 sm:opacity-40 md:opacity-55 lg:opacity-70 min-[1100px]:opacity-85 pointer-events-none w-20 h-20 sm:w-28 sm:h-28 md:w-44 md:h-44 lg:w-56 lg:h-56 min-[1100px]:w-[420px] min-[1100px]:h-[420px] -translate-x-1/3 sm:translate-x-0 transition-all duration-300">
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 opacity-60 sm:opacity-70 md:opacity-75 lg:opacity-80 xl:opacity-85 pointer-events-none w-20 h-20 min-[420px]:w-28 min-[420px]:h-28 sm:w-36 sm:h-36 md:w-52 md:h-52 lg:w-[320px] lg:h-[320px] xl:w-[440px] xl:h-[440px] 2xl:w-[520px] 2xl:h-[520px] -translate-x-1/4 sm:translate-x-0 transition-all duration-300">
           <Image
             src="/images/test-1.webp"
             alt="Left Sacred Ornament"
@@ -55,7 +55,7 @@ export default function TestimonialsPage() {
         </div>
 
         {/* Right Side Accent Image (test-1.webp mirrored) */}
-        <div className="absolute top-1/2 right-0 -translate-y-1/2 opacity-25 sm:opacity-40 md:opacity-55 lg:opacity-70 min-[1100px]:opacity-85 pointer-events-none w-20 h-20 sm:w-28 sm:h-28 md:w-44 md:h-44 lg:w-56 lg:h-56 min-[1100px]:w-[420px] min-[1100px]:h-[420px] translate-x-1/3 sm:translate-x-0 scale-x-[-1] transition-all duration-300">
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 opacity-60 sm:opacity-70 md:opacity-75 lg:opacity-80 xl:opacity-85 pointer-events-none w-20 h-20 min-[420px]:w-28 min-[420px]:h-28 sm:w-36 sm:h-36 md:w-52 md:h-52 lg:w-[320px] lg:h-[320px] xl:w-[440px] xl:h-[440px] 2xl:w-[520px] 2xl:h-[520px] translate-x-1/4 sm:translate-x-0 scale-x-[-1] transition-all duration-300">
           <Image
             src="/images/test-1.webp"
             alt="Right Sacred Ornament"

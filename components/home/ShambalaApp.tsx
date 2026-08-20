@@ -40,7 +40,6 @@ export default function ShambalaApp() {
           alt="Shambala Music App Background"
           fill
           className="object-cover object-center mix-blend-luminosity"
-          priority
         />
       </div>
 

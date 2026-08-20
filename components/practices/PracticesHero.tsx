@@ -11,7 +11,7 @@ export default function PracticesHero() {
           "linear-gradient(to bottom, rgba(71, 32, 106, 0.9) 0%, rgba(53, 32, 67, 0.92) 60%, rgba(43, 20, 62, 0.95) 100%), url('/images/bg-6.webp')",
       }}
     >
-      
+
       {/* Background Sacred Geometry Line Art (Left & Right Mandalas) */}
       <div className="absolute top-8 -left-12 opacity-35 pointer-events-none hidden md:block">
         <svg width="380" height="380" viewBox="0 0 200 200" fill="none" stroke="#DFC47A">
@@ -66,7 +66,7 @@ export default function PracticesHero() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        
+
         {/* Vision Badge */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}

@@ -208,7 +208,7 @@ export default function QuantumHabitsPage() {
         className="relative bg-gradient-to-br from-[#401952] via-[#64287F] to-[#2E0F3D] pt-32 pb-36 overflow-hidden text-white bg-cover bg-center"
         style={{
           backgroundImage:
-            "linear-gradient(135deg, rgba(64, 25, 82, 0.92) 0%, rgba(100, 40, 127, 0.95) 60%, rgba(46, 15, 61, 0.98) 100%), url('/images/qh-3.webp')",
+            "linear-gradient(135deg, rgba(64, 25, 82, 0.95) 0%, rgba(100, 40, 127, 0.96) 60%, rgba(46, 15, 61, 0.98) 100%), url('/images/qh-3.webp')",
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

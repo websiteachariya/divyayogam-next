@@ -102,23 +102,34 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#352043',
+};
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${manrope.variable} ${dmSerif.variable} ${cormorant.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${manrope.variable} ${dmSerif.variable} ${cormorant.variable} overflow-x-hidden max-w-full`} suppressHydrationWarning>
+      <head>
+        <link rel="preload" href="/images/banner-4.webp" as="image" type="image/webp" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body
-        className="min-h-screen flex flex-col text-[#5E5865] selection:bg-[#C8A34A]/30 selection:text-[#47206A] relative font-body antialiased bg-cover bg-center bg-fixed bg-no-repeat"
-        style={{ backgroundImage: "url('/images/bg-6.webp')" }}
+        className="min-h-screen flex flex-col text-[#5E5865] selection:bg-[#C8A34A]/30 selection:text-[#47206A] relative font-body antialiased bg-[#F8F2E8] lg:bg-[url('/images/bg-6.webp')] bg-cover bg-center lg:bg-fixed bg-no-repeat overflow-x-hidden max-w-full w-full"
         suppressHydrationWarning
       >
         <ScrollProgress />
         <Navbar />
         <FloatingWidget />
 
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow w-full max-w-full overflow-x-hidden">{children}</main>
 
         <Footer />
         <BackToTop />

@@ -71,7 +71,6 @@ export default function InnerJourney() {
           alt="Golden Decorative Watermark"
           fill
           className="object-contain object-right-bottom drop-shadow-[0_0_15px_rgba(223,196,122,0.35)]"
-          priority
         />
       </div>
 
@@ -95,7 +94,6 @@ export default function InnerJourney() {
                 alt="A Call to the Inner Journey - Meditating Woman"
                 fill
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#352043]/20 via-transparent to-transparent pointer-events-none" />
             </div>

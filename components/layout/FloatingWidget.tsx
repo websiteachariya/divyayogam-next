@@ -18,6 +18,7 @@ export default function FloatingWidget() {
             href={item.href}
             target={item.href.startsWith('http') ? '_blank' : undefined}
             rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+            aria-label={item.label}
             className="flex flex-col items-center justify-center w-11 h-12 rounded-full hover:bg-[#F8F2E8] transition-all group relative"
             title={item.label}
           >

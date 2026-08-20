@@ -22,7 +22,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -51,11 +51,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-[#E9DED3] ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-[#E9DED3] ${isScrolled
           ? 'bg-[#F8F2E8]/95 backdrop-blur-md shadow-[0_4px_20px_rgba(71,32,106,0.06)]'
           : 'bg-[#F8F2E8] shadow-sm'
-      }`}
+        }`}
     >
       <TopBar isScrolled={isScrolled} />
       <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300 ${isScrolled ? 'py-2.5' : 'py-3.5'}`}>
@@ -90,7 +89,7 @@ export default function Navbar() {
           </Link>
 
           {/* Center Desktop Navigation Links with Dropdowns */}
-          <nav className="hidden xl:flex items-center justify-center flex-1 gap-4 xl:gap-7 font-body mx-2 xl:mx-6">
+          <nav className="hidden lg:flex items-center justify-center flex-1 gap-3 lg:gap-4 xl:gap-7 font-body mx-2 xl:mx-6">
             {menuLinks.map((link) => {
               const hasChildren = link.children && link.children.length > 0;
               const parentActive = isParentActive(link);
@@ -104,11 +103,12 @@ export default function Navbar() {
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
                     <button
-                      className={`inline-flex items-center gap-1 text-[12px] xl:text-[13px] font-semibold uppercase tracking-wider transition-all duration-300 py-1 whitespace-nowrap leading-none ${
-                        parentActive
+                      aria-expanded={activeDropdown === link.name}
+                      aria-label={`Toggle ${link.name} menu`}
+                      className={`inline-flex items-center gap-1 text-[11px] lg:text-[12px] xl:text-[13px] font-semibold uppercase tracking-wider transition-all duration-300 py-1 whitespace-nowrap leading-none ${parentActive
                           ? 'text-[#C8A34A] font-bold'
                           : 'text-[#47206A] group-hover:text-[#C8A34A]'
-                      }`}
+                        }`}
                     >
                       <span>{link.name}</span>
                       <ChevronDown className="w-3.5 h-3.5 text-[#C8A34A] group-hover:rotate-180 transition-transform duration-300 shrink-0" />
@@ -129,11 +129,10 @@ export default function Navbar() {
                             <Link
                               key={subItem.path}
                               href={subItem.path}
-                              className={`block px-4 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 ${
-                                childActive
+                              className={`block px-4 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 ${childActive
                                   ? 'bg-[#47206A] text-[#DFC47A] font-semibold shadow-sm'
                                   : 'text-[#47206A] hover:bg-[#F8F2E8] hover:text-[#8C5D00]'
-                              }`}
+                                }`}
                             >
                               {subItem.name}
                             </Link>
@@ -149,11 +148,10 @@ export default function Navbar() {
                 <Link
                   key={link.path}
                   href={link.path || '#'}
-                  className={`inline-flex items-center text-[12px] xl:text-[13px] font-semibold uppercase tracking-wider transition-all duration-300 relative py-2 whitespace-nowrap leading-none ${
-                    parentActive
+                  className={`inline-flex items-center text-[11px] lg:text-[12px] xl:text-[13px] font-semibold uppercase tracking-wider transition-all duration-300 relative py-2 whitespace-nowrap leading-none ${parentActive
                       ? 'text-[#C8A34A] font-bold'
                       : 'text-[#47206A] hover:text-[#C8A34A]'
-                  }`}
+                    }`}
                 >
                   {link.name}
                   {parentActive && (
@@ -168,14 +166,14 @@ export default function Navbar() {
           </nav>
 
           {/* Right Action & Menu Button */}
-          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-2 lg:gap-2.5 sm:gap-3 shrink-0">
             {/* Shambala Music App - Solid Royal Purple & Gold Pill */}
             <a
               href={playStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
               title="Experience Shambala Music App on Google Play"
-              className="hidden xl:flex relative items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#47206A] text-[#DFC47A] border-2 border-[#DFC47A]/80 text-xs font-bold tracking-wider shadow-md font-body whitespace-nowrap overflow-hidden"
+              className="hidden lg:flex relative items-center gap-1.5 lg:gap-2 px-2.5 lg:px-3.5 py-1.5 rounded-full bg-[#47206A] text-[#DFC47A] border-2 border-[#DFC47A]/80 text-xs font-bold tracking-wider shadow-md font-body whitespace-nowrap overflow-hidden"
             >
               {/* Modern Audio Wave Equalizer Icon */}
               <div className="relative z-10 flex items-center gap-[2.5px] h-3.5 w-3.5 shrink-0">
@@ -184,7 +182,7 @@ export default function Navbar() {
                 <span className="w-[2px] h-3 bg-[#DFC47A] rounded-full animate-[pulse_1.1s_ease-in-out_infinite_400ms]" />
               </div>
 
-              <span className="relative z-10 text-[11px] font-extrabold tracking-wider uppercase">
+              <span className="relative z-10 text-[10px] lg:text-[11px] font-extrabold tracking-wider uppercase">
                 Shambala App
               </span>
 
@@ -197,7 +195,7 @@ export default function Navbar() {
             {/* Join Us Action Button */}
             <Link
               href="/contact"
-              className="hidden xl:flex px-4 lg:px-5 py-2 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 items-center gap-1.5 font-body group whitespace-nowrap"
+              className="hidden lg:flex px-3.5 lg:px-5 py-2 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 items-center gap-1.5 font-body group whitespace-nowrap"
             >
               <span>Join Us</span>
               <ArrowRight className="w-3.5 h-3.5 text-[#DFC47A] group-hover:text-[#47206A] transition-colors" />
@@ -206,8 +204,9 @@ export default function Navbar() {
             {/* Premium Royal Gold & Purple Mobile Menu Toggle Button */}
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className="xl:hidden relative group flex items-center gap-2 px-3.5 py-2 rounded-full bg-gradient-to-r from-[#47206A] via-[#3B104E] to-[#20052C] text-[#DFC47A] border-2 border-[#DFC47A]/80 shadow-md hover:shadow-lg hover:border-[#C8A34A] transition-all duration-300 active:scale-95"
-              aria-label="Toggle menu"
+              aria-expanded={isMobileOpen}
+              aria-label={isMobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              className="lg:hidden relative group flex items-center gap-2 px-3.5 py-2 rounded-full bg-gradient-to-r from-[#47206A] via-[#3B104E] to-[#20052C] text-[#DFC47A] border-2 border-[#DFC47A]/80 shadow-md hover:shadow-lg hover:border-[#C8A34A] transition-all duration-300 active:scale-95"
             >
               {/* Outer Golden Aura Glow on Hover */}
               <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-[#C8A34A] to-[#DFC47A] opacity-0 group-hover:opacity-40 blur-xs transition-opacity duration-300 pointer-events-none" />
@@ -279,11 +278,10 @@ export default function Navbar() {
                                 key={subItem.path}
                                 href={subItem.path}
                                 onClick={() => setIsMobileOpen(false)}
-                                className={`block text-sm sm:text-base tracking-wider font-bold uppercase py-1 px-3 rounded-lg transition-all duration-200 ${
-                                  childActive
+                                className={`block text-sm sm:text-base tracking-wider font-bold uppercase py-1 px-3 rounded-lg transition-all duration-200 ${childActive
                                     ? 'text-[#C8A34A] bg-[#47206A]/5 font-extrabold'
                                     : 'text-[#47206A] hover:text-[#C8A34A]'
-                                }`}
+                                  }`}
                               >
                                 {subItem.name}
                               </Link>
@@ -299,11 +297,10 @@ export default function Navbar() {
                       key={link.path}
                       href={link.path || '#'}
                       onClick={() => setIsMobileOpen(false)}
-                      className={`text-sm sm:text-base tracking-[0.15em] font-bold uppercase transition-all duration-300 py-1 px-3 rounded-lg w-full text-center ${
-                        parentActive
+                      className={`text-sm sm:text-base tracking-[0.15em] font-bold uppercase transition-all duration-300 py-1 px-3 rounded-lg w-full text-center ${parentActive
                           ? 'text-[#C8A34A] font-extrabold'
                           : 'text-[#47206A] hover:text-[#C8A34A]'
-                      }`}
+                        }`}
                     >
                       {link.name}
                     </Link>

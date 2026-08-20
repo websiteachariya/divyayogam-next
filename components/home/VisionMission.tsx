@@ -58,7 +58,6 @@ export default function VisionMission() {
           alt="Golden Flower Blossom Deco-18"
           fill
           className="object-contain drop-shadow-[0_0_20px_rgba(223,196,122,0.35)]"
-          priority
         />
       </div>
 
@@ -69,7 +68,6 @@ export default function VisionMission() {
           alt="Golden Vine Ornament Deco-17"
           fill
           className="object-contain object-right drop-shadow-[0_0_30px_rgba(223,196,122,0.45)]"
-          priority
         />
       </div>
 

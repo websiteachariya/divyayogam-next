@@ -40,17 +40,17 @@ export default function TopBar({ isScrolled = false }: TopBarProps) {
       </div>
 
       {/* Center Live Masterclass Announcement Line (Displayed on ALL screens: Mobile <700px, Mid 700px-1299px, Desktop 1300px+) */}
-      <div className="flex items-center gap-1.5 sm:gap-2 relative z-10 px-1 text-center truncate max-w-full justify-center">
+      <div className="flex items-center gap-1.5 sm:gap-2 relative z-10 px-1 text-center truncate max-w-full justify-center min-w-0">
         <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#C8A34A]/25 border border-[#DFC47A]/40 text-[#DFC47A] text-[9px] sm:text-[10px] font-bold uppercase tracking-wider animate-pulse shrink-0">
           <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#DFC47A]" />
           Masterclass
         </span>
         <Link
           href="/organ-meditation"
-          className="text-[10px] sm:text-[11px] text-[#F8F2E8] hover:text-[#DFC47A] font-medium transition-colors underline underline-offset-2 decoration-[#DFC47A]/50 hover:decoration-[#DFC47A] truncate"
+          className="text-[10px] sm:text-[11px] text-[#F8F2E8] hover:text-[#DFC47A] font-medium transition-colors underline underline-offset-2 decoration-[#DFC47A]/50 hover:decoration-[#DFC47A] truncate min-w-0"
         >
-          <span className="hidden min-[425px]:inline">Organ Rejuvenation & Sacred Sciences — Join Now</span>
-          <span className="inline min-[425px]:hidden"> — Join Now</span>
+          <span className="hidden sm:inline">Organ Rejuvenation &amp; Sacred Sciences — Join Now</span>
+          <span className="inline sm:hidden">Organ Rejuvenation — Join Now</span>
         </Link>
       </div>
 
@@ -93,6 +93,7 @@ export default function TopBar({ isScrolled = false }: TopBarProps) {
           href="https://wa.me/918001089642"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Contact us on WhatsApp"
           className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#25D366]/20 border border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all text-[11px] font-semibold tracking-wide shadow-sm group"
         >
           <MessageCircle className="w-3.5 h-3.5 text-[#25D366] group-hover:text-white transition-colors" />

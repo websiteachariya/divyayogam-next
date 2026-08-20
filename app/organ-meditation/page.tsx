@@ -178,14 +178,12 @@ export default function OrganMeditationPage() {
         style={{ backgroundImage: "url('/images/bg-6.webp')" }}
       />
 
-      {/* HERO SECTION (FIGMA MATCHING STYLE) */}
+      {/* HERO SECTION (EXACT MATCHING QUANTUM HABITS BACKGROUND) */}
       <header
-        className="relative bg-gradient-to-br from-[#64287F] to-[#401952] pt-32 pb-36 overflow-hidden text-white"
+        className="relative bg-gradient-to-br from-[#401952] via-[#64287F] to-[#2E0F3D] pt-32 pb-36 overflow-hidden text-white bg-cover bg-center"
         style={{
           backgroundImage:
-            "linear-gradient(135deg, rgba(100, 40, 127, 0.95) 0%, rgba(64, 25, 82, 0.98) 100%), url('/images/bg-6.webp')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+            "linear-gradient(135deg, rgba(64, 25, 82, 0.95) 0%, rgba(100, 40, 127, 0.96) 60%, rgba(46, 15, 61, 0.98) 100%), url('/images/qh-3.webp')",
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -208,29 +206,27 @@ export default function OrganMeditationPage() {
               </p>
             </motion.div>
 
-            {/* Hero Right Card with Organ Meditation Graphic */}
+            {/* Hero Right Blended Artwork (Integrated directly into section background) */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              className="relative text-center flex justify-center"
+              className="relative flex justify-center lg:justify-end items-center"
             >
-              <div className="relative group">
-                {/* Golden Aura Glow */}
+              <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[380px] lg:h-[380px] group">
+                {/* Radial Golden & Violet Ambient Glow */}
                 <div
-                  className="absolute -inset-2 rounded-3xl opacity-50 blur-lg transition duration-500 group-hover:opacity-80 pointer-events-none"
-                  style={{ background: 'radial-gradient(circle, rgba(200,163,74,0.6) 0%, transparent 70%)' }}
+                  className="absolute inset-0 rounded-full opacity-60 blur-2xl pointer-events-none animate-pulse"
+                  style={{ background: 'radial-gradient(circle, rgba(200,163,74,0.45) 0%, rgba(100,40,127,0.25) 60%, transparent 80%)' }}
                 />
 
-                <div className="relative bg-[#240538] border-2 border-[#C8A34A]/60 rounded-3xl p-4 sm:p-5 shadow-2xl flex items-center justify-center overflow-hidden">
-                  <Image
-                    src="/images/organ-img.webp"
-                    alt="Organ Meditation Graphic"
-                    width={260}
-                    height={260}
-                    className="w-60 h-60 sm:w-64 sm:h-64 object-contain rounded-2xl shadow-md"
-                  />
-                </div>
+                <Image
+                  src="/images/organ-img.webp"
+                  alt="Organ Meditation Graphic"
+                  fill
+                  className="object-contain filter drop-shadow-[0_10px_35px_rgba(200,163,74,0.5)] transition-transform duration-700 group-hover:scale-105"
+                  priority
+                />
               </div>
             </motion.div>
 

@@ -29,7 +29,6 @@ export default function Gallery() {
           alt="Gallery Section Background Frame"
           fill
           className="object-cover object-center"
-          priority
         />
       </div>
 
@@ -40,7 +39,6 @@ export default function Gallery() {
           alt="Golden Floral Vine Left Watermark"
           fill
           className="object-contain object-bottom drop-shadow-[0_0_15px_rgba(223,196,122,0.3)]"
-          priority
         />
       </div>
 

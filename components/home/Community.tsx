@@ -70,12 +70,48 @@ export default function Community() {
   ];
 
   const soulEvolutionSteps = [
-    'Avadhani',
-    'Ayngara',
-    'Anantha',
-    'Amirtha',
-    'Amogha',
-    'Adwaita',
+    {
+      step: '01',
+      title: 'Avadhani',
+      subtitle: 'Focused Mastery',
+      desc: 'Developing single-pointed focus and deep mental awareness.',
+      icon: Sun,
+    },
+    {
+      step: '02',
+      title: 'Ayngara',
+      subtitle: 'Elemental Balance',
+      desc: 'Harmonizing the internal elements of physical & subtle body.',
+      icon: ShieldCheck,
+    },
+    {
+      step: '03',
+      title: 'Anantha',
+      subtitle: 'Infinite Expansion',
+      desc: 'Expanding consciousness beyond physical limits.',
+      icon: Compass,
+    },
+    {
+      step: '04',
+      title: 'Amirtha',
+      subtitle: 'Divine Nectar',
+      desc: 'Awakening vital cellular prana and inner rejuvenation.',
+      icon: Heart,
+    },
+    {
+      step: '05',
+      title: 'Amogha',
+      subtitle: 'Unshakable Will',
+      desc: 'Establishing infallible spiritual clarity and alignment.',
+      icon: Flame,
+    },
+    {
+      step: '06',
+      title: 'Adwaita',
+      subtitle: 'Non-Dual Oneness',
+      desc: 'Merging into ultimate unity, peace, and self-realization.',
+      icon: Sparkles,
+    },
   ];
 
   const movementShifts = [
@@ -230,35 +266,93 @@ export default function Community() {
           </div>
         </div>
 
-        {/* SECTION 3: SOUL EVOLUTION PATH */}
-        <div className="space-y-8 pt-4 border-t border-[#E9DED3]">
+        {/* SECTION 3: SOUL EVOLUTION PATH (MODERN ASCENSION TIMELINE UI) */}
+        <div className="space-y-10 pt-8 border-t border-[#E9DED3]">
           
-          <div className="text-center max-w-2xl mx-auto space-y-2">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8C5D00]">
+          {/* Header */}
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#8C5D00]/10 border border-[#8C5D00]/25 text-[#8C5D00] text-xs font-bold uppercase tracking-widest shadow-sm">
+              <Sparkles className="w-3.5 h-3.5 text-[#C8A34A]" />
               THE ASCENSION PATHWAY
-            </span>
-            <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#352043]">
+            </div>
+            <h3 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#352043]">
               Soul Evolution <span className="text-[#8C5D00] italic font-serif">Path</span>
             </h3>
+            <p className="text-[#5E5865] text-sm sm:text-base leading-relaxed font-light">
+              A 6-stage sacred progression guided by Santoshi Shri. Arawindhan Ji to elevate consciousness into non-dual oneness.
+            </p>
           </div>
 
-          <div className="bg-white/95 backdrop-blur-sm rounded-[32px] p-6 sm:p-10 border-2 border-[#E9DED3] shadow-lg">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 relative">
-              {soulEvolutionSteps.map((step, idx) => (
-                <div
-                  key={idx}
-                  className="relative flex flex-col items-center text-center p-4 rounded-2xl bg-[#FAF5EF] border border-[#DFC47A]/50 hover:border-[#8C5D00] transition-all group"
-                >
-                  <div className="w-8 h-8 rounded-full bg-[#8C5D00] text-white font-bold text-xs flex items-center justify-center mb-2 shadow-sm group-hover:scale-110 transition-transform">
-                    {idx + 1}
-                  </div>
-                  <span className="font-heading text-base font-extrabold text-[#352043]">
-                    {step}
-                  </span>
-                </div>
-              ))}
+          {/* Connected Ascension Steps Grid Cards */}
+          <div className="relative">
+            {/* Background Horizontal Connected Line (Desktop lg+) */}
+            <div className="hidden lg:block absolute top-1/2 left-8 right-8 h-1 -translate-y-1/2 bg-gradient-to-r from-[#C8A34A]/20 via-[#8C5D00]/40 to-[#C8A34A]/20 z-0 pointer-events-none rounded-full" />
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5 sm:gap-6 relative z-10">
+              {soulEvolutionSteps.map((item, idx) => {
+                const StepIconComp = item.icon;
+                return (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: idx * 0.08 }}
+                    className="luxury-card rounded-[28px] p-6 bg-white/95 backdrop-blur-md border-2 border-[#E9DED3] hover:border-[#C8A34A] shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col items-center text-center justify-between relative group overflow-hidden"
+                  >
+                    {/* Subtle Background Radial Light Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EF]/50 to-[#FFFDF9] opacity-90 pointer-events-none" />
+
+                    {/* Top Golden Step Badge Circle */}
+                    <div className="relative z-10 mb-2">
+                      {/* Glowing Aura Ring */}
+                      <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#C8A34A] to-[#8C5D00] opacity-30 blur-xs group-hover:opacity-70 transition-opacity duration-300 pointer-events-none" />
+
+                      <div className="relative w-12 h-12 rounded-full bg-gradient-to-tr from-[#352043] via-[#47206A] to-[#352043] border-2 border-[#DFC47A] text-[#DFC47A] font-extrabold text-sm flex items-center justify-center shadow-md group-hover:scale-110 group-hover:bg-[#8C5D00] group-hover:text-white transition-all duration-300">
+                        {item.step}
+                      </div>
+                    </div>
+
+                    {/* Step Icon */}
+                    <div className="relative z-10 w-9 h-9 rounded-xl bg-[#8C5D00]/10 border border-[#8C5D00]/20 flex items-center justify-center text-[#8C5D00] my-1 group-hover:bg-[#8C5D00] group-hover:text-white transition-all duration-300">
+                      <StepIconComp className="w-4 h-4" />
+                    </div>
+
+                    {/* Title & Subtitle */}
+                    <div className="relative z-10 space-y-1 my-1">
+                      <h4 className="font-heading text-lg font-extrabold text-[#352043] group-hover:text-[#8C5D00] transition-colors">
+                        {item.title}
+                      </h4>
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#8C5D00] block leading-tight">
+                        {item.subtitle}
+                      </span>
+                      <p className="text-[12px] text-[#6E6675] font-light leading-relaxed pt-1">
+                        {item.desc}
+                      </p>
+                    </div>
+
+                    {/* Bottom Connection Pill Tag */}
+                    <div className="relative z-10 pt-3 mt-2 border-t border-[#E9DED3]/80 w-full flex items-center justify-center gap-1 text-[10px] font-bold uppercase tracking-widest text-[#B6872B]">
+                      <span>Stage {item.step}</span>
+                      <ArrowRight className="w-3 h-3 text-[#C8A34A] group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Explore Practices CTA Button */}
+            <div className="flex justify-center pt-8">
+              <Link
+                href="/practices"
+                className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#47206A] via-[#352043] to-[#47206A] text-[#DFC47A] hover:text-white font-bold text-xs sm:text-sm uppercase tracking-widest border-2 border-[#DFC47A]/80 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-body group"
+              >
+                <span>Explore Practices</span>
+                <ArrowRight className="w-4 h-4 text-[#DFC47A] group-hover:text-white group-hover:translate-x-1 transition-all" />
+              </Link>
             </div>
           </div>
+
         </div>
 
         {/* SECTION 4: THE DIVYA YOGAM MOVEMENT (Transformation Grid) */}

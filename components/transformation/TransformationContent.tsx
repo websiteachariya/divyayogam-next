@@ -128,17 +128,9 @@ export default function TransformationContent() {
           </p>
         </div>
 
-        {/* Carousel Slider Layout with Nav Arrows */}
+        {/* Video Cards Layout */}
         <div className="relative flex items-center">
           
-          {/* Left Arrow Button */}
-          <button
-            className="hidden md:flex absolute -left-5 lg:-left-7 z-20 w-11 h-11 rounded-full bg-white shadow-md border border-[#E9DED3] items-center justify-center text-[#352043] hover:border-[#C8A34A] hover:scale-105 transition-all cursor-pointer"
-            aria-label="Previous Slide"
-          >
-            <ChevronLeft className="w-5 h-5 text-[#352043]" />
-          </button>
-
           {/* Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 w-full">
             
@@ -148,55 +140,53 @@ export default function TransformationContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative rounded-3xl overflow-hidden shadow-xl border-2 border-[#DFC47A]/50 aspect-[16/10] sm:aspect-video group bg-black"
+              className="flex flex-col rounded-3xl overflow-hidden shadow-xl border-2 border-[#DFC47A]/50 bg-[#2A1338] group transition-all duration-300 hover:shadow-2xl hover:border-[#C8A34A]"
             >
-              <video
-                ref={videoRef1}
-                autoPlay
-                loop
-                muted={isMuted1}
-                controls
-                playsInline
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              >
-                <source src="https://res.cloudinary.com/y2q2jsq0/video/upload/v1782989219/080A9552_vliae1.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+              {/* Video Player Container */}
+              <div className="relative w-full aspect-[16/10] sm:aspect-video bg-black overflow-hidden">
+                <video
+                  ref={videoRef1}
+                  autoPlay
+                  loop
+                  muted={isMuted1}
+                  controls
+                  playsInline
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                >
+                  <source src="https://res.cloudinary.com/y2q2jsq0/video/upload/v1782989219/080A9552_vliae1.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                
+                {/* Sound Toggle Button */}
+                <button
+                  onClick={toggleMute1}
+                  className="absolute top-4 right-4 z-20 bg-black/60 hover:bg-[#C8A34A] text-white hover:text-[#47206A] p-2.5 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 shadow-lg cursor-pointer flex items-center gap-2 text-xs font-semibold px-3.5"
+                  title={isMuted1 ? "Unmute Audio" : "Mute Audio"}
+                >
+                  {isMuted1 ? (
+                    <>
+                      <VolumeX className="w-4 h-4 text-amber-400" />
+                      <span>Enable Sound</span>
+                    </>
+                  ) : (
+                    <>
+                      <Volume2 className="w-4 h-4 text-emerald-400 animate-pulse" />
+                      <span>Sound Playing</span>
+                    </>
+                  )}
+                </button>
+              </div>
 
-              {/* Sound Toggle Button */}
-              <button
-                onClick={toggleMute1}
-                className="absolute top-4 right-4 z-20 bg-black/60 hover:bg-[#C8A34A] text-white hover:text-[#47206A] p-2.5 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 shadow-lg cursor-pointer flex items-center gap-2 text-xs font-semibold px-3.5"
-                title={isMuted1 ? "Unmute Audio" : "Mute Audio"}
-              >
-                {isMuted1 ? (
-                  <>
-                    <VolumeX className="w-4 h-4 text-amber-400" />
-                    <span>Enable Sound</span>
-                  </>
-                ) : (
-                  <>
-                    <Volume2 className="w-4 h-4 text-emerald-400 animate-pulse" />
-                    <span>Sound Playing</span>
-                  </>
-                )}
-              </button>
-
-              {/* Bottom Card Badge Overlay */}
-              <div className="absolute bottom-4 left-4 right-4 z-10 bg-[#2A1338]/90 backdrop-blur-md p-4 rounded-2xl border border-[#DFC47A]/30 flex items-center gap-4 shadow-lg pointer-events-none">
-                <div className="w-10 h-10 rounded-full bg-white/10 border border-[#DFC47A]/40 flex items-center justify-center shrink-0 text-[#DFC47A]">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8">
-                    <circle cx="12" cy="12" r="9" />
-                    <path d="M12 7V17M7 12H17" strokeWidth="1.5" />
-                  </svg>
+              {/* Connected Text Info Block Below Video */}
+              <div className="p-5 sm:p-6 bg-gradient-to-br from-[#2A1338] via-[#351A4A] to-[#200D2E] text-white border-t border-[#DFC47A]/30 flex items-center gap-4 flex-1">
+                <div className="w-11 h-11 rounded-full bg-[#C8A34A]/20 border border-[#DFC47A]/50 flex items-center justify-center shrink-0 text-[#DFC47A] shadow-sm">
+                  <Sparkles className="w-5 h-5 text-[#DFC47A]" />
                 </div>
                 <div>
-                  <h3 className="text-xs uppercase font-extrabold tracking-wider text-white">
+                  <h3 className="text-sm font-extrabold uppercase tracking-wider text-[#DFC47A] font-heading">
                     SACRED MOVEMENT &amp; MEDITATION
                   </h3>
-                  <p className="text-[11px] text-white/80 font-light mt-0.5">
+                  <p className="text-xs text-white/90 font-light mt-1 leading-relaxed">
                     Awaken the body, calm the mind, elevate the soul.
                   </p>
                 </div>
@@ -209,54 +199,53 @@ export default function TransformationContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="relative rounded-3xl overflow-hidden shadow-xl border-2 border-[#47206A]/50 aspect-[16/10] sm:aspect-video group bg-black"
+              className="flex flex-col rounded-3xl overflow-hidden shadow-xl border-2 border-[#DFC47A]/50 bg-[#2A1338] group transition-all duration-300 hover:shadow-2xl hover:border-[#C8A34A]"
             >
-              <video
-                ref={videoRef2}
-                autoPlay
-                loop
-                muted={isMuted2}
-                controls
-                playsInline
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              >
-                <source src="https://res.cloudinary.com/y2q2jsq0/video/upload/v1782989204/080A9562_tcmlhv.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+              {/* Video Player Container */}
+              <div className="relative w-full aspect-[16/10] sm:aspect-video bg-black overflow-hidden">
+                <video
+                  ref={videoRef2}
+                  autoPlay
+                  loop
+                  muted={isMuted2}
+                  controls
+                  playsInline
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                >
+                  <source src="https://res.cloudinary.com/y2q2jsq0/video/upload/v1782989204/080A9562_tcmlhv.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                
+                {/* Sound Toggle Button */}
+                <button
+                  onClick={toggleMute2}
+                  className="absolute top-4 right-4 z-20 bg-black/60 hover:bg-[#C8A34A] text-white hover:text-[#47206A] p-2.5 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 shadow-lg cursor-pointer flex items-center gap-2 text-xs font-semibold px-3.5"
+                  title={isMuted2 ? "Unmute Audio" : "Mute Audio"}
+                >
+                  {isMuted2 ? (
+                    <>
+                      <VolumeX className="w-4 h-4 text-amber-400" />
+                      <span>Enable Sound</span>
+                    </>
+                  ) : (
+                    <>
+                      <Volume2 className="w-4 h-4 text-emerald-400 animate-pulse" />
+                      <span>Sound Playing</span>
+                    </>
+                  )}
+                </button>
+              </div>
 
-              {/* Sound Toggle Button */}
-              <button
-                onClick={toggleMute2}
-                className="absolute top-4 right-4 z-20 bg-black/60 hover:bg-[#C8A34A] text-white hover:text-[#47206A] p-2.5 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 shadow-lg cursor-pointer flex items-center gap-2 text-xs font-semibold px-3.5"
-                title={isMuted2 ? "Unmute Audio" : "Mute Audio"}
-              >
-                {isMuted2 ? (
-                  <>
-                    <VolumeX className="w-4 h-4 text-amber-400" />
-                    <span>Enable Sound</span>
-                  </>
-                ) : (
-                  <>
-                    <Volume2 className="w-4 h-4 text-emerald-400 animate-pulse" />
-                    <span>Sound Playing</span>
-                  </>
-                )}
-              </button>
-
-              {/* Bottom Card Badge Overlay */}
-              <div className="absolute bottom-4 left-4 right-4 z-10 bg-[#2A1338]/90 backdrop-blur-md p-4 rounded-2xl border border-[#DFC47A]/30 flex items-center gap-4 shadow-lg pointer-events-none">
-                <div className="w-10 h-10 rounded-full bg-white/10 border border-[#DFC47A]/40 flex items-center justify-center shrink-0 text-[#DFC47A]">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8">
-                    <path d="M12 3C10 7 6 10 2 12C6 14 10 17 12 21C14 17 18 14 22 12C18 10 14 7 12 3Z" fill="rgba(200, 163, 74, 0.25)" />
-                  </svg>
+              {/* Connected Text Info Block Below Video */}
+              <div className="p-5 sm:p-6 bg-gradient-to-br from-[#2A1338] via-[#351A4A] to-[#200D2E] text-white border-t border-[#DFC47A]/30 flex items-center gap-4 flex-1">
+                <div className="w-11 h-11 rounded-full bg-[#C8A34A]/20 border border-[#DFC47A]/50 flex items-center justify-center shrink-0 text-[#DFC47A] shadow-sm">
+                  <Sun className="w-5 h-5 text-[#DFC47A]" />
                 </div>
                 <div>
-                  <h3 className="text-xs uppercase font-extrabold tracking-wider text-white">
+                  <h3 className="text-sm font-extrabold uppercase tracking-wider text-[#DFC47A] font-heading">
                     INNER STILLNESS &amp; AWAKENING
                   </h3>
-                  <p className="text-[11px] text-white/80 font-light mt-0.5">
+                  <p className="text-xs text-white/90 font-light mt-1 leading-relaxed">
                     Discover the silence where transformation begins.
                   </p>
                 </div>
@@ -264,14 +253,6 @@ export default function TransformationContent() {
             </motion.div>
 
           </div>
-
-          {/* Right Arrow Button */}
-          <button
-            className="hidden md:flex absolute -right-5 lg:-right-7 z-20 w-11 h-11 rounded-full bg-white shadow-md border border-[#E9DED3] items-center justify-center text-[#352043] hover:border-[#C8A34A] hover:scale-105 transition-all cursor-pointer"
-            aria-label="Next Slide"
-          >
-            <ChevronRight className="w-5 h-5 text-[#352043]" />
-          </button>
 
         </div>
       </section>
