@@ -111,7 +111,7 @@ export default function ContactPage() {
       </header>
 
       {/* Main Contact Section */}
-      <section className="py-24 relative overflow-hidden bg-[#FAF4EB]">
+      <section className="py-8 sm:py-12 lg:py-14 relative overflow-hidden bg-[#FAF4EB]">
         {/* Background Image (con-5.png) */}
         <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
           <Image
@@ -148,7 +148,7 @@ export default function ContactPage() {
                       Email Us
                     </h3>
                     <p className="text-[#C8A34A] text-sm font-semibold mt-1">
-                      contact@divyayogam.org
+                      info@divyayogam.org
                     </p>
                     <p className="text-xs text-[#8A8394] font-light">
                       Response within 24 hours
@@ -164,10 +164,12 @@ export default function ContactPage() {
                     <h3 className="font-heading text-lg font-bold text-[#352043]">
                       Call Support
                     </h3>
-                    <p className="text-[#C8A34A] text-sm font-semibold mt-1">
-                      +91 (800) 108-YOGA
-                    </p>
-                    <p className="text-xs text-[#8A8394] font-light">
+                    <div className="text-[#C8A34A] text-sm font-semibold mt-1 flex flex-col space-y-0.5">
+                      <span>+91 94425 48809</span>
+                      <span>+91 94895 14685</span>
+                      <span>+91 93444 97460</span>
+                    </div>
+                    <p className="text-xs text-[#8A8394] font-light mt-1">
                       Mon - Sat, 9:00 AM - 6:00 PM IST
                     </p>
                   </div>
@@ -179,10 +181,13 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-heading text-lg font-bold text-[#352043]">
-                      Ashram Location
+                      Registered Address
                     </h3>
-                    <p className="text-[#C8A34A] text-sm font-semibold mt-1">
-                      Divya Yogam Sanctuary, Divine Grace Marg, Sacred Hills
+                    <p className="text-[#352043] text-sm font-semibold mt-1">
+                      DIVINE GRACE FOUNDATION
+                    </p>
+                    <p className="text-xs text-[#5E5865] leading-relaxed mt-1">
+                      R.S.Nos.222/1, 222/2, Pondy Main Road, Villianur, Puducherry - 605 110.
                     </p>
                   </div>
                 </div>

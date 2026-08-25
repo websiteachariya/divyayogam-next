@@ -107,6 +107,9 @@ export default function Footer() {
             <p className="text-xs text-[#F8F2E8]/75 leading-relaxed max-w-xs font-light">
               A spiritual movement dedicated to inner transformation and global peace.
             </p>
+            <p className="text-xs text-[#DFC47A] font-light italic">
+              An initiative of <span className="font-semibold text-[#C8A34A]">Divine Grace Foundation</span>
+            </p>
 
             {/* Shambala App Link in Footer */}
             <div className="pt-2">
@@ -171,11 +174,15 @@ export default function Footer() {
               Contact Us
             </h4>
             <ul className="space-y-2 text-xs text-[#F8F2E8]/80">
-              <li className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-[#C8A34A]" />
-                <span>+91 915 416 7920</span>
+              <li className="flex items-start gap-2">
+                <Phone className="w-3.5 h-3.5 text-[#C8A34A] shrink-0 mt-0.5" />
+                <div className="flex flex-col space-y-0.5">
+                  <span>+91 94425 48809</span>
+                  <span>+91 94895 14685</span>
+                  <span>+91 93444 97460</span>
+                </div>
               </li>
-              <li className="flex items-center gap-2">
+              <li className="flex items-center gap-2 pt-1">
                 <Mail className="w-3.5 h-3.5 text-[#C8A34A]" />
                 <span>info@divyayogam.org</span>
               </li>
@@ -190,10 +197,14 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 mt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-[#F8F2E8]/60 gap-4">
-          <p>© 2026 Divya Yogam. All Rights Reserved.</p>
-          <div className="flex gap-6">
-            <Link href="/privacy-policy" className="hover:text-[#C8A34A]">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-[#C8A34A]">Terms & Conditions</Link>
+          <div className="text-center sm:text-left space-y-1">
+            <p>© 2026 Divya Yogam. An initiative of Divine Grace Foundation. All Rights Reserved.</p>
+            <p className="text-[10px] text-[#F8F2E8]/40">R.S.Nos.222/1, 222/2, Pondy Main Road, Villianur, Puducherry - 605 110</p>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 shrink-0">
+            <Link href="/privacy-policy" className="hover:text-[#C8A34A] transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-[#C8A34A] transition-colors">Terms & Conditions</Link>
+            <Link href="/refund-policy" className="hover:text-[#C8A34A] transition-colors">Refund & Cancellation Policy</Link>
           </div>
         </div>
       </div>

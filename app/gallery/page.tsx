@@ -105,7 +105,7 @@ export default function GalleryPage() {
     <div className="bg-transparent font-body min-h-screen">
 
       {/* 1. SACRED PHOTO GALLERY HERO HEADER (FULLY RESPONSIVE & REDUCED VERTICAL GAP) */}
-      <section className="relative pt-32 sm:pt-36 pb-16 sm:pb-20 md:pb-24 overflow-hidden font-body bg-[#2B1439] text-white">
+      <section className="relative pt-28 sm:pt-32 md:pt-36 lg:pt-36 pb-16 sm:pb-20 md:pb-24 overflow-hidden font-body bg-[#2B1439] text-white">
 
         {/* Background Image Layer (con-1.png) */}
         <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden opacity-25 mix-blend-overlay z-0">
@@ -235,7 +235,7 @@ export default function GalleryPage() {
       </section>
 
       {/* 2. GALLERY GRID (FULLY RESPONSIVE 1/2/3 COLUMNS WITH CON-1.PNG BACKGROUND) */}
-      <section className="py-16 sm:py-24 relative z-20 overflow-hidden bg-[#FAF4EB]">
+      <section className="py-8 sm:py-12 lg:py-14 relative z-20 overflow-hidden bg-[#FAF4EB]">
         {/* Full Section Background Image (con-1.png) */}
         <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
           <Image

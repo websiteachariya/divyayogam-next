@@ -131,7 +131,7 @@ export default function Community() {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#F8F2E8] relative overflow-hidden font-body text-[#352043]">
+    <section className="py-8 sm:py-12 lg:py-14 bg-[#F8F2E8] relative overflow-hidden font-body text-[#352043]">
       
       {/* Rich Visible Sandal Background Image Overlay (con-6.webp) */}
       <div
@@ -345,10 +345,10 @@ export default function Community() {
             <div className="flex justify-center pt-8">
               <Link
                 href="/practices"
-                className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#47206A] via-[#352043] to-[#47206A] text-[#DFC47A] hover:text-white font-bold text-xs sm:text-sm uppercase tracking-widest border-2 border-[#DFC47A]/80 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-body group"
+                className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-full bg-gradient-to-r from-[#47206A] via-[#352043] to-[#47206A] text-[#DFC47A] hover:text-white font-bold text-[11px] sm:text-xs uppercase tracking-widest border-2 border-[#DFC47A]/80 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-body group"
               >
                 <span>Explore Practices</span>
-                <ArrowRight className="w-4 h-4 text-[#DFC47A] group-hover:text-white group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-3.5 h-3.5 text-[#DFC47A] group-hover:text-white group-hover:translate-x-1 transition-all" />
               </Link>
             </div>
           </div>

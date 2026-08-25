@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function AwakeningVideo() {
   return (
-    <section className="py-16 bg-white relative overflow-hidden font-body">
+    <section className="py-8 sm:py-10 lg:py-12 bg-white relative overflow-hidden font-body">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Eye-catching Player Container */}

@@ -7,7 +7,7 @@ import { Sparkles } from 'lucide-react';
 
 export default function AboutHero() {
   return (
-    <header className="relative bg-gradient-to-b from-[#2B083A] via-[#3B104E] to-[#20052C] pt-28 sm:pt-36 pb-20 sm:pb-24 text-center text-white overflow-hidden font-body">
+    <header className="relative bg-gradient-to-b from-[#2B083A] via-[#3B104E] to-[#20052C] pt-28 sm:pt-32 md:pt-36 lg:pt-36 pb-20 sm:pb-24 text-center text-white overflow-hidden font-body">
 
       {/* Left Side Accent Image (test-1.webp) */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 opacity-60 sm:opacity-70 md:opacity-75 lg:opacity-80 xl:opacity-85 pointer-events-none w-20 h-20 min-[420px]:w-28 min-[420px]:h-28 sm:w-36 sm:h-36 md:w-52 md:h-52 lg:w-[320px] lg:h-[320px] xl:w-[440px] xl:h-[440px] 2xl:w-[520px] 2xl:h-[520px] -translate-x-1/4 sm:translate-x-0 transition-all duration-300">

@@ -7,8 +7,8 @@ import { GoldenHeadingUnderline } from './SacredGeometrySvg';
 
 export default function QuantumHabitsWorkshop() {
   return (
-    <section className="py-24 sm:py-32 bg-transparent relative overflow-hidden font-body">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
+    <section className="pt-3 pb-3 sm:pt-5 sm:pb-5 scroll-mt-24 sm:scroll-mt-28 bg-transparent relative overflow-hidden font-body">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6 sm:space-y-8">
 
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
@@ -56,10 +56,10 @@ export default function QuantumHabitsWorkshop() {
             <div className="shrink-0 pt-2 sm:pt-0">
               <Link
                 href="/contact"
-                className="px-8 py-4 rounded-full bg-[#C8A34A] hover:bg-[#DFC47A] text-[#2A1439] font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-2.5 font-body group"
+                className="px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-full bg-[#C8A34A] hover:bg-[#DFC47A] text-[#2A1439] font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-2 font-body group"
               >
                 <span>REGISTER FOR FREE WORKSHOP</span>
-                <ArrowRight className="w-4 h-4 text-[#2A1439] group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-3.5 h-3.5 text-[#2A1439] group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </div>

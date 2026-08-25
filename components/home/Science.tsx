@@ -109,10 +109,10 @@ export default function Science() {
             <div>
               <Link
                 href="/sciences"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 group"
+                className="inline-flex items-center gap-2 px-5 py-2 sm:px-5.5 sm:py-2.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-[11px] sm:text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 group"
               >
                 <span>Explore Sciences</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#DFC47A] group-hover:text-[#47206A]" />
+                <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#DFC47A] group-hover:text-[#47206A]" />
               </Link>
             </div>
           </motion.div>
@@ -195,10 +195,10 @@ export default function Science() {
             <div>
               <Link
                 href="/transformation"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 group"
+                className="inline-flex items-center gap-2 px-5 py-2 sm:px-5.5 sm:py-2.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-[11px] sm:text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 group"
               >
                 <span>Read More Stories</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#DFC47A] group-hover:text-[#47206A]" />
+                <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#DFC47A] group-hover:text-[#47206A]" />
               </Link>
             </div>
           </motion.div>

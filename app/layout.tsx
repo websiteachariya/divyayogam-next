@@ -4,7 +4,6 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import BackToTop from '@/components/layout/BackToTop';
 import ScrollProgress from '@/components/layout/ScrollProgress';
-import FloatingWidget from '@/components/layout/FloatingWidget';
 import { Manrope, DM_Serif_Display, Cormorant_Garamond } from 'next/font/google';
 
 const manrope = Manrope({
@@ -127,7 +126,6 @@ export default function RootLayout({
       >
         <ScrollProgress />
         <Navbar />
-        <FloatingWidget />
 
         <main className="flex-grow w-full max-w-full overflow-x-hidden">{children}</main>
 

@@ -106,7 +106,7 @@ export default function Practices() {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#FAF7F2] relative overflow-hidden font-body border-t border-[#EBE4D8]">
+    <section className="py-8 sm:py-12 lg:py-14 bg-[#FAF7F2] relative overflow-hidden font-body border-t border-[#EBE4D8]">
       
       {/* Background Golden Half-Mandala Watermark (deco-12.png) - Left */}
       <div className="absolute top-1/2 -left-28 sm:-left-36 -translate-y-1/2 opacity-35 pointer-events-none hidden lg:block w-[400px] sm:w-[500px] lg:w-[580px] h-[400px] sm:h-[500px] lg:h-[580px] z-0">

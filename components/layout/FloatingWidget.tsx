@@ -4,8 +4,8 @@ import { Phone, MessageCircle } from 'lucide-react';
 
 export default function FloatingWidget() {
   const items = [
-    { label: 'Call', icon: Phone, href: 'tel:+918001089642' },
-    { label: 'WhatsApp', icon: MessageCircle, href: 'https://wa.me/918001089642' },
+    { label: 'Call', icon: Phone, href: 'tel:+919442548809' },
+    { label: 'WhatsApp', icon: MessageCircle, href: 'https://wa.me/919442548809' },
   ];
 
   return (

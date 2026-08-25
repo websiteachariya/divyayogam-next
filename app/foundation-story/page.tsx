@@ -512,10 +512,10 @@ export default function FoundationStoryPage() {
             <div className="pt-2">
               <Link
                 href="/practices"
-                className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#E3C582] via-[#DFC47A] to-[#C8A34A] hover:from-[#F0D593] hover:to-[#D4AF37] text-[#2B083A] font-extrabold text-xs tracking-wider uppercase shadow-lg hover:scale-105 transition-all duration-300 group"
+                className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-full bg-gradient-to-r from-[#E3C582] via-[#DFC47A] to-[#C8A34A] hover:from-[#F0D593] hover:to-[#D4AF37] text-[#2B083A] font-extrabold text-[11px] sm:text-xs tracking-wider uppercase shadow-lg hover:scale-105 transition-all duration-300 group"
               >
                 <span>EXPLORE OUR PRACTICES</span>
-                <ArrowRight className="w-4 h-4 text-[#2B083A] group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-3.5 h-3.5 text-[#2B083A] group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </div>

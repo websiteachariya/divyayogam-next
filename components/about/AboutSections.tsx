@@ -14,7 +14,7 @@ export default function AboutSections() {
   ];
 
   return (
-    <section className="py-24 bg-[#FAF5EF] font-body relative overflow-hidden text-[#352043]">
+    <section className="pt-3 pb-8 sm:pt-5 sm:pb-12 bg-[#FAF5EF] font-body relative overflow-hidden text-[#352043]">
       {/* Rich Visible Sandal Background Image Overlay (con-6.webp) */}
       <div
         className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed"
@@ -72,7 +72,7 @@ export default function AboutSections() {
             <div className="pt-4">
               <Link
                 href="/events"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 group font-body"
+                className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-[11px] sm:text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 group font-body"
               >
                 <span>EXPLORE OUR COMMUNITY</span>
                 <ArrowRight className="w-3.5 h-3.5 text-[#DFC47A] group-hover:text-[#47206A] transition-colors" />

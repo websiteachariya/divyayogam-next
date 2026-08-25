@@ -39,7 +39,7 @@ export default function VisionMission() {
 
 
   return (
-    <section className="py-20 sm:py-28 bg-[#F8F2E8] relative overflow-hidden font-body">
+    <section className="py-8 sm:py-12 lg:py-14 bg-[#F8F2E8] relative overflow-hidden font-body">
 
       {/* Background Sacred Geometric Watermark */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none">
@@ -163,10 +163,10 @@ export default function VisionMission() {
             <div className="pt-2">
               <Link
                 href="/about"
-                className="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-xs uppercase tracking-widest shadow-lg hover:scale-105 transition-all duration-300 group"
+                className="inline-flex items-center gap-2.5 px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-[11px] sm:text-xs uppercase tracking-widest shadow-lg hover:scale-105 transition-all duration-300 group"
               >
                 <span>Meet Santoshi Shri. Arawindhan Ji</span>
-                <ArrowRight className="w-4 h-4 text-[#DFC47A] group-hover:text-[#47206A] group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-3.5 h-3.5 text-[#DFC47A] group-hover:text-[#47206A] group-hover:translate-x-1 transition-all" />
               </Link>
             </div>
           </motion.div>
@@ -350,10 +350,10 @@ export default function VisionMission() {
           <div className="text-center pt-2">
             <Link
               href="/about"
-              className="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-xs uppercase tracking-widest shadow-lg hover:scale-105 transition-all duration-300 group"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-[10px] sm:text-[11px] uppercase tracking-widest shadow-lg hover:scale-105 transition-all duration-300 group"
             >
               <span>Discover Divine Grace Foundation</span>
-              <ArrowRight className="w-4 h-4 text-[#DFC47A] group-hover:text-[#47206A] group-hover:translate-x-1 transition-all" />
+              <ArrowRight className="w-3.5 h-3.5 text-[#DFC47A] group-hover:text-[#47206A] group-hover:translate-x-1 transition-all" />
             </Link>
           </div>
         </motion.div>

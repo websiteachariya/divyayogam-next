@@ -40,8 +40,10 @@ export const NAV_LINKS: NavItem[] = [
 
 export const SITE_CONFIG = {
   name: 'Divya Yogam',
+  legalName: 'DIVINE GRACE FOUNDATION',
+  address: 'R.S.Nos.222/1, 222/2, Pondy Main Road, Villianur, Puducherry - 605 110.',
   tagline: 'Awaken Within',
   url: 'https://divyayogam.org',
-  email: 'contact@divyayogam.org',
-  phone: '+91 (800) 108-YOGA',
+  email: 'info@divyayogam.org',
+  phone: '+91 94425 48809 / +91 94895 14685 / +91 93444 97460',
 } as const;

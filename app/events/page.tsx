@@ -49,7 +49,7 @@ export default function EventsPage() {
     <div className="bg-transparent font-body min-h-screen">
       
       {/* 1. HERO SECTION MATCHING SCREENSHOT MOCKUP (Using event-1.png Background) */}
-      <section className="relative pt-36 pb-24 sm:pb-32 overflow-hidden font-body bg-[#2B1439] text-white">
+      <section className="relative pt-28 sm:pt-32 md:pt-36 lg:pt-36 pb-24 sm:pb-32 overflow-hidden font-body bg-[#2B1439] text-white">
         
         {/* Background Sacred Mountain Sunset Image: event-1.png */}
         <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
@@ -112,7 +112,7 @@ export default function EventsPage() {
       </section>
 
       {/* 2. EVENTS LIST GRID MATCHING SCREENSHOT MOCKUP WITH CON-5.PNG BACKGROUND */}
-      <section className="py-16 sm:py-24 relative overflow-hidden bg-[#FAF4EB]">
+      <section className="py-8 sm:py-12 lg:py-14 relative overflow-hidden bg-[#FAF4EB]">
         {/* Background Image (con-5.png) */}
         <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
           <Image
@@ -198,10 +198,10 @@ export default function EventsPage() {
                 <div className="pt-4 border-t border-[#E9DED3]">
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-[#352043] hover:bg-[#C8A34A] text-white hover:text-[#352043] font-bold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 group/btn"
+                    className="inline-flex items-center gap-2.5 px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-full bg-[#352043] hover:bg-[#C8A34A] text-white hover:text-[#352043] font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 group/btn"
                   >
                     <span>REGISTER FOR EVENT</span>
-                    <ArrowRight className="w-4 h-4 text-[#DFC47A] group-hover/btn:text-[#352043] transition-colors" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#DFC47A] group-hover/btn:text-[#352043] transition-colors" />
                   </Link>
                 </div>
 

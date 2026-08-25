@@ -39,10 +39,10 @@ export default function SeekersBanner() {
           {/* Action Button */}
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-xl transition-all transform hover:scale-105 shrink-0"
+            className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-md hover:shadow-xl transition-all transform hover:scale-105 shrink-0"
           >
             <span>BECOME A LIFE MEMBER</span>
-            <ArrowRight className="w-4 h-4 text-[#DFC47A] group-hover:text-[#47206A] transition-colors" />
+            <ArrowRight className="w-3.5 h-3.5 text-[#DFC47A] group-hover:text-[#47206A] transition-colors" />
           </Link>
         </motion.div>
       </div>

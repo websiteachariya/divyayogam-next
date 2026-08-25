@@ -42,7 +42,7 @@ export default function BlogPage() {
         description="Explore articles on organ meditation, bio-cellular alignment, and quantum habits written by ashram masters."
       />
 
-      <section className="py-24 bg-transparent">
+      <section className="py-8 sm:py-12 lg:py-14 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {posts.map((post, idx) => (

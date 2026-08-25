@@ -12,7 +12,7 @@ export default function TheLegacy() {
   ];
 
   return (
-    <section className="py-24 bg-[#FAF5EF] text-[#352043] relative overflow-hidden font-body">
+    <section className="pt-3 pb-3 sm:pt-5 sm:pb-5 bg-[#FAF5EF] text-[#352043] relative overflow-hidden font-body">
       {/* Rich Visible Sandal Background Image Overlay (con-6.webp) */}
       <div
         className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed"
@@ -22,7 +22,7 @@ export default function TheLegacy() {
         }}
       />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-12">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
         
         <motion.div
           initial={{ opacity: 0, y: 30 }}

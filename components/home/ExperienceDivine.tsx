@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function ExperienceDivine() {
   return (
-    <section className="relative min-h-[70vh] flex items-center justify-center py-28 overflow-hidden bg-black text-white font-body">
+    <section className="relative min-h-[45vh] sm:min-h-[55vh] flex items-center justify-center py-10 sm:py-14 lg:py-16 overflow-hidden bg-black text-white font-body">
       
       {/* Background Video Layer */}
       <video
@@ -44,7 +44,7 @@ export default function ExperienceDivine() {
           <div className="pt-4">
             <Link
               href="/contact"
-              className="inline-block rounded-full px-8 py-3.5 font-bold uppercase tracking-widest text-xs border-2 border-[#C8A34A] text-[#DFC47A] bg-black/40 hover:bg-[#C8A34A] hover:text-[#352043] transition-all duration-300 shadow-xl hover:scale-105"
+              className="inline-block rounded-full px-5 py-2 sm:px-6 sm:py-2.5 font-bold uppercase tracking-widest text-[11px] sm:text-xs border-2 border-[#C8A34A] text-[#DFC47A] bg-black/40 hover:bg-[#C8A34A] hover:text-[#352043] transition-all duration-300 shadow-xl hover:scale-105"
             >
               Begin Your Journey
             </Link>

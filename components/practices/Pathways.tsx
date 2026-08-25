@@ -150,7 +150,7 @@ export default function Pathways() {
   ];
 
   return (
-    <section id="pathways" className="pathways-section py-20 font-body relative z-10">
+    <section id="pathways" className="pathways-section py-8 sm:py-12 lg:py-14 font-body relative z-10">
 
       {/* Sacred Geometry Mandalas in Background */}
       <div className="absolute top-1/2 -right-28 -translate-y-1/2 opacity-20 pointer-events-none hidden lg:block">

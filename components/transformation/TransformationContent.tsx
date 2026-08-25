@@ -393,10 +393,10 @@ export default function TransformationContent() {
           {/* Right Action Button: EXPLORE PROGRAMS */}
           <Link
             href="/practices"
-            className="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-[#DFC47A] hover:bg-[#C8A34A] text-[#2B1439] font-bold text-xs uppercase tracking-wider shadow-lg hover:scale-105 transition-all duration-300 shrink-0 font-body"
+            className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-full bg-[#DFC47A] hover:bg-[#C8A34A] text-[#2B1439] font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-lg hover:scale-105 transition-all duration-300 shrink-0 font-body"
           >
             <span>EXPLORE PROGRAMS</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </motion.div>
       </section>

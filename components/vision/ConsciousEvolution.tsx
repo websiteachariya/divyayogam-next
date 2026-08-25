@@ -33,7 +33,7 @@ export default function ConsciousEvolution() {
   ];
 
   return (
-    <section className="py-24 sm:py-32 bg-[#2D1A39] text-[#F8F2E8] relative overflow-hidden font-body border-t border-[#DFC47A]/20">
+    <section className="py-8 sm:py-12 lg:py-14 bg-[#2D1A39] text-[#F8F2E8] relative overflow-hidden font-body border-t border-[#DFC47A]/20">
       {/* Background Glowing 3D Merkaba Hypercube Right */}
       <div className="absolute right-[-100px] top-1/2 -translate-y-1/2 opacity-25 pointer-events-none hidden lg:block">
         <MerkabaHypercubeSvg className="w-[600px] h-[600px] text-[#DFC47A]" />

@@ -44,7 +44,7 @@ export default function CorePractices() {
   ];
 
   return (
-    <section className="py-20 bg-transparent font-body relative z-10">
+    <section className="py-8 sm:py-12 lg:py-14 bg-transparent font-body relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
@@ -177,10 +177,10 @@ export default function CorePractices() {
             <div>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] text-xs font-bold uppercase tracking-wider shadow-md transition-all transform hover:scale-105"
+                className="inline-flex items-center gap-2 px-5 py-2 sm:px-5.5 sm:py-2.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] text-[11px] sm:text-xs font-bold uppercase tracking-wider shadow-md transition-all transform hover:scale-105"
               >
                 <span>BECOME A MEMBER</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
               </Link>
             </div>
           </motion.div>

@@ -15,7 +15,7 @@ export default function FounderMessage() {
   ];
 
   return (
-    <section id="founder-vision" className="py-20 sm:py-28 bg-transparent relative overflow-hidden font-body">
+    <section id="founder-vision" className="pt-3 pb-3 sm:pt-5 sm:pb-5 scroll-mt-24 sm:scroll-mt-28 bg-transparent relative overflow-hidden font-body">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 

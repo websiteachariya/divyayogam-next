@@ -22,11 +22,11 @@ export default function TopBar({ isScrolled = false }: TopBarProps) {
       <div className="topbar-mobile-hide items-center gap-3 sm:gap-4 lg:gap-5 relative z-10">
         {/* Email Link (Mid 700px+ & Full 1300px+) */}
         <a
-          href="mailto:contact@divyayogam.org"
+          href="mailto:info@divyayogam.org"
           className="flex items-center gap-1.5 text-[#F8F2E8]/90 hover:text-[#DFC47A] transition-colors group shrink-0"
         >
           <Mail className="w-3.5 h-3.5 text-[#DFC47A] group-hover:scale-110 transition-transform" />
-          <span className="font-medium text-[11px] tracking-wide">contact@divyayogam.org</span>
+          <span className="font-medium text-[11px] tracking-wide">info@divyayogam.org</span>
         </a>
 
         {/* Separator for Location */}
@@ -90,7 +90,7 @@ export default function TopBar({ isScrolled = false }: TopBarProps) {
 
         {/* WhatsApp Direct Action Button */}
         <a
-          href="https://wa.me/918001089642"
+          href="https://wa.me/919442548809"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Contact us on WhatsApp"

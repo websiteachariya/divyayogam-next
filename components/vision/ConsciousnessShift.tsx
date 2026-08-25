@@ -27,13 +27,13 @@ export default function ConsciousnessShift() {
   ];
 
   return (
-    <section className="py-24 sm:py-32 bg-[#2D1A39] text-[#F8F2E8] relative overflow-hidden font-body border-t border-[#DFC47A]/20">
+    <section className="pt-3 pb-3 sm:pt-5 sm:pb-5 scroll-mt-24 sm:scroll-mt-28 bg-[#2D1A39] text-[#F8F2E8] relative overflow-hidden font-body border-t border-[#DFC47A]/20">
       {/* Background Glowing 3D Merkaba Hypercube */}
       <div className="absolute right-[-100px] top-1/2 -translate-y-1/2 opacity-20 pointer-events-none hidden lg:block">
         <MerkabaHypercubeSvg className="w-[600px] h-[600px] text-[#DFC47A]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6 sm:space-y-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
           {/* Left Column: Heading & Quote */}

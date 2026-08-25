@@ -247,7 +247,7 @@ export default function OrganMeditationPage() {
       </header>
 
       {/* MAIN ORGAN MEDITATION SECTION */}
-      <section id="organ-meditation" className="py-16 bg-transparent">
+      <section id="organ-meditation" className="py-8 sm:py-12 lg:py-14 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* SECTION TITLE */}

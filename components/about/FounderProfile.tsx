@@ -6,7 +6,7 @@ import { Sparkles, UploadCloud } from 'lucide-react';
 
 export default function FounderProfile() {
   return (
-    <section className="py-20 sm:py-28 relative overflow-hidden bg-[#FAF5EF] font-body text-[#352043]">
+    <section className="pt-3 pb-3 sm:pt-5 sm:pb-5 relative overflow-hidden bg-[#FAF5EF] font-body text-[#352043]">
       {/* Rich Visible Sandal Background Image Overlay (con-6.webp) */}
       <div
         className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed"

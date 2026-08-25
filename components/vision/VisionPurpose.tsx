@@ -23,7 +23,7 @@ export default function VisionPurpose() {
   ];
 
   return (
-    <section id="purpose" className="py-20 sm:py-28 bg-[#F8F2E8] relative overflow-hidden font-body">
+    <section id="purpose" className="py-8 sm:py-12 lg:py-14 bg-[#F8F2E8] relative overflow-hidden font-body">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
 
         {/* Section Header */}

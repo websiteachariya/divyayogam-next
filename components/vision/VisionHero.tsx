@@ -7,7 +7,7 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function VisionHero() {
   return (
-    <section className="relative w-full min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden font-body pt-28 sm:pt-36 pb-24 sm:pb-32 lg:pb-36">
+    <section className="relative w-full min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden font-body pt-28 sm:pt-32 md:pt-36 lg:pt-36 pb-24 sm:pb-32 lg:pb-36">
       {/* Background Image - Full Width Hero */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -83,15 +83,15 @@ export default function VisionHero() {
           >
             <Link
               href="#the-mission"
-              className="px-8 py-4 rounded-full bg-[#C8A34A] hover:bg-[#DFC47A] text-[#2A1439] font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xl hover:shadow-[0_10px_30px_rgba(200,163,74,0.5)] hover:scale-105 transition-all duration-300 flex items-center gap-2.5 font-body group"
+              className="px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-full bg-[#C8A34A] hover:bg-[#DFC47A] text-[#2A1439] font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-xl hover:shadow-[0_10px_30px_rgba(200,163,74,0.5)] hover:scale-105 transition-all duration-300 flex items-center gap-2 font-body group"
             >
               <span>DISCOVER OUR MISSION</span>
-              <ArrowRight className="w-4 h-4 text-[#2A1439] group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-3.5 h-3.5 text-[#2A1439] group-hover:translate-x-1 transition-transform" />
             </Link>
 
             <Link
               href="#five-pillars"
-              className="px-7 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white border border-[#DFC47A]/60 backdrop-blur-md font-semibold text-xs sm:text-sm uppercase tracking-wider shadow-lg hover:scale-105 transition-all duration-300 flex items-center gap-2.5 font-body group"
+              className="px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-[#DFC47A]/60 backdrop-blur-md font-semibold text-[11px] sm:text-xs uppercase tracking-wider shadow-lg hover:scale-105 transition-all duration-300 flex items-center gap-2 font-body group"
             >
               <span>FIVE PILLARS</span>
             </Link>

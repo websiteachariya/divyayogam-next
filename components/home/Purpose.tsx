@@ -249,7 +249,7 @@ export default function Purpose() {
   ];
 
   return (
-    <section className="py-16 sm:py-24 bg-[#FAF7F2] relative overflow-hidden font-body text-[#352043]">
+    <section className="py-8 sm:py-12 lg:py-14 bg-[#FAF7F2] relative overflow-hidden font-body text-[#352043]">
 
       {/* Purpose-1 Background Image Layer */}
       <div
@@ -544,10 +544,10 @@ export default function Purpose() {
             <div className="relative z-10 shrink-0">
               <Link
                 href="/practices"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-[#E3C582] via-[#DFC47A] to-[#C8A34A] hover:from-[#F0D593] hover:to-[#D4AF37] text-[#2B083A] font-extrabold text-xs tracking-wider uppercase px-6 py-3 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-[#E3C582] via-[#DFC47A] to-[#C8A34A] hover:from-[#F0D593] hover:to-[#D4AF37] text-[#2B083A] font-extrabold text-[11px] sm:text-xs tracking-wider uppercase px-4.5 py-2 sm:px-5 sm:py-2.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group"
               >
                 <span>BEGIN YOUR JOURNEY</span>
-                <ArrowRight className="w-4 h-4 text-[#2B083A] group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-3.5 h-3.5 text-[#2B083A] group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </motion.div>

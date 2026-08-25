@@ -31,7 +31,7 @@ export default function ShambalaApp() {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-[#22122F] via-[#301840] to-[#22122F] text-white relative overflow-hidden font-body">
+    <section className="py-10 sm:py-14 lg:py-16 bg-gradient-to-b from-[#22122F] via-[#301840] to-[#22122F] text-white relative overflow-hidden font-body">
       
       {/* Background Image Layer (app-bg.png) */}
       <div className="absolute inset-0 opacity-25 pointer-events-none z-0">
@@ -154,17 +154,17 @@ export default function ShambalaApp() {
                 href={playStoreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-gradient-to-r from-[#C8A34A] via-[#E5C97A] to-[#C8A34A] text-[#22122F] font-bold text-base shadow-[0_0_25px_rgba(200,163,74,0.4)] hover:shadow-[0_0_35px_rgba(200,163,74,0.7)] hover:scale-[1.02] active:scale-[0.98] transition-all"
+                className="group relative inline-flex items-center justify-center gap-2.5 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl bg-gradient-to-r from-[#C8A34A] via-[#E5C97A] to-[#C8A34A] text-[#22122F] font-bold text-sm sm:text-base shadow-[0_0_20px_rgba(200,163,74,0.35)] hover:shadow-[0_0_30px_rgba(200,163,74,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
                 {/* Official Play Store SVG Icon */}
-                <svg className="w-7 h-7 shrink-0 fill-current" viewBox="0 0 512 512">
+                <svg className="w-6 h-6 sm:w-6.5 sm:h-6.5 shrink-0 fill-current" viewBox="0 0 512 512">
                   <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l220.7-221.3 60.1 60.1L104.6 499z" />
                 </svg>
                 <div className="flex flex-col text-left leading-tight">
-                  <span className="text-[10px] uppercase font-semibold text-[#3D2502] tracking-wider">
+                  <span className="text-[9px] sm:text-[10px] uppercase font-semibold text-[#3D2502] tracking-wider">
                     GET IT ON
                   </span>
-                  <span className="text-lg font-extrabold tracking-wide">
+                  <span className="text-base sm:text-lg font-extrabold tracking-wide">
                     Google Play
                   </span>
                 </div>
@@ -175,9 +175,9 @@ export default function ShambalaApp() {
                 href={playStoreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-white/10 hover:bg-white/20 border border-[#DFC47A]/30 text-[#DFC47A] font-semibold text-sm transition-all"
+                className="inline-flex items-center justify-center gap-2 px-4.5 py-2.5 sm:px-5 sm:py-3 rounded-2xl bg-white/10 hover:bg-white/20 border border-[#DFC47A]/30 text-[#DFC47A] font-semibold text-xs sm:text-sm transition-all"
               >
-                <Heart className="w-4 h-4 text-pink-400 fill-pink-400/30" />
+                <Heart className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-pink-400 fill-pink-400/30" />
                 Listen Free Now
               </a>
             </div>

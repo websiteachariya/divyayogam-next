@@ -282,7 +282,7 @@ export default function QuantumHabitsPage() {
       </header>
 
       {/* SECTION 2: THE 7 PILLARS OF DIVINE LIVING */}
-      <section className="py-20 bg-transparent">
+      <section className="py-8 sm:py-12 lg:py-14 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           
           {/* Header */}
@@ -392,7 +392,7 @@ export default function QuantumHabitsPage() {
       </section>
 
       {/* DEEP-DIVE WISDOM SECTION: PANCHAKOSHA & CHAKRAS */}
-      <section className="py-16 bg-white border-y border-slate-200/80">
+      <section className="py-8 sm:py-12 lg:py-14 bg-white border-y border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           <div className="text-center max-w-2xl mx-auto space-y-4">
@@ -520,7 +520,7 @@ export default function QuantumHabitsPage() {
       </section>
 
       {/* SECTION 4: 7 DAYS, 7 HABITS, 7 CHANCES TO TRANSFORM */}
-      <section className="py-20 bg-transparent">
+      <section className="py-8 sm:py-12 lg:py-14 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           
           <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -570,7 +570,7 @@ export default function QuantumHabitsPage() {
       </section>
 
       {/* SECTION 5: INSPIRING TRANSFORMATIONS */}
-      <section className="py-20 bg-white border-y border-slate-200">
+      <section className="py-8 sm:py-12 lg:py-14 bg-white border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           
           <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -666,7 +666,7 @@ export default function QuantumHabitsPage() {
       </section>
 
       {/* SECTION 7: BEGIN YOUR TRANSFORMATION TODAY WITH QH-2.PNG */}
-      <section className="py-20 bg-transparent">
+      <section className="py-8 sm:py-12 lg:py-14 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-3xl p-8 sm:p-14 shadow-sm border border-black/5 relative overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -701,10 +701,10 @@ export default function QuantumHabitsPage() {
                 <div className="pt-2">
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#64287F] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-bold text-sm uppercase tracking-wider shadow-lg hover:scale-105 transition-all duration-300 font-body"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-full bg-[#64287F] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-lg hover:scale-105 transition-all duration-300 font-body"
                   >
                     <span>START YOUR JOURNEY</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>

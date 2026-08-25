@@ -57,7 +57,7 @@ export default function HisJourney() {
   ];
 
   return (
-    <section className="py-24 bg-[#FAF5EF] text-[#352043] relative overflow-hidden font-body">
+    <section className="pt-3 pb-3 sm:pt-5 sm:pb-5 bg-[#FAF5EF] text-[#352043] relative overflow-hidden font-body">
       {/* Rich Visible Sandal Background Image Overlay (con-6.webp) */}
       <div
         className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed"
@@ -67,7 +67,7 @@ export default function HisJourney() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6 sm:space-y-8">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">

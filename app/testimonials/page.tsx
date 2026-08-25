@@ -32,12 +32,12 @@ export default function TestimonialsPage() {
 
   return (
     <div className="bg-transparent font-body min-h-screen relative">
-      {/* Fixed Background Image Overlay (con-6.webp on solid cream base blocking bg-6) */}
+      {/* Fixed Background Image Overlay (con-1.webp on solid cream base matching gallery) */}
       <div
-        className="fixed inset-0 -z-40 bg-[#FDFCF9] bg-cover bg-center bg-fixed bg-no-repeat pointer-events-none"
+        className="fixed inset-0 -z-40 bg-[#FAF4EB] bg-cover bg-center bg-fixed bg-no-repeat pointer-events-none"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(253, 252, 249, 0.85), rgba(253, 252, 249, 0.9)), url('/images/con-6.webp')",
+            "linear-gradient(rgba(250, 244, 235, 0.85), rgba(250, 244, 235, 0.9)), url('/images/con-1.webp')",
         }}
       />
 
@@ -126,7 +126,18 @@ export default function TestimonialsPage() {
       </header>
 
       {/* ═══ YOUTUBE VIDEO GALLERY SECTION ═══ */}
-      <section className="py-16 bg-transparent relative overflow-hidden">
+      <section className="py-8 sm:py-12 lg:py-14 relative overflow-hidden bg-[#FAF4EB]">
+        {/* Full Section Background Image (con-1.png matching gallery) */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+          <Image
+            src="/images/con-1.webp"
+            alt="Sacred Testimonials Background Frame"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">

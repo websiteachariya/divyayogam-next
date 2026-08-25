@@ -200,16 +200,25 @@
   color: #FFFFFF;
   font-family: var(--font-body), 'Poppins', sans-serif;
   font-weight: 600;
+  font-size: 0.75rem;
+  padding: 0.55rem 1.25rem;
   border-radius: 999px;
-  box-shadow: 0 12px 30px rgba(90, 45, 130, 0.2);
+  box-shadow: 0 8px 20px rgba(90, 45, 130, 0.2);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 640px) {
+  .btn-primary {
+    font-size: 0.8125rem;
+    padding: 0.6rem 1.5rem;
+  }
 }
 
 .btn-primary:hover {
   background: #C8A34A;
   color: #47206A;
   transform: scale(1.04);
-  box-shadow: 0 15px 35px rgba(200, 163, 74, 0.3);
+  box-shadow: 0 12px 28px rgba(200, 163, 74, 0.3);
 }
 
 .btn-violet {
@@ -217,16 +226,25 @@
   color: #FFFFFF;
   font-family: var(--font-body), 'Poppins', sans-serif;
   font-weight: 600;
+  font-size: 0.75rem;
+  padding: 0.55rem 1.25rem;
   border-radius: 999px;
-  box-shadow: 0 12px 30px rgba(90, 45, 130, 0.2);
+  box-shadow: 0 8px 20px rgba(90, 45, 130, 0.2);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 640px) {
+  .btn-violet {
+    font-size: 0.8125rem;
+    padding: 0.6rem 1.5rem;
+  }
 }
 
 .btn-violet:hover {
   background: #C8A34A;
   color: #47206A;
   transform: scale(1.04);
-  box-shadow: 0 15px 35px rgba(200, 163, 74, 0.3);
+  box-shadow: 0 12px 28px rgba(200, 163, 74, 0.3);
 }
 
 .btn-secondary {
@@ -235,9 +253,18 @@
   color: #47206A;
   font-family: var(--font-body), 'Poppins', sans-serif;
   font-weight: 600;
+  font-size: 0.75rem;
+  padding: 0.5rem 1.2rem;
   border-radius: 999px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
   transition: all 0.3s ease;
+}
+
+@media (min-width: 640px) {
+  .btn-secondary {
+    font-size: 0.8125rem;
+    padding: 0.55rem 1.35rem;
+  }
 }
 
 .btn-secondary:hover {
@@ -292,26 +319,33 @@
 .btn-modern-violet {
   background: #5A2D82;
   color: #ffffff;
-  padding: 0.85rem 2.25rem;
+  padding: 0.6rem 1.6rem;
   border-radius: 9999px;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 25px rgba(90, 45, 130, 0.25);
+  box-shadow: 0 8px 20px rgba(90, 45, 130, 0.25);
   transition: all 0.3s ease;
   border: none;
   text-decoration: none;
+}
+
+@media (min-width: 640px) {
+  .btn-modern-violet {
+    padding: 0.65rem 1.85rem;
+    font-size: 0.8125rem;
+  }
 }
 
 .btn-modern-violet:hover {
   background: #C8A34A;
   color: #47206A;
   transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 15px 35px rgba(200, 163, 74, 0.35);
+  box-shadow: 0 12px 28px rgba(200, 163, 74, 0.35);
 }
 
 /* Pathways to Awakening Styling */

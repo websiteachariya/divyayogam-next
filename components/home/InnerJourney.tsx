@@ -45,7 +45,7 @@ export default function InnerJourney() {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#F8F2E8] relative overflow-hidden font-body min-h-[950px]">
+    <section className="py-8 sm:py-12 lg:py-14 bg-[#F8F2E8] relative overflow-hidden font-body">
 
       {/* 1. Top-Left Golden Sweep Accent (SVG Sweep - Reduced size) */}
       <div className="absolute top-0 left-0 w-[160px] sm:w-[250px] lg:w-[330px] h-[160px] sm:h-[250px] lg:h-[330px] pointer-events-none z-10 opacity-95">
@@ -171,10 +171,10 @@ export default function InnerJourney() {
             <div className="pt-2">
               <Link
                 href="/practices"
-                className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-xs uppercase tracking-widest shadow-lg hover:scale-105 transition-all duration-300 group"
+                className="inline-flex items-center gap-2.5 px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-[11px] sm:text-xs uppercase tracking-widest shadow-lg hover:scale-105 transition-all duration-300 group"
               >
                 <span>BEGIN YOUR DIVYA YOGAM JOURNEY</span>
-                <ArrowRight className="w-4 h-4 text-[#DFC47A] group-hover:text-[#47206A] group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-3.5 h-3.5 text-[#DFC47A] group-hover:text-[#47206A] group-hover:translate-x-1 transition-all" />
               </Link>
             </div>
           </motion.div>

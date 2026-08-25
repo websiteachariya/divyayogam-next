@@ -110,10 +110,10 @@ export default function Founder() {
             <div className="pt-4">
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 group font-body"
+                className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-[11px] sm:text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 group font-body"
               >
                 <span>Know More About Us</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#DFC47A] group-hover:text-[#47206A] transition-colors" />
+                <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#DFC47A] group-hover:text-[#47206A] transition-colors" />
               </Link>
             </div>
           </motion.div>

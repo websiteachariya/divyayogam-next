@@ -31,7 +31,7 @@ export default function Error({
 
         <button
           onClick={() => reset()}
-          className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#5A2D82] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all"
+          className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-full bg-[#5A2D82] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-[11px] sm:text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all"
         >
           <RefreshCw className="w-4 h-4" />
           <span>Try Again</span>

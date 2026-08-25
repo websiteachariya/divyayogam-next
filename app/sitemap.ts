@@ -17,6 +17,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/contact',
     '/privacy-policy',
     '/terms',
+    '/terms-and-conditions',
+    '/refund-policy',
+    '/refund-and-cancellation',
     '/blog',
   ];
 

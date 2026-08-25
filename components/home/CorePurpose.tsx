@@ -39,7 +39,7 @@ const PRINCIPLES = [
 
 export default function CorePurpose() {
   return (
-    <section className="py-20 sm:py-28 bg-[#FAF5EF] relative overflow-hidden font-body border-t border-[#E9DED3]">
+    <section className="py-8 sm:py-12 lg:py-14 bg-[#FAF5EF] relative overflow-hidden font-body border-t border-[#E9DED3]">
       {/* Full Height Sandal Background Image Overlay (con-6.webp) */}
       <div
         className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
