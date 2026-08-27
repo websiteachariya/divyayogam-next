@@ -7,7 +7,7 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[85vh] flex flex-col justify-center pt-28 sm:pt-32 md:pt-36 lg:pt-36 pb-16 sm:pb-20 bg-[#F8F2E8] font-body overflow-hidden">
+    <section className="relative min-h-[85vh] flex flex-col justify-center pt-[88px] sm:pt-[96px] md:pt-[100px] lg:pt-48 pb-16 sm:pb-20 bg-[#F8F2E8] font-body overflow-hidden">
 
       {/* DESKTOP LAYOUT BACKGROUND IMAGE (>= 1024px / lg:) */}
       <div className="hidden lg:block absolute inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">

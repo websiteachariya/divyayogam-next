@@ -127,7 +127,7 @@ export default function RootLayout({
         <ScrollProgress />
         <Navbar />
 
-        <main className="flex-grow w-full max-w-full overflow-x-hidden">{children}</main>
+        <main suppressHydrationWarning className="flex-grow w-full max-w-full overflow-x-hidden">{children}</main>
 
         <Footer />
         <BackToTop />

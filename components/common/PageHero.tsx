@@ -10,9 +10,9 @@ interface PageHeroProps {
 
 export default function PageHero({ badge, title, highlightTitle, description }: PageHeroProps) {
   return (
-    <section className="pt-28 sm:pt-32 md:pt-36 lg:pt-36 pb-14 relative overflow-hidden bg-gradient-to-b from-[#47206A] to-[#352043] text-center border-b border-[#DFC47A]/25">
+    <section className="pt-36 sm:pt-40 md:pt-44 lg:pt-48 pb-10 sm:pb-12 relative overflow-hidden bg-gradient-to-b from-[#47206A] to-[#352043] text-center border-b border-[#DFC47A]/25">
       {/* Background Central Lotus Mandala SVG Overlay */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none">
+      <div className="absolute top-[55%] sm:top-[53%] lg:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none">
         <svg width="450" height="450" viewBox="0 0 100 100" fill="none" stroke="#DFC47A" strokeWidth="0.8">
           <circle cx="50" cy="50" r="45" />
           <circle cx="50" cy="50" r="32" strokeDasharray="2 2" />

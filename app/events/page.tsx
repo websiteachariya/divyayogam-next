@@ -49,7 +49,7 @@ export default function EventsPage() {
     <div className="bg-transparent font-body min-h-screen">
       
       {/* 1. HERO SECTION MATCHING SCREENSHOT MOCKUP (Using event-1.png Background) */}
-      <section className="relative pt-28 sm:pt-32 md:pt-36 lg:pt-36 pb-24 sm:pb-32 overflow-hidden font-body bg-[#2B1439] text-white">
+      <section className="relative pt-36 sm:pt-40 md:pt-44 lg:pt-48 pb-14 sm:pb-18 lg:pb-20 overflow-hidden font-body bg-[#2B1439] text-white">
         
         {/* Background Sacred Mountain Sunset Image: event-1.png */}
         <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">

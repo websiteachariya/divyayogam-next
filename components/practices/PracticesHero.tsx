@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 export default function PracticesHero() {
   return (
     <section
-      className="relative bg-cover bg-center text-white overflow-hidden pt-28 sm:pt-32 md:pt-36 lg:pt-36 pb-24"
+      className="relative bg-cover bg-center text-white overflow-hidden pt-36 sm:pt-40 md:pt-44 lg:pt-48 pb-14 sm:pb-18 lg:pb-20"
       style={{
         backgroundImage:
           "linear-gradient(to bottom, rgba(71, 32, 106, 0.9) 0%, rgba(53, 32, 67, 0.92) 60%, rgba(43, 20, 62, 0.95) 100%), url('/images/bg-6.webp')",

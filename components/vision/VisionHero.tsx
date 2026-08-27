@@ -7,7 +7,7 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function VisionHero() {
   return (
-    <section className="relative w-full min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden font-body pt-28 sm:pt-32 md:pt-36 lg:pt-36 pb-24 sm:pb-32 lg:pb-36">
+    <section className="relative w-full min-h-[75vh] sm:min-h-[80vh] flex items-center justify-center overflow-hidden font-body pt-36 sm:pt-40 md:pt-44 lg:pt-48 pb-20 sm:pb-24 lg:pb-28">
       {/* Background Image - Full Width Hero */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -102,3 +102,7 @@ export default function VisionHero() {
     </section>
   );
 }
+
+
+
+

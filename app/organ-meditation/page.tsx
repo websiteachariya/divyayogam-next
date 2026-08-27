@@ -180,7 +180,7 @@ export default function OrganMeditationPage() {
 
       {/* HERO SECTION (EXACT MATCHING QUANTUM HABITS BACKGROUND) */}
       <header
-        className="relative bg-gradient-to-br from-[#401952] via-[#64287F] to-[#2E0F3D] pt-32 pb-36 overflow-hidden text-white bg-cover bg-center"
+        className="relative bg-gradient-to-br from-[#401952] via-[#64287F] to-[#2E0F3D] pt-36 sm:pt-40 md:pt-44 lg:pt-48 pb-20 sm:pb-24 overflow-hidden text-white bg-cover bg-center"
         style={{
           backgroundImage:
             "linear-gradient(135deg, rgba(64, 25, 82, 0.95) 0%, rgba(100, 40, 127, 0.96) 60%, rgba(46, 15, 61, 0.98) 100%), url('/images/qh-3.webp')",
