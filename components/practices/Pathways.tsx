@@ -152,6 +152,15 @@ export default function Pathways() {
   return (
     <section id="pathways" className="pathways-section py-8 sm:py-12 lg:py-14 font-body relative z-10">
 
+      {/* Rich Sandal Background Image Overlay (con-6.webp) matching About Page */}
+      <div
+        className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+        }}
+      />
+
       {/* Sacred Geometry Mandalas in Background */}
       <div className="absolute top-1/2 -right-28 -translate-y-1/2 opacity-20 pointer-events-none hidden lg:block">
         <svg width="550" height="550" viewBox="0 0 100 100" fill="none" stroke="#C8A34A" strokeWidth="0.5">
@@ -171,22 +180,25 @@ export default function Pathways() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-14"
+          className="text-center max-w-3xl mx-auto mb-14 space-y-3 relative z-10"
         >
-          <span className="pathways-eyebrow">Sacred Journey</span>
-          <h2 className="pathways-title mt-2">
-            Pathways to <em>Awakening</em>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border-2 border-[#DFC47A] text-[#8C5D00] text-xs font-extrabold uppercase tracking-widest shadow-sm">
+            <span className="text-[#8C5D00]">❖</span>
+            <span>SACRED JOURNEY</span>
+          </div>
+
+          <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1A072A] leading-tight tracking-tight mt-2">
+            Pathways to <span className="text-[#8C5D00] italic font-serif">Awakening</span>
           </h2>
-          <p className="pathways-subtitle">
+
+          <p className="font-body text-base sm:text-lg text-[#4A3B56] font-semibold max-w-2xl mx-auto leading-relaxed pt-1">
             A progressive seven-step journey of inner purification, energetic alignment, and conscious evolution.
           </p>
-          <div className="pathways-divider">
-            <span />
-            <svg viewBox="0 0 24 24" fill="none" className="shrink-0 w-6 h-6">
-              <circle cx="12" cy="12" r="5" fill="#d4af36" />
-              <path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="#d4af36" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-            <span />
+
+          <div className="flex items-center justify-center gap-3 pt-3">
+            <div className="h-[1.5px] w-16 bg-gradient-to-r from-transparent via-[#8C5D00] to-transparent" />
+            <span className="text-[#8C5D00] text-xs">❖</span>
+            <div className="h-[1.5px] w-16 bg-gradient-to-r from-transparent via-[#8C5D00] to-transparent" />
           </div>
         </motion.div>
 

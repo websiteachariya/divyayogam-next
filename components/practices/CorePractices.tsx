@@ -44,8 +44,16 @@ export default function CorePractices() {
   ];
 
   return (
-    <section className="py-8 sm:py-12 lg:py-14 bg-transparent font-body relative z-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-8 sm:py-12 lg:py-14 font-body relative z-10 overflow-hidden">
+      {/* Rich Sandal Background Image Overlay (con-6.webp) matching About Page */}
+      <div
+        className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+        }}
+      />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Section Header */}
         <motion.div

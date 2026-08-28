@@ -12,6 +12,15 @@ export const metadata: Metadata = {
 export default function PracticesPage() {
   return (
     <div className="bg-transparent font-body min-h-screen">
+      {/* Fixed Background Image Overlay (con-6.webp Sandal Texture matching About Page) */}
+      <div
+        suppressHydrationWarning
+        className="fixed inset-0 -z-40 bg-[#FAF5EF] bg-cover bg-center bg-fixed bg-no-repeat pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+        }}
+      />
       {/* Vision Hero & Awakening Video Section */}
       <PracticesHero />
 

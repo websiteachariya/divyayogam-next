@@ -64,7 +64,7 @@ export default function InnerJourney() {
         </svg>
       </div>
 
-      {/* 2. Bottom-Right Golden Decorative Watermark (design-1.png) - Moved a little bit up */}
+      {/* 2. Bottom-Right Golden Decorative Watermark (design-1.webp) - Moved a little bit up */}
       <div className="absolute bottom-6 sm:bottom-12 lg:bottom-16 -right-6 sm:-right-8 lg:-right-10 w-[350px] sm:w-[480px] lg:w-[620px] h-[350px] sm:h-[480px] lg:h-[620px] pointer-events-none z-0 opacity-80">
         <Image
           src="/images/design-1.webp"
@@ -79,7 +79,7 @@ export default function InnerJourney() {
         {/* Main Section Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-4">
 
-          {/* Left Column: Curved Arch Image Shape featuring design-3.png */}
+          {/* Left Column: Curved Arch Image Shape featuring design-3.webp */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}

@@ -26,7 +26,17 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-transparent font-body">
+    <div className="bg-transparent font-body min-h-screen relative overflow-x-hidden">
+      {/* Fixed Background Image Overlay (con-6.webp Sandal Texture matching About Page) */}
+      <div
+        suppressHydrationWarning
+        className="fixed inset-0 -z-40 bg-[#FAF5EF] bg-cover bg-center bg-fixed bg-no-repeat pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+        }}
+      />
+
       {/* HERO SECTION MATCHING SCIENCE & TESTIMONIALS DESIGN */}
       <header className="relative bg-gradient-to-b from-[#351A4A] via-[#2A133B] to-[#200D2E] pt-36 sm:pt-40 md:pt-44 lg:pt-48 pb-14 sm:pb-18 lg:pb-20 text-center text-white overflow-hidden">
         {/* Left Side Accent Image (test-1.webp) */}
@@ -111,17 +121,15 @@ export default function ContactPage() {
       </header>
 
       {/* Main Contact Section */}
-      <section className="py-8 sm:py-12 lg:py-14 relative overflow-hidden bg-[#FAF4EB]">
-        {/* Background Image (con-5.png) */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
-          <Image
-            src="/images/con-5.webp"
-            alt="Contact Page Background Frame"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-        </div>
+      <section className="py-8 sm:py-12 lg:py-14 relative overflow-hidden">
+        {/* Rich Sandal Background Image Overlay (con-6.webp) matching About Page */}
+        <div
+          className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+          }}
+        />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 

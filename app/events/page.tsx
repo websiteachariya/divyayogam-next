@@ -1,3 +1,4 @@
+// Divya Yogam Sacred Events Page
 'use client';
 
 import { motion } from 'framer-motion';
@@ -46,83 +47,117 @@ export default function EventsPage() {
   ];
 
   return (
-    <div className="bg-transparent font-body min-h-screen">
-      
-      {/* 1. HERO SECTION MATCHING SCREENSHOT MOCKUP (Using event-1.png Background) */}
-      <section className="relative pt-36 sm:pt-40 md:pt-44 lg:pt-48 pb-14 sm:pb-18 lg:pb-20 overflow-hidden font-body bg-[#2B1439] text-white">
+    <div className="bg-transparent font-body min-h-screen relative overflow-x-hidden">
+      {/* Fixed Background Image Overlay (con-6.webp Sandal Texture matching About Page) */}
+      <div
+        suppressHydrationWarning
+        className="fixed inset-0 -z-40 bg-[#FAF5EF] bg-cover bg-center bg-fixed bg-no-repeat pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+        }}
+      />
+
+      {/* 1. CENTERED HERO BANNER WITH LEFT & RIGHT FLORAL ORNAMENTS (MATCHING BLOG & CONTACT DESIGN) */}
+      <header className="relative bg-[#1A072A] text-white overflow-hidden pt-28 sm:pt-32 lg:pt-36 pb-10 sm:pb-12 lg:pb-14 flex flex-col items-center justify-center text-center font-body">
         
-        {/* Background Sacred Mountain Sunset Image: event-1.png */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
+        {/* Left Side Accent Image (test-1.webp) - Vertically Centered */}
+        <div className="absolute top-[55%] sm:top-[53%] lg:top-1/2 left-0 -translate-y-1/2 opacity-70 sm:opacity-80 lg:opacity-90 pointer-events-none z-10 w-24 h-24 min-[420px]:w-32 min-[420px]:h-32 sm:w-44 sm:h-44 md:w-60 md:h-60 lg:w-[340px] lg:h-[340px] xl:w-[460px] xl:h-[460px] 2xl:w-[540px] 2xl:h-[540px] -translate-x-1/4 sm:translate-x-0 mix-blend-screen transition-all duration-300">
           <Image
-            src="/images/event-1.webp"
-            alt="Sacred Mountain Sunset Background"
+            src="/images/test-1.webp"
+            alt="Left Golden Sacred Ornament"
             fill
-            className="object-cover object-center opacity-65"
+            quality={100}
             priority
+            unoptimized
+            className="object-contain object-left drop-shadow-[0_0_25px_rgba(223,196,122,0.5)]"
           />
-          {/* Subtle gradient overlay to match mockup gold/purple lighting */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#2B1439]/60 via-[#2B1439]/30 to-[#2B1439]" />
         </div>
 
+        {/* Right Side Accent Image (test-1.webp mirrored) - Vertically Centered */}
+        <div className="absolute top-[55%] sm:top-[53%] lg:top-1/2 right-0 -translate-y-1/2 opacity-70 sm:opacity-80 lg:opacity-90 pointer-events-none z-10 w-24 h-24 min-[420px]:w-32 min-[420px]:h-32 sm:w-44 sm:h-44 md:w-60 md:h-60 lg:w-[340px] lg:h-[340px] xl:w-[460px] xl:h-[460px] 2xl:w-[540px] 2xl:h-[540px] translate-x-1/4 sm:translate-x-0 scale-x-[-1] mix-blend-screen transition-all duration-300">
+          <Image
+            src="/images/test-1.webp"
+            alt="Right Golden Sacred Ornament"
+            fill
+            quality={100}
+            priority
+            unoptimized
+            className="object-contain object-right drop-shadow-[0_0_25px_rgba(223,196,122,0.5)]"
+          />
+        </div>
 
+        {/* Center Sacred Geometry Mandala Background Overlay */}
+        <div className="absolute inset-0 opacity-15 pointer-events-none flex items-center justify-center z-0">
+          <svg width="650" height="650" viewBox="0 0 200 200" fill="none" stroke="#DFC47A" strokeWidth="0.5">
+            <circle cx="100" cy="100" r="95" strokeDasharray="3 3" />
+            <circle cx="100" cy="100" r="80" />
+            <circle cx="100" cy="100" r="60" />
+            <path d="M100 5 L100 195 M5 100 L195 100" strokeDasharray="2 2" />
+            <polygon points="100,20 170,140 30,140" strokeWidth="0.4" />
+            <polygon points="100,180 170,60 30,60" strokeWidth="0.4" />
+          </svg>
+        </div>
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 text-center space-y-5">
+        {/* Hero Content Container */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-20 space-y-4 pt-2 sm:pt-4">
           
-          {/* Eyebrow Badge */}
+          {/* Centered Eyebrow Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex flex-col items-center gap-1.5"
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-[#DFC47A]/50 text-[#DFC47A] text-xs font-semibold uppercase tracking-widest backdrop-blur-md shadow-md"
           >
-            <div className="w-8 h-8 rounded-full bg-[#C8A34A]/20 border border-[#DFC47A]/50 flex items-center justify-center text-[#DFC47A] shadow-sm mb-1 backdrop-blur-sm">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path d="M12 3C10 7 6 10 2 12C6 14 10 17 12 21C14 17 18 14 22 12C18 10 14 7 12 3Z" fill="rgba(200, 163, 74, 0.3)" />
-              </svg>
-            </div>
-            <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#DFC47A] drop-shadow-sm">
-              GATHERINGS &amp; RETREATS
-            </span>
+            <span className="text-[#DFC47A]">❖</span>
+            <span>GATHERINGS &amp; RETREATS</span>
           </motion.div>
 
-          {/* Main Title matching Screenshot */}
+          {/* Centered Large Headline */}
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.15] text-white drop-shadow-lg"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight"
           >
-            Upcoming Sacred <br className="hidden sm:inline" />
-            <span className="font-serif italic font-normal text-[#DFC47A] drop-shadow-[0_2px_12px_rgba(223,196,122,0.5)]">
-              Events &amp; Initiations
-            </span>
+            Upcoming Sacred <span className="text-[#DFC47A] italic font-serif font-normal">Events &amp; Initiations</span>
           </motion.h1>
 
-          {/* Subtitle Description matching Screenshot */}
+          {/* Centered Subtitle */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-[#F8F2E8] text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto italic font-body drop-shadow-md"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="font-serif italic text-base sm:text-lg text-[#F8F2E8]/90 max-w-2xl mx-auto leading-relaxed"
           >
             Join Arawindhan Ji and the Divya Yogam global community for immersive meditation retreats, organ rejuvenation intensives, and sacred celebrations.
           </motion.p>
 
-        </div>
-      </section>
+          {/* Centered Gold Diamond Divider */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex items-center justify-center gap-3 pt-2"
+          >
+            <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-[#DFC47A]" />
+            <span className="text-[#DFC47A] text-xs">❖</span>
+            <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-[#DFC47A]" />
+          </motion.div>
 
-      {/* 2. EVENTS LIST GRID MATCHING SCREENSHOT MOCKUP WITH CON-5.PNG BACKGROUND */}
-      <section className="py-8 sm:py-12 lg:py-14 relative overflow-hidden bg-[#FAF4EB]">
-        {/* Background Image (con-5.png) */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
-          <Image
-            src="/images/con-5.webp"
-            alt="Events Page Background Frame"
-            fill
-            className="object-cover object-center"
-            priority
-          />
         </div>
+      </header>
+
+      {/* 2. EVENTS LIST GRID MATCHING SCREENSHOT MOCKUP WITH CON-6.WEBP BACKGROUND */}
+      <section className="py-8 sm:py-12 lg:py-14 relative overflow-hidden">
+        {/* Rich Sandal Background Image Overlay (con-6.webp) matching About Page */}
+        <div
+          className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+          }}
+        />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12 relative z-10">
           {upcomingEvents.map((event, idx) => (

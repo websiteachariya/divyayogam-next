@@ -35,19 +35,20 @@ export default function SciencesPage() {
 
   return (
     <div className="bg-transparent font-body min-h-screen relative">
-      {/* Fixed Background Image Overlay (con-6.webp on solid cream base) */}
+      {/* Fixed Background Image Overlay (con-6.webp Sandal Texture matching About Page) */}
       <div
-        className="fixed inset-0 -z-40 bg-[#FDFCF9] bg-cover bg-center bg-fixed bg-no-repeat pointer-events-none"
+        suppressHydrationWarning
+        className="fixed inset-0 -z-40 bg-[#FAF5EF] bg-cover bg-center bg-fixed bg-no-repeat pointer-events-none"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(253, 252, 249, 0.85), rgba(253, 252, 249, 0.9)), url('/images/con-6.webp')",
+            "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
         }}
       />
 
       {/* ═══ HERO SECTION ═══ */}
-      <header className="relative bg-gradient-to-b from-[#351A4A] via-[#2A133B] to-[#200D2E] pt-36 sm:pt-40 md:pt-44 lg:pt-48 pb-14 sm:pb-18 lg:pb-20 text-center text-white overflow-hidden">
+      <header className="relative bg-[#1A072A] text-white overflow-hidden pt-36 sm:pt-40 md:pt-44 lg:pt-48 pb-14 sm:pb-18 lg:pb-20 text-center font-body">
         {/* Left Side Accent Image (test-1.webp) */}
-        <div className="absolute top-[55%] sm:top-[53%] lg:top-1/2 left-0 -translate-y-1/2 opacity-60 sm:opacity-70 md:opacity-75 lg:opacity-80 xl:opacity-85 pointer-events-none w-20 h-20 min-[420px]:w-28 min-[420px]:h-28 sm:w-36 sm:h-36 md:w-52 md:h-52 lg:w-[320px] lg:h-[320px] xl:w-[440px] xl:h-[440px] 2xl:w-[520px] 2xl:h-[520px] -translate-x-1/4 sm:translate-x-0 transition-all duration-300">
+        <div className="absolute top-[55%] sm:top-[53%] lg:top-1/2 left-0 -translate-y-1/2 opacity-60 sm:opacity-70 md:opacity-75 lg:opacity-80 xl:opacity-85 pointer-events-none w-20 h-20 min-[420px]:w-28 min-[420px]:h-28 sm:w-36 sm:h-36 md:w-52 md:h-52 lg:w-[320px] lg:h-[320px] xl:w-[440px] xl:h-[440px] 2xl:w-[520px] 2xl:h-[520px] -translate-x-1/4 sm:translate-x-0 mix-blend-screen transition-all duration-300">
           <Image
             src="/images/test-1.webp"
             alt="Left Sacred Ornament"
@@ -58,7 +59,7 @@ export default function SciencesPage() {
         </div>
 
         {/* Right Side Accent Image (test-1.webp mirrored) */}
-        <div className="absolute top-[55%] sm:top-[53%] lg:top-1/2 right-0 -translate-y-1/2 opacity-60 sm:opacity-70 md:opacity-75 lg:opacity-80 xl:opacity-85 pointer-events-none w-20 h-20 min-[420px]:w-28 min-[420px]:h-28 sm:w-36 sm:h-36 md:w-52 md:h-52 lg:w-[320px] lg:h-[320px] xl:w-[440px] xl:h-[440px] 2xl:w-[520px] 2xl:h-[520px] translate-x-1/4 sm:translate-x-0 scale-x-[-1] transition-all duration-300">
+        <div className="absolute top-[55%] sm:top-[53%] lg:top-1/2 right-0 -translate-y-1/2 opacity-60 sm:opacity-70 md:opacity-75 lg:opacity-80 xl:opacity-85 pointer-events-none w-20 h-20 min-[420px]:w-28 min-[420px]:h-28 sm:w-36 sm:h-36 md:w-52 md:h-52 lg:w-[320px] lg:h-[320px] xl:w-[440px] xl:h-[440px] 2xl:w-[520px] 2xl:h-[520px] translate-x-1/4 sm:translate-x-0 scale-x-[-1] mix-blend-screen transition-all duration-300">
           <Image
             src="/images/test-1.webp"
             alt="Right Sacred Ornament"
@@ -121,15 +122,23 @@ export default function SciencesPage() {
 
         {/* Curved Bottom Edge Divider */}
         <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
-          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-10 text-[#FDFCF9]" fill="currentColor">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-10 text-[#FAF5EF]" fill="currentColor">
             <path d="M0,0 C300,50 900,50 1200,0 L1200,120 L0,120 Z" />
           </svg>
         </div>
       </header>
 
       {/* ═══ SECTION 1: SCIENTIFIC VS SPIRITUAL ═══ */}
-      <section className="py-8 sm:py-12 lg:py-14 bg-transparent relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      <section className="py-8 sm:py-12 lg:py-14 bg-transparent relative z-10 overflow-hidden">
+        {/* Rich Sandal Background Image Overlay (con-6.webp) matching About Page */}
+        <div
+          className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+          }}
+        />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 relative z-10">
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}

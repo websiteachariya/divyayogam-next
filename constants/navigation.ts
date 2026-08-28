@@ -24,9 +24,26 @@ export const NAV_LINKS: NavItem[] = [
       { name: 'Quantum Habits', path: '/quantum-habits' },
     ],
   },
-  { name: 'Sciences', path: '/sciences' },
+
+  {
+  name: 'Sciences',
+  path: '/sciences',
+  children: [
+    { name: 'Sciences Overview', path: '/sciences' },
+    { name: 'Blog', path: '/blog' },
+  ],
+},
+
+
   { name: 'Events', path: '/events' },
-  { name: 'Transformation', path: '/transformation' },
+  {
+    name: 'Transformation',
+    path: '/transformation',
+    children: [
+      { name: 'Transformation', path: '/transformation' },
+      { name: 'Beneficiaries', path: '/beneficiaries' },
+    ],
+  },
   {
     name: 'Gallery',
     path: '/gallery',

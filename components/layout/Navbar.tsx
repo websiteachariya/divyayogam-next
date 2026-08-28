@@ -1,3 +1,4 @@
+// Divya Yogam Header Navbar Component with Active Indicator Alignment
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -8,6 +9,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowRight, ChevronDown, Music, Headphones, ExternalLink } from 'lucide-react';
 import { NAV_LINKS, NavItem } from '@/constants/navigation';
 import TopBar from './TopBar';
+
+// Navigation layout component
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -105,19 +108,21 @@ export default function Navbar() {
                     <button
                       aria-expanded={activeDropdown === link.name}
                       aria-label={`Toggle ${link.name} menu`}
-                      className={`inline-flex items-center gap-1 text-[11px] lg:text-[12px] xl:text-[13px] font-semibold uppercase tracking-wider transition-all duration-300 py-1 whitespace-nowrap leading-none ${parentActive
+                      className={`inline-flex items-center gap-1 text-[11px] lg:text-[12px] xl:text-[13px] font-semibold uppercase tracking-wider transition-all duration-300 whitespace-nowrap leading-none ${parentActive
                           ? 'text-[#C8A34A] font-bold'
                           : 'text-[#47206A] group-hover:text-[#C8A34A]'
                         }`}
                     >
-                      <span>{link.name}</span>
+                      <span className="relative py-1">
+                        {link.name}
+                        {parentActive && (
+                          <motion.div
+                            layoutId="activeNavIndicator"
+                            className="absolute -bottom-1.5 left-0 right-0 h-0.5 bg-[#C8A34A] rounded-full shadow-[0_0_6px_rgba(200,163,74,0.6)]"
+                          />
+                        )}
+                      </span>
                       <ChevronDown className="w-3.5 h-3.5 text-[#C8A34A] group-hover:rotate-180 transition-transform duration-300 shrink-0" />
-                      {parentActive && (
-                        <motion.div
-                          layoutId="activeNavIndicator"
-                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#C8A34A] rounded-full shadow-[0_0_6px_rgba(200,163,74,0.6)]"
-                        />
-                      )}
                     </button>
 
                     {/* Dropdown Card */}
@@ -148,18 +153,20 @@ export default function Navbar() {
                 <Link
                   key={link.path}
                   href={link.path || '#'}
-                  className={`inline-flex items-center text-[11px] lg:text-[12px] xl:text-[13px] font-semibold uppercase tracking-wider transition-all duration-300 relative py-2 whitespace-nowrap leading-none ${parentActive
+                  className={`inline-flex items-center text-[11px] lg:text-[12px] xl:text-[13px] font-semibold uppercase tracking-wider transition-all duration-300 py-2 whitespace-nowrap leading-none ${parentActive
                       ? 'text-[#C8A34A] font-bold'
                       : 'text-[#47206A] hover:text-[#C8A34A]'
                     }`}
                 >
-                  {link.name}
-                  {parentActive && (
-                    <motion.div
-                      layoutId="activeNavIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#C8A34A] rounded-full shadow-[0_0_6px_rgba(200,163,74,0.6)]"
-                    />
-                  )}
+                  <span className="relative py-1">
+                    {link.name}
+                    {parentActive && (
+                      <motion.div
+                        layoutId="activeNavIndicator"
+                        className="absolute -bottom-1.5 left-0 right-0 h-0.5 bg-[#C8A34A] rounded-full shadow-[0_0_6px_rgba(200,163,74,0.6)]"
+                      />
+                    )}
+                  </span>
                 </Link>
               );
             })}
@@ -249,7 +256,7 @@ export default function Navbar() {
               onClick={(e) => e.stopPropagation()}
               className="w-full max-w-sm sm:max-w-md bg-[#FAF7F2] rounded-3xl border-2 border-[#DFC47A] shadow-2xl p-4 sm:p-6 my-1 sm:my-3 text-center relative overflow-y-auto max-h-[calc(100vh-80px)] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
             >
-              {/* Rich Visible Background Image Layer (nav-1.png) */}
+              {/* Rich Visible Background Image Layer (nav-1.webp) */}
               <div
                 className="absolute inset-0 opacity-90 pointer-events-none bg-cover bg-center bg-no-repeat z-0"
                 style={{ backgroundImage: "url('/images/nav-2.webp')" }}
