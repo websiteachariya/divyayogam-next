@@ -107,7 +107,7 @@ export default function GalleryPage() {
       {/* 1. SACRED PHOTO GALLERY HERO HEADER (FULLY RESPONSIVE & REDUCED VERTICAL GAP) */}
       <section className="relative pt-36 sm:pt-40 md:pt-44 lg:pt-48 pb-14 sm:pb-18 lg:pb-20 overflow-hidden font-body bg-[#2B1439] text-white">
 
-        {/* Background Image Layer (con-1.png) */}
+        {/* Background Image Layer (con-1.webp) */}
         <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden opacity-25 mix-blend-overlay z-0">
           <Image
             src="/images/con-1.webp"
@@ -196,7 +196,7 @@ export default function GalleryPage() {
             Glimpses of spiritual evolution, candlelight meditation gatherings, and ashram life.
           </motion.p>
 
-          {/* Glowing Golden Lotus Emblem at Bottom Center (gallery-3.png) */}
+          {/* Glowing Golden Lotus Emblem at Bottom Center (gallery-3.webp) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -234,9 +234,9 @@ export default function GalleryPage() {
 
       </section>
 
-      {/* 2. GALLERY GRID (FULLY RESPONSIVE 1/2/3 COLUMNS WITH CON-1.PNG BACKGROUND) */}
+      {/* 2. GALLERY GRID (FULLY RESPONSIVE 1/2/3 COLUMNS WITH CON-1.WEBP BACKGROUND) */}
       <section className="py-8 sm:py-12 lg:py-14 relative z-20 overflow-hidden bg-[#FAF4EB]">
-        {/* Full Section Background Image (con-1.png) */}
+        {/* Full Section Background Image (con-1.webp) */}
         <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
           <Image
             src="/images/con-1.webp"

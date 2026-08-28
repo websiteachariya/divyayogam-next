@@ -127,7 +127,7 @@ export default function TestimonialsPage() {
 
       {/* ═══ YOUTUBE VIDEO GALLERY SECTION ═══ */}
       <section className="py-8 sm:py-12 lg:py-14 relative overflow-hidden bg-[#FAF4EB]">
-        {/* Full Section Background Image (con-1.png matching gallery) */}
+        {/* Full Section Background Image (con-1.webp matching gallery) */}
         <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
           <Image
             src="/images/con-1.webp"

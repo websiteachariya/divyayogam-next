@@ -117,7 +117,7 @@ export default function Experience() {
             </motion.div>
           </div>
 
-          {/* Right Section: Sacred Diyas & Lotus Photo (exp-2.png) */}
+          {/* Right Section: Sacred Diyas & Lotus Photo (exp-2.webp) */}
           <div className="lg:col-span-4 relative h-64 sm:h-72 lg:h-full min-h-[280px] w-full overflow-hidden">
             <Image
               src="/images/exp-2.webp"

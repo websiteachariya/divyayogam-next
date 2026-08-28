@@ -33,7 +33,7 @@ export default function ShambalaApp() {
   return (
     <section className="py-10 sm:py-14 lg:py-16 bg-gradient-to-b from-[#22122F] via-[#301840] to-[#22122F] text-white relative overflow-hidden font-body">
       
-      {/* Background Image Layer (app-bg.png) */}
+      {/* Background Image Layer (app-bg.webp) */}
       <div className="absolute inset-0 opacity-25 pointer-events-none z-0">
         <Image
           src="/images/app-bg.webp"
