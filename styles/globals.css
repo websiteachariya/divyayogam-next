@@ -175,6 +175,7 @@
   color: #C8A34A;
   background: linear-gradient(135deg, #C8A34A 0%, #DFC47A 50%, #C8A34A 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -182,6 +183,7 @@
   color: #352043;
   background: linear-gradient(135deg, #47206A 0%, #C8A34A 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -381,6 +383,7 @@
   color: #8C5D00;
   background: linear-gradient(135deg, #8C5D00 0%, #B6872B 50%, #8C5D00 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 

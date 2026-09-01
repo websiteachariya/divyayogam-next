@@ -3,6 +3,7 @@ import '@/styles/globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import BackToTop from '@/components/layout/BackToTop';
+import WhatsAppButton from '@/components/layout/WhatsAppButton';
 import ScrollProgress from '@/components/layout/ScrollProgress';
 import { Manrope, DM_Serif_Display, Cormorant_Garamond } from 'next/font/google';
 
@@ -131,6 +132,7 @@ export default function RootLayout({
 
         <Footer />
         <BackToTop />
+        <WhatsAppButton />
       </body>
     </html>
   );
