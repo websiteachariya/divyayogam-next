@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -21,14 +21,23 @@ import {
 } from 'lucide-react';
 
 export default function TransformationContent() {
-  // Video Play / Sound States
+  // Video Play / Sound States (Default to muted so videos start silently without conflicting audio)
   const [isPlaying1, setIsPlaying1] = useState(false);
   const [isPlaying2, setIsPlaying2] = useState(false);
-  const [isMuted1, setIsMuted1] = useState(false);
-  const [isMuted2, setIsMuted2] = useState(false);
+  const [isMuted1, setIsMuted1] = useState(true);
+  const [isMuted2, setIsMuted2] = useState(true);
 
   const videoRef1 = useRef<HTMLVideoElement>(null);
   const videoRef2 = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef1.current) {
+      videoRef1.current.muted = isMuted1;
+    }
+    if (videoRef2.current) {
+      videoRef2.current.muted = isMuted2;
+    }
+  }, [isMuted1, isMuted2]);
 
   const handlePlayVideo1 = () => {
     setIsPlaying1(true);
@@ -52,17 +61,37 @@ export default function TransformationContent() {
 
   const toggleMute1 = (e: React.MouseEvent) => {
     e.stopPropagation();
+    const nextMute1 = !isMuted1;
+    setIsMuted1(nextMute1);
+
     if (videoRef1.current) {
-      videoRef1.current.muted = !isMuted1;
-      setIsMuted1(!isMuted1);
+      videoRef1.current.muted = nextMute1;
+    }
+
+    // If enabling sound on Video 1, mute Video 2 so only one video plays sound at a time
+    if (!nextMute1) {
+      setIsMuted2(true);
+      if (videoRef2.current) {
+        videoRef2.current.muted = true;
+      }
     }
   };
 
   const toggleMute2 = (e: React.MouseEvent) => {
     e.stopPropagation();
+    const nextMute2 = !isMuted2;
+    setIsMuted2(nextMute2);
+
     if (videoRef2.current) {
-      videoRef2.current.muted = !isMuted2;
-      setIsMuted2(!isMuted2);
+      videoRef2.current.muted = nextMute2;
+    }
+
+    // If enabling sound on Video 2, mute Video 1 so only one video plays sound at a time
+    if (!nextMute2) {
+      setIsMuted1(true);
+      if (videoRef1.current) {
+        videoRef1.current.muted = true;
+      }
     }
   };
 
@@ -148,9 +177,10 @@ export default function TransformationContent() {
                   ref={videoRef1}
                   autoPlay
                   loop
-                  muted={isMuted1}
+                  muted
                   controls
                   playsInline
+                  suppressHydrationWarning
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 >
                   <source src="https://res.cloudinary.com/y2q2jsq0/video/upload/v1782989219/080A9552_vliae1.mp4" type="video/mp4" />
@@ -207,9 +237,10 @@ export default function TransformationContent() {
                   ref={videoRef2}
                   autoPlay
                   loop
-                  muted={isMuted2}
+                  muted
                   controls
                   playsInline
+                  suppressHydrationWarning
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 >
                   <source src="https://res.cloudinary.com/y2q2jsq0/video/upload/v1782989204/080A9562_tcmlhv.mp4" type="video/mp4" />

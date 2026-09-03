@@ -13,6 +13,8 @@ import {
   Quote,
   CheckCircle2,
   UploadCloud,
+  Sun,
+  Calendar,
 } from 'lucide-react';
 
 export default function OrganMeditationPage() {
@@ -92,7 +94,7 @@ export default function OrganMeditationPage() {
     {
       day: 'MONDAY',
       organ: 'Lungs • Metal',
-      color: 'bg-[#64287F]',
+      color: 'bg-[#352043]',
       light: 'White Light',
       theme: 'Theme: Courage & New Beginnings',
       release: 'Sadness, Depression',
@@ -101,7 +103,7 @@ export default function OrganMeditationPage() {
     {
       day: 'TUESDAY',
       organ: 'Heart • Fire',
-      color: 'bg-[#B91C1C]',
+      color: 'bg-[#7F1D1D]',
       light: 'Red Light',
       theme: 'Theme: Love & Happiness',
       release: 'Hatred, Cruelty',
@@ -110,7 +112,7 @@ export default function OrganMeditationPage() {
     {
       day: 'WEDNESDAY',
       organ: 'Spleen • Earth',
-      color: 'bg-[#A16207]',
+      color: 'bg-[#78350F]',
       light: 'Yellow Light',
       theme: 'Theme: Trust & Stability',
       release: 'Worry, Anxiety',
@@ -119,7 +121,7 @@ export default function OrganMeditationPage() {
     {
       day: 'THURSDAY',
       organ: 'Liver • Wood',
-      color: 'bg-[#15803D]',
+      color: 'bg-[#14532D]',
       light: 'Green Light',
       theme: 'Theme: Kindness & Patience',
       release: 'Anger, Jealousy',
@@ -128,7 +130,7 @@ export default function OrganMeditationPage() {
     {
       day: 'FRIDAY',
       organ: 'Kidneys • Water',
-      color: 'bg-[#1D4ED8]',
+      color: 'bg-[#1E3A8A]',
       light: 'Blue Light',
       theme: 'Theme: Confidence & Strength',
       release: 'Fear, Insecurity',
@@ -170,15 +172,18 @@ export default function OrganMeditationPage() {
   ];
 
   return (
-    <div className="bg-transparent font-body min-h-screen text-[#475569] relative">
+    <div className="bg-transparent font-body min-h-screen relative overflow-x-hidden">
       
-      {/* Fixed Full-Screen Background Image bg-6.webp Overlay */}
+      {/* Fixed Background Image Overlay (con-6.webp Sandal Texture matching Contact & Wellness Page) */}
       <div
-        className="fixed inset-0 -z-40 bg-cover bg-center bg-fixed bg-no-repeat pointer-events-none opacity-20"
-        style={{ backgroundImage: "url('/images/bg-6.webp')" }}
+        className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+        }}
       />
 
-      {/* HERO SECTION (EXACT MATCHING QUANTUM HABITS BACKGROUND) */}
+      {/* HERO SECTION */}
       <header
         className="relative bg-gradient-to-br from-[#401952] via-[#64287F] to-[#2E0F3D] pt-36 sm:pt-40 md:pt-44 lg:pt-48 pb-20 sm:pb-24 overflow-hidden text-white bg-cover bg-center"
         style={{
@@ -186,6 +191,7 @@ export default function OrganMeditationPage() {
             "linear-gradient(135deg, rgba(64, 25, 82, 0.95) 0%, rgba(100, 40, 127, 0.96) 60%, rgba(46, 15, 61, 0.98) 100%), url('/images/qh-3.webp')",
         }}
       >
+       
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 text-center lg:text-left">
             
@@ -233,34 +239,30 @@ export default function OrganMeditationPage() {
           </div>
         </div>
 
-        {/* Curved Bottom Divider */}
+        {/* Curved Bottom Divider matching Wellness page */}
         <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
-          <svg
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
-            className="relative block w-full h-16 text-[#FDFBF7]"
-            fill="currentColor"
-          >
-            <path d="M0,0 C300,80 900,80 1200,0 L1200,120 L0,120 Z" />
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-10 text-[#FAF5EF]" fill="currentColor">
+            <path d="M0,0 C300,50 900,50 1200,0 L1200,120 L0,120 Z" />
           </svg>
         </div>
       </header>
 
       {/* MAIN ORGAN MEDITATION SECTION */}
-      <section id="organ-meditation" className="py-8 sm:py-12 lg:py-14 bg-transparent">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="organ-meditation" className="pt-16 sm:pt-20 pb-12 sm:pb-16 bg-transparent relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
           {/* SECTION TITLE */}
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-            <span className="inline-block px-5 py-2 rounded-full font-bold royal-gold-badge text-xs uppercase tracking-widest">
-              DAILY SCHOOL PRACTICE ACROSS ACHARIYA SCHOOLS
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#352043] text-[#DFC47A] border border-[#DFC47A]/40 text-xs font-extrabold uppercase tracking-widest shadow-md">
+              <Sparkles className="w-3.5 h-3.5 text-[#DFC47A]" />
+              <span>DAILY SCHOOL PRACTICE ACROSS ACHARIYA SCHOOLS</span>
             </span>
 
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#64287F] leading-tight">
-              12 Noon <span className="text-[#8C5D00] italic font-serif">Golden Smile</span> Meditation
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#352043] leading-tight">
+              12 Noon <span className="text-[#8C5D00] italic font-serif font-normal">Golden Smile</span> Meditation
             </h2>
 
-            <p className="text-base sm:text-lg text-[#352043] font-serif max-w-2xl mx-auto font-normal">
+            <p className="text-base sm:text-lg text-[#352043] font-serif italic max-w-2xl mx-auto font-semibold">
               A Daily Practice for Inner Peace, Emotional Well-being &amp; Holistic Development
             </p>
 
@@ -282,34 +284,24 @@ export default function OrganMeditationPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-white rounded-3xl p-8 sm:p-10 shadow-sm border-l-4 border-[#8C5D00] space-y-6 relative overflow-hidden"
+              className="bg-white rounded-3xl p-8 sm:p-10 shadow-xl border-2 border-[#E9DED3] border-l-8 border-l-[#8C5D00] space-y-6 relative overflow-hidden z-10"
             >
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#64287F]/10 flex items-center justify-center text-[#64287F] shrink-0">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="5" />
-                    <line x1="12" y1="1" x2="12" y2="3" />
-                    <line x1="12" y1="21" x2="12" y2="23" />
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                    <line x1="1" y1="12" x2="3" y2="12" />
-                    <line x1="21" y1="12" x2="23" y2="12" />
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                  </svg>
+                <div className="w-12 h-12 rounded-full bg-[#352043] text-[#DFC47A] flex items-center justify-center shrink-0 shadow-md">
+                  <Sun className="w-6 h-6 text-[#DFC47A]" />
                 </div>
-                <h3 className="font-heading text-xl sm:text-2xl font-bold text-[#64287F] tracking-wide leading-snug">
+                <h3 className="font-heading text-xl sm:text-2xl font-extrabold text-[#352043] tracking-wide leading-snug">
                   THE DAILY PRACTICE &amp;<br />COLLECTIVE CONSCIOUSNESS
                 </h3>
               </div>
 
-              <p className="text-[#352043] text-base leading-relaxed font-normal">
-                <strong>At Achariya Schools</strong>, every day at <strong>12:00 Noon</strong>, all students, teachers, and staff come together for a few minutes of <strong>Golden Smile Meditation</strong>. This is more than a meditation session; it&apos;s a daily practice that <strong>develops physical health</strong>, emotional balance, mental clarity, spiritual <strong>intelligence</strong>, and global consciousness.
+              <p className="text-[#352043] text-base leading-relaxed font-bold">
+                <strong className="text-[#8C5D00]">At Achariya Schools</strong>, every day at <strong>12:00 Noon</strong>, all students, teachers, and staff come together for a few minutes of <strong>Golden Smile Meditation</strong>. This is more than a meditation session; it&apos;s a daily practice that <strong>develops physical health</strong>, emotional balance, mental clarity, spiritual <strong>intelligence</strong>, and global consciousness.
               </p>
 
               <div className="h-[1px] w-24 bg-[#8C5D00]/40" />
 
-              <p className="text-[#352043] text-base leading-relaxed font-normal">
+              <p className="text-[#352043] text-base leading-relaxed font-bold">
                 When thousands of students meditate together with a common intention of <strong>Oneness and Global Peace</strong>, they cultivate compassion, gratitude, discipline, and emotional resilience.
               </p>
             </motion.div>
@@ -320,73 +312,55 @@ export default function OrganMeditationPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="rounded-3xl p-8 sm:p-10 text-white bg-gradient-to-br from-[#64287F] to-[#401952] relative overflow-hidden shadow-xl"
+              className="rounded-3xl p-8 sm:p-10 text-white bg-gradient-to-br from-[#351A4A] via-[#47206A] to-[#200D2E] border-2 border-[#DFC47A] relative overflow-hidden shadow-2xl space-y-6 z-10"
             >
-              {/* BG Silhouette Watermark */}
-              <div className="absolute right-0 bottom-0 opacity-15 w-60 h-60 pointer-events-none">
-                <Image
-                  src="/images/organ-img.webp"
-                  alt="Silhouette"
-                  width={240}
-                  height={240}
-                  className="w-full h-full object-contain rounded-2xl opacity-20 filter drop-shadow-md"
-                />
-              </div>
-
-              <div className="relative z-10 space-y-6">
-                <div className="flex items-center gap-4 pb-4 border-b border-white/20">
-                  <div className="w-12 h-12 rounded-full bg-[#C8A34A]/20 flex items-center justify-center text-[#C8A34A] shrink-0">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                    </svg>
-                  </div>
-                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-white tracking-wide">
-                    HOW IT IS PERFORMED
-                  </h3>
+              <div className="flex items-center gap-4 pb-4 border-b border-white/20">
+                <div className="w-12 h-12 rounded-full bg-[#C8A34A] text-[#352043] flex items-center justify-center shrink-0 shadow-md font-extrabold">
+                  <Sparkles className="w-6 h-6 text-[#352043]" />
                 </div>
-
-                <ul className="space-y-4 text-sm sm:text-base text-white/90">
-                  {[
-                    'Sit comfortably with the spine upright and straight.',
-                    'Join the fingers in the prescribed sacred mudra.',
-                    'Gently close the eyes and hold a natural smile on the face.',
-                    'Observe the breath with deep, conscious relaxation.',
-                    'Visualize a specific healing light entering a particular organ.',
-                  ].map((stepText, idx) => (
-                    <li key={idx} className="flex items-start gap-4">
-                      <div className="w-8 h-8 rounded-full border border-[#C8A34A] text-[#C8A34A] bg-[#C8A34A]/10 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
-                        0{idx + 1}
-                      </div>
-                      <div className="pt-1">{stepText}</div>
-                    </li>
-                  ))}
-                </ul>
+                <h3 className="font-heading text-xl sm:text-2xl font-extrabold text-white tracking-wide">
+                  HOW IT IS PERFORMED
+                </h3>
               </div>
+
+              <ul className="space-y-4 text-sm sm:text-base text-[#F8F2E8] font-semibold">
+                {[
+                  'Sit comfortably with the spine upright and straight.',
+                  'Join the fingers in the prescribed sacred mudra.',
+                  'Gently close the eyes and hold a natural smile on the face.',
+                  'Observe the breath with deep, conscious relaxation.',
+                  'Visualize a specific healing light entering a particular organ.',
+                ].map((stepText, idx) => (
+                  <li key={idx} className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full border-2 border-[#DFC47A] text-[#DFC47A] bg-[#C8A34A]/20 font-extrabold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                      {idx + 1}
+                    </div>
+                    <span className="leading-snug">{stepText}</span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
 
           </div>
 
           {/* WEEKLY SCHEDULE HEADER */}
           <div className="text-center max-w-3xl mx-auto mb-10 space-y-3 pt-6">
-            <div className="inline-flex items-center gap-3">
-              <div className="h-[1px] w-10 bg-[#8C5D00]/50" />
-              <span className="text-[#8C5D00] font-bold text-xs uppercase tracking-widest">
-                WEEKLY SCHEDULE
-              </span>
-              <div className="h-[1px] w-10 bg-[#8C5D00]/50" />
-            </div>
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#352043] text-[#DFC47A] border border-[#DFC47A]/40 text-xs font-extrabold uppercase tracking-widest shadow-md">
+              <Calendar className="w-3.5 h-3.5 text-[#DFC47A]" />
+              <span>WEEKLY SCHEDULE</span>
+            </span>
 
-            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-[#64287F]">
+            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-[#352043]">
               DAILY ORGAN MEDITATION SCHEDULE
             </h2>
 
-            <p className="text-[#352043] font-serif italic text-base sm:text-lg font-normal">
+            <p className="text-[#352043] font-serif italic text-base sm:text-lg font-bold">
               Each day focuses on one organ, one element, and one positive emotional quality.
             </p>
           </div>
 
           {/* CUSTOM ORGAN TABS */}
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-12">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-12 relative z-20">
             {[
               { id: 'mon', day: 'MON', name: 'LUNGS', img: '/images/organ-lungs.webp' },
               { id: 'tue', day: 'TUE', name: 'HEART', img: '/images/organ-heart.webp' },
@@ -399,15 +373,15 @@ export default function OrganMeditationPage() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
-                  className={`flex items-center gap-3 px-6 py-2.5 rounded-full border transition-all cursor-pointer shadow-sm ${
+                  className={`flex items-center gap-3 px-6 py-3 rounded-full border-2 transition-all cursor-pointer shadow-md ${
                     isActive
-                      ? 'bg-[#64287F] border-[#64287F] text-white shadow-lg scale-105'
-                      : 'bg-white border-black/5 text-[#64287F] hover:bg-white/80'
+                      ? 'bg-[#352043] border-[#DFC47A] text-[#DFC47A] shadow-2xl scale-105'
+                      : 'bg-white border-2 border-[#352043]/30 text-[#352043] font-extrabold hover:border-[#8C5D00] shadow-sm'
                   }`}
                 >
                   <div
                     className={`w-9 h-9 rounded-full flex items-center justify-center p-1.5 transition-colors ${
-                      isActive ? 'bg-[#C8A34A]/25' : 'bg-[#C8A34A]/10'
+                      isActive ? 'bg-[#C8A34A]/30' : 'bg-[#352043]/10'
                     }`}
                   >
                     <Image
@@ -419,10 +393,10 @@ export default function OrganMeditationPage() {
                     />
                   </div>
                   <div className="text-left leading-tight">
-                    <div className={`text-[10px] font-extrabold tracking-wider ${isActive ? 'text-white/70' : 'text-slate-400'}`}>
+                    <div className={`text-[10px] font-extrabold tracking-wider ${isActive ? 'text-[#DFC47A]' : 'text-[#8C5D00]'}`}>
                       {tab.day}
                     </div>
-                    <div className={`font-heading font-bold text-sm tracking-wide ${isActive ? 'text-white' : 'text-[#64287F]'}`}>
+                    <div className={`font-heading font-extrabold text-sm tracking-wide ${isActive ? 'text-white' : 'text-[#352043]'}`}>
                       {tab.name}
                     </div>
                   </div>
@@ -439,7 +413,7 @@ export default function OrganMeditationPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4 }}
-              className="bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-black/5 mb-24"
+              className="bg-white rounded-3xl p-8 sm:p-12 shadow-2xl border-2 border-[#E9DED3] mb-24 relative z-10"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                 
@@ -462,8 +436,8 @@ export default function OrganMeditationPage() {
                   </div>
 
                   <div>
-                    <span className="inline-block px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-100 border border-slate-200 text-slate-700">
-                      ELEMENT: {currentOrgan.element} <span className="ml-1 text-[#8C5D00]">✦</span>
+                    <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider bg-[#352043] text-[#DFC47A] border border-[#DFC47A]/40 shadow-md">
+                      ELEMENT: {currentOrgan.element} <span className="ml-1 text-[#DFC47A]">✦</span>
                     </span>
                   </div>
                 </div>
@@ -471,19 +445,19 @@ export default function OrganMeditationPage() {
                 {/* Right Organ Info */}
                 <div className="lg:col-span-7 space-y-6">
                   <div className="flex items-center gap-3">
-                    <span className="px-3.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-slate-100 text-slate-800">
+                    <span className="px-4 py-1.5 rounded-full text-xs font-extrabold tracking-wider uppercase bg-[#352043] text-[#DFC47A] shadow-sm">
                       {currentOrgan.day}
                     </span>
-                    <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-[#64287F]">
+                    <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-[#352043]">
                       {currentOrgan.title}
                     </h3>
                   </div>
 
-                  <p className="font-bold text-[#352043] text-base">
+                  <p className="font-extrabold text-[#8C5D00] text-lg sm:text-xl">
                     Theme: {currentOrgan.theme}
                   </p>
 
-                  <p className="text-[#352043] text-base leading-relaxed font-normal">
+                  <p className="text-[#352043] text-base sm:text-lg leading-relaxed font-bold">
                     {currentOrgan.desc}
                   </p>
 
@@ -491,13 +465,13 @@ export default function OrganMeditationPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                     
                     {/* Release Card */}
-                    <div className="p-4 rounded-2xl bg-red-500/5 border border-red-500/10 space-y-2">
-                      <p className="text-xs font-extrabold text-red-500 tracking-wider uppercase">
+                    <div className="p-5 rounded-2xl bg-red-100/90 border-2 border-red-300 space-y-2 shadow-sm">
+                      <p className="text-xs font-extrabold text-red-900 tracking-wider uppercase">
                         RELEASE
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {currentOrgan.release.map((item, idx) => (
-                          <span key={idx} className="px-3 py-1 rounded-full bg-red-100 text-red-900 text-xs font-medium">
+                          <span key={idx} className="px-3.5 py-1 rounded-full bg-red-700 text-white text-xs font-extrabold shadow-sm">
                             {item}
                           </span>
                         ))}
@@ -505,13 +479,13 @@ export default function OrganMeditationPage() {
                     </div>
 
                     {/* Develop Card */}
-                    <div className="p-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/10 space-y-2">
-                      <p className="text-xs font-extrabold text-emerald-600 tracking-wider uppercase">
+                    <div className="p-5 rounded-2xl bg-emerald-100/90 border-2 border-emerald-300 space-y-2 shadow-sm">
+                      <p className="text-xs font-extrabold text-emerald-900 tracking-wider uppercase">
                         DEVELOP
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {currentOrgan.develop.map((item, idx) => (
-                          <span key={idx} className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-medium">
+                          <span key={idx} className="px-3.5 py-1 rounded-full bg-emerald-800 text-white text-xs font-extrabold shadow-sm">
                             {item}
                           </span>
                         ))}
@@ -521,14 +495,14 @@ export default function OrganMeditationPage() {
                   </div>
 
                   {/* Affirmation Quote Box */}
-                  <div className="p-6 rounded-2xl bg-[#C8A34A]/10 border-l-4 border-[#8C5D00]">
-                    <p className="font-serif italic text-[#352043] text-base sm:text-lg leading-relaxed font-normal">
+                  <div className="p-6 rounded-2xl bg-white border-2 border-[#E9DED3] border-l-8 border-l-[#8C5D00] shadow-md">
+                    <p className="font-serif italic text-[#352043] text-base sm:text-lg leading-relaxed font-extrabold">
                       {currentOrgan.quote}
                     </p>
                   </div>
 
-                  <p className="text-xs text-slate-600 font-medium flex items-center gap-2 pt-1">
-                    <span className="text-[#8C5D00]">✦</span> {currentOrgan.note}
+                  <p className="text-xs text-[#352043] font-bold flex items-center gap-2 pt-1">
+                    <span className="text-[#8C5D00] text-sm">✦</span> {currentOrgan.note}
                   </p>
                 </div>
 
@@ -538,11 +512,12 @@ export default function OrganMeditationPage() {
 
           {/* SECTION 4: COMPLETE SCHEDULE AT A GLANCE (5-COLUMN SUMMARY GRID) */}
           <div className="mb-24 space-y-8">
-            <div className="text-center max-w-2xl mx-auto space-y-2">
-              <span className="text-[#8C5D00] font-bold text-xs uppercase tracking-widest">
-                WEEKLY AT A GLANCE
+            <div className="text-center max-w-2xl mx-auto space-y-3">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#352043] text-[#DFC47A] border border-[#DFC47A]/40 text-xs font-extrabold uppercase tracking-widest shadow-md">
+                <Sparkles className="w-3.5 h-3.5 text-[#DFC47A]" />
+                <span>WEEKLY AT A GLANCE</span>
               </span>
-              <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#64287F]">
+              <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-[#352043]">
                 COMPLETE SCHEDULE AT A GLANCE
               </h2>
             </div>
@@ -555,40 +530,40 @@ export default function OrganMeditationPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200/80 flex flex-col justify-between"
+                  className="bg-white rounded-2xl overflow-hidden shadow-xl border-2 border-[#E9DED3] flex flex-col justify-between"
                 >
                   {/* Card Header */}
-                  <div className={`${item.color} text-white p-4 text-center space-y-1`}>
-                    <div className="text-xs font-extrabold uppercase tracking-wider opacity-90">
+                  <div className={`${item.color} text-white p-4 text-center space-y-1 shadow-xs`}>
+                    <div className="text-xs font-extrabold uppercase tracking-wider text-[#DFC47A]">
                       {item.day}
                     </div>
-                    <div className="font-heading text-base font-bold">
+                    <div className="font-heading text-base font-extrabold text-white">
                       {item.organ}
                     </div>
                   </div>
 
                   {/* Card Body */}
-                  <div className="p-4 space-y-3 text-center flex-grow text-xs">
-                    <div className="py-1 px-2 rounded bg-slate-100 text-slate-800 font-bold inline-block">
+                  <div className="p-4 space-y-3 text-center flex-grow text-xs bg-white">
+                    <div className="py-1 px-3.5 rounded-full bg-[#352043] text-[#DFC47A] font-extrabold text-[11px] inline-block shadow-sm">
                       {item.light}
                     </div>
 
-                    <p className="text-slate-800 font-serif italic font-medium">
+                    <p className="text-[#352043] font-serif italic font-extrabold text-xs leading-snug">
                       {item.theme}
                     </p>
 
-                    <div className="space-y-1 pt-2 border-t border-slate-100 text-left">
-                      <div className="font-extrabold text-red-500 uppercase text-[10px]">
+                    <div className="space-y-1.5 pt-2 border-t border-[#E9DED3] text-left">
+                      <div className="font-extrabold text-red-700 uppercase text-[10px] tracking-wider">
                         RELEASE:
                       </div>
-                      <div className="text-slate-800 font-medium">{item.release}</div>
+                      <div className="text-[#352043] font-extrabold text-xs">{item.release}</div>
                     </div>
 
-                    <div className="space-y-1 pt-1 text-left">
-                      <div className="font-extrabold text-emerald-600 uppercase text-[10px]">
+                    <div className="space-y-1.5 pt-1 text-left">
+                      <div className="font-extrabold text-emerald-800 uppercase text-[10px] tracking-wider">
                         DEVELOP:
                       </div>
-                      <div className="text-slate-800 font-medium">{item.develop}</div>
+                      <div className="text-[#352043] font-extrabold text-xs">{item.develop}</div>
                     </div>
                   </div>
                 </motion.div>

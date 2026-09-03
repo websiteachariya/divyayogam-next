@@ -4,6 +4,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import BackToTop from '@/components/layout/BackToTop';
 import WhatsAppButton from '@/components/layout/WhatsAppButton';
+import ClientAudioPlayer from '@/components/layout/ClientAudioPlayer';
 import ScrollProgress from '@/components/layout/ScrollProgress';
 import { Manrope, DM_Serif_Display, Cormorant_Garamond } from 'next/font/google';
 
@@ -122,7 +123,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body
-        className="min-h-screen flex flex-col text-[#5E5865] selection:bg-[#C8A34A]/30 selection:text-[#47206A] relative font-body antialiased bg-[#F8F2E8] lg:bg-[url('/images/bg-6.webp')] bg-cover bg-center lg:bg-fixed bg-no-repeat overflow-x-hidden max-w-full w-full"
+        className="min-h-screen flex flex-col text-[#5E5865] selection:bg-[#C8A34A]/30 selection:text-[#47206A] relative font-body antialiased bg-[#FAF5EF] bg-[url('/images/con-6.webp')] bg-cover bg-center bg-fixed bg-no-repeat overflow-x-hidden max-w-full w-full"
         suppressHydrationWarning
       >
         <ScrollProgress />
@@ -133,6 +134,7 @@ export default function RootLayout({
         <Footer />
         <BackToTop />
         <WhatsAppButton />
+        <ClientAudioPlayer />
       </body>
     </html>
   );

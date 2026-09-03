@@ -13,10 +13,10 @@ export default function Gallery() {
   ];
 
   const milestones = [
-    { year: '1990', desc: 'The beginning of Divya Yogam journey.', icon: Compass },
-    { year: '2005', desc: 'First meditation center established.', icon: Sun },
-    { year: '2012', desc: 'International programs launched.', icon: Globe },
-    { year: '2020', desc: '50,000+ lives transformed.', icon: HeartPulse },
+    { year: '2012', desc: 'International programs & global movement launched.', icon: Compass, href: '/about' },
+    { year: '2016', desc: 'Meditation centers & retreats established.', icon: Sun, href: '/vision' },
+    { year: '2020', desc: '50,000+ seekers & lives transformed globally.', icon: Globe, href: '/transformation' },
+    { year: '2026', desc: 'Holistic awakening & digital spiritual outreach.', icon: HeartPulse, href: '/events' },
   ];
 
   return (
@@ -137,26 +137,30 @@ export default function Gallery() {
               </p>
             </div>
 
-            {/* Timeline List with Beautiful Icon Badges matching Reference UI */}
-            <div className="space-y-4 relative border-l-2 border-[#C8A34A] ml-6 pl-8 py-2">
+            {/* Timeline List with Interactive Links */}
+            <div className="space-y-4 relative border-l-2 border-[#C8A34A] ml-6 pl-7 py-2" suppressHydrationWarning>
               {milestones.map((item, idx) => {
                 const IconComponent = item.icon;
                 return (
                   <div key={idx} className="relative group flex items-center">
                     {/* Circular Icon Badge on Vertical Line */}
-                    <div className="absolute -left-[53px] top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-[#352043] border-2 border-[#C8A34A] flex items-center justify-center text-[#DFC47A] shadow-md group-hover:scale-110 group-hover:bg-[#C8A34A] group-hover:text-[#352043] transition-all duration-300 z-10 shrink-0">
+                    <div className="absolute -left-[50px] top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-[#352043] border-2 border-[#C8A34A] flex items-center justify-center text-[#DFC47A] shadow-md group-hover:scale-110 group-hover:bg-[#C8A34A] group-hover:text-[#352043] transition-all duration-300 z-10 shrink-0">
                       <IconComponent className="w-5 h-5" />
                     </div>
 
-                    {/* Luxury White Pill Card */}
-                    <div className="w-full bg-white px-5 sm:px-6 py-3.5 rounded-2xl sm:rounded-full border border-[#E9DED3] flex items-center justify-between shadow-sm group-hover:border-[#DFC47A] group-hover:shadow-md transition-all duration-300">
+                    {/* Luxury White Pill Card wrapped in Link */}
+                    <Link
+                      href={item.href}
+                      className="w-full bg-white px-5 sm:px-6 py-3.5 rounded-2xl sm:rounded-full border border-[#E9DED3] flex items-center justify-between shadow-sm group-hover:border-[#DFC47A] group-hover:shadow-md transition-all duration-300"
+                    >
                       <span className="font-heading text-sm sm:text-base font-bold text-[#C8A34A] w-16 shrink-0">
                         {item.year}
                       </span>
-                      <span className="text-[#5E5865] text-xs sm:text-sm font-light flex-1 pl-2">
+                      <span className="text-[#5E5865] text-xs sm:text-sm font-light flex-1 pl-2 group-hover:text-[#47206A] transition-colors">
                         {item.desc}
                       </span>
-                    </div>
+                      <ArrowRight className="w-4 h-4 text-[#DFC47A] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                    </Link>
                   </div>
                 );
               })}

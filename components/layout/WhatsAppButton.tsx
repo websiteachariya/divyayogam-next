@@ -10,12 +10,12 @@ export default function WhatsAppButton() {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 group">
       {/* Floating Tooltip Badge */}
-      <div className="hidden sm:flex items-center gap-2 bg-[#2D1A39]/95 text-[#F8F2E8] text-xs font-semibold px-3.5 py-2 rounded-full border border-[#DFC47A]/40 shadow-lg backdrop-blur-md transition-all duration-300 origin-right opacity-0 scale-95 translate-x-2 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:translate-x-0 group-hover:pointer-events-auto">
-        <span className="w-2 h-2 rounded-full bg-[#DFC47A] animate-pulse" />
+      <div className="hidden sm:flex items-center gap-2 bg-[#2D1A39]/95 text-[#F8F2E8] text-xs font-semibold px-3.5 py-2 rounded-full border border-[#25D366]/50 shadow-lg backdrop-blur-md transition-all duration-300 origin-right opacity-0 scale-95 translate-x-2 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:translate-x-0 group-hover:pointer-events-auto">
+        <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
         <span className="whitespace-nowrap">Chat with us on WhatsApp</span>
       </div>
 
-      {/* Floating WhatsApp Action Button (Purple and Gold with Shake Animation) */}
+      {/* Floating WhatsApp Action Button (Official Green) */}
       <motion.a
         href={whatsappUrl}
         target="_blank"
@@ -33,14 +33,14 @@ export default function WhatsAppButton() {
         }}
         whileHover={{ scale: 1.15, rotate: 0 }}
         whileTap={{ scale: 0.95 }}
-        className="relative flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-tr from-[#2D1A39] via-[#47206A] to-[#352043] text-[#DFC47A] shadow-[0_8px_25px_rgba(71,32,106,0.6)] hover:shadow-[0_12px_32px_rgba(200,163,74,0.4)] transition-shadow duration-300 border-2 border-[#DFC47A]/60 hover:border-[#DFC47A]"
+        className="relative flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-[0_8px_25px_rgba(37,211,102,0.5)] hover:shadow-[0_12px_32px_rgba(37,211,102,0.7)] transition-all duration-300 border-2 border-white"
       >
         {/* Subtle Animated Pulse Outer Ring */}
-        <span className="absolute inset-0 rounded-full bg-[#DFC47A] opacity-40 animate-ping -z-10" />
+        <span className="absolute inset-0 rounded-full bg-[#25D366] opacity-40 animate-ping -z-10" />
 
         {/* WhatsApp Official SVG Icon */}
         <svg
-          className="w-7 h-7 fill-current text-[#DFC47A] drop-shadow-md"
+          className="w-7 h-7 fill-current text-white drop-shadow-md"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -50,4 +50,3 @@ export default function WhatsAppButton() {
     </div>
   );
 }
-

@@ -157,7 +157,8 @@ export default function TestimonialsPage() {
                   <div className="relative w-full aspect-video rounded-tl-[38px] rounded-br-[38px] rounded-tr-[12px] rounded-bl-[12px] overflow-hidden bg-black border border-[#DFC47A]/40 shadow-inner">
                     {isPlaying ? (
                       <iframe
-                        src={`https://www.youtube.com/embed/${id}?autoplay=1`}
+                        suppressHydrationWarning
+                        src={`https://www.youtube.com/embed/${id}?autoplay=1&enablejsapi=1`}
                         title={`Testimonial Video ${idx + 1}`}
                         className="w-full h-full border-0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

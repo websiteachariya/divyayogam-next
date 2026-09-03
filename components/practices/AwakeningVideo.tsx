@@ -32,7 +32,6 @@ export default function AwakeningVideo() {
               controls
               autoPlay
               loop
-              muted
               playsInline
               className="w-full h-full object-cover"
             >

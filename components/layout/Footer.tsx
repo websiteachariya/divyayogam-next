@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Facebook, Instagram, Youtube, Linkedin, Phone, Mail, Globe } from 'lucide-react';
+import { Facebook, Instagram, Youtube, Phone, Mail } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -58,7 +58,7 @@ export default function Footer() {
                 Follow Us
               </span>
               <div className="flex items-center gap-2.5">
-                {[Facebook, Instagram, Youtube, Linkedin].map((Icon, i) => (
+                {[Facebook, Instagram, Youtube].map((Icon, i) => (
                   <a
                     key={i}
                     href="#"
@@ -137,7 +137,7 @@ export default function Footer() {
               <li><Link href="/vision" className="hover:text-[#C8A34A] transition-colors">Our Path</Link></li>
               <li><Link href="/practices" className="hover:text-[#C8A34A] transition-colors">Programs</Link></li>
               <li><Link href="/gallery" className="hover:text-[#C8A34A] transition-colors">Gallery</Link></li>
-              <li><Link href="/blog" className="hover:text-[#C8A34A] transition-colors">Blog</Link></li>
+              <li><Link href="/organ-meditation" className="hover:text-[#C8A34A] transition-colors">Organ Meditation</Link></li>
             </ul>
           </div>
 
@@ -149,9 +149,9 @@ export default function Footer() {
             <ul className="space-y-1.5 text-xs text-[#F8F2E8]/80">
               <li><Link href="/organ-meditation" className="hover:text-[#C8A34A] transition-colors">Meditation</Link></li>
               <li><Link href="/practices" className="hover:text-[#C8A34A] transition-colors">Yoga</Link></li>
-              <li><Link href="/events" className="hover:text-[#C8A34A] transition-colors">Events/Retreats</Link></li>
-              <li><Link href="/events" className="hover:text-[#C8A34A] transition-colors">Retreats</Link></li>
-              <li><Link href="/quantum-habits" className="hover:text-[#C8A34A] transition-colors">Healing</Link></li>
+              <li><Link href="/events" className="hover:text-[#C8A34A] transition-colors">Events</Link></li>
+              <li><Link href="/beneficiaries" className="hover:text-[#C8A34A] transition-colors">Beneficiaries</Link></li>
+              <li><Link href="/quantum-habits" className="hover:text-[#C8A34A] transition-colors">Quantum Habits</Link></li>
             </ul>
           </div>
 
@@ -161,9 +161,10 @@ export default function Footer() {
               Support
             </h4>
             <ul className="space-y-1.5 text-xs text-[#F8F2E8]/80">
-              <li><Link href="/contact" className="hover:text-[#C8A34A] transition-colors">FAQ</Link></li>
+              <li><Link href="/testimonials" className="hover:text-[#C8A34A] transition-colors">Testimonials</Link></li>
               <li><Link href="/contact" className="hover:text-[#C8A34A] transition-colors">Contact Us</Link></li>
               <li><Link href="/contact" className="hover:text-[#C8A34A] transition-colors">Volunteer</Link></li>
+              <li><Link href="/contact" className="hover:text-[#C8A34A] transition-colors">Membership</Link></li>
               <li><Link href="/contact" className="hover:text-[#C8A34A] transition-colors">Donate</Link></li>
             </ul>
           </div>
@@ -185,10 +186,6 @@ export default function Footer() {
               <li className="flex items-center gap-2 pt-1">
                 <Mail className="w-3.5 h-3.5 text-[#C8A34A]" />
                 <span>info@divyayogam.org</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Globe className="w-3.5 h-3.5 text-[#C8A34A]" />
-                <span>www.divyayogam.org</span>
               </li>
             </ul>
           </div>

@@ -22,6 +22,7 @@ export const NAV_LINKS: NavItem[] = [
       { name: 'Practices Overview', path: '/practices' },
       { name: 'Organ Meditation', path: '/organ-meditation' },
       { name: 'Quantum Habits', path: '/quantum-habits' },
+      { name: 'Wellness & Services', path: '/wellness-services' },
     ],
   },
 
@@ -35,7 +36,14 @@ export const NAV_LINKS: NavItem[] = [
 },
 
 
-  { name: 'Events', path: '/events' },
+  {
+    name: 'Events',
+    path: '/events',
+    children: [
+      { name: 'Sacred Events', path: '/events' },
+      { name: 'Happy Shambhala', path: '/happy-shambhala' },
+    ],
+  },
   {
     name: 'Transformation',
     path: '/transformation',
