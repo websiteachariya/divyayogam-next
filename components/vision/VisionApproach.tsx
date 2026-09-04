@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Sparkles, Sun, Zap, Eye, Compass, Heart, Globe } from 'lucide-react';
 import { GoldenHeadingUnderline } from './SacredGeometrySvg';
+import ScrollAutoPlayVideo from '../common/ScrollAutoPlayVideo';
 
 export default function VisionApproach() {
   const missionSteps = [
@@ -128,20 +129,10 @@ export default function VisionApproach() {
               style={{ border: '2px solid rgba(212,175,54,0.6)' }}
             >
               <div className="relative aspect-[16/9] w-full">
-                <video
-                  controls
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
+                <ScrollAutoPlayVideo
+                  src="https://res.cloudinary.com/y2q2jsq0/video/upload/v1783507433/Gx012584_sckw96.mp4"
                   className="w-full h-full object-cover"
-                >
-                  <source
-                    src="https://res.cloudinary.com/y2q2jsq0/video/upload/v1783507433/Gx012584_sckw96.mp4"
-                    type="video/mp4"
-                  />
-                  Your browser does not support the video tag.
-                </video>
+                />
               </div>
             </div>
           </div>

@@ -220,12 +220,12 @@ export default function FoundationStoryPage() {
       </header>
 
       {/* Main Content Area */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 space-y-20 sm:space-y-28">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 lg:py-12 space-y-8 sm:space-y-12 lg:space-y-16">
 
         {/* ======================================================================== */}
         {/* SECTION 1: FOUNDATION STORY & FOUNDER SPOTLIGHT FRAME */}
         {/* ======================================================================== */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
 
           {/* Left Column: Founder Arch Spotlight Frame (with Pending Upload Toggle) */}
           <motion.div
@@ -240,23 +240,23 @@ export default function FoundationStoryPage() {
               <div className="absolute -inset-3 rounded-t-full bg-gradient-to-tr from-[#C8A34A] via-[#DFC47A] to-[#8C5D00] blur-2xl opacity-35 group-hover:opacity-60 transition-all duration-700 pointer-events-none" />
 
               {/* Portrait Arch Container */}
-              <div className="relative rounded-t-full rounded-b-[32px] overflow-hidden border-2 border-[#DFC47A]/70 p-4 shadow-2xl bg-white/95 backdrop-blur-md">
-                <div className="relative rounded-t-full rounded-b-2xl overflow-hidden bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EF] to-[#F8F2E8] aspect-[4/5] flex flex-col items-center justify-center p-6 text-center border-2 border-dashed border-[#DFC47A]/70">
+              <div className="relative rounded-t-full rounded-b-[32px] overflow-hidden border-2 border-[#DFC47A]/70 p-3 sm:p-4 shadow-2xl bg-white/95 backdrop-blur-md">
+                <div className="relative rounded-t-full rounded-b-2xl overflow-hidden bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EF] to-[#F8F2E8] aspect-[4/5] flex flex-col items-center justify-center p-4 sm:p-6 text-center border-2 border-dashed border-[#DFC47A]/70">
                   <div className="absolute inset-0 bg-[radial-gradient(#C8A34A_1px,transparent_1px)] [background-size:16px_16px] opacity-20 pointer-events-none" />
 
-                  <div className="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/90 backdrop-blur-sm border-2 border-[#C8A34A]/60 shadow-lg flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-500">
+                  <div className="relative z-10 w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-white/90 backdrop-blur-sm border-2 border-[#C8A34A]/60 shadow-lg flex items-center justify-center mb-3 sm:mb-5 group-hover:scale-105 transition-transform duration-500">
                     <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#C8A34A]/20 to-[#8C5D00]/20 animate-pulse pointer-events-none" />
-                    <UploadCloud className="w-9 h-9 sm:w-10 sm:h-10 text-[#8C5D00]" />
+                    <UploadCloud className="w-7 h-7 sm:w-10 sm:h-10 text-[#8C5D00]" />
                   </div>
 
-                  <div className="relative z-10 space-y-2 max-w-[240px]">
-                    <span className="inline-block px-3.5 py-1 rounded-full bg-[#8C5D00]/15 text-[#8C5D00] text-[11px] font-extrabold uppercase tracking-widest border border-[#8C5D00]/30 shadow-xs">
+                  <div className="relative z-10 space-y-1.5 sm:space-y-2 max-w-[240px]">
+                    <span className="inline-block px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full bg-[#8C5D00]/15 text-[#8C5D00] text-[10px] sm:text-[11px] font-extrabold uppercase tracking-widest border border-[#8C5D00]/30 shadow-xs">
                       Pending Upload
                     </span>
-                    <h4 className="font-heading text-base sm:text-lg font-bold text-[#352043] leading-snug">
+                    <h4 className="font-heading text-sm sm:text-lg font-bold text-[#352043] leading-snug">
                       Waiting for Image to be Uploaded
                     </h4>
-                    <p className="text-xs text-[#5E5865] font-light">
+                    <p className="text-[11px] sm:text-xs text-[#5E5865] font-light">
                       Founder story photograph will be updated here
                     </p>
                   </div>
@@ -271,9 +271,9 @@ export default function FoundationStoryPage() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-7 space-y-6"
+            className="lg:col-span-7 space-y-4 sm:space-y-6"
           >
-            <div className="space-y-2">
+            <div className="space-y-1.5 sm:space-y-2">
               <span className="inline-block px-3.5 py-1 rounded-full bg-[#8C5D00]/10 text-[#8C5D00] text-[11px] font-extrabold uppercase tracking-widest border border-[#8C5D00]/20">
                 FOUNDATION STORY
               </span>
@@ -282,8 +282,8 @@ export default function FoundationStoryPage() {
               </h2>
             </div>
 
-            <div className="space-y-4 text-sm sm:text-base text-[#5E5865] font-light leading-relaxed">
-              <p className="p-4 rounded-2xl bg-white/80 border-l-4 border-[#C8A34A] shadow-xs text-[#352043] font-serif italic text-base sm:text-lg">
+            <div className="space-y-3 sm:space-y-4 text-xs sm:text-base text-[#5E5865] font-light leading-relaxed">
+              <p className="p-3.5 sm:p-4 rounded-2xl bg-white/80 border-l-4 border-[#C8A34A] shadow-xs text-[#352043] font-serif italic text-sm sm:text-lg">
                 “There comes a point in life when doing more is no longer the answer. The question becomes deeper: How do we live with greater awareness? Divya Yogam was conceived from this deeper enquiry.”
               </p>
 
@@ -307,51 +307,51 @@ export default function FoundationStoryPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="rounded-[32px] bg-gradient-to-br from-[#FAF3FA] via-[#FFFDF9] to-[#F8EBF6] border-2 border-[#EEDEEB] p-8 sm:p-12 lg:p-16 shadow-xl relative overflow-hidden"
+          className="rounded-[24px] sm:rounded-[32px] bg-gradient-to-br from-[#FAF3FA] via-[#FFFDF9] to-[#F8EBF6] border-2 border-[#EEDEEB] p-5 sm:p-10 lg:p-14 shadow-xl relative overflow-hidden"
         >
-          <div className="max-w-3xl mx-auto text-center space-y-6 relative z-10">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-[#3B104E]/10 text-[#3B104E] text-xs font-bold uppercase tracking-widest border border-[#3B104E]/20">
+          <div className="max-w-3xl mx-auto text-center space-y-4 sm:space-y-6 relative z-10">
+            <span className="inline-block px-3.5 py-1 rounded-full bg-[#3B104E]/10 text-[#3B104E] text-[11px] sm:text-xs font-bold uppercase tracking-widest border border-[#3B104E]/20">
               WHY DIVYA YOGAM
             </span>
 
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3B104E]">
+            <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#3B104E]">
               Because the <span className="text-[#C8A34A] italic font-serif font-normal">Inner Life Matters</span>
             </h2>
 
             <LotusDivider />
 
-            <div className="space-y-4 text-sm sm:text-base text-[#5E5865] font-light leading-relaxed pt-2">
-              <p className="text-base sm:text-lg font-medium text-[#352043]">
+            <div className="space-y-3 sm:space-y-4 text-xs sm:text-base text-[#5E5865] font-light leading-relaxed pt-1 sm:pt-2">
+              <p className="text-sm sm:text-lg font-medium text-[#352043]">
                 The world teaches us how to move forward. Divya Yogam creates a space to look within.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-center">
-                <div className="p-5 rounded-2xl bg-white/90 border border-[#DFC47A]/50 shadow-xs space-y-2">
-                  <div className="w-10 h-10 rounded-full bg-[#FAF5EF] text-[#8C5D00] flex items-center justify-center mx-auto">
-                    <Flame className="w-5 h-5" />
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-2 sm:pt-4 text-center">
+                <div className="p-4 sm:p-5 rounded-2xl bg-white/90 border border-[#DFC47A]/50 shadow-xs space-y-1.5 sm:space-y-2">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FAF5EF] text-[#8C5D00] flex items-center justify-center mx-auto">
+                    <Flame className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
-                  <h4 className="font-heading text-sm font-bold text-[#3B104E]">Stillness</h4>
-                  <p className="text-xs text-[#7A6B82]">Amidst movement</p>
+                  <h4 className="font-heading text-xs sm:text-sm font-bold text-[#3B104E]">Stillness</h4>
+                  <p className="text-[11px] sm:text-xs text-[#7A6B82]">Amidst movement</p>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-white/90 border border-[#DFC47A]/50 shadow-xs space-y-2">
-                  <div className="w-10 h-10 rounded-full bg-[#FAF5EF] text-[#8C5D00] flex items-center justify-center mx-auto">
-                    <Compass className="w-5 h-5" />
+                <div className="p-4 sm:p-5 rounded-2xl bg-white/90 border border-[#DFC47A]/50 shadow-xs space-y-1.5 sm:space-y-2">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FAF5EF] text-[#8C5D00] flex items-center justify-center mx-auto">
+                    <Compass className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
-                  <h4 className="font-heading text-sm font-bold text-[#3B104E]">Awareness</h4>
-                  <p className="text-xs text-[#7A6B82]">Amidst distraction</p>
+                  <h4 className="font-heading text-xs sm:text-sm font-bold text-[#3B104E]">Awareness</h4>
+                  <p className="text-[11px] sm:text-xs text-[#7A6B82]">Amidst distraction</p>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-white/90 border border-[#DFC47A]/50 shadow-xs space-y-2">
-                  <div className="w-10 h-10 rounded-full bg-[#FAF5EF] text-[#8C5D00] flex items-center justify-center mx-auto">
-                    <Sun className="w-5 h-5" />
+                <div className="p-4 sm:p-5 rounded-2xl bg-white/90 border border-[#DFC47A]/50 shadow-xs space-y-1.5 sm:space-y-2">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FAF5EF] text-[#8C5D00] flex items-center justify-center mx-auto">
+                    <Sun className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
-                  <h4 className="font-heading text-sm font-bold text-[#3B104E]">Meaning</h4>
-                  <p className="text-xs text-[#7A6B82]">Amidst achievement</p>
+                  <h4 className="font-heading text-xs sm:text-sm font-bold text-[#3B104E]">Meaning</h4>
+                  <p className="text-[11px] sm:text-xs text-[#7A6B82]">Amidst achievement</p>
                 </div>
               </div>
 
-              <p className="pt-4 font-serif italic text-base sm:text-lg font-semibold text-[#8C5D00]">
+              <p className="pt-2 sm:pt-4 font-serif italic text-sm sm:text-lg font-semibold text-[#8C5D00]">
                 “Its purpose is not to add another pursuit to life—instead, it helps us experience life more consciously.”
               </p>
             </div>
@@ -361,7 +361,7 @@ export default function FoundationStoryPage() {
         {/* ======================================================================== */}
         {/* SECTION 3: THE INSPIRATION, VISION & INCEPTION */}
         {/* ======================================================================== */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
 
           {/* Card 1: THE INSPIRATION */}
           <motion.div
@@ -369,16 +369,16 @@ export default function FoundationStoryPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-white/90 backdrop-blur-xs border border-[#E9DED3] rounded-[28px] p-6 sm:p-8 flex flex-col justify-between shadow-xs hover:shadow-xl hover:border-[#C8A34A]/50 transition-all duration-300 group"
+            className="bg-white/90 backdrop-blur-xs border border-[#E9DED3] rounded-[24px] sm:rounded-[28px] p-5 sm:p-7 lg:p-8 flex flex-col justify-between shadow-xs hover:shadow-xl hover:border-[#C8A34A]/50 transition-all duration-300 group"
           >
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#FAF5EF] border border-[#DFC47A]/50 flex items-center justify-center text-[#8C5D00] group-hover:bg-[#8C5D00] group-hover:text-white transition-colors">
-                <Sparkles className="w-6 h-6" />
+            <div className="space-y-3 sm:space-y-4">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#FAF5EF] border border-[#DFC47A]/50 flex items-center justify-center text-[#8C5D00] group-hover:bg-[#8C5D00] group-hover:text-white transition-colors">
+                <Sparkles className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
 
               <div className="space-y-1">
                 <span className="text-[10px] font-extrabold text-[#8C5D00] uppercase tracking-widest">THE INSPIRATION</span>
-                <h3 className="font-heading text-lg font-bold text-[#3B104E]">A Deeper Dimension of Wellbeing</h3>
+                <h3 className="font-heading text-base sm:text-lg font-bold text-[#3B104E]">A Deeper Dimension of Wellbeing</h3>
               </div>
 
               <p className="text-xs sm:text-sm text-[#5E5865] font-light leading-relaxed">
@@ -393,16 +393,16 @@ export default function FoundationStoryPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="bg-white/90 backdrop-blur-xs border border-[#E9DED3] rounded-[28px] p-6 sm:p-8 flex flex-col justify-between shadow-xs hover:shadow-xl hover:border-[#C8A34A]/50 transition-all duration-300 group"
+            className="bg-white/90 backdrop-blur-xs border border-[#E9DED3] rounded-[24px] sm:rounded-[28px] p-5 sm:p-7 lg:p-8 flex flex-col justify-between shadow-xs hover:shadow-xl hover:border-[#C8A34A]/50 transition-all duration-300 group"
           >
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#FAF5EF] border border-[#DFC47A]/50 flex items-center justify-center text-[#8C5D00] group-hover:bg-[#8C5D00] group-hover:text-white transition-colors">
-                <Sun className="w-6 h-6" />
+            <div className="space-y-3 sm:space-y-4">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#FAF5EF] border border-[#DFC47A]/50 flex items-center justify-center text-[#8C5D00] group-hover:bg-[#8C5D00] group-hover:text-white transition-colors">
+                <Sun className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
 
               <div className="space-y-1">
                 <span className="text-[10px] font-extrabold text-[#8C5D00] uppercase tracking-widest">THE VISION</span>
-                <h3 className="font-heading text-lg font-bold text-[#3B104E]">A Way of Living</h3>
+                <h3 className="font-heading text-base sm:text-lg font-bold text-[#3B104E]">A Way of Living</h3>
               </div>
 
               <p className="text-xs sm:text-sm text-[#5E5865] font-light leading-relaxed">
@@ -417,21 +417,21 @@ export default function FoundationStoryPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-gradient-to-br from-[#4A1460] via-[#3B104E] to-[#2B083A] text-white rounded-[28px] p-6 sm:p-8 flex flex-col justify-between shadow-xl border border-[#DFC47A]/60 group relative overflow-hidden"
+            className="bg-gradient-to-br from-[#4A1460] via-[#3B104E] to-[#2B083A] text-white rounded-[24px] sm:rounded-[28px] p-5 sm:p-7 lg:p-8 flex flex-col justify-between shadow-xl border border-[#DFC47A]/60 group relative overflow-hidden"
           >
-            <div className="space-y-4 relative z-10">
+            <div className="space-y-3 sm:space-y-4 relative z-10">
               <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-2xl bg-white/15 border border-[#DFC47A]/40 flex items-center justify-center text-[#FCE8A6]">
-                  <Calendar className="w-6 h-6" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-white/15 border border-[#DFC47A]/40 flex items-center justify-center text-[#FCE8A6]">
+                  <Calendar className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
-                <span className="px-3 py-1 rounded-full bg-[#DFC47A]/20 text-[#FCE8A6] text-xs font-bold border border-[#DFC47A]/30">
+                <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-[#DFC47A]/20 text-[#FCE8A6] text-[10px] sm:text-xs font-bold border border-[#DFC47A]/30">
                   EST. 2000
                 </span>
               </div>
 
               <div className="space-y-1">
                 <span className="text-[10px] font-extrabold text-[#FCE8A6] uppercase tracking-widest">INCEPTION</span>
-                <h3 className="font-heading text-lg font-bold text-[#FCE8A6]">The Beginning of a New Chapter</h3>
+                <h3 className="font-heading text-base sm:text-lg font-bold text-[#FCE8A6]">The Beginning of a New Chapter</h3>
               </div>
 
               <p className="text-xs sm:text-sm text-[#F0E4D7] font-light leading-relaxed">
@@ -445,18 +445,18 @@ export default function FoundationStoryPage() {
         {/* ======================================================================== */}
         {/* SECTION 4: THE STORY IN ONE GLANCE (5 PILLARS GRID) */}
         {/* ======================================================================== */}
-        <div className="space-y-10">
-          <div className="text-center max-w-2xl mx-auto space-y-2">
-            <span className="inline-block px-4 py-1 rounded-full bg-white/90 border border-[#E5DACD] text-[#8C6B28] text-[11px] font-bold tracking-[0.2em] uppercase shadow-xs">
+        <div className="space-y-6 sm:space-y-8">
+          <div className="text-center max-w-2xl mx-auto space-y-1.5 sm:space-y-2">
+            <span className="inline-block px-3.5 py-1 rounded-full bg-white/90 border border-[#E5DACD] text-[#8C6B28] text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase shadow-xs">
               SUMMARY
             </span>
-            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-[#3B104E]">
+            <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-[#3B104E]">
               The Story <span className="text-[#C8A34A] italic font-serif font-normal">in One Glance</span>
             </h2>
             <LotusDivider />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 min-[440px]:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
             {storyGlance.map((item, idx) => {
               const GlanceIcon = item.icon;
               return (
@@ -466,21 +466,21 @@ export default function FoundationStoryPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: idx * 0.08 }}
-                  className="bg-white rounded-2xl p-5 border border-[#E9DED3] shadow-xs hover:shadow-lg hover:border-[#C8A34A] transition-all group flex flex-col justify-between"
+                  className="bg-white rounded-2xl p-4 sm:p-5 border border-[#E9DED3] shadow-xs hover:shadow-lg hover:border-[#C8A34A] transition-all group flex flex-col justify-between"
                 >
-                  <div className="space-y-3">
+                  <div className="space-y-2.5 sm:space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="w-7 h-7 rounded-full bg-[#FAF5EF] text-[#8C5D00] text-xs font-bold flex items-center justify-center border border-[#DFC47A]/40">
+                      <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#FAF5EF] text-[#8C5D00] text-[11px] sm:text-xs font-bold flex items-center justify-center border border-[#DFC47A]/40">
                         0{idx + 1}
                       </span>
-                      <GlanceIcon className="w-5 h-5 text-[#C8A34A] group-hover:scale-110 transition-transform" />
+                      <GlanceIcon className="w-4 h-4 sm:w-5 sm:h-5 text-[#C8A34A] group-hover:scale-110 transition-transform" />
                     </div>
 
                     <div className="space-y-1">
-                      <h4 className="font-heading text-sm font-extrabold text-[#3B104E] group-hover:text-[#8C5D00] transition-colors">
+                      <h4 className="font-heading text-xs sm:text-sm font-extrabold text-[#3B104E] group-hover:text-[#8C5D00] transition-colors">
                         {item.label}
                       </h4>
-                      <p className="text-xs text-[#5E5865] font-light leading-relaxed">
+                      <p className="text-[11px] sm:text-xs text-[#5E5865] font-light leading-relaxed">
                         {item.desc}
                       </p>
                     </div>
@@ -499,17 +499,17 @@ export default function FoundationStoryPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative rounded-full bg-gradient-to-r from-[#2B083A] via-[#481462] to-[#2B083A] border border-[#DFC47A]/40 p-6 sm:p-8 shadow-2xl text-center space-y-4 overflow-hidden"
+          className="relative rounded-3xl sm:rounded-full bg-gradient-to-r from-[#2B083A] via-[#481462] to-[#2B083A] border border-[#DFC47A]/40 p-5 sm:p-8 shadow-2xl text-center space-y-3 sm:space-y-4 overflow-hidden"
         >
           <GoldenLotusIcon className="absolute right-8 top-1/2 -translate-y-1/2 w-40 h-40 text-[#DFC47A]/10 pointer-events-none" strokeWidth={1} />
 
-          <div className="relative z-10 max-w-3xl mx-auto space-y-3">
-            <Quote className="w-8 h-8 text-[#DFC47A] mx-auto opacity-75" />
-            <p className="font-serif italic text-lg sm:text-2xl font-bold text-white leading-relaxed">
+          <div className="relative z-10 max-w-3xl mx-auto space-y-2.5 sm:space-y-3">
+            <Quote className="w-6 h-6 sm:w-8 sm:h-8 text-[#DFC47A] mx-auto opacity-75" />
+            <p className="font-serif italic text-base sm:text-2xl font-bold text-white leading-relaxed">
               “When the search moves inward, the journey becomes meaningful.”
             </p>
 
-            <div className="pt-2">
+            <div className="pt-1 sm:pt-2">
               <Link
                 href="/practices"
                 className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-full bg-gradient-to-r from-[#E3C582] via-[#DFC47A] to-[#C8A34A] hover:from-[#F0D593] hover:to-[#D4AF37] text-[#2B083A] font-extrabold text-[11px] sm:text-xs tracking-wider uppercase shadow-lg hover:scale-105 transition-all duration-300 group"

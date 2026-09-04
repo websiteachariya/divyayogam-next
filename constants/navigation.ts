@@ -45,6 +45,10 @@ export const NAV_LINKS: NavItem[] = [
     ],
   },
   {
+    name: 'Membership',
+    path: '/membership',
+  },
+  {
     name: 'Transformation',
     path: '/transformation',
     children: [

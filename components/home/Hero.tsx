@@ -65,10 +65,19 @@ export default function Hero() {
             transition={{ duration: 0.3 }}
             className="lg:col-span-7 xl:col-span-6 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start pt-2 sm:pt-4 max-w-xl mx-auto lg:mx-0"
           >
-            {/* Guidance Eyebrow Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full royal-gold-badge text-xs uppercase tracking-widest font-semibold shadow-xs">
-              <Sparkles className="w-4 h-4 text-[#8C5D00]" />
-              <span>WITH THE DIVINE GUIDANCE OF SANTOSHI SHRI. ARAWINDHAN JI</span>
+            {/* Guidance Eyebrow & Live Registration Badge Row */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full royal-gold-badge text-xs uppercase tracking-widest font-semibold shadow-xs">
+                <Sparkles className="w-4 h-4 text-[#8C5D00]" />
+                <span>THE GUIDING LIGHT · SANTOSHI SHRI. ARAWINDHAN JI</span>
+              </div>
+              <Link
+                href="/happy-shambhala#TicketBooking"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#47206A] text-[#DFC47A] border border-[#DFC47A]/50 text-xs font-bold uppercase tracking-wider shadow-xs hover:bg-[#351A4A] hover:scale-105 transition-all"
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span>Live Registration Open</span>
+              </Link>
             </div>
 
             {/* Main Title */}

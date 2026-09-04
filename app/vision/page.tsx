@@ -18,18 +18,29 @@ export const metadata: Metadata = {
 
 export default function VisionPage() {
   return (
-    <div className="bg-transparent font-body min-h-screen">
-      <VisionHero />
-      <FounderMessage />
-      <ConsciousnessShift />
-      <SubtleArchitecture />
-      <FourDivinePillars />
-      <StatesOfMind />
-      <FourteenYogas />
-      <AdvancedProgrammes />
-      <QuantumHabitsWorkshop />
-      <UltimateAwakening />
-      <VisionApproach />
+    <div className="bg-transparent font-body min-h-screen relative overflow-x-hidden">
+      {/* Fixed Background Image Overlay (con-6.webp Sandal Texture matching Contact & Quantum Habits) */}
+      <div
+        className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+        }}
+      />
+
+      <div className="relative z-10">
+        <VisionHero />
+        <FounderMessage />
+        <ConsciousnessShift />
+        <SubtleArchitecture />
+        <FourDivinePillars />
+        <StatesOfMind />
+        <FourteenYogas />
+        <AdvancedProgrammes />
+        <QuantumHabitsWorkshop />
+        <UltimateAwakening />
+        <VisionApproach />
+      </div>
     </div>
   );
 }

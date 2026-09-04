@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 
+import ScrollAutoPlayVideo from '../common/ScrollAutoPlayVideo';
+
 export default function AwakeningVideo() {
   return (
     <section className="py-8 sm:py-10 lg:py-12 bg-white relative overflow-hidden font-body">
@@ -28,19 +30,10 @@ export default function AwakeningVideo() {
               boxShadow: '0 15px 35px rgba(0,0,0,0.3)',
             }}
           >
-            <video
-              controls
-              autoPlay
-              loop
-              playsInline
+            <ScrollAutoPlayVideo
+              src="https://res.cloudinary.com/y2q2jsq0/video/upload/v1783502864/Dji_0013_drswx1.mp4"
               className="w-full h-full object-cover"
-            >
-              <source
-                src="https://res.cloudinary.com/y2q2jsq0/video/upload/v1783502864/Dji_0013_drswx1.mp4"
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
+            />
           </div>
         </motion.div>
 

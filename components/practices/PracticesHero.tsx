@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import ScrollAutoPlayVideo from '../common/ScrollAutoPlayVideo';
 
 export default function PracticesHero() {
   return (
@@ -167,19 +168,10 @@ export default function PracticesHero() {
           />
 
           <div className="relative z-10 aspect-video rounded-3xl overflow-hidden bg-black border-2 border-[#C8A34A] shadow-[0_25px_60px_rgba(0,0,0,0.6)] video-container-hover">
-            <video
-              controls
-              autoPlay
-              loop
-              playsInline
+            <ScrollAutoPlayVideo
+              src="https://res.cloudinary.com/y2q2jsq0/video/upload/v1783502864/Dji_0013_drswx1.mp4"
               className="w-full h-full object-cover"
-            >
-              <source
-                src="https://res.cloudinary.com/y2q2jsq0/video/upload/v1783502864/Dji_0013_drswx1.mp4"
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
+            />
           </div>
         </motion.div>
 
