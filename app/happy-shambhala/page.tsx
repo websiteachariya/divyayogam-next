@@ -97,7 +97,17 @@ export default function HappyShambhalaLandingPage() {
     return () => clearInterval(slideTimer);
   }, [slides.length]);
 
-  const ticketTiers = [
+  interface TicketTier {
+    price: string;
+    name: string;
+    desc: string;
+    badge: string;
+    popular: boolean;
+    icon: any;
+    image?: string;
+  }
+
+  const ticketTiers: TicketTier[] = [
     { price: '₹500', name: 'General Pass', desc: 'General Seating & Shambhala Initiation Entry', badge: 'ENTRY PASS', popular: false, icon: Ticket },
     { price: '₹1,000', name: 'Silver Sadhana Pass', desc: 'Silver Reserved Seating & Prasad', badge: 'SILVER PASS', popular: false, icon: Award },
     { price: '₹2,000', name: 'Gold Oneness Pass', desc: 'Gold Front Row Seating & Special Sadhana Kit', badge: 'GOLD PASS', popular: false, icon: Sparkles },

@@ -35,12 +35,14 @@ import {
 
 interface MembershipTier {
   id: string;
+  badge: string;
   name: string;
   price: string;
   priceNum: number;
   period: string;
+  tagline: string;
   desc: string;
-  badge: string;
+  message: string;
   popular?: boolean;
   color: string;
   borderColor: string;
@@ -49,97 +51,68 @@ interface MembershipTier {
 
 const MEMBERSHIP_TIERS: MembershipTier[] = [
   {
-    id: 'entry',
-    name: 'General Pass',
+    id: 'gold',
+    badge: 'GOLD — AWAKEN',
+    name: 'Gold Division',
     price: '₹500',
     priceNum: 500,
-    period: 'pass',
-    desc: 'General Seating & Shambhala Initiation Entry',
-    badge: 'ENTRY PASS',
+    period: 'membership',
+    tagline: 'Begin with Awareness',
+    desc: 'A simple entry point into the Divine Grace wellness journey.',
+    message: '“Know Yourself. Define Your Goals. Begin Your Journey.”',
     popular: false,
-    color: 'from-[#FAF5EF] to-[#FFFDF9]',
-    borderColor: 'border-[#DFC47A]/60',
+    color: 'from-[#FFFDF9] via-[#FAF5EF] to-[#FFF8ED]',
+    borderColor: 'border-[#DFC47A]',
     benefits: [
-      'General Seating Access',
-      'Shambhala Initiation Entry',
-      'Digital Divya Yogam Member Pass',
-      'General Access to All Open Satsangs'
-    ]
-  },
-  {
-    id: 'silver',
-    name: 'Silver Sadhana Pass',
-    price: '₹1,000',
-    priceNum: 1000,
-    period: 'pass',
-    desc: 'Silver Reserved Seating & Prasad',
-    badge: 'SILVER PASS',
-    popular: false,
-    color: 'from-[#FFFDF9] via-[#FAF3E8] to-[#FFF8ED]',
-    borderColor: 'border-[#C0C0C0]',
-    benefits: [
-      'Silver Reserved Seating Zone',
-      'Sacred Prasad Distribution',
-      'Digital Divya Yogam Membership Pass',
-      'Access to Audio Sadhana Library',
-      'Monthly E-Newsletter & Discourses'
-    ]
-  },
-  {
-    id: 'gold',
-    name: 'Gold Oneness Pass',
-    price: '₹2,000',
-    priceNum: 2000,
-    period: 'pass',
-    desc: 'Gold Front Row Seating & Special Sadhana Kit',
-    badge: 'GOLD PASS',
-    popular: true,
-    color: 'from-[#FFFDF9] via-[#FAF3E8] to-[#FFF8ED]',
-    borderColor: 'border-[#C8A34A]',
-    benefits: [
-      'Gold Front Row Reserved Seating',
-      'Special Sacred Sadhana Kit (Prasad & Stole)',
-      'Digital Divya Yogam Member Card',
-      'Quarterly Exclusive Masterclass Invites',
-      'Priority Event Registration'
+      'Avadhani Session',
+      'Goal Sheet Enrichment — FREE',
+      'Introduction to conscious living',
+      'Wellness orientation',
+      'Personal goal identification'
     ]
   },
   {
     id: 'diamond',
-    name: 'Diamond Pass',
-    price: '₹5,000',
-    priceNum: 5000,
-    period: 'pass',
-    desc: 'VIP Front Block & Exclusive Satsang Access',
-    badge: 'DIAMOND PASS',
-    popular: false,
-    color: 'from-[#FAF3FA] via-[#FFFDF9] to-[#F8EBF6]',
-    borderColor: 'border-[#8C5D00]/60',
+    badge: 'DIAMOND — ENRICH',
+    name: 'Diamond Division',
+    price: '₹1,500',
+    priceNum: 1500,
+    period: 'membership',
+    tagline: 'Build Healthy Habits',
+    desc: 'For members ready to deepen their practice and bring greater consistency into daily life.',
+    message: '“Practice With Purpose. Grow With Discipline.”',
+    popular: true,
+    color: 'from-[#FFFDF9] via-[#FAF5EF] to-[#FFF8ED]',
+    borderColor: 'border-[#8C5D00]',
     benefits: [
-      'VIP Front Block Seating',
-      'Exclusive Satsang & Guided Meditation Access',
-      'VIP Welcome Gift Box & Stole',
-      'Lifetime Member Certificate & Digital Pass',
-      'Personal Blessings Session'
+      'Avadhani Sessions',
+      'Goal Sheet Enrichment & Review',
+      'Mindfulness and self-reflection',
+      'Habit-building practices',
+      'Lifestyle guidance',
+      'Progress review'
     ]
   },
   {
-    id: 'patron',
-    name: 'VIP Patron Pass',
-    price: '₹10,000',
-    priceNum: 10000,
-    period: 'pass',
-    desc: 'Sanctuary Sponsor Access & Personal Blessing',
-    badge: 'PATRON PASS',
+    id: 'platinum',
+    badge: 'PLATINUM — TRANSFORM',
+    name: 'Platinum Division',
+    price: '₹5,000',
+    priceNum: 5000,
+    period: 'membership',
+    tagline: 'Embrace Holistic Living',
+    desc: 'A deeper wellness journey integrating body, mind, emotions and inner well-being.',
+    message: '“Live Consciously. Grow Holistically. Transform Your Life.”',
     popular: false,
     color: 'from-[#352043] via-[#47206A] to-[#2B083A]',
     borderColor: 'border-[#DFC47A]',
     benefits: [
-      'Sanctuary Sponsor Access & Personal Blessing',
-      'Front Row VIP Reserved Seating',
-      'Honorary Patron Recognition & Physical Card',
-      'Personal Meet with Founder & Council Masters',
-      'Sponsor Free Meditation Passes for Seekers'
+      'Advanced Avadhani engagement',
+      'Personalized Goal Sheet enrichment',
+      'Guided meditation and mindful practices',
+      'Lifestyle and habit guidance',
+      'Individual progress reviews',
+      'Purposeful-living and self-reflection practices'
     ]
   }
 ];
@@ -157,9 +130,6 @@ export default function MembershipPage() {
     phone: '',
     email: '',
     city: '',
-    state: 'Puducherry',
-    occupation: '',
-    extraContribution: '0',
   });
 
   // Generated Member Receipt Data
@@ -220,10 +190,8 @@ export default function MembershipPage() {
           phone: formData.phone,
           email: formData.email,
           city: formData.city,
-          state: formData.state,
-          occupation: formData.occupation,
           tierName: selectedTier?.name,
-          amountPaid: selectedTier ? selectedTier.priceNum + Number(formData.extraContribution || 0) : 0,
+          amountPaid: selectedTier ? selectedTier.priceNum : 0,
           paymentMethod,
           timestamp: new Date().toISOString()
         };
@@ -254,102 +222,117 @@ export default function MembershipPage() {
       />
 
       {/* ======================================================================== */}
-      {/* MEMBERSHIP TIERS GRID */}
+      {/* MEMBERSHIP TIERS GRID - 3 DIVISIONS */}
       {/* ======================================================================== */}
       <section className="pt-28 sm:pt-36 pb-12 sm:pb-16 relative z-10" id="MembershipCards">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#352043] text-[#DFC47A] border border-[#DFC47A]/40 text-xs font-bold uppercase tracking-widest shadow-md">
-              <Award className="w-3.5 h-3.5 text-[#DFC47A]" />
-              SELECT YOUR SACRED PLAN
+              <Sparkles className="w-3.5 h-3.5 text-[#DFC47A]" />
+              DIVINE GRACE MEMBERSHIP — 3 DIVISIONS
             </span>
             <h2 className="font-heading text-3xl sm:text-5xl font-extrabold text-[#352043]">
-              Choose Your <span className="font-serif italic font-normal text-[#8C5D00]">Membership Card</span>
+              Choose Your <span className="font-serif italic font-normal text-[#8C5D00]">Sacred Division</span>
             </h2>
             <p className="text-[#5E5865] text-sm sm:text-base font-normal max-w-xl mx-auto">
-              Select a voluntary membership tier below to instantly receive your digital member card and unlock sacred benefits.
+              Select a membership division below to enroll, define your goals, and begin your journey of conscious living and holistic growth.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {MEMBERSHIP_TIERS.map((tier, idx) => (
               <motion.div
                 key={tier.id}
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className={`bg-gradient-to-b ${tier.color} rounded-3xl p-5 border-2 ${tier.borderColor} ${
-                  tier.popular ? 'shadow-2xl scale-[1.02] relative z-10' : 'shadow-xl'
-                } hover:shadow-2xl hover:border-[#8C5D00] hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between space-y-5 text-center group`}
+                transition={{ duration: 0.5, delay: idx * 0.15 }}
+                className={`bg-gradient-to-b ${tier.color} rounded-3xl p-6 sm:p-7 border-2 ${tier.borderColor} ${
+                  tier.popular ? 'shadow-2xl scale-[1.03] relative z-10' : 'shadow-xl'
+                } hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between space-y-6 group`}
               >
                 {tier.popular && (
                   <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#8C5D00] text-white text-[10px] font-extrabold uppercase tracking-widest shadow-md whitespace-nowrap z-20">
-                    MOST POPULAR
+                    MOST RECOMMENDED
                   </div>
                 )}
 
-                {/* Card Top Information */}
-                <div className="space-y-3 pt-1">
+                {/* Card Header & Title */}
+                <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="inline-block px-3 py-1 rounded-full bg-[#FAF5EF] text-[#8C5D00] border border-[#DFC47A]/50 text-[10px] font-extrabold uppercase tracking-wider">
+                    <span className={`inline-block px-3.5 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider ${
+                      tier.id === 'platinum'
+                        ? 'bg-[#DFC47A] text-[#2B083A]'
+                        : 'bg-[#FAF5EF] text-[#8C5D00] border border-[#DFC47A]/50'
+                    }`}>
                       {tier.badge}
                     </span>
-                    <Sparkles className="w-4 h-4 text-[#8C5D00] group-hover:scale-110 transition-transform" />
-                  </div>
-
-                  {/* Image Holder with 'Waiting for Image to be Uploaded' */}
-                  <div className="relative w-full h-28 rounded-2xl bg-[#352043]/5 border-2 border-dashed border-[#DFC47A]/70 flex flex-col items-center justify-center text-center p-2 group-hover:border-[#8C5D00] transition-colors">
-                    <ImageIcon className="w-5 h-5 text-[#8C5D00] mb-1 opacity-75" />
-                    <span className="text-[9px] font-extrabold uppercase tracking-wider text-[#8C5D00] bg-[#FAF5EF] px-2 py-0.5 rounded-full border border-[#DFC47A]/50">
-                      Pending Upload
-                    </span>
-                    <span className="text-[9px] font-medium text-[#5E5865] mt-1 italic leading-tight">
-                      Waiting for Image to be Uploaded
-                    </span>
+                    <Sparkles className={`w-4 h-4 ${tier.id === 'platinum' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'} group-hover:scale-110 transition-transform`} />
                   </div>
 
                   <div className="space-y-1">
-                    <h3 className={`font-heading text-lg font-extrabold ${tier.id === 'patron' ? 'text-white' : 'text-[#352043]'}`}>
+                    <h3 className={`font-heading text-xl sm:text-2xl font-extrabold ${tier.id === 'platinum' ? 'text-white' : 'text-[#352043]'}`}>
                       {tier.name}
                     </h3>
-                    <div className="flex items-baseline justify-center gap-1">
-                      <span className={`font-heading text-2xl sm:text-3xl font-extrabold ${tier.id === 'patron' ? 'text-[#DFC47A]' : 'text-[#352043]'}`}>
-                        {tier.price}
-                      </span>
-                    </div>
+                    <p className={`text-xs font-semibold ${tier.id === 'platinum' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'}`}>
+                      {tier.tagline}
+                    </p>
                   </div>
 
-                  <p className={`text-[11px] leading-relaxed font-light ${tier.id === 'patron' ? 'text-[#F8F2E8]/90' : 'text-[#5E5865]'}`}>
+                  {/* Price */}
+                  <div className="flex items-baseline gap-1.5 pt-1">
+                    <span className={`font-heading text-3xl sm:text-4xl font-extrabold ${tier.id === 'platinum' ? 'text-[#DFC47A]' : 'text-[#352043]'}`}>
+                      {tier.price}
+                    </span>
+                    <span className={`text-xs font-medium ${tier.id === 'platinum' ? 'text-white/70' : 'text-[#5E5865]'}`}>
+                      / membership
+                    </span>
+                  </div>
+
+                  <p className={`text-xs leading-relaxed ${tier.id === 'platinum' ? 'text-[#F8F2E8]/90' : 'text-[#5E5865]'}`}>
                     {tier.desc}
                   </p>
 
-                  <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#DFC47A]/50 to-transparent my-2" />
+                  <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#DFC47A]/50 to-transparent my-3" />
 
                   {/* Benefits Checklist */}
-                  <ul className="space-y-2 text-left text-[11px] font-normal">
-                    {tier.benefits.map((benefit, bIdx) => (
-                      <li key={bIdx} className="flex items-start gap-1.5">
-                        <CheckCircle2 className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${tier.id === 'patron' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'}`} />
-                        <span className={tier.id === 'patron' ? 'text-white' : 'text-[#352043]'}>
-                          {benefit}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="space-y-2">
+                    <span className={`text-[11px] font-extrabold uppercase tracking-wider block ${tier.id === 'platinum' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'}`}>
+                      Includes:
+                    </span>
+                    <ul className="space-y-2.5 text-xs font-normal">
+                      {tier.benefits.map((benefit, bIdx) => (
+                        <li key={bIdx} className="flex items-start gap-2">
+                          <CheckCircle2 className={`w-4 h-4 shrink-0 mt-0.5 ${tier.id === 'platinum' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'}`} />
+                          <span className={tier.id === 'platinum' ? 'text-white' : 'text-[#352043]'}>
+                            {benefit}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Message Quote Box */}
+                  <div className={`mt-4 p-3.5 rounded-2xl text-xs font-serif italic text-center border ${
+                    tier.id === 'platinum'
+                      ? 'bg-white/10 text-[#DFC47A] border-[#DFC47A]/30'
+                      : 'bg-[#FAF5EF] text-[#8C5D00] border-[#DFC47A]/50'
+                  }`}>
+                    {tier.message}
+                  </div>
                 </div>
 
                 {/* Card Action Button */}
                 <button
                   onClick={() => openMembershipModal(tier)}
-                  className={`w-full py-3 rounded-full font-bold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 ${
-                    tier.id === 'patron'
+                  className={`w-full py-3.5 rounded-full font-bold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 ${
+                    tier.id === 'platinum'
                       ? 'bg-gradient-to-r from-[#DFC47A] via-[#E3C582] to-[#C8A34A] text-[#2B083A] hover:bg-white'
                       : 'bg-[#352043] hover:bg-[#8C5D00] text-white'
                   }`}
                 >
                   <Ticket className="w-4 h-4 text-[#DFC47A]" />
-                  <span>Book Ticket</span>
+                  <span>Enroll in {tier.name}</span>
                 </button>
               </motion.div>
             ))}
@@ -400,11 +383,6 @@ export default function MembershipPage() {
                 {/* STEP 1: VOLUNTARY MEMBER FORM */}
                 {step === 'form' && (
                   <form onSubmit={handleFormSubmit} className="space-y-4">
-                    <div className="p-3.5 rounded-2xl bg-[#FAF5EF] border border-[#DFC47A]/50 flex items-center gap-3 text-xs text-[#8C5D00] font-semibold">
-                      <ShieldCheck className="w-5 h-5 shrink-0 text-[#8C5D00]" />
-                      <span>Voluntary Enrollment — No Password or Account Registration Required.</span>
-                    </div>
-
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
                         <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
@@ -456,7 +434,7 @@ export default function MembershipPage() {
                       <div className="space-y-1.5">
                         <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
                           <MapPin className="w-3.5 h-3.5 text-[#8C5D00]" />
-                          <span>City & State</span>
+                          <span>City</span>
                         </label>
                         <input
                           type="text"
@@ -468,41 +446,11 @@ export default function MembershipPage() {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
-                          <Building className="w-3.5 h-3.5 text-[#8C5D00]" />
-                          <span>Occupation / Profession</span>
-                        </label>
-                        <input
-                          type="text"
-                          placeholder="e.g. Educator / Professional"
-                          value={formData.occupation}
-                          onChange={(e) => setFormData({ ...formData, occupation: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl border border-[#E9DED3] focus:border-[#C8A34A] focus:outline-none text-xs sm:text-sm font-medium bg-[#FAF5EF]/50"
-                        />
-                      </div>
-
-                      <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
-                          <Heart className="w-3.5 h-3.5 text-[#8C5D00]" />
-                          <span>Extra Voluntary Contribution (₹)</span>
-                        </label>
-                        <input
-                          type="number"
-                          placeholder="0"
-                          value={formData.extraContribution}
-                          onChange={(e) => setFormData({ ...formData, extraContribution: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl border border-[#E9DED3] focus:border-[#C8A34A] focus:outline-none text-xs sm:text-sm font-medium bg-[#FAF5EF]/50"
-                        />
-                      </div>
-                    </div>
-
                     <div className="pt-3 border-t border-[#E9DED3] flex items-center justify-between gap-4">
                       <div className="text-xs">
                         <span className="text-[#5E5865] block">Total Payment Amount:</span>
                         <span className="font-heading text-xl font-extrabold text-[#352043]">
-                          ₹{selectedTier.priceNum + Number(formData.extraContribution || 0)}
+                          {selectedTier.price}
                         </span>
                       </div>
 
@@ -530,7 +478,7 @@ export default function MembershipPage() {
                       <div className="text-right">
                         <span className="text-xs text-[#8C5D00] font-bold block">Total Amount:</span>
                         <span className="font-heading text-lg font-extrabold text-[#352043]">
-                          ₹{selectedTier.priceNum + Number(formData.extraContribution || 0)}
+                          {selectedTier.price}
                         </span>
                       </div>
                     </div>
@@ -655,7 +603,7 @@ export default function MembershipPage() {
                         ) : (
                           <>
                             <ShieldCheck className="w-4 h-4" />
-                            <span>Pay ₹{selectedTier.priceNum + Number(formData.extraContribution || 0)} Now</span>
+                            <span>Pay {selectedTier.price} Now</span>
                           </>
                         )}
                       </button>
