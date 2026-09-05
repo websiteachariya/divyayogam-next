@@ -17,6 +17,8 @@ import {
   Phone,
   Mail,
   MapPin,
+  Home,
+  Navigation,
   Award,
   Heart,
   Sun,
@@ -53,7 +55,7 @@ const MEMBERSHIP_TIERS: MembershipTier[] = [
   {
     id: 'gold',
     badge: 'GOLD — AWAKEN',
-    name: 'Gold Division',
+    name: 'Gold',
     price: '₹500',
     priceNum: 500,
     period: 'membership',
@@ -72,18 +74,18 @@ const MEMBERSHIP_TIERS: MembershipTier[] = [
     ]
   },
   {
-    id: 'diamond',
-    badge: 'DIAMOND — ENRICH',
-    name: 'Diamond Division',
+    id: 'platinum',
+    badge: 'PLATINUM — ENRICH',
+    name: 'Platinum',
     price: '₹1,500',
     priceNum: 1500,
     period: 'membership',
     tagline: 'Build Healthy Habits',
     desc: 'For members ready to deepen their practice and bring greater consistency into daily life.',
     message: '“Practice With Purpose. Grow With Discipline.”',
-    popular: true,
+    popular: false,
     color: 'from-[#FFFDF9] via-[#FAF5EF] to-[#FFF8ED]',
-    borderColor: 'border-[#8C5D00]',
+    borderColor: 'border-[#DFC47A]',
     benefits: [
       'Avadhani Sessions',
       'Goal Sheet Enrichment & Review',
@@ -94,16 +96,16 @@ const MEMBERSHIP_TIERS: MembershipTier[] = [
     ]
   },
   {
-    id: 'platinum',
-    badge: 'PLATINUM — TRANSFORM',
-    name: 'Platinum Division',
+    id: 'diamond',
+    badge: 'DIAMOND — TRANSFORM',
+    name: 'Diamond',
     price: '₹5,000',
     priceNum: 5000,
     period: 'membership',
     tagline: 'Embrace Holistic Living',
     desc: 'A deeper wellness journey integrating body, mind, emotions and inner well-being.',
     message: '“Live Consciously. Grow Holistically. Transform Your Life.”',
-    popular: false,
+    popular: true,
     color: 'from-[#352043] via-[#47206A] to-[#2B083A]',
     borderColor: 'border-[#DFC47A]',
     benefits: [
@@ -130,6 +132,8 @@ export default function MembershipPage() {
     phone: '',
     email: '',
     city: '',
+    address: '',
+    pincode: '',
   });
 
   // Generated Member Receipt Data
@@ -190,6 +194,8 @@ export default function MembershipPage() {
           phone: formData.phone,
           email: formData.email,
           city: formData.city,
+          address: formData.address,
+          pincode: formData.pincode,
           tierName: selectedTier?.name,
           amountPaid: selectedTier ? selectedTier.priceNum : 0,
           paymentMethod,
@@ -222,24 +228,24 @@ export default function MembershipPage() {
       />
 
       {/* ======================================================================== */}
-      {/* MEMBERSHIP TIERS GRID - 3 DIVISIONS */}
+      {/* MEMBERSHIP TIERS GRID */}
       {/* ======================================================================== */}
       <section className="pt-28 sm:pt-36 pb-12 sm:pb-16 relative z-10" id="MembershipCards">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#352043] text-[#DFC47A] border border-[#DFC47A]/40 text-xs font-bold uppercase tracking-widest shadow-md">
               <Sparkles className="w-3.5 h-3.5 text-[#DFC47A]" />
-              DIVINE GRACE MEMBERSHIP — 3 DIVISIONS
+              DIVINE GRACE MEMBERSHIP
             </span>
             <h2 className="font-heading text-3xl sm:text-5xl font-extrabold text-[#352043]">
-              Choose Your <span className="font-serif italic font-normal text-[#8C5D00]">Sacred Division</span>
+              Choose Your <span className="font-serif italic font-normal text-[#8C5D00]">Sacred Plan</span>
             </h2>
             <p className="text-[#5E5865] text-sm sm:text-base font-normal max-w-xl mx-auto">
-              Select a membership division below to enroll, define your goals, and begin your journey of conscious living and holistic growth.
+              Select a membership plan below to enroll, define your goals, and begin your journey of conscious living and holistic growth.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {MEMBERSHIP_TIERS.map((tier, idx) => (
               <motion.div
                 key={tier.id}
@@ -252,7 +258,11 @@ export default function MembershipPage() {
                 } hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between space-y-6 group`}
               >
                 {tier.popular && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#8C5D00] text-white text-[10px] font-extrabold uppercase tracking-widest shadow-md whitespace-nowrap z-20">
+                  <div className={`absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-widest shadow-md whitespace-nowrap z-20 ${
+                    tier.id === 'diamond'
+                      ? 'bg-[#DFC47A] text-[#2B083A] border border-white/40'
+                      : 'bg-[#8C5D00] text-white'
+                  }`}>
                     MOST RECOMMENDED
                   </div>
                 )}
@@ -261,35 +271,35 @@ export default function MembershipPage() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className={`inline-block px-3.5 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider ${
-                      tier.id === 'platinum'
+                      tier.id === 'diamond'
                         ? 'bg-[#DFC47A] text-[#2B083A]'
                         : 'bg-[#FAF5EF] text-[#8C5D00] border border-[#DFC47A]/50'
                     }`}>
                       {tier.badge}
                     </span>
-                    <Sparkles className={`w-4 h-4 ${tier.id === 'platinum' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'} group-hover:scale-110 transition-transform`} />
+                    <Sparkles className={`w-4 h-4 ${tier.id === 'diamond' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'} group-hover:scale-110 transition-transform`} />
                   </div>
 
                   <div className="space-y-1">
-                    <h3 className={`font-heading text-xl sm:text-2xl font-extrabold ${tier.id === 'platinum' ? 'text-white' : 'text-[#352043]'}`}>
+                    <h3 className={`font-heading text-xl sm:text-2xl font-extrabold ${tier.id === 'diamond' ? 'text-white' : 'text-[#352043]'}`}>
                       {tier.name}
                     </h3>
-                    <p className={`text-xs font-semibold ${tier.id === 'platinum' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'}`}>
+                    <p className={`text-xs font-semibold ${tier.id === 'diamond' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'}`}>
                       {tier.tagline}
                     </p>
                   </div>
 
                   {/* Price */}
                   <div className="flex items-baseline gap-1.5 pt-1">
-                    <span className={`font-heading text-3xl sm:text-4xl font-extrabold ${tier.id === 'platinum' ? 'text-[#DFC47A]' : 'text-[#352043]'}`}>
+                    <span className={`font-heading text-3xl sm:text-4xl font-extrabold ${tier.id === 'diamond' ? 'text-[#DFC47A]' : 'text-[#352043]'}`}>
                       {tier.price}
                     </span>
-                    <span className={`text-xs font-medium ${tier.id === 'platinum' ? 'text-white/70' : 'text-[#5E5865]'}`}>
+                    <span className={`text-xs font-medium ${tier.id === 'diamond' ? 'text-white/70' : 'text-[#5E5865]'}`}>
                       / membership
                     </span>
                   </div>
 
-                  <p className={`text-xs leading-relaxed ${tier.id === 'platinum' ? 'text-[#F8F2E8]/90' : 'text-[#5E5865]'}`}>
+                  <p className={`text-xs leading-relaxed ${tier.id === 'diamond' ? 'text-[#F8F2E8]/90' : 'text-[#5E5865]'}`}>
                     {tier.desc}
                   </p>
 
@@ -297,14 +307,14 @@ export default function MembershipPage() {
 
                   {/* Benefits Checklist */}
                   <div className="space-y-2">
-                    <span className={`text-[11px] font-extrabold uppercase tracking-wider block ${tier.id === 'platinum' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'}`}>
+                    <span className={`text-[11px] font-extrabold uppercase tracking-wider block ${tier.id === 'diamond' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'}`}>
                       Includes:
                     </span>
                     <ul className="space-y-2.5 text-xs font-normal">
                       {tier.benefits.map((benefit, bIdx) => (
                         <li key={bIdx} className="flex items-start gap-2">
-                          <CheckCircle2 className={`w-4 h-4 shrink-0 mt-0.5 ${tier.id === 'platinum' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'}`} />
-                          <span className={tier.id === 'platinum' ? 'text-white' : 'text-[#352043]'}>
+                          <CheckCircle2 className={`w-4 h-4 shrink-0 mt-0.5 ${tier.id === 'diamond' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'}`} />
+                          <span className={tier.id === 'diamond' ? 'text-white' : 'text-[#352043]'}>
                             {benefit}
                           </span>
                         </li>
@@ -314,7 +324,7 @@ export default function MembershipPage() {
 
                   {/* Message Quote Box */}
                   <div className={`mt-4 p-3.5 rounded-2xl text-xs font-serif italic text-center border ${
-                    tier.id === 'platinum'
+                    tier.id === 'diamond'
                       ? 'bg-white/10 text-[#DFC47A] border-[#DFC47A]/30'
                       : 'bg-[#FAF5EF] text-[#8C5D00] border-[#DFC47A]/50'
                   }`}>
@@ -326,7 +336,7 @@ export default function MembershipPage() {
                 <button
                   onClick={() => openMembershipModal(tier)}
                   className={`w-full py-3.5 rounded-full font-bold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 ${
-                    tier.id === 'platinum'
+                    tier.id === 'diamond'
                       ? 'bg-gradient-to-r from-[#DFC47A] via-[#E3C582] to-[#C8A34A] text-[#2B083A] hover:bg-white'
                       : 'bg-[#352043] hover:bg-[#8C5D00] text-white'
                   }`}
@@ -361,7 +371,7 @@ export default function MembershipPage() {
                   </div>
                   <div>
                     <h3 className="font-heading text-lg font-bold text-white leading-snug">
-                      {selectedTier.name} — Voluntary Membership
+                      {selectedTier.name} Membership
                     </h3>
                     <span className="text-xs text-[#DFC47A] font-semibold">
                       {selectedTier.price} · {selectedTier.period}
@@ -392,7 +402,7 @@ export default function MembershipPage() {
                         <input
                           type="text"
                           required
-                          placeholder="e.g. Anand Kumar"
+                          placeholder="Enter your full name"
                           value={formData.fullName}
                           onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl border border-[#E9DED3] focus:border-[#C8A34A] focus:outline-none text-xs sm:text-sm font-medium bg-[#FAF5EF]/50"
@@ -407,7 +417,7 @@ export default function MembershipPage() {
                         <input
                           type="tel"
                           required
-                          placeholder="+91 98765 43210"
+                          placeholder="Enter your phone number"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl border border-[#E9DED3] focus:border-[#C8A34A] focus:outline-none text-xs sm:text-sm font-medium bg-[#FAF5EF]/50"
@@ -424,7 +434,7 @@ export default function MembershipPage() {
                         <input
                           type="email"
                           required
-                          placeholder="anand@example.com"
+                          placeholder="Enter your email address"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl border border-[#E9DED3] focus:border-[#C8A34A] focus:outline-none text-xs sm:text-sm font-medium bg-[#FAF5EF]/50"
@@ -438,9 +448,39 @@ export default function MembershipPage() {
                         </label>
                         <input
                           type="text"
-                          placeholder="e.g. Puducherry"
+                          placeholder="Enter your city"
                           value={formData.city}
                           onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                          className="w-full px-4 py-3 rounded-xl border border-[#E9DED3] focus:border-[#C8A34A] focus:outline-none text-xs sm:text-sm font-medium bg-[#FAF5EF]/50"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
+                          <Home className="w-3.5 h-3.5 text-[#8C5D00]" />
+                          <span>Address</span>
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="Enter your address"
+                          value={formData.address}
+                          onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                          className="w-full px-4 py-3 rounded-xl border border-[#E9DED3] focus:border-[#C8A34A] focus:outline-none text-xs sm:text-sm font-medium bg-[#FAF5EF]/50"
+                        />
+                      </div>
+
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
+                          <Navigation className="w-3.5 h-3.5 text-[#8C5D00]" />
+                          <span>Pincode</span>
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="Enter your pincode"
+                          value={formData.pincode}
+                          onChange={(e) => setFormData({ ...formData, pincode: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl border border-[#E9DED3] focus:border-[#C8A34A] focus:outline-none text-xs sm:text-sm font-medium bg-[#FAF5EF]/50"
                         />
                       </div>
