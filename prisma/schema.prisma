@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Member {
+  id            String   @id @default(uuid())
+  memberId      String   @unique // e.g. DYM-2026-8492
+  fullName      String
+  email         String
+  phone         String
+  city          String?
+  address       String?
+  pincode       String?
+  tierId        String   // gold, platinum, diamond
+  tierName      String   // Gold, Platinum, Diamond
+  amount        Float
+  cfOrderId     String   @unique
+  cfPaymentId   String?
+  paymentStatus String   @default("PENDING") // PENDING, SUCCESS, FAILED
+  paymentMethod String?  // UPI, CARD, NETBANKING
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([email])
+  @@index([phone])
+  @@index([paymentStatus])
+}

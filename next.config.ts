@@ -1,7 +1,7 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  output: 'export',
+  // output: 'export', // Disabled to enable Next.js Backend API Routes and DB connectivity
   trailingSlash: true,
   reactStrictMode: true,
   compress: true,

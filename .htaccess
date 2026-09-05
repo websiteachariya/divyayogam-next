@@ -2,19 +2,39 @@
   RewriteEngine On
   RewriteBase /
 
+  # Set default directory index file
+  DirectoryIndex index.html
+
   # Custom 404 Page
   ErrorDocument 404 /404.html
 
-  # Do not rewrite existing files or directories
+  # Do not rewrite existing files or directories (images, _next scripts, CSS)
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # Serve path.html if path is requested (e.g. /about -> /about.html)
-  RewriteCond %{REQUEST_FILENAME}.html -f
-  RewriteRule ^(.*)$ $1.html [L]
+  # Serve path/index.html if directory index exists (e.g. /about or /about/ -> /about/index.html)
+  RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+  RewriteRule ^(.*)$ /$1/index.html [L]
 
-  # Serve path/index.html if folder exists (e.g. /about/ -> /about/index.html)
-  RewriteCond %{REQUEST_FILENAME}/index.html -f
-  RewriteRule ^(.*)$ $1/index.html [L]
+  # Serve path.html if static html exists (e.g. /about -> /about.html)
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(.*)$ /$1.html [L]
+
+  # Fallback all unmatched routes to 404 page
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ /404.html [L]
+</IfModule>
+
+# Performance & Caching Rules for Hostinger
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
