@@ -415,7 +415,7 @@ export default function EventsPage() {
                     </div>
 
                     <Link
-                      href="/contact"
+                      href="/membership"
                       className="px-4 py-1.5 rounded-full bg-[#352043] group-hover:bg-[#8C5D00] text-white font-bold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 flex items-center gap-1.5 group/btn"
                     >
                       <span>Join</span>

@@ -18,6 +18,7 @@ export interface CreateOrderPayload {
   customerEmail: string;
   customerPhone: string;
   returnUrl: string;
+  notifyUrl?: string;
 }
 
 export async function createCashfreeOrder(payload: CreateOrderPayload) {
@@ -39,6 +40,7 @@ export async function createCashfreeOrder(payload: CreateOrderPayload) {
     },
     order_meta: {
       return_url: payload.returnUrl,
+      ...(payload.notifyUrl ? { notify_url: payload.notifyUrl } : {}),
     },
   };
 

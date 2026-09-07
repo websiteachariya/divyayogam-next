@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Pause, Volume2, VolumeX, Music, Sparkles, ChevronUp, ChevronDown } from 'lucide-react';
 
-const AUDIO_SRC = '/music/divya-yogam.mp3';
+const AUDIO_SRC = '/music/69184892d935e_song.mp3';
 const VIDEO_DUCK_VOLUME = 0.05;
 
 // Storage Keys

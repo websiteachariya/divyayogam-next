@@ -72,7 +72,7 @@ export default function Hero() {
                 <span>THE GUIDING LIGHT · SANTOSHI SHRI. ARAWINDHAN JI</span>
               </div>
               <Link
-                href="/happy-shambhala#TicketBooking"
+                href="/membership"
                 className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#47206A] text-[#DFC47A] border border-[#DFC47A]/50 text-xs font-bold uppercase tracking-wider shadow-xs hover:bg-[#351A4A] hover:scale-105 transition-all"
               >
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
@@ -109,7 +109,7 @@ export default function Hero() {
               </Link>
 
               <Link
-                href="/contact"
+                href="/membership"
                 className="w-full sm:w-auto px-8 py-4 rounded-full bg-white border-2 border-[#DFC47A] hover:border-[#C8A34A] text-[#47206A] font-semibold text-xs uppercase tracking-wider shadow-sm hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
               >
                 <span>Join Our Community</span>

@@ -201,7 +201,7 @@ export default function Navbar() {
 
             {/* Join Us Action Button */}
             <Link
-              href="/contact"
+              href="/membership"
               className="hidden min-[1400px]:flex px-3.5 lg:px-5 py-2 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 items-center gap-1.5 font-body group whitespace-nowrap"
             >
               <span>Join Us</span>
@@ -316,7 +316,7 @@ export default function Navbar() {
 
                 <div className="w-full pt-3 mt-1 border-t border-[#E9DED3] flex flex-col items-center gap-2">
                   <Link
-                    href="/contact"
+                    href="/membership"
                     onClick={() => setIsMobileOpen(false)}
                     className="w-full py-2.5 px-4 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-all duration-300 font-body group"
                   >

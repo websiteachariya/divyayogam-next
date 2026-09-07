@@ -23,6 +23,7 @@ export async function POST(req: NextRequest) {
     const protocol = req.headers.get('x-forwarded-proto') || 'http';
     const origin = process.env.NEXT_PUBLIC_APP_URL || `${protocol}://${host}`;
     const returnUrl = `${origin}/membership?order_id={order_id}`;
+    const notifyUrl = `${origin}/api/webhooks/cashfree`;
 
     // 1. Create Cashfree Order via REST API
     const cfResponse = await createCashfreeOrder({
@@ -32,6 +33,7 @@ export async function POST(req: NextRequest) {
       customerEmail: email,
       customerPhone: phone,
       returnUrl,
+      notifyUrl,
     });
 
     const paymentSessionId = cfResponse.payment_session_id;

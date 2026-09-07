@@ -46,7 +46,7 @@ export default function TopBar({ isScrolled = false }: TopBarProps) {
           Masterclass
         </span>
         <Link
-          href="/organ-meditation"
+          href="/membership"
           className="text-[10px] sm:text-[11px] text-[#F8F2E8] hover:text-[#DFC47A] font-medium transition-colors underline underline-offset-2 decoration-[#DFC47A]/50 hover:decoration-[#DFC47A] truncate min-w-0"
         >
           <span className="hidden sm:inline">Organ Rejuvenation &amp; Sacred Sciences — Join Now</span>

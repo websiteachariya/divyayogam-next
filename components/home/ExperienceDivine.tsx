@@ -43,7 +43,7 @@ export default function ExperienceDivine() {
 
           <div className="pt-4">
             <Link
-              href="/contact"
+              href="/membership"
               className="inline-block rounded-full px-5 py-2 sm:px-6 sm:py-2.5 font-bold uppercase tracking-widest text-[11px] sm:text-xs border-2 border-[#C8A34A] text-[#DFC47A] bg-black/40 hover:bg-[#C8A34A] hover:text-[#352043] transition-all duration-300 shadow-xl hover:scale-105"
             >
               Begin Your Journey

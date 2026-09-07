@@ -184,7 +184,7 @@ export default function CorePractices() {
 
             <div>
               <Link
-                href="/contact"
+                href="/membership"
                 className="inline-flex items-center gap-2 px-5 py-2 sm:px-5.5 sm:py-2.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] text-[11px] sm:text-xs font-bold uppercase tracking-wider shadow-md transition-all transform hover:scale-105"
               >
                 <span>BECOME A MEMBER</span>

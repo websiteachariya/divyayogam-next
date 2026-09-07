@@ -60,12 +60,16 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: '/favicon.ico', sizes: 'any' },
       { url: '/favicon.webp', type: 'image/webp' },
       { url: '/favicon-32x32.webp', sizes: '32x32', type: 'image/webp' },
       { url: '/images/favicon-circle.webp', type: 'image/webp' },
     ],
-    shortcut: '/favicon.webp',
-    apple: '/images/favicon-circle.webp',
+    shortcut: '/favicon.ico',
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      { url: '/images/favicon-circle.webp', type: 'image/webp' },
+    ],
   },
   openGraph: {
     title: 'Divya Yogam — Awaken Within | Organ Meditation & Sacred Sciences',
@@ -121,6 +125,48 @@ export default function RootLayout({
         <link rel="preload" href="/images/banner-4.webp" as="image" type="image/webp" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                {
+                  '@type': 'Organization',
+                  '@id': 'https://divyayogam.org/#organization',
+                  name: 'Divya Yogam Foundation',
+                  url: 'https://divyayogam.org',
+                  logo: 'https://divyayogam.org/images/logo-badge.webp',
+                  founder: {
+                    '@type': 'Person',
+                    name: 'Arawindhan Ji',
+                  },
+                  sameAs: [
+                    'https://facebook.com/divyayogam',
+                    'https://instagram.com/divyayogam',
+                    'https://youtube.com/@divyayogam',
+                  ],
+                },
+                {
+                  '@type': 'WebSite',
+                  '@id': 'https://divyayogam.org/#website',
+                  url: 'https://divyayogam.org',
+                  name: 'Divya Yogam — Awaken Within | Organ Meditation & Sacred Sciences',
+                  publisher: {
+                    '@id': 'https://divyayogam.org/#organization',
+                  },
+                },
+                {
+                  '@type': 'EducationalOrganization',
+                  name: 'Divya Yogam Wellness & Meditation Academy',
+                  url: 'https://divyayogam.org/membership',
+                  description:
+                    'Offering Gold (₹500), Platinum (₹1,500), and Diamond (₹5,000) wellness membership plans for organ meditation and cellular rejuvenation.',
+                },
+              ],
+            }),
+          }}
+        />
       </head>
       <body
         className="min-h-screen flex flex-col text-[#5E5865] selection:bg-[#C8A34A]/30 selection:text-[#47206A] relative font-body antialiased bg-[#FAF5EF] bg-[url('/images/con-6.webp')] bg-cover bg-center bg-fixed bg-no-repeat overflow-x-hidden max-w-full w-full"

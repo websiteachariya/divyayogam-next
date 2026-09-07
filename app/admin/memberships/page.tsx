@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   Users,
   Search,
@@ -23,8 +24,16 @@ import {
   ChevronRight,
   TrendingUp,
   Award,
-  Trash2
+  Trash2,
+  Lock,
+  Eye,
+  EyeOff,
+  User,
+  LogOut,
+  KeyRound,
+  Globe
 } from 'lucide-react';
+import SeoAuditDashboard from '@/components/admin/SeoAuditDashboard';
 
 interface MemberRecord {
   id?: string;
@@ -46,11 +55,51 @@ interface MemberRecord {
 }
 
 export default function AdminMembershipsPage() {
+  const router = useRouter();
+  const [activeAdminTab, setActiveAdminTab] = useState<'MEMBERS' | 'SEO'>('MEMBERS');
   const [members, setMembers] = useState<MemberRecord[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedStatus, setSelectedStatus] = useState<string>('ALL');
   const [selectedTier, setSelectedTier] = useState<string>('ALL');
+
+  // Authentication State
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [checkingAuth, setCheckingAuth] = useState(true);
+
+  useEffect(() => {
+    const checkAuthSession = async () => {
+      try {
+        const res = await fetch('/api/admin/login');
+        const data = await res.json();
+        if (data.authenticated) {
+          setIsAuthenticated(true);
+          if (typeof window !== 'undefined') localStorage.setItem('divya_admin_auth', 'true');
+          fetchMemberships();
+        } else {
+          if (typeof window !== 'undefined') localStorage.removeItem('divya_admin_auth');
+          setIsAuthenticated(false);
+          router.replace('/admin/login');
+        }
+      } catch (err) {
+        if (typeof window !== 'undefined') localStorage.removeItem('divya_admin_auth');
+        setIsAuthenticated(false);
+        router.replace('/admin/login');
+      } finally {
+        setCheckingAuth(false);
+      }
+    };
+    checkAuthSession();
+  }, [router]);
+
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/admin/logout', { method: 'POST' });
+    } catch (err) {}
+    if (typeof window !== 'undefined') localStorage.removeItem('divya_admin_auth');
+    setIsAuthenticated(false);
+    router.push('/admin/login');
+  };
 
   const [metrics, setMetrics] = useState({
     totalMembers: 0,
@@ -252,6 +301,28 @@ export default function AdminMembershipsPage() {
     }
   };
 
+  if (checkingAuth) {
+    return (
+      <div className="min-h-screen bg-[#FAF5EF] flex items-center justify-center pt-36 pb-16">
+        <div className="flex items-center gap-3 text-[#352043] font-bold text-sm bg-white/90 px-6 py-4 rounded-2xl border border-[#DFC47A] shadow-lg">
+          <RefreshCw className="w-5 h-5 text-[#C8A34A] animate-spin" />
+          <span>Verifying Admin Credentials...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-[#FAF5EF] flex items-center justify-center pt-36 pb-16">
+        <div className="flex items-center gap-3 text-[#352043] font-bold text-sm bg-white/90 px-6 py-4 rounded-2xl border border-[#DFC47A] shadow-lg">
+          <RefreshCw className="w-5 h-5 text-[#C8A34A] animate-spin" />
+          <span>Redirecting to Admin Login...</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#FAF5EF] font-body text-[#352043] relative overflow-x-hidden pt-36 sm:pt-44 md:pt-48 pb-16">
       
@@ -307,11 +378,63 @@ export default function AdminMembershipsPage() {
               <Download className="w-3.5 h-3.5 text-[#DFC47A]" />
               <span>Export CSV</span>
             </button>
+
+            <button
+              onClick={handleLogout}
+              className="px-4 py-2.5 rounded-full bg-red-50 hover:bg-red-100 border border-red-200 text-red-700 font-bold text-xs flex items-center gap-2 shadow-sm transition-all"
+            >
+              <LogOut className="w-3.5 h-3.5 text-red-600" />
+              <span>Logout</span>
+            </button>
           </div>
         </div>
 
-        {/* Analytics Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {/* Main Admin Tab Bar (Switch between Memberships & SEO Control) */}
+        <div className="flex flex-wrap items-center justify-between gap-4 bg-white/90 backdrop-blur-md p-2 rounded-2xl border-2 border-[#DFC47A] shadow-lg">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setActiveAdminTab('MEMBERS')}
+              className={`px-5 py-3 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2.5 transition-all ${
+                activeAdminTab === 'MEMBERS'
+                  ? 'bg-[#352043] text-[#DFC47A] shadow-md scale-[1.02]'
+                  : 'text-[#352043] hover:bg-[#FAF5EF]'
+              }`}
+            >
+              <Users className="w-4 h-4 text-[#DFC47A]" />
+              <span>Subscribers & Revenue</span>
+              <span className="px-2 py-0.5 rounded-full bg-[#DFC47A] text-[#352043] text-[10px] font-extrabold">
+                {metrics.totalMembers}
+              </span>
+            </button>
+
+            <button
+              onClick={() => setActiveAdminTab('SEO')}
+              className={`px-5 py-3 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2.5 transition-all ${
+                activeAdminTab === 'SEO'
+                  ? 'bg-[#352043] text-[#DFC47A] shadow-md scale-[1.02]'
+                  : 'text-[#352043] hover:bg-[#FAF5EF]'
+              }`}
+            >
+              <Globe className="w-4 h-4 text-[#DFC47A]" />
+              <span>SEO Manager & Audit</span>
+              <span className="px-2 py-0.5 rounded-full bg-emerald-500 text-white text-[10px] font-extrabold animate-pulse">
+                98% Health
+              </span>
+            </button>
+          </div>
+
+          <div className="hidden sm:flex items-center gap-2 text-xs font-semibold text-[#8C5D00] pr-3">
+            <Sparkles className="w-4 h-4 text-[#C8A34A]" />
+            <span>Divya Yogam Master Console</span>
+          </div>
+        </div>
+
+        {activeAdminTab === 'SEO' ? (
+          <SeoAuditDashboard />
+        ) : (
+          <>
+            {/* Analytics Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           <div className="p-5 rounded-3xl bg-gradient-to-br from-[#352043] via-[#47206A] to-[#2B083A] text-white border-2 border-[#DFC47A] shadow-xl space-y-2 relative overflow-hidden">
             <div className="flex items-center justify-between text-[#DFC47A]">
               <span className="text-xs font-bold uppercase tracking-wider">Total Revenue</span>
@@ -577,6 +700,8 @@ export default function AdminMembershipsPage() {
             </table>
           </div>
         </div>
+        </>
+        )}
 
       </div>
 

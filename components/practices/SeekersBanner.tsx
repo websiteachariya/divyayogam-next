@@ -47,7 +47,7 @@ export default function SeekersBanner() {
 
           {/* Action Button */}
           <Link
-            href="/contact"
+            href="/membership"
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#1A072A] hover:bg-[#8C5D00] text-[#DFC47A] hover:text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-xl transition-all transform hover:scale-105 shrink-0 relative z-10"
           >
             <span>BECOME A LIFE MEMBER</span>

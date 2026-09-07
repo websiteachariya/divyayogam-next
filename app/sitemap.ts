@@ -6,6 +6,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://divyayogam.org';
   const routes = [
     '',
+    '/membership',
+    '/happy-shambhala',
+    '/beneficiaries',
+    '/foundation-story',
+    '/wellness-services',
     '/about',
     '/vision',
     '/practices',
@@ -17,18 +22,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/testimonials',
     '/gallery',
     '/contact',
+    '/blog',
     '/privacy-policy',
     '/terms',
     '/terms-and-conditions',
     '/refund-policy',
     '/refund-and-cancellation',
-    '/blog',
   ];
 
   return routes.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: 'weekly',
-    priority: route === '' ? 1 : 0.8,
+    changeFrequency: route === '' || route === '/membership' || route === '/happy-shambhala' ? 'daily' : 'weekly',
+    priority: route === '' ? 1.0 : route === '/membership' || route === '/happy-shambhala' ? 0.9 : 0.8,
   }));
 }

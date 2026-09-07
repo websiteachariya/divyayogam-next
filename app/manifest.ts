@@ -13,14 +13,21 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: '#47206A',
     icons: [
       {
-        src: '/images/favicon.webp',
-        sizes: '192x192',
+        src: '/favicon.webp',
+        sizes: '512x512',
+        type: 'image/webp',
+        purpose: 'any',
+      },
+      {
+        src: '/favicon-32x32.webp',
+        sizes: '32x32',
         type: 'image/webp',
       },
       {
-        src: '/images/logo.png.webp',
+        src: '/images/favicon-circle.webp',
         sizes: '512x512',
         type: 'image/webp',
+        purpose: 'maskable',
       },
     ],
   };

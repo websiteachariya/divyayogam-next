@@ -32,7 +32,8 @@ import {
   BadgeCheck,
   ChevronRight,
   Ticket,
-  Image as ImageIcon
+  Image as ImageIcon,
+  AlertCircle
 } from 'lucide-react';
 
 interface MembershipTier {
@@ -53,24 +54,25 @@ interface MembershipTier {
 
 const MEMBERSHIP_TIERS: MembershipTier[] = [
   {
-    id: 'gold',
-    badge: 'GOLD — AWAKEN',
-    name: 'Gold',
-    price: '₹500',
-    priceNum: 500,
+    id: 'diamond',
+    badge: 'DIAMOND — TRANSFORM',
+    name: 'Diamond',
+    price: '₹5,000',
+    priceNum: 5000,
     period: 'membership',
-    tagline: 'Begin with Awareness',
-    desc: 'A simple entry point into the Divine Grace wellness journey.',
-    message: '“Know Yourself. Define Your Goals. Begin Your Journey.”',
-    popular: false,
-    color: 'from-[#FFFDF9] via-[#FAF5EF] to-[#FFF8ED]',
+    tagline: 'Embrace Holistic Living',
+    desc: 'A deeper wellness journey integrating body, mind, emotions and inner well-being.',
+    message: '“Live Consciously. Grow Holistically. Transform Your Life.”',
+    popular: true,
+    color: 'from-[#352043] via-[#47206A] to-[#2B083A]',
     borderColor: 'border-[#DFC47A]',
     benefits: [
-      'Avadhani Session',
-      'Goal Sheet Enrichment — FREE',
-      'Introduction to conscious living',
-      'Wellness orientation',
-      'Personal goal identification'
+      'Advanced Avadhani engagement',
+      'Personalized Goal Sheet enrichment',
+      'Guided meditation and mindful practices',
+      'Lifestyle and habit guidance',
+      'Individual progress reviews',
+      'Purposeful-living and self-reflection practices'
     ]
   },
   {
@@ -96,25 +98,24 @@ const MEMBERSHIP_TIERS: MembershipTier[] = [
     ]
   },
   {
-    id: 'diamond',
-    badge: 'DIAMOND — TRANSFORM',
-    name: 'Diamond',
-    price: '₹5,000',
-    priceNum: 5000,
+    id: 'gold',
+    badge: 'GOLD — AWAKEN',
+    name: 'Gold',
+    price: '₹500',
+    priceNum: 500,
     period: 'membership',
-    tagline: 'Embrace Holistic Living',
-    desc: 'A deeper wellness journey integrating body, mind, emotions and inner well-being.',
-    message: '“Live Consciously. Grow Holistically. Transform Your Life.”',
-    popular: true,
-    color: 'from-[#352043] via-[#47206A] to-[#2B083A]',
+    tagline: 'Begin with Awareness',
+    desc: 'A simple entry point into the Divine Grace wellness journey.',
+    message: '“Know Yourself. Define Your Goals. Begin Your Journey.”',
+    popular: false,
+    color: 'from-[#FFFDF9] via-[#FAF5EF] to-[#FFF8ED]',
     borderColor: 'border-[#DFC47A]',
     benefits: [
-      'Advanced Avadhani engagement',
-      'Personalized Goal Sheet enrichment',
-      'Guided meditation and mindful practices',
-      'Lifestyle and habit guidance',
-      'Individual progress reviews',
-      'Purposeful-living and self-reflection practices'
+      'Avadhani Session',
+      'Goal Sheet Enrichment — FREE',
+      'Introduction to conscious living',
+      'Wellness orientation',
+      'Personal goal identification'
     ]
   }
 ];
@@ -135,6 +136,109 @@ export default function MembershipPage() {
     address: '',
     pincode: '',
   });
+
+  // Form Validation State
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [touched, setTouched] = useState<{ [key: string]: boolean }>({});
+  const [submitAttempted, setSubmitAttempted] = useState(false);
+
+  const validateField = (name: string, value: string): string => {
+    const trimmed = value.trim();
+    switch (name) {
+      case 'fullName':
+        if (!trimmed) return 'Full name is required.';
+        if (trimmed.length < 3) return 'Full name must be at least 3 characters.';
+        if (!/^[a-zA-Z\s.'-]{3,50}$/.test(trimmed)) {
+          return 'Please enter a valid name (letters and spaces only).';
+        }
+        return '';
+      case 'phone':
+        if (!trimmed) return 'Phone number is required.';
+        if (trimmed.length !== 10) return 'Phone number must be exactly 10 digits.';
+        if (!/^[6-9]\d{9}$/.test(trimmed)) {
+          return 'Phone number must start with 6, 7, 8, or 9.';
+        }
+        return '';
+      case 'email':
+        if (!trimmed) return 'Email address is required.';
+        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(trimmed)) {
+          return 'Please enter a valid email address (e.g. name@domain.com).';
+        }
+        return '';
+      case 'city':
+        if (!trimmed) return 'City name is required.';
+        if (trimmed.length < 3) return 'City name must be at least 3 characters.';
+        if (!/^[a-zA-Z\s.'-]{3,50}$/.test(trimmed)) {
+          return 'Please enter a valid city name (letters only).';
+        }
+        return '';
+      case 'address':
+        // Address is explicitly OPTIONAL
+        if (trimmed.length > 200) {
+          return 'Address must not exceed 200 characters.';
+        }
+        return '';
+      case 'pincode':
+        if (!trimmed) return 'Pincode is required.';
+        if (trimmed.length !== 6) return 'Pincode must be exactly 6 digits.';
+        if (!/^[1-9][0-9]{5}$/.test(trimmed)) {
+          return 'Pincode must be 6 digits and cannot start with 0.';
+        }
+        return '';
+      default:
+        return '';
+    }
+  };
+
+  const handleInputChange = (field: string, rawValue: string) => {
+    let value = rawValue;
+    if (field === 'phone' || field === 'pincode') {
+      value = rawValue.replace(/\D/g, '');
+    }
+
+    setFormData((prev) => ({ ...prev, [field]: value }));
+
+    if (touched[field] || submitAttempted) {
+      const errorMsg = validateField(field, value);
+      setErrors((prev) => ({ ...prev, [field]: errorMsg }));
+    }
+  };
+
+  const handleBlur = (field: string) => {
+    setTouched((prev) => ({ ...prev, [field]: true }));
+    const errorMsg = validateField(field, formData[field as keyof typeof formData]);
+    setErrors((prev) => ({ ...prev, [field]: errorMsg }));
+  };
+
+  const validateForm = () => {
+    const newErrors: { [key: string]: string } = {
+      fullName: validateField('fullName', formData.fullName),
+      phone: validateField('phone', formData.phone),
+      email: validateField('email', formData.email),
+      city: validateField('city', formData.city),
+      address: validateField('address', formData.address),
+      pincode: validateField('pincode', formData.pincode),
+    };
+
+    const activeErrors: { [key: string]: string } = {};
+    Object.keys(newErrors).forEach((key) => {
+      if (newErrors[key]) {
+        activeErrors[key] = newErrors[key];
+      }
+    });
+
+    setErrors(activeErrors);
+    setTouched({
+      fullName: true,
+      phone: true,
+      email: true,
+      city: true,
+      address: true,
+      pincode: true,
+    });
+
+    return Object.keys(activeErrors).length === 0;
+  };
 
   // Generated Member Receipt Data
   const [receiptData, setReceiptData] = useState<{
@@ -166,6 +270,9 @@ export default function MembershipPage() {
   const openMembershipModal = (tier: MembershipTier) => {
     setSelectedTier(tier);
     setStep('form');
+    setErrors({});
+    setTouched({});
+    setSubmitAttempted(false);
     setShowModal(true);
   };
 
@@ -192,8 +299,9 @@ export default function MembershipPage() {
   // STEP 1 Form Submit -> Call Next.js Backend API to create Cashfree Order
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.fullName || !formData.phone || !formData.email) {
-      alert('Please fill in your Name, Phone Number, and Email Address.');
+    setSubmitAttempted(true);
+
+    if (!validateForm()) {
       return;
     }
 
@@ -512,7 +620,18 @@ export default function MembershipPage() {
                 
                 {/* STEP 1: VOLUNTARY MEMBER FORM */}
                 {step === 'form' && (
-                  <form onSubmit={handleFormSubmit} className="space-y-4">
+                  <form onSubmit={handleFormSubmit} className="space-y-4" noValidate>
+                    {submitAttempted && Object.keys(errors).length > 0 && (
+                      <div className="p-3.5 rounded-2xl bg-red-50 border-2 border-red-200 text-red-700 text-xs font-semibold flex items-start gap-2.5">
+                        <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+                        <div>
+                          <p className="font-bold text-red-800 text-xs sm:text-sm">Validation Failed — Cannot Proceed to Payment</p>
+                          <p className="text-[11px] font-medium text-red-600 mt-0.5">
+                            Please fix the {Object.keys(errors).length} highlighted field{Object.keys(errors).length > 1 ? 's' : ''} in red below before continuing.
+                          </p>
+                        </div>
+                      </div>
+                    )}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
                         <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
@@ -521,12 +640,22 @@ export default function MembershipPage() {
                         </label>
                         <input
                           type="text"
-                          required
                           placeholder="Enter your full name"
                           value={formData.fullName}
-                          onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl border border-[#E9DED3] focus:border-[#C8A34A] focus:outline-none text-xs sm:text-sm font-medium bg-[#FAF5EF]/50"
+                          onChange={(e) => handleInputChange('fullName', e.target.value)}
+                          onBlur={() => handleBlur('fullName')}
+                          className={`w-full px-4 py-3 rounded-xl border transition-colors text-xs sm:text-sm font-medium bg-[#FAF5EF]/50 focus:outline-none ${
+                            touched.fullName && errors.fullName
+                              ? 'border-red-400 focus:border-red-500 bg-red-50/20'
+                              : 'border-[#E9DED3] focus:border-[#C8A34A]'
+                          }`}
                         />
+                        {touched.fullName && errors.fullName && (
+                          <p className="text-[11px] text-red-500 font-semibold flex items-center gap-1 mt-1">
+                            <AlertCircle className="w-3 h-3 flex-shrink-0 text-red-500" />
+                            <span>{errors.fullName}</span>
+                          </p>
+                        )}
                       </div>
 
                       <div className="space-y-1.5">
@@ -536,12 +665,23 @@ export default function MembershipPage() {
                         </label>
                         <input
                           type="tel"
-                          required
-                          placeholder="Enter your phone number"
+                          maxLength={10}
+                          placeholder="Enter 10-digit phone number"
                           value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl border border-[#E9DED3] focus:border-[#C8A34A] focus:outline-none text-xs sm:text-sm font-medium bg-[#FAF5EF]/50"
+                          onChange={(e) => handleInputChange('phone', e.target.value)}
+                          onBlur={() => handleBlur('phone')}
+                          className={`w-full px-4 py-3 rounded-xl border transition-colors text-xs sm:text-sm font-medium bg-[#FAF5EF]/50 focus:outline-none ${
+                            touched.phone && errors.phone
+                              ? 'border-red-400 focus:border-red-500 bg-red-50/20'
+                              : 'border-[#E9DED3] focus:border-[#C8A34A]'
+                          }`}
                         />
+                        {touched.phone && errors.phone && (
+                          <p className="text-[11px] text-red-500 font-semibold flex items-center gap-1 mt-1">
+                            <AlertCircle className="w-3 h-3 flex-shrink-0 text-red-500" />
+                            <span>{errors.phone}</span>
+                          </p>
+                        )}
                       </div>
                     </div>
 
@@ -553,26 +693,47 @@ export default function MembershipPage() {
                         </label>
                         <input
                           type="email"
-                          required
                           placeholder="Enter your email address"
                           value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl border border-[#E9DED3] focus:border-[#C8A34A] focus:outline-none text-xs sm:text-sm font-medium bg-[#FAF5EF]/50"
+                          onChange={(e) => handleInputChange('email', e.target.value)}
+                          onBlur={() => handleBlur('email')}
+                          className={`w-full px-4 py-3 rounded-xl border transition-colors text-xs sm:text-sm font-medium bg-[#FAF5EF]/50 focus:outline-none ${
+                            touched.email && errors.email
+                              ? 'border-red-400 focus:border-red-500 bg-red-50/20'
+                              : 'border-[#E9DED3] focus:border-[#C8A34A]'
+                          }`}
                         />
+                        {touched.email && errors.email && (
+                          <p className="text-[11px] text-red-500 font-semibold flex items-center gap-1 mt-1">
+                            <AlertCircle className="w-3 h-3 flex-shrink-0 text-red-500" />
+                            <span>{errors.email}</span>
+                          </p>
+                        )}
                       </div>
 
                       <div className="space-y-1.5">
                         <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
                           <MapPin className="w-3.5 h-3.5 text-[#8C5D00]" />
-                          <span>City</span>
+                          <span>City *</span>
                         </label>
                         <input
                           type="text"
                           placeholder="Enter your city"
                           value={formData.city}
-                          onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl border border-[#E9DED3] focus:border-[#C8A34A] focus:outline-none text-xs sm:text-sm font-medium bg-[#FAF5EF]/50"
+                          onChange={(e) => handleInputChange('city', e.target.value)}
+                          onBlur={() => handleBlur('city')}
+                          className={`w-full px-4 py-3 rounded-xl border transition-colors text-xs sm:text-sm font-medium bg-[#FAF5EF]/50 focus:outline-none ${
+                            touched.city && errors.city
+                              ? 'border-red-400 focus:border-red-500 bg-red-50/20'
+                              : 'border-[#E9DED3] focus:border-[#C8A34A]'
+                          }`}
                         />
+                        {touched.city && errors.city && (
+                          <p className="text-[11px] text-red-500 font-semibold flex items-center gap-1 mt-1">
+                            <AlertCircle className="w-3 h-3 flex-shrink-0 text-red-500" />
+                            <span>{errors.city}</span>
+                          </p>
+                        )}
                       </div>
                     </div>
 
@@ -586,23 +747,46 @@ export default function MembershipPage() {
                           type="text"
                           placeholder="Enter your address"
                           value={formData.address}
-                          onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl border border-[#E9DED3] focus:border-[#C8A34A] focus:outline-none text-xs sm:text-sm font-medium bg-[#FAF5EF]/50"
+                          onChange={(e) => handleInputChange('address', e.target.value)}
+                          onBlur={() => handleBlur('address')}
+                          className={`w-full px-4 py-3 rounded-xl border transition-colors text-xs sm:text-sm font-medium bg-[#FAF5EF]/50 focus:outline-none ${
+                            touched.address && errors.address
+                              ? 'border-red-400 focus:border-red-500 bg-red-50/20'
+                              : 'border-[#E9DED3] focus:border-[#C8A34A]'
+                          }`}
                         />
+                        {touched.address && errors.address && (
+                          <p className="text-[11px] text-red-500 font-semibold flex items-center gap-1 mt-1">
+                            <AlertCircle className="w-3 h-3 flex-shrink-0 text-red-500" />
+                            <span>{errors.address}</span>
+                          </p>
+                        )}
                       </div>
 
                       <div className="space-y-1.5">
                         <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
                           <Navigation className="w-3.5 h-3.5 text-[#8C5D00]" />
-                          <span>Pincode</span>
+                          <span>Pincode *</span>
                         </label>
                         <input
                           type="text"
-                          placeholder="Enter your pincode"
+                          maxLength={6}
+                          placeholder="Enter 6-digit pincode"
                           value={formData.pincode}
-                          onChange={(e) => setFormData({ ...formData, pincode: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl border border-[#E9DED3] focus:border-[#C8A34A] focus:outline-none text-xs sm:text-sm font-medium bg-[#FAF5EF]/50"
+                          onChange={(e) => handleInputChange('pincode', e.target.value)}
+                          onBlur={() => handleBlur('pincode')}
+                          className={`w-full px-4 py-3 rounded-xl border transition-colors text-xs sm:text-sm font-medium bg-[#FAF5EF]/50 focus:outline-none ${
+                            touched.pincode && errors.pincode
+                              ? 'border-red-400 focus:border-red-500 bg-red-50/20'
+                              : 'border-[#E9DED3] focus:border-[#C8A34A]'
+                          }`}
                         />
+                        {touched.pincode && errors.pincode && (
+                          <p className="text-[11px] text-red-500 font-semibold flex items-center gap-1 mt-1">
+                            <AlertCircle className="w-3 h-3 flex-shrink-0 text-red-500" />
+                            <span>{errors.pincode}</span>
+                          </p>
+                        )}
                       </div>
                     </div>
 

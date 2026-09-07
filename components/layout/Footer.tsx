@@ -164,7 +164,7 @@ export default function Footer() {
               <li><Link href="/testimonials" className="hover:text-[#C8A34A] transition-colors">Testimonials</Link></li>
               <li><Link href="/contact" className="hover:text-[#C8A34A] transition-colors">Contact Us</Link></li>
               <li><Link href="/contact" className="hover:text-[#C8A34A] transition-colors">Volunteer</Link></li>
-              <li><Link href="/contact" className="hover:text-[#C8A34A] transition-colors">Membership</Link></li>
+              <li><Link href="/membership" className="hover:text-[#C8A34A] transition-colors">Membership</Link></li>
               <li><Link href="/contact" className="hover:text-[#C8A34A] transition-colors">Donate</Link></li>
             </ul>
           </div>
