@@ -53,18 +53,19 @@ export default function Footer() {
             </div>
 
             {/* Social Icons Right */}
-            <div className="lg:col-span-3 flex flex-col items-center lg:items-end space-y-2">
-              <span className="text-xs font-semibold text-white tracking-wider uppercase">
+            <div className="lg:col-span-3 flex flex-col items-center lg:items-end space-y-2.5">
+              <span className="text-xs sm:text-sm font-bold text-white tracking-wider uppercase">
                 Follow Us
               </span>
-              <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-3">
                 {[Facebook, Instagram, Youtube].map((Icon, i) => (
                   <a
                     key={i}
                     href="#"
-                    className="w-8 h-8 rounded-full bg-white/10 border border-[#DFC47A]/30 flex items-center justify-center text-[#DFC47A] hover:bg-[#C8A34A] hover:text-[#47206A] transition-all"
+                    aria-label="Follow us on social media"
+                    className="w-9 sm:w-10 h-9 sm:h-10 rounded-full bg-white/10 border border-[#DFC47A]/30 flex items-center justify-center text-[#DFC47A] hover:bg-[#C8A34A] hover:text-[#47206A] transition-all hover:scale-110 shadow-sm"
                   >
-                    <Icon className="w-3.5 h-3.5" />
+                    <Icon className="w-4 sm:w-5 h-4 sm:h-5" />
                   </a>
                 ))}
               </div>
@@ -80,34 +81,23 @@ export default function Footer() {
 
           {/* Brand Logo & Description */}
           <div className="lg:col-span-4 space-y-3">
-            <Link href="/" className="flex items-center gap-3 group relative">
-              <div className="relative">
-                {/* Subtle Golden Glow Aura around Footer Logo */}
-                <div className="absolute -inset-1 rounded-full bg-gradient-to-tr from-[#C8A34A] via-[#DFC47A] to-[#C8A34A] opacity-75 blur-sm group-hover:opacity-100 group-hover:blur-md transition-all duration-300" />
-                <div className="relative p-0.5 rounded-full bg-gradient-to-tr from-[#C8A34A] to-[#DFC47A] shadow-md">
-                  <Image
-                    src="/images/logo.png.webp"
-                    alt="Divya Yogam"
-                    width={40}
-                    height={40}
-                    className="w-10 h-10 rounded-full object-cover bg-white group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-heading text-xl font-bold tracking-wider text-[#C8A34A]">
-                  DIVYA YOGAM
-                </span>
-                <span className="text-[8px] text-[#DFC47A] tracking-wider uppercase">
-                  Awaken the Divine Within
-                </span>
-              </div>
+            <Link href="/" className="flex items-center group relative">
+              <Image
+                src="/images/shambalalogo.png"
+                alt="Divya Yogam - Awaken the Divine Within"
+                width={320}
+                height={80}
+                className="h-14 sm:h-16 md:h-20 lg:h-22 xl:h-24 w-auto object-contain drop-shadow-[0_2px_12px_rgba(200,163,74,0.45)] group-hover:scale-105 transition-all duration-300"
+                style={{
+                  filter: 'brightness(0) saturate(100%) invert(80%) sepia(45%) saturate(750%) hue-rotate(2deg) brightness(105%) contrast(105%)',
+                }}
+              />
             </Link>
 
-            <p className="text-xs text-[#F8F2E8]/75 leading-relaxed max-w-xs font-light">
+            <p className="text-xs sm:text-sm text-[#F8F2E8]/75 leading-relaxed max-w-xs font-light">
               A spiritual movement dedicated to inner transformation and global peace.
             </p>
-            <p className="text-xs text-[#DFC47A] font-light italic">
+            <p className="text-xs sm:text-sm text-[#DFC47A] font-light italic">
               An initiative of <span className="font-semibold text-[#C8A34A]">Divine Grace Foundation</span>
             </p>
 
@@ -117,9 +107,9 @@ export default function Footer() {
                 href="https://play.google.com/store/apps/details?id=com.ignitelabs.music_app"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white/10 hover:bg-[#C8A34A] hover:text-[#22122F] border border-[#DFC47A]/30 text-[#DFC47A] text-xs font-semibold transition-all group"
+                className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-[#C8A34A] hover:text-[#22122F] border border-[#DFC47A]/30 text-[#DFC47A] text-xs sm:text-sm font-semibold transition-all group shadow-sm"
               >
-                <svg className="w-4 h-4 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 512 512">
+                <svg className="w-4 sm:w-5 h-4 sm:h-5 fill-current group-hover:scale-110 transition-transform shrink-0" viewBox="0 0 512 512">
                   <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l220.7-221.3 60.1 60.1L104.6 499z" />
                 </svg>
                 <span>Get Shambala Music App</span>
@@ -132,7 +122,7 @@ export default function Footer() {
             <h4 className="font-heading text-sm font-bold text-[#DFC47A] uppercase tracking-wider">
               Explore
             </h4>
-            <ul className="space-y-1.5 text-xs text-[#F8F2E8]/80">
+            <ul className="space-y-1.5 text-xs sm:text-sm text-[#F8F2E8]/80">
               <li><Link href="/about" className="hover:text-[#C8A34A] transition-colors">About Us</Link></li>
               <li><Link href="/vision" className="hover:text-[#C8A34A] transition-colors">Our Path</Link></li>
               <li><Link href="/practices" className="hover:text-[#C8A34A] transition-colors">Programs</Link></li>
@@ -146,7 +136,7 @@ export default function Footer() {
             <h4 className="font-heading text-sm font-bold text-[#DFC47A] uppercase tracking-wider">
               Resources
             </h4>
-            <ul className="space-y-1.5 text-xs text-[#F8F2E8]/80">
+            <ul className="space-y-1.5 text-xs sm:text-sm text-[#F8F2E8]/80">
               <li><Link href="/organ-meditation" className="hover:text-[#C8A34A] transition-colors">Meditation</Link></li>
               <li><Link href="/practices" className="hover:text-[#C8A34A] transition-colors">Yoga</Link></li>
               <li><Link href="/events" className="hover:text-[#C8A34A] transition-colors">Events</Link></li>
@@ -160,10 +150,10 @@ export default function Footer() {
             <h4 className="font-heading text-sm font-bold text-[#DFC47A] uppercase tracking-wider">
               Support
             </h4>
-            <ul className="space-y-1.5 text-xs text-[#F8F2E8]/80">
+            <ul className="space-y-1.5 text-xs sm:text-sm text-[#F8F2E8]/80">
               <li><Link href="/testimonials" className="hover:text-[#C8A34A] transition-colors">Testimonials</Link></li>
               <li><Link href="/contact" className="hover:text-[#C8A34A] transition-colors">Contact Us</Link></li>
-              <li><Link href="/contact" className="hover:text-[#C8A34A] transition-colors">Volunteer</Link></li>
+              <li><Link href="/volunteer" className="hover:text-[#C8A34A] transition-colors">Volunteer</Link></li>
               <li><Link href="/membership" className="hover:text-[#C8A34A] transition-colors">Membership</Link></li>
               <li><Link href="/contact" className="hover:text-[#C8A34A] transition-colors">Donate</Link></li>
             </ul>
@@ -174,17 +164,17 @@ export default function Footer() {
             <h4 className="font-heading text-sm font-bold text-[#DFC47A] uppercase tracking-wider">
               Contact Us
             </h4>
-            <ul className="space-y-2 text-xs text-[#F8F2E8]/80">
-              <li className="flex items-start gap-2">
-                <Phone className="w-3.5 h-3.5 text-[#C8A34A] shrink-0 mt-0.5" />
+            <ul className="space-y-2 text-xs sm:text-sm text-[#F8F2E8]/80">
+              <li className="flex items-start gap-2.5">
+                <Phone className="w-4 sm:w-4.5 h-4 sm:h-4.5 text-[#C8A34A] shrink-0 mt-0.5" />
                 <div className="flex flex-col space-y-0.5">
                   <span>+91 94425 48809</span>
                   <span>+91 94895 14685</span>
                   <span>+91 93444 97460</span>
                 </div>
               </li>
-              <li className="flex items-center gap-2 pt-1">
-                <Mail className="w-3.5 h-3.5 text-[#C8A34A]" />
+              <li className="flex items-center gap-2.5 pt-1">
+                <Mail className="w-4 sm:w-4.5 h-4 sm:h-4.5 text-[#C8A34A] shrink-0" />
                 <span>info@divyayogam.org</span>
               </li>
             </ul>
@@ -200,8 +190,8 @@ export default function Footer() {
           </div>
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 shrink-0">
             <Link href="/privacy-policy" className="hover:text-[#C8A34A] transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-[#C8A34A] transition-colors">Terms & Conditions</Link>
-            <Link href="/refund-policy" className="hover:text-[#C8A34A] transition-colors">Refund & Cancellation Policy</Link>
+            <Link href="/terms" className="hover:text-[#C8A34A] transition-colors">Terms &amp; Conditions</Link>
+            <Link href="/refund-policy" className="hover:text-[#C8A34A] transition-colors">Refund &amp; Cancellation Policy</Link>
           </div>
         </div>
       </div>

@@ -64,31 +64,15 @@ export default function Navbar() {
         <div className="flex items-center justify-between gap-3">
 
           {/* Left Brand Logo */}
-          <Link href="/" className="flex items-center gap-3 shrink-0 group relative">
-            <div className="relative">
-              {/* Outer 360-Degree Continuous Rotating Golden Light Aura */}
-              <div className="absolute -inset-1.5 rounded-full bg-[conic-gradient(from_0deg,#C8A34A,#DFC47A,#FFF5D6,#DFC47A,#C8A34A)] opacity-90 blur-md animate-[spin_4s_linear_infinite] group-hover:opacity-100 group-hover:blur-lg transition-all duration-500" />
-
-              {/* Pure Golden Logo Container Ring */}
-              <div className="relative p-0.5 rounded-full bg-gradient-to-tr from-[#C8A34A] via-[#DFC47A] to-[#C8A34A] shadow-md">
-                <Image
-                  src="/images/logo.png.webp"
-                  alt="Divya Yogam"
-                  width={40}
-                  height={40}
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover bg-white group-hover:scale-105 transition-transform duration-300"
-                  priority
-                />
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-heading text-lg sm:text-xl font-bold tracking-wider text-[#47206A] group-hover:text-[#C8A34A] transition-colors leading-tight">
-                DIVYA YOGAM
-              </span>
-              <span className="text-[8px] sm:text-[9px] text-[#C8A34A] font-semibold tracking-wider uppercase">
-                Awaken the Divine Within
-              </span>
-            </div>
+          <Link href="/" className="flex items-center shrink-0 group relative">
+            <Image
+              src="/images/shambalalogo.png"
+              alt="Divya Yogam - Awaken the Divine Within"
+              width={240}
+              height={60}
+              className="h-9 sm:h-10 md:h-11 lg:h-12 xl:h-13 w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300"
+              priority
+            />
           </Link>
 
           {/* Center Desktop Navigation Links with Dropdowns */}

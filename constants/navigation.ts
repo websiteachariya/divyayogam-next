@@ -64,7 +64,14 @@ export const NAV_LINKS: NavItem[] = [
       { name: 'Testimonials', path: '/testimonials' },
     ],
   },
-  { name: 'Contact', path: '/contact' },
+  {
+    name: 'Contact',
+    path: '/contact',
+    children: [
+      { name: 'Contact Us', path: '/contact' },
+      { name: 'Volunteer', path: '/volunteer' },
+    ],
+  },
 ];
 
 export const SITE_CONFIG = {
