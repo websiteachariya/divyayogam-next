@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Sparkles,
@@ -33,7 +34,15 @@ import {
   ChevronRight,
   Ticket,
   Image as ImageIcon,
-  AlertCircle
+  AlertCircle,
+  Lock,
+  LogIn,
+  UserPlus,
+  Percent,
+  Tag,
+  Eye,
+  EyeOff,
+  Crown
 } from 'lucide-react';
 
 interface MembershipTier {
@@ -50,6 +59,8 @@ interface MembershipTier {
   color: string;
   borderColor: string;
   benefits: string[];
+  discountBadge: string;
+  discountPercentage: number;
 }
 
 const MEMBERSHIP_TIERS: MembershipTier[] = [
@@ -66,7 +77,10 @@ const MEMBERSHIP_TIERS: MembershipTier[] = [
     popular: true,
     color: 'from-[#352043] via-[#47206A] to-[#2B083A]',
     borderColor: 'border-[#DFC47A]',
+    discountBadge: '50% OFF Coupon on All Classes',
+    discountPercentage: 50,
     benefits: [
+      '50% OFF Coupon for All Sequential Classes',
       'Advanced Avadhani engagement',
       'Personalized Goal Sheet enrichment',
       'Guided meditation and mindful practices',
@@ -79,8 +93,8 @@ const MEMBERSHIP_TIERS: MembershipTier[] = [
     id: 'platinum',
     badge: 'PLATINUM — ENRICH',
     name: 'Platinum',
-    price: '₹1,500',
-    priceNum: 1500,
+    price: '₹2,000',
+    priceNum: 2000,
     period: 'membership',
     tagline: 'Build Healthy Habits',
     desc: 'For members ready to deepen their practice and bring greater consistency into daily life.',
@@ -88,7 +102,10 @@ const MEMBERSHIP_TIERS: MembershipTier[] = [
     popular: false,
     color: 'from-[#FFFDF9] via-[#FAF5EF] to-[#FFF8ED]',
     borderColor: 'border-[#DFC47A]',
+    discountBadge: '30% OFF Coupon on All Classes',
+    discountPercentage: 30,
     benefits: [
+      '30% OFF Coupon for All Sequential Classes',
       'Avadhani Sessions',
       'Goal Sheet Enrichment & Review',
       'Mindfulness and self-reflection',
@@ -101,8 +118,8 @@ const MEMBERSHIP_TIERS: MembershipTier[] = [
     id: 'gold',
     badge: 'GOLD — AWAKEN',
     name: 'Gold',
-    price: '₹500',
-    priceNum: 500,
+    price: '₹1,000',
+    priceNum: 1000,
     period: 'membership',
     tagline: 'Begin with Awareness',
     desc: 'A simple entry point into the Divine Grace wellness journey.',
@@ -110,7 +127,10 @@ const MEMBERSHIP_TIERS: MembershipTier[] = [
     popular: false,
     color: 'from-[#FFFDF9] via-[#FAF5EF] to-[#FFF8ED]',
     borderColor: 'border-[#DFC47A]',
+    discountBadge: '10% OFF Coupon on All Classes',
+    discountPercentage: 10,
     benefits: [
+      '10% OFF Coupon for All Sequential Classes',
       'Avadhani Session',
       'Goal Sheet Enrichment — FREE',
       'Introduction to conscious living',
@@ -121,8 +141,10 @@ const MEMBERSHIP_TIERS: MembershipTier[] = [
 ];
 
 export default function MembershipPage() {
+  const router = useRouter();
   const [selectedTier, setSelectedTier] = useState<MembershipTier | null>(null);
   const [showModal, setShowModal] = useState(false);
+  const [modalTab, setModalTab] = useState<'form' | 'login' | 'register'>('form');
   const [step, setStep] = useState<'form' | 'payment' | 'success'>('form');
   const [paymentMethod, setPaymentMethod] = useState<'upi' | 'card' | 'netbanking'>('upi');
   const [isProcessing, setIsProcessing] = useState(false);
@@ -130,12 +152,40 @@ export default function MembershipPage() {
   // Form State
   const [formData, setFormData] = useState({
     fullName: '',
+    age: '',
+    gender: 'Male',
+    occupation: '',
+    organisation: '',
     phone: '',
     email: '',
-    city: '',
-    address: '',
-    pincode: '',
   });
+
+  // Inline Login / Register States
+  const [loginData, setLoginData] = useState({ email: '', password: '' });
+  const [loginError, setLoginError] = useState('');
+  
+  const [registerData, setRegisterData] = useState({
+    name: '',
+    mobile: '',
+    email: '',
+    password: '',
+    age: '25',
+    gender: 'Male',
+    occupation: 'Member',
+    organisation: '',
+  });
+  const [registerError, setRegisterError] = useState('');
+  const [showLoginPassword, setShowLoginPassword] = useState(false);
+  const [showRegisterPassword, setShowRegisterPassword] = useState(false);
+
+  // Coupon State
+  const [couponCode, setCouponCode] = useState('');
+  const [appliedCoupon, setAppliedCoupon] = useState<{
+    code: string;
+    discountAmount: number;
+    label: string;
+  } | null>(null);
+  const [couponError, setCouponError] = useState('');
 
   // Form Validation State
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -146,43 +196,41 @@ export default function MembershipPage() {
     const trimmed = value.trim();
     switch (name) {
       case 'fullName':
-        if (!trimmed) return 'Full name is required.';
-        if (trimmed.length < 3) return 'Full name must be at least 3 characters.';
+        if (!trimmed) return 'Name is required.';
+        if (trimmed.length < 3) return 'Name must be at least 3 characters.';
         if (!/^[a-zA-Z\s.'-]{3,50}$/.test(trimmed)) {
           return 'Please enter a valid name (letters and spaces only).';
         }
         return '';
+      case 'age':
+        if (!trimmed) return 'Age is required.';
+        const numAge = Number(trimmed);
+        if (isNaN(numAge) || numAge < 1 || numAge > 120) {
+          return 'Please enter a valid age (1-120).';
+        }
+        return '';
+      case 'gender':
+        if (!trimmed) return 'Gender selection is required.';
+        return '';
+      case 'occupation':
+        if (!trimmed) return 'Occupation is required.';
+        if (trimmed.length < 2) return 'Occupation must be at least 2 characters.';
+        return '';
+      case 'organisation':
+        if (!trimmed) return 'Organisation / Location is required.';
+        if (trimmed.length < 2) return 'Organisation / Location must be at least 2 characters.';
+        return '';
       case 'phone':
-        if (!trimmed) return 'Phone number is required.';
-        if (trimmed.length !== 10) return 'Phone number must be exactly 10 digits.';
+        if (!trimmed) return 'Mobile number is required.';
+        if (trimmed.length !== 10) return 'Mobile number must be exactly 10 digits.';
         if (!/^[6-9]\d{9}$/.test(trimmed)) {
-          return 'Phone number must start with 6, 7, 8, or 9.';
+          return 'Mobile number must be a valid 10-digit Indian phone starting with 6-9.';
         }
         return '';
       case 'email':
         if (!trimmed) return 'Email address is required.';
         if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(trimmed)) {
           return 'Please enter a valid email address (e.g. name@domain.com).';
-        }
-        return '';
-      case 'city':
-        if (!trimmed) return 'City name is required.';
-        if (trimmed.length < 3) return 'City name must be at least 3 characters.';
-        if (!/^[a-zA-Z\s.'-]{3,50}$/.test(trimmed)) {
-          return 'Please enter a valid city name (letters only).';
-        }
-        return '';
-      case 'address':
-        // Address is explicitly OPTIONAL
-        if (trimmed.length > 200) {
-          return 'Address must not exceed 200 characters.';
-        }
-        return '';
-      case 'pincode':
-        if (!trimmed) return 'Pincode is required.';
-        if (trimmed.length !== 6) return 'Pincode must be exactly 6 digits.';
-        if (!/^[1-9][0-9]{5}$/.test(trimmed)) {
-          return 'Pincode must be 6 digits and cannot start with 0.';
         }
         return '';
       default:
@@ -192,7 +240,7 @@ export default function MembershipPage() {
 
   const handleInputChange = (field: string, rawValue: string) => {
     let value = rawValue;
-    if (field === 'phone' || field === 'pincode') {
+    if (field === 'phone' || field === 'age') {
       value = rawValue.replace(/\D/g, '');
     }
 
@@ -213,11 +261,12 @@ export default function MembershipPage() {
   const validateForm = () => {
     const newErrors: { [key: string]: string } = {
       fullName: validateField('fullName', formData.fullName),
+      age: validateField('age', formData.age),
+      gender: validateField('gender', formData.gender),
+      occupation: validateField('occupation', formData.occupation),
+      organisation: validateField('organisation', formData.organisation),
       phone: validateField('phone', formData.phone),
       email: validateField('email', formData.email),
-      city: validateField('city', formData.city),
-      address: validateField('address', formData.address),
-      pincode: validateField('pincode', formData.pincode),
     };
 
     const activeErrors: { [key: string]: string } = {};
@@ -230,14 +279,50 @@ export default function MembershipPage() {
     setErrors(activeErrors);
     setTouched({
       fullName: true,
+      age: true,
+      gender: true,
+      occupation: true,
+      organisation: true,
       phone: true,
       email: true,
-      city: true,
-      address: true,
-      pincode: true,
     });
 
     return Object.keys(activeErrors).length === 0;
+  };
+
+  // Coupon Handler
+  const handleApplyCoupon = () => {
+    setCouponError('');
+    if (!couponCode.trim() || !selectedTier) return;
+
+    const code = couponCode.trim().toUpperCase();
+    const subtotal = selectedTier.priceNum;
+
+    if (code === 'DIVYA10') {
+      const amount = Math.round((subtotal * 10) / 100);
+      setAppliedCoupon({ code, discountAmount: amount, label: '10% Special Discount' });
+    } else if (code === 'DIVYA20') {
+      const amount = Math.round((subtotal * 20) / 100);
+      setAppliedCoupon({ code, discountAmount: amount, label: '20% Special Discount' });
+    } else if (code === 'SHAMBALA') {
+      const amount = Math.round((subtotal * 15) / 100);
+      setAppliedCoupon({ code, discountAmount: amount, label: '15% Shambala Special' });
+    } else if (code === 'GOLD500') {
+      const amount = Math.min(500, subtotal - 100);
+      setAppliedCoupon({ code, discountAmount: amount, label: '₹500 Direct Discount' });
+    } else if (code === 'SACRED') {
+      const amount = Math.min(250, subtotal - 100);
+      setAppliedCoupon({ code, discountAmount: amount, label: '₹250 Sacred Bonus' });
+    } else {
+      setCouponError('Invalid coupon code. Try DIVYA10, DIVYA20, or SHAMBALA');
+      setAppliedCoupon(null);
+    }
+  };
+
+  const removeCoupon = () => {
+    setAppliedCoupon(null);
+    setCouponCode('');
+    setCouponError('');
   };
 
   // Generated Member Receipt Data
@@ -255,9 +340,34 @@ export default function MembershipPage() {
   } | null>(null);
 
   const cardRef = useRef<HTMLDivElement>(null);
+  const [currentUser, setCurrentUser] = useState<any>(null);
+  const [existingMembership, setExistingMembership] = useState<any>(null);
 
   useEffect(() => {
-    // Check if returning from Cashfree redirect with order_id in URL
+    // Check user login state
+    fetch('/api/auth/me')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.authenticated && data.user) {
+          setCurrentUser(data.user);
+          // Check if user already has an active membership
+          if (data.user.memberships && data.user.memberships.length > 0) {
+            setExistingMembership(data.user.memberships[0]);
+          }
+          setFormData((prev) => ({
+            ...prev,
+            fullName: data.user.name || prev.fullName,
+            phone: data.user.mobile || prev.phone,
+            email: data.user.email || prev.email,
+            age: data.user.age ? String(data.user.age) : prev.age,
+            gender: data.user.gender || prev.gender,
+            occupation: data.user.occupation || prev.occupation,
+            organisation: data.user.organisation || prev.organisation,
+          }));
+        }
+      })
+      .catch(() => {});
+
     if (typeof window !== 'undefined') {
       const urlParams = new URLSearchParams(window.location.search);
       const returnedOrderId = urlParams.get('order_id');
@@ -270,15 +380,85 @@ export default function MembershipPage() {
   const openMembershipModal = (tier: MembershipTier) => {
     setSelectedTier(tier);
     setStep('form');
+    setModalTab(currentUser ? 'form' : 'login');
     setErrors({});
     setTouched({});
     setSubmitAttempted(false);
+    setAppliedCoupon(null);
+    setCouponCode('');
+    setCouponError('');
     setShowModal(true);
   };
 
   const closeModal = () => {
     setShowModal(false);
     setIsProcessing(false);
+  };
+
+  const handleInlineLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoginError('');
+    setIsProcessing(true);
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(loginData),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Login failed.');
+      }
+      setCurrentUser(data.user);
+      setFormData((prev) => ({
+        ...prev,
+        fullName: data.user.name || prev.fullName,
+        phone: data.user.mobile || prev.phone,
+        email: data.user.email || prev.email,
+        age: data.user.age ? String(data.user.age) : prev.age,
+        gender: data.user.gender || prev.gender,
+        occupation: data.user.occupation || prev.occupation,
+        organisation: data.user.organisation || prev.organisation,
+      }));
+      setModalTab('form');
+    } catch (err: any) {
+      setLoginError(err.message || 'Invalid credentials');
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const handleInlineRegister = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setRegisterError('');
+    setIsProcessing(true);
+    try {
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(registerData),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Registration failed.');
+      }
+      setCurrentUser(data.user);
+      setFormData((prev) => ({
+        ...prev,
+        fullName: data.user.name || prev.fullName,
+        phone: data.user.mobile || prev.phone,
+        email: data.user.email || prev.email,
+        age: data.user.age ? String(data.user.age) : prev.age,
+        gender: data.user.gender || prev.gender,
+        occupation: data.user.occupation || prev.occupation,
+        organisation: data.user.organisation || prev.organisation,
+      }));
+      setModalTab('form');
+    } catch (err: any) {
+      setRegisterError(err.message || 'Registration failed');
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   // Helper to load Cashfree JS SDK
@@ -296,10 +476,20 @@ export default function MembershipPage() {
     });
   };
 
-  // STEP 1 Form Submit -> Call Next.js Backend API to create Cashfree Order
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitAttempted(true);
+
+    if (!currentUser) {
+      setModalTab('login');
+      alert('Registration or Login is mandatory before purchasing a Membership. Please log in or create an account.');
+      return;
+    }
+
+    if (existingMembership) {
+      alert(`You already have an active ${existingMembership.level} membership. Only one membership per user is allowed.`);
+      return;
+    }
 
     if (!validateForm()) {
       return;
@@ -307,20 +497,28 @@ export default function MembershipPage() {
 
     setIsProcessing(true);
 
+    const finalPayableAmount = selectedTier
+      ? selectedTier.priceNum - (appliedCoupon ? appliedCoupon.discountAmount : 0)
+      : 0;
+
     try {
       const response = await fetch('/api/pay/create-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          orderType: 'MEMBERSHIP',
           fullName: formData.fullName,
+          age: Number(formData.age),
+          gender: formData.gender,
+          occupation: formData.occupation,
+          organisation: formData.organisation,
           phone: formData.phone,
           email: formData.email,
-          city: formData.city,
-          address: formData.address,
-          pincode: formData.pincode,
           tierId: selectedTier?.id,
           tierName: selectedTier?.name,
-          amount: selectedTier?.priceNum,
+          amount: finalPayableAmount,
+          couponCode: appliedCoupon?.code,
+          appliedDiscountAmount: appliedCoupon?.discountAmount,
         }),
       });
 
@@ -336,7 +534,16 @@ export default function MembershipPage() {
         memberId: data.memberId,
       });
 
-      setStep('payment');
+      const scriptLoaded = await loadCashfreeScript();
+      if (scriptLoaded && (window as any).Cashfree) {
+        const cashfree = (window as any).Cashfree({ mode: 'sandbox' });
+        cashfree.checkout({
+          paymentSessionId: data.paymentSessionId,
+          redirectTarget: '_self',
+        });
+      } else {
+        verifyAndCompletePayment(data.orderId);
+      }
     } catch (err: any) {
       alert(err.message || 'Payment initialization failed. Please try again.');
     } finally {
@@ -344,7 +551,6 @@ export default function MembershipPage() {
     }
   };
 
-  // STEP 2 Trigger Cashfree SDK / Payment Verification
   const handlePayment = async () => {
     setIsProcessing(true);
 
@@ -360,7 +566,6 @@ export default function MembershipPage() {
           .then((result: any) => {
             if (result.error) {
               console.warn('Cashfree Checkout Notice:', result.error);
-              // Complete verification fallback
               verifyAndCompletePayment(orderSession.orderId);
             } else {
               verifyAndCompletePayment(orderSession.orderId);
@@ -379,16 +584,29 @@ export default function MembershipPage() {
 
   const verifyAndCompletePayment = async (orderId: string) => {
     try {
-      // Call backend verification
       let verifiedTxn = orderId;
+      let isPaymentConfirmed = false;
+      let errorMessage = 'Payment not completed or cancelled.';
+
       try {
         const res = await fetch(`/api/pay/verify?order_id=${encodeURIComponent(orderId)}`);
         const data = await res.json();
-        if (data.member?.memberId) {
-          orderSession && (orderSession.memberId = data.member.memberId);
+        if (res.ok && data.success && data.isPaid) {
+          isPaymentConfirmed = true;
+          if (data.member?.memberId) {
+            orderSession && (orderSession.memberId = data.member.memberId);
+          }
+        } else {
+          errorMessage = data.error || 'Payment not completed or cancelled at Cashfree checkout.';
         }
-      } catch (err) {
+      } catch (err: any) {
         console.warn('Verification API notice:', err);
+      }
+
+      if (!isPaymentConfirmed) {
+        alert(errorMessage);
+        setIsProcessing(false);
+        return;
       }
 
       const now = new Date();
@@ -407,20 +625,25 @@ export default function MembershipPage() {
 
       setReceiptData(newReceipt);
 
-      // Save to localStorage for Admin Panel Backup
+      const finalPayable = selectedTier
+        ? selectedTier.priceNum - (appliedCoupon ? appliedCoupon.discountAmount : 0)
+        : 0;
+
       try {
         const existingRecords = JSON.parse(localStorage.getItem('divyaYogamMemberships') || '[]');
         const newRecord = {
           ...newReceipt,
           fullName: formData.fullName,
+          age: formData.age,
+          gender: formData.gender,
+          occupation: formData.occupation,
+          organisation: formData.organisation,
           phone: formData.phone,
           email: formData.email,
-          city: formData.city,
-          address: formData.address,
-          pincode: formData.pincode,
           tierName: selectedTier?.name,
           tierId: selectedTier?.id,
-          amountPaid: selectedTier ? selectedTier.priceNum : 0,
+          amountPaid: finalPayable,
+          couponApplied: appliedCoupon?.code || 'NONE',
           paymentMethod,
           cfOrderId: verifiedTxn,
           paymentStatus: 'SUCCESS',
@@ -433,16 +656,21 @@ export default function MembershipPage() {
       }
 
       setIsProcessing(false);
-      setStep('success');
+      // Redirect to User Dashboard upon successful membership purchase
+      router.push('/user/dashboard');
     } catch (err) {
       setIsProcessing(false);
-      setStep('success');
+      router.push('/user/dashboard');
     }
   };
 
   const handlePrint = () => {
     window.print();
   };
+
+  const finalPayable = selectedTier
+    ? selectedTier.priceNum - (appliedCoupon ? appliedCoupon.discountAmount : 0)
+    : 0;
 
   return (
     <div className="bg-transparent font-body min-h-screen relative overflow-x-hidden text-[#352043]">
@@ -455,9 +683,28 @@ export default function MembershipPage() {
         }}
       />
 
-      {/* ======================================================================== */}
+      {/* Existing Membership Banner */}
+      {existingMembership && (
+        <section className="pt-28 sm:pt-36 pb-0 relative z-10">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-gradient-to-r from-[#47206A] via-[#3B104E] to-[#20052C] rounded-3xl border-2 border-[#DFC47A] p-6 sm:p-8 text-white shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-2xl bg-[#DFC47A]/20 border border-[#DFC47A]/50 flex items-center justify-center">
+                  <Crown className="w-7 h-7 text-[#DFC47A]" />
+                </div>
+                <div>
+                  <span className="text-xs text-[#DFC47A] uppercase font-bold tracking-wider">Your Active Membership</span>
+                  <h3 className="text-2xl font-extrabold font-heading text-white">{existingMembership.level} Member</h3>
+                  <p className="text-xs text-white/70 mt-0.5">Discount on classes: <span className="text-[#DFC47A] font-bold">{existingMembership.discountPercent}% OFF</span> · Paid: ₹{existingMembership.price}</p>
+                </div>
+              </div>
+              <Link href="/user/dashboard" className="px-6 py-3 rounded-full bg-[#DFC47A] text-[#2B083A] font-bold text-xs uppercase tracking-wider hover:scale-105 transition-all shadow-lg">Go to Dashboard</Link>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* MEMBERSHIP TIERS GRID */}
-      {/* ======================================================================== */}
       <section className="pt-28 sm:pt-36 pb-12 sm:pb-16 relative z-10" id="MembershipCards">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <div className="text-center max-w-3xl mx-auto space-y-3">
@@ -506,6 +753,16 @@ export default function MembershipPage() {
                       {tier.badge}
                     </span>
                     <Sparkles className={`w-4 h-4 ${tier.id === 'diamond' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'} group-hover:scale-110 transition-transform`} />
+                  </div>
+
+                  {/* Class Discount Coupon Badge */}
+                  <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold border ${
+                    tier.id === 'diamond'
+                      ? 'bg-[#DFC47A]/20 text-[#DFC47A] border-[#DFC47A]/40'
+                      : 'bg-[#8C5D00]/10 text-[#8C5D00] border-[#8C5D00]/30'
+                  }`}>
+                    <Tag className="w-3.5 h-3.5" />
+                    <span>{tier.discountBadge}</span>
                   </div>
 
                   <div className="space-y-1">
@@ -561,26 +818,36 @@ export default function MembershipPage() {
                 </div>
 
                 {/* Card Action Button */}
-                <button
-                  onClick={() => openMembershipModal(tier)}
-                  className={`w-full py-3.5 rounded-full font-bold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 ${
-                    tier.id === 'diamond'
-                      ? 'bg-gradient-to-r from-[#DFC47A] via-[#E3C582] to-[#C8A34A] text-[#2B083A] hover:bg-white'
-                      : 'bg-[#352043] hover:bg-[#8C5D00] text-white'
-                  }`}
-                >
-                  <Ticket className="w-4 h-4 text-[#DFC47A]" />
-                  <span>Enroll in {tier.name}</span>
-                </button>
+                {existingMembership ? (
+                  <div className={`w-full py-3.5 rounded-full font-bold text-xs uppercase tracking-wider text-center ${
+                    existingMembership.level.toLowerCase() === tier.id
+                      ? 'bg-emerald-100 text-emerald-800 border-2 border-emerald-400'
+                      : 'bg-gray-100 text-gray-500 border border-gray-300 cursor-not-allowed'
+                  }`}>
+                    {existingMembership.level.toLowerCase() === tier.id
+                      ? '✓ Your Active Plan'
+                      : 'Already a Member'}
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => openMembershipModal(tier)}
+                    className={`w-full py-3.5 rounded-full font-bold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 ${
+                      tier.id === 'diamond'
+                        ? 'bg-gradient-to-r from-[#DFC47A] via-[#E3C582] to-[#C8A34A] text-[#2B083A] hover:bg-white'
+                        : 'bg-[#352043] hover:bg-[#8C5D00] text-white'
+                    }`}
+                  >
+                    <Ticket className="w-4 h-4 text-[#DFC47A]" />
+                    <span>Enroll in {tier.name}</span>
+                  </button>
+                )}
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ======================================================================== */}
-      {/* VOLUNTARY REGISTRATION & PAYMENT MODAL */}
-      {/* ======================================================================== */}
+      {/* REGISTRATION & PAYMENT MODAL */}
       <AnimatePresence>
         {showModal && selectedTier && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/75 backdrop-blur-md">
@@ -615,12 +882,93 @@ export default function MembershipPage() {
                 </button>
               </div>
 
+              {/* Modal Inline Auth / Checkout Navigation Tabs */}
+              {step === 'form' && (
+                <div className="bg-[#FAF5EF] px-6 py-2 border-b border-[#E9DED3] flex items-center gap-2 text-xs font-bold">
+                  <button
+                    onClick={() => setModalTab('form')}
+                    className={`px-3 py-1.5 rounded-full transition-colors flex items-center gap-1 ${
+                      modalTab === 'form'
+                        ? 'bg-[#47206A] text-[#DFC47A]'
+                        : 'text-[#5E5865] hover:text-[#47206A]'
+                    }`}
+                  >
+                    <User className="w-3.5 h-3.5" />
+                    <span>Checkout Form</span>
+                  </button>
+
+                  {!currentUser && (
+                    <>
+                      <button
+                        onClick={() => setModalTab('login')}
+                        className={`px-3 py-1.5 rounded-full transition-colors flex items-center gap-1 ${
+                          modalTab === 'login'
+                            ? 'bg-[#47206A] text-[#DFC47A]'
+                            : 'text-[#5E5865] hover:text-[#47206A]'
+                        }`}
+                      >
+                        <LogIn className="w-3.5 h-3.5" />
+                        <span>Log In</span>
+                      </button>
+                      <button
+                        onClick={() => setModalTab('register')}
+                        className={`px-3 py-1.5 rounded-full transition-colors flex items-center gap-1 ${
+                          modalTab === 'register'
+                            ? 'bg-[#47206A] text-[#DFC47A]'
+                            : 'text-[#5E5865] hover:text-[#47206A]'
+                        }`}
+                      >
+                        <UserPlus className="w-3.5 h-3.5" />
+                        <span>Register</span>
+                      </button>
+                    </>
+                  )}
+                </div>
+              )}
+
               {/* Modal Content Body */}
               <div className="p-6 sm:p-8 space-y-6">
                 
-                {/* STEP 1: VOLUNTARY MEMBER FORM */}
-                {step === 'form' && (
+                {/* STEP 1: MEMBER FORM */}
+                {step === 'form' && modalTab === 'form' && (
                   <form onSubmit={handleFormSubmit} className="space-y-4" noValidate>
+                    {/* User Auth Status Banner */}
+                    {currentUser ? (
+                      <div className="p-3.5 rounded-2xl bg-[#47206A]/10 border border-[#DFC47A] text-xs flex items-center justify-between">
+                        <span className="font-bold text-[#47206A]">
+                          LoggedIn as: <span className="text-[#8C5D00]">{currentUser.name}</span> ({currentUser.email})
+                        </span>
+                        <span className="px-2.5 py-0.5 rounded-full bg-[#47206A] text-[#DFC47A] text-[10px] font-bold">
+                          Autofilled
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="p-4 rounded-2xl bg-amber-50 border border-[#DFC47A] text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div className="flex items-center gap-2">
+                          <AlertCircle className="w-5 h-5 text-[#8C5D00] shrink-0" />
+                          <span className="text-[#47206A] font-bold">
+                            Registration & Log In is mandatory to pay for Membership. Please log in or register to proceed.
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-2 shrink-0">
+                          <button
+                            type="button"
+                            onClick={() => setModalTab('login')}
+                            className="px-4 py-1.5 rounded-full bg-[#47206A] text-[#DFC47A] text-[11px] font-bold hover:bg-[#C8A34A] hover:text-[#47206A] transition-all"
+                          >
+                            Log In
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setModalTab('register')}
+                            className="px-4 py-1.5 rounded-full bg-[#FAF7F2] text-[#47206A] border border-[#DFC47A] text-[11px] font-bold hover:bg-[#47206A] hover:text-white transition-all"
+                          >
+                            Register
+                          </button>
+                        </div>
+                      </div>
+                    )}
+
                     {submitAttempted && Object.keys(errors).length > 0 && (
                       <div className="p-3.5 rounded-2xl bg-red-50 border-2 border-red-200 text-red-700 text-xs font-semibold flex items-start gap-2.5">
                         <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
@@ -632,11 +980,13 @@ export default function MembershipPage() {
                         </div>
                       </div>
                     )}
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {/* Name */}
                       <div className="space-y-1.5">
                         <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
                           <User className="w-3.5 h-3.5 text-[#8C5D00]" />
-                          <span>Full Name *</span>
+                          <span>Name *</span>
                         </label>
                         <input
                           type="text"
@@ -658,15 +1008,128 @@ export default function MembershipPage() {
                         )}
                       </div>
 
+                      {/* Age */}
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
+                          <User className="w-3.5 h-3.5 text-[#8C5D00]" />
+                          <span>Age *</span>
+                        </label>
+                        <input
+                          type="number"
+                          min={1}
+                          max={120}
+                          placeholder="e.g. 28"
+                          value={formData.age}
+                          onChange={(e) => handleInputChange('age', e.target.value)}
+                          onBlur={() => handleBlur('age')}
+                          className={`w-full px-4 py-3 rounded-xl border transition-colors text-xs sm:text-sm font-medium bg-[#FAF5EF]/50 focus:outline-none ${
+                            touched.age && errors.age
+                              ? 'border-red-400 focus:border-red-500 bg-red-50/20'
+                              : 'border-[#E9DED3] focus:border-[#C8A34A]'
+                          }`}
+                        />
+                        {touched.age && errors.age && (
+                          <p className="text-[11px] text-red-500 font-semibold flex items-center gap-1 mt-1">
+                            <AlertCircle className="w-3 h-3 flex-shrink-0 text-red-500" />
+                            <span>{errors.age}</span>
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {/* Gender */}
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
+                          <Users className="w-3.5 h-3.5 text-[#8C5D00]" />
+                          <span>Gender *</span>
+                        </label>
+                        <select
+                          value={formData.gender}
+                          onChange={(e) => handleInputChange('gender', e.target.value)}
+                          onBlur={() => handleBlur('gender')}
+                          className={`w-full px-4 py-3 rounded-xl border transition-colors text-xs sm:text-sm font-medium bg-[#FAF5EF]/50 focus:outline-none ${
+                            touched.gender && errors.gender
+                              ? 'border-red-400 focus:border-red-500 bg-red-50/20'
+                              : 'border-[#E9DED3] focus:border-[#C8A34A]'
+                          }`}
+                        >
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Other">Other</option>
+                        </select>
+                        {touched.gender && errors.gender && (
+                          <p className="text-[11px] text-red-500 font-semibold flex items-center gap-1 mt-1">
+                            <AlertCircle className="w-3 h-3 flex-shrink-0 text-red-500" />
+                            <span>{errors.gender}</span>
+                          </p>
+                        )}
+                      </div>
+
+                      {/* Occupation */}
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
+                          <Building className="w-3.5 h-3.5 text-[#8C5D00]" />
+                          <span>Occupation *</span>
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="e.g. Software Engineer, Doctor, Student"
+                          value={formData.occupation}
+                          onChange={(e) => handleInputChange('occupation', e.target.value)}
+                          onBlur={() => handleBlur('occupation')}
+                          className={`w-full px-4 py-3 rounded-xl border transition-colors text-xs sm:text-sm font-medium bg-[#FAF5EF]/50 focus:outline-none ${
+                            touched.occupation && errors.occupation
+                              ? 'border-red-400 focus:border-red-500 bg-red-50/20'
+                              : 'border-[#E9DED3] focus:border-[#C8A34A]'
+                          }`}
+                        />
+                        {touched.occupation && errors.occupation && (
+                          <p className="text-[11px] text-red-500 font-semibold flex items-center gap-1 mt-1">
+                            <AlertCircle className="w-3 h-3 flex-shrink-0 text-red-500" />
+                            <span>{errors.occupation}</span>
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {/* Organisation / Location */}
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
+                          <MapPin className="w-3.5 h-3.5 text-[#8C5D00]" />
+                          <span>Organisation / Location *</span>
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="Enter organisation or city/location"
+                          value={formData.organisation}
+                          onChange={(e) => handleInputChange('organisation', e.target.value)}
+                          onBlur={() => handleBlur('organisation')}
+                          className={`w-full px-4 py-3 rounded-xl border transition-colors text-xs sm:text-sm font-medium bg-[#FAF5EF]/50 focus:outline-none ${
+                            touched.organisation && errors.organisation
+                              ? 'border-red-400 focus:border-red-500 bg-red-50/20'
+                              : 'border-[#E9DED3] focus:border-[#C8A34A]'
+                          }`}
+                        />
+                        {touched.organisation && errors.organisation && (
+                          <p className="text-[11px] text-red-500 font-semibold flex items-center gap-1 mt-1">
+                            <AlertCircle className="w-3 h-3 flex-shrink-0 text-red-500" />
+                            <span>{errors.organisation}</span>
+                          </p>
+                        )}
+                      </div>
+
+                      {/* Mobile Number (10-Digit Validated) */}
                       <div className="space-y-1.5">
                         <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
                           <Phone className="w-3.5 h-3.5 text-[#8C5D00]" />
-                          <span>Phone Number *</span>
+                          <span>Mobile Number * (10 Digits)</span>
                         </label>
                         <input
                           type="tel"
                           maxLength={10}
-                          placeholder="Enter 10-digit phone number"
+                          placeholder="Enter 10-digit mobile number"
                           value={formData.phone}
                           onChange={(e) => handleInputChange('phone', e.target.value)}
                           onBlur={() => handleBlur('phone')}
@@ -685,378 +1148,205 @@ export default function MembershipPage() {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
-                          <Mail className="w-3.5 h-3.5 text-[#8C5D00]" />
-                          <span>Email Address *</span>
-                        </label>
-                        <input
-                          type="email"
-                          placeholder="Enter your email address"
-                          value={formData.email}
-                          onChange={(e) => handleInputChange('email', e.target.value)}
-                          onBlur={() => handleBlur('email')}
-                          className={`w-full px-4 py-3 rounded-xl border transition-colors text-xs sm:text-sm font-medium bg-[#FAF5EF]/50 focus:outline-none ${
-                            touched.email && errors.email
-                              ? 'border-red-400 focus:border-red-500 bg-red-50/20'
-                              : 'border-[#E9DED3] focus:border-[#C8A34A]'
-                          }`}
-                        />
-                        {touched.email && errors.email && (
-                          <p className="text-[11px] text-red-500 font-semibold flex items-center gap-1 mt-1">
-                            <AlertCircle className="w-3 h-3 flex-shrink-0 text-red-500" />
-                            <span>{errors.email}</span>
-                          </p>
-                        )}
-                      </div>
-
-                      <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
-                          <MapPin className="w-3.5 h-3.5 text-[#8C5D00]" />
-                          <span>City *</span>
-                        </label>
-                        <input
-                          type="text"
-                          placeholder="Enter your city"
-                          value={formData.city}
-                          onChange={(e) => handleInputChange('city', e.target.value)}
-                          onBlur={() => handleBlur('city')}
-                          className={`w-full px-4 py-3 rounded-xl border transition-colors text-xs sm:text-sm font-medium bg-[#FAF5EF]/50 focus:outline-none ${
-                            touched.city && errors.city
-                              ? 'border-red-400 focus:border-red-500 bg-red-50/20'
-                              : 'border-[#E9DED3] focus:border-[#C8A34A]'
-                          }`}
-                        />
-                        {touched.city && errors.city && (
-                          <p className="text-[11px] text-red-500 font-semibold flex items-center gap-1 mt-1">
-                            <AlertCircle className="w-3 h-3 flex-shrink-0 text-red-500" />
-                            <span>{errors.city}</span>
-                          </p>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
-                          <Home className="w-3.5 h-3.5 text-[#8C5D00]" />
-                          <span>Address</span>
-                        </label>
-                        <input
-                          type="text"
-                          placeholder="Enter your address"
-                          value={formData.address}
-                          onChange={(e) => handleInputChange('address', e.target.value)}
-                          onBlur={() => handleBlur('address')}
-                          className={`w-full px-4 py-3 rounded-xl border transition-colors text-xs sm:text-sm font-medium bg-[#FAF5EF]/50 focus:outline-none ${
-                            touched.address && errors.address
-                              ? 'border-red-400 focus:border-red-500 bg-red-50/20'
-                              : 'border-[#E9DED3] focus:border-[#C8A34A]'
-                          }`}
-                        />
-                        {touched.address && errors.address && (
-                          <p className="text-[11px] text-red-500 font-semibold flex items-center gap-1 mt-1">
-                            <AlertCircle className="w-3 h-3 flex-shrink-0 text-red-500" />
-                            <span>{errors.address}</span>
-                          </p>
-                        )}
-                      </div>
-
-                      <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
-                          <Navigation className="w-3.5 h-3.5 text-[#8C5D00]" />
-                          <span>Pincode *</span>
-                        </label>
-                        <input
-                          type="text"
-                          maxLength={6}
-                          placeholder="Enter 6-digit pincode"
-                          value={formData.pincode}
-                          onChange={(e) => handleInputChange('pincode', e.target.value)}
-                          onBlur={() => handleBlur('pincode')}
-                          className={`w-full px-4 py-3 rounded-xl border transition-colors text-xs sm:text-sm font-medium bg-[#FAF5EF]/50 focus:outline-none ${
-                            touched.pincode && errors.pincode
-                              ? 'border-red-400 focus:border-red-500 bg-red-50/20'
-                              : 'border-[#E9DED3] focus:border-[#C8A34A]'
-                          }`}
-                        />
-                        {touched.pincode && errors.pincode && (
-                          <p className="text-[11px] text-red-500 font-semibold flex items-center gap-1 mt-1">
-                            <AlertCircle className="w-3 h-3 flex-shrink-0 text-red-500" />
-                            <span>{errors.pincode}</span>
-                          </p>
-                        )}
-                      </div>
+                    {/* Email Address */}
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
+                        <Mail className="w-3.5 h-3.5 text-[#8C5D00]" />
+                        <span>Email Address *</span>
+                      </label>
+                      <input
+                        type="email"
+                        placeholder="Enter your email address"
+                        value={formData.email}
+                        onChange={(e) => handleInputChange('email', e.target.value)}
+                        onBlur={() => handleBlur('email')}
+                        className={`w-full px-4 py-3 rounded-xl border transition-colors text-xs sm:text-sm font-medium bg-[#FAF5EF]/50 focus:outline-none ${
+                          touched.email && errors.email
+                            ? 'border-red-400 focus:border-red-500 bg-red-50/20'
+                            : 'border-[#E9DED3] focus:border-[#C8A34A]'
+                        }`}
+                      />
+                      {touched.email && errors.email && (
+                        <p className="text-[11px] text-red-500 font-semibold flex items-center gap-1 mt-1">
+                          <AlertCircle className="w-3 h-3 flex-shrink-0 text-red-500" />
+                          <span>{errors.email}</span>
+                        </p>
+                      )}
                     </div>
 
                     <div className="pt-3 border-t border-[#E9DED3] flex items-center justify-between gap-4">
                       <div className="text-xs">
                         <span className="text-[#5E5865] block">Total Payment Amount:</span>
-                        <span className="font-heading text-xl font-extrabold text-[#352043]">
-                          {selectedTier.price}
-                        </span>
+                        <div className="flex items-baseline gap-2">
+                          <span className="font-heading text-xl font-extrabold text-[#352043]">
+                            ₹{finalPayable.toLocaleString('en-IN')}
+                          </span>
+                          {appliedCoupon && (
+                            <span className="text-xs line-through text-gray-400">
+                              {selectedTier.price}
+                            </span>
+                          )}
+                        </div>
                       </div>
 
                       <button
                         type="submit"
-                        className="px-8 py-3.5 rounded-full bg-[#352043] hover:bg-[#8C5D00] text-white font-bold text-xs uppercase tracking-wider shadow-lg hover:scale-105 transition-all flex items-center gap-2"
+                        disabled={isProcessing}
+                        className={`px-8 py-3.5 rounded-full bg-[#352043] hover:bg-[#8C5D00] text-white font-bold text-xs uppercase tracking-wider shadow-lg transition-all flex items-center gap-2 ${
+                          isProcessing ? 'opacity-70 cursor-wait' : 'hover:scale-105'
+                        }`}
                       >
-                        <span>Proceed to Pay Now</span>
-                        <ArrowRight className="w-4 h-4 text-[#DFC47A]" />
+                        {isProcessing ? (
+                          <>
+                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                            <span>Connecting Cashfree...</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>Proceed to Pay Now</span>
+                            <ArrowRight className="w-4 h-4 text-[#DFC47A]" />
+                          </>
+                        )}
                       </button>
                     </div>
                   </form>
                 )}
 
-                {/* STEP 2: SIMULATED PAYMENT GATEWAY */}
-                {step === 'payment' && (
-                  <div className="space-y-6">
-                    <div className="p-4 rounded-2xl bg-[#FAF5EF] border border-[#DFC47A]/50 flex items-center justify-between">
-                      <div>
-                        <span className="text-xs text-[#8C5D00] font-bold block">Selected Plan:</span>
-                        <span className="font-heading font-extrabold text-sm text-[#352043]">
-                          {selectedTier.name} ({selectedTier.price})
-                        </span>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-xs text-[#8C5D00] font-bold block">Total Amount:</span>
-                        <span className="font-heading text-lg font-extrabold text-[#352043]">
-                          {selectedTier.price}
-                        </span>
-                      </div>
+                {/* INLINE LOGIN FORM TAB */}
+                {step === 'form' && modalTab === 'login' && (
+                  <form onSubmit={handleInlineLogin} className="space-y-4">
+                    <div className="text-center space-y-1">
+                      <h4 className="font-heading text-lg font-bold text-[#352043]">Log In to Your Account</h4>
+                      <p className="text-xs text-[#5E5865]">Enter your registered email and password to auto-fill your details.</p>
                     </div>
 
-                    {/* Payment Method Selector Tabs */}
-                    <div className="grid grid-cols-3 gap-2">
-                      <button
-                        onClick={() => setPaymentMethod('upi')}
-                        className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center gap-1 ${
-                          paymentMethod === 'upi'
-                            ? 'bg-[#352043] text-white border-[#352043] shadow-md'
-                            : 'bg-white text-[#352043] border-[#E9DED3] hover:bg-[#FAF5EF]'
-                        }`}
-                      >
-                        <QrCode className="w-5 h-5 text-[#DFC47A]" />
-                        <span className="text-[11px] font-bold uppercase tracking-wider">UPI / QR</span>
-                      </button>
-
-                      <button
-                        onClick={() => setPaymentMethod('card')}
-                        className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center gap-1 ${
-                          paymentMethod === 'card'
-                            ? 'bg-[#352043] text-white border-[#352043] shadow-md'
-                            : 'bg-white text-[#352043] border-[#E9DED3] hover:bg-[#FAF5EF]'
-                        }`}
-                      >
-                        <CreditCard className="w-5 h-5 text-[#DFC47A]" />
-                        <span className="text-[11px] font-bold uppercase tracking-wider">Cards</span>
-                      </button>
-
-                      <button
-                        onClick={() => setPaymentMethod('netbanking')}
-                        className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center gap-1 ${
-                          paymentMethod === 'netbanking'
-                            ? 'bg-[#352043] text-white border-[#352043] shadow-md'
-                            : 'bg-white text-[#352043] border-[#E9DED3] hover:bg-[#FAF5EF]'
-                        }`}
-                      >
-                        <Building className="w-5 h-5 text-[#DFC47A]" />
-                        <span className="text-[11px] font-bold uppercase tracking-wider">NetBanking</span>
-                      </button>
-                    </div>
-
-                    {/* Payment Option Panel */}
-                    {paymentMethod === 'upi' && (
-                      <div className="p-6 rounded-2xl bg-white border border-[#DFC47A]/50 text-center space-y-4 shadow-sm">
-                        <div className="w-40 h-40 bg-white p-2 rounded-2xl border-2 border-[#DFC47A] mx-auto shadow-md flex items-center justify-center relative">
-                          <svg className="w-32 h-32 text-[#352043]" viewBox="0 0 100 100" fill="currentColor">
-                            <rect x="10" y="10" width="30" height="30" fill="#352043" />
-                            <rect x="60" y="10" width="30" height="30" fill="#352043" />
-                            <rect x="10" y="60" width="30" height="30" fill="#352043" />
-                            <rect x="20" y="20" width="10" height="10" fill="#FFFFFF" />
-                            <rect x="70" y="20" width="10" height="10" fill="#FFFFFF" />
-                            <rect x="20" y="70" width="10" height="10" fill="#FFFFFF" />
-                            <circle cx="50" cy="50" r="8" fill="#C8A34A" />
-                          </svg>
-                        </div>
-                        <div className="space-y-1">
-                          <span className="text-xs font-bold text-[#8C5D00] uppercase tracking-wider block">
-                            Scan with Google Pay / PhonePe / Paytm / BHIM
-                          </span>
-                          <span className="text-xs text-[#5E5865] block font-mono">
-                            UPI ID: divyayogam@upi
-                          </span>
-                        </div>
+                    {loginError && (
+                      <div className="p-3 rounded-xl bg-red-50 text-red-600 text-xs font-semibold flex items-center gap-2">
+                        <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
+                        <span>{loginError}</span>
                       </div>
                     )}
 
-                    {paymentMethod === 'card' && (
-                      <div className="p-5 rounded-2xl bg-white border border-[#DFC47A]/50 space-y-3">
+                    <div className="space-y-3">
+                      <div className="space-y-1">
+                        <label className="text-xs font-bold uppercase text-[#352043]">Email Address *</label>
                         <input
-                          type="text"
-                          placeholder="Card Number (4111 2222 3333 4444)"
-                          className="w-full px-4 py-3 rounded-xl border border-[#E9DED3] text-xs font-mono"
+                          type="email"
+                          required
+                          placeholder="Enter your email"
+                          value={loginData.email}
+                          onChange={(e) => setLoginData((prev) => ({ ...prev, email: e.target.value }))}
+                          className="w-full px-4 py-3 rounded-xl border border-[#E9DED3] text-xs font-medium focus:outline-none focus:border-[#C8A34A]"
                         />
-                        <div className="grid grid-cols-2 gap-3">
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-xs font-bold uppercase text-[#352043]">Password *</label>
+                        <div className="relative">
                           <input
-                            type="text"
-                            placeholder="MM / YY"
-                            className="w-full px-4 py-3 rounded-xl border border-[#E9DED3] text-xs font-mono"
+                            type={showLoginPassword ? 'text' : 'password'}
+                            required
+                            placeholder="Enter password"
+                            value={loginData.password}
+                            onChange={(e) => setLoginData((prev) => ({ ...prev, password: e.target.value }))}
+                            className="w-full px-4 py-3 pr-10 rounded-xl border border-[#E9DED3] text-xs font-medium focus:outline-none focus:border-[#C8A34A]"
                           />
-                          <input
-                            type="password"
-                            maxLength={3}
-                            placeholder="CVV"
-                            className="w-full px-4 py-3 rounded-xl border border-[#E9DED3] text-xs font-mono"
-                          />
+                          <button
+                            type="button"
+                            onClick={() => setShowLoginPassword(!showLoginPassword)}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#47206A] focus:outline-none transition-colors"
+                            title={showLoginPassword ? 'Hide password' : 'Show password'}
+                          >
+                            {showLoginPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                          </button>
                         </div>
+                      </div>
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isProcessing}
+                      className="w-full py-3 rounded-full bg-[#47206A] text-[#DFC47A] font-bold text-xs uppercase tracking-wider hover:bg-[#8C5D00] transition-all"
+                    >
+                      {isProcessing ? 'Logging in...' : 'Log In & Continue'}
+                    </button>
+                  </form>
+                )}
+
+                {/* INLINE REGISTER FORM TAB */}
+                {step === 'form' && modalTab === 'register' && (
+                  <form onSubmit={handleInlineRegister} className="space-y-4">
+                    <div className="text-center space-y-1">
+                      <h4 className="font-heading text-lg font-bold text-[#352043]">Create a New Account</h4>
+                      <p className="text-xs text-[#5E5865]">Register now to save your membership pass to your personal dashboard.</p>
+                    </div>
+
+                    {registerError && (
+                      <div className="p-3 rounded-xl bg-red-50 text-red-600 text-xs font-semibold flex items-center gap-2">
+                        <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
+                        <span>{registerError}</span>
                       </div>
                     )}
 
-                    {paymentMethod === 'netbanking' && (
-                      <div className="p-5 rounded-2xl bg-white border border-[#DFC47A]/50 text-center space-y-3">
-                        <p className="text-xs text-[#5E5865]">Select Your Bank for Direct Payment Transfer:</p>
-                        <div className="grid grid-cols-2 gap-2 text-xs font-bold">
-                          <div className="p-3 rounded-xl bg-[#FAF5EF] border border-[#E9DED3] text-[#352043]">State Bank of India</div>
-                          <div className="p-3 rounded-xl bg-[#FAF5EF] border border-[#E9DED3] text-[#352043]">HDFC Bank</div>
-                          <div className="p-3 rounded-xl bg-[#FAF5EF] border border-[#E9DED3] text-[#352043]">ICICI Bank</div>
-                          <div className="p-3 rounded-xl bg-[#FAF5EF] border border-[#E9DED3] text-[#352043]">Axis Bank</div>
-                        </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <input
+                        type="text"
+                        required
+                        placeholder="Full Name *"
+                        value={registerData.name}
+                        onChange={(e) => setRegisterData((prev) => ({ ...prev, name: e.target.value }))}
+                        className="px-4 py-2.5 rounded-xl border border-[#E9DED3] text-xs"
+                      />
+                      <input
+                        type="tel"
+                        required
+                        maxLength={10}
+                        placeholder="10-Digit Mobile *"
+                        value={registerData.mobile}
+                        onChange={(e) => setRegisterData((prev) => ({ ...prev, mobile: e.target.value }))}
+                        className="px-4 py-2.5 rounded-xl border border-[#E9DED3] text-xs"
+                      />
+                      <input
+                        type="email"
+                        required
+                        placeholder="Email Address *"
+                        value={registerData.email}
+                        onChange={(e) => setRegisterData((prev) => ({ ...prev, email: e.target.value }))}
+                        className="px-4 py-2.5 rounded-xl border border-[#E9DED3] text-xs"
+                      />
+                      <div className="relative">
+                        <input
+                          type={showRegisterPassword ? 'text' : 'password'}
+                          required
+                          placeholder="Password *"
+                          value={registerData.password}
+                          onChange={(e) => setRegisterData((prev) => ({ ...prev, password: e.target.value }))}
+                          className="px-4 py-2.5 pr-10 rounded-xl border border-[#E9DED3] text-xs"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setShowRegisterPassword(!showRegisterPassword)}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#47206A] focus:outline-none transition-colors"
+                          title={showRegisterPassword ? 'Hide password' : 'Show password'}
+                        >
+                          {showRegisterPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                        </button>
                       </div>
-                    )}
-
-                    <div className="flex items-center justify-between gap-4 pt-2">
-                      <button
-                        onClick={() => setStep('form')}
-                        className="px-5 py-3 rounded-full bg-gray-100 hover:bg-gray-200 text-[#352043] font-bold text-xs uppercase tracking-wider"
-                      >
-                        Back
-                      </button>
-
-                      <button
-                        onClick={handlePayment}
-                        disabled={isProcessing}
-                        className="px-8 py-3.5 rounded-full bg-[#C8A34A] hover:bg-[#8C5D00] text-[#352043] hover:text-white font-extrabold text-xs uppercase tracking-wider shadow-lg hover:scale-105 transition-all flex items-center gap-2 disabled:opacity-50"
-                      >
-                        {isProcessing ? (
-                          <>
-                            <span className="w-4 h-4 border-2 border-[#352043] border-t-transparent rounded-full animate-spin" />
-                            <span>Processing Payment...</span>
-                          </>
-                        ) : (
-                          <>
-                            <ShieldCheck className="w-4 h-4" />
-                            <span>Pay {selectedTier.price} Now</span>
-                          </>
-                        )}
-                      </button>
                     </div>
-                  </div>
+
+                    <button
+                      type="submit"
+                      disabled={isProcessing}
+                      className="w-full py-3 rounded-full bg-[#47206A] text-[#DFC47A] font-bold text-xs uppercase tracking-wider hover:bg-[#8C5D00] transition-all"
+                    >
+                      {isProcessing ? 'Registering...' : 'Register & Continue'}
+                    </button>
+                  </form>
                 )}
-
-                {/* STEP 3: DIGITAL MEMBERSHIP PASS RECEIPT & SUCCESS */}
-                {step === 'success' && receiptData && (
-                  <div className="space-y-6 text-center" ref={cardRef}>
-                    <div className="w-16 h-16 rounded-full bg-emerald-100 border-2 border-emerald-500 text-emerald-600 flex items-center justify-center mx-auto shadow-lg animate-bounce">
-                      <Check className="w-8 h-8 stroke-[3]" />
-                    </div>
-
-                    <div className="space-y-1">
-                      <span className="text-xs font-bold text-emerald-600 uppercase tracking-widest block">
-                        PAYMENT CONFIRMED & ENROLLED
-                      </span>
-                      <h3 className="font-heading text-2xl font-extrabold text-[#352043]">
-                        Welcome to Divya Yogam!
-                      </h3>
-                      <p className="text-xs text-[#5E5865]">
-                        Your voluntary membership pass is generated and stored successfully.
-                      </p>
-                    </div>
-
-                    {/* Official Digital Membership Pass Card */}
-                    <div className="relative rounded-3xl bg-gradient-to-br from-[#352043] via-[#47206A] to-[#2B083A] text-white p-6 border-2 border-[#DFC47A] shadow-2xl text-left space-y-5 overflow-hidden">
-                      <div className="absolute top-0 right-0 w-36 h-36 bg-[#DFC47A]/10 rounded-full blur-2xl pointer-events-none" />
-                      
-                      <div className="flex items-center justify-between border-b border-[#DFC47A]/30 pb-4 relative z-10">
-                        <div className="flex items-center gap-2">
-                          <Sparkles className="w-5 h-5 text-[#DFC47A]" />
-                          <div>
-                            <span className="font-heading font-extrabold text-sm text-[#DFC47A] tracking-wider block">
-                              DIVYA YOGAM
-                            </span>
-                            <span className="text-[9px] text-white/80 font-serif italic block">
-                              Official Digital Member Pass
-                            </span>
-                          </div>
-                        </div>
-
-                        <span className="px-3 py-1 rounded-full bg-[#DFC47A]/20 text-[#DFC47A] text-[10px] font-extrabold uppercase tracking-wider border border-[#DFC47A]/40">
-                          {selectedTier.badge}
-                        </span>
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-4 relative z-10">
-                        <div>
-                          <span className="text-[10px] text-[#DFC47A] uppercase tracking-wider block">Member Name</span>
-                          <span className="font-heading font-bold text-base text-white block">
-                            {formData.fullName}
-                          </span>
-                        </div>
-
-                        <div>
-                          <span className="text-[10px] text-[#DFC47A] uppercase tracking-wider block">Member ID</span>
-                          <span className="font-mono font-bold text-sm text-[#DFC47A] block">
-                            {receiptData.memberId}
-                          </span>
-                        </div>
-
-                        <div>
-                          <span className="text-[10px] text-[#DFC47A] uppercase tracking-wider block">Plan Category</span>
-                          <span className="font-medium text-xs text-white block">
-                            {selectedTier.name}
-                          </span>
-                        </div>
-
-                        <div>
-                          <span className="text-[10px] text-[#DFC47A] uppercase tracking-wider block">Issue Date</span>
-                          <span className="font-medium text-xs text-white block">
-                            {receiptData.issueDate}
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center justify-between border-t border-[#DFC47A]/30 pt-4 relative z-10 text-[10px] text-white/80">
-                        <span>Transaction: {receiptData.txnId}</span>
-                        <span className="text-[#DFC47A] font-bold">Verified Member</span>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-center gap-4 pt-2">
-                      <button
-                        onClick={handlePrint}
-                        className="px-6 py-3 rounded-full bg-[#352043] hover:bg-[#8C5D00] text-white font-bold text-xs uppercase tracking-wider shadow-md flex items-center gap-2"
-                      >
-                        <Printer className="w-4 h-4 text-[#DFC47A]" />
-                        <span>Print / Download Pass</span>
-                      </button>
-
-                      <button
-                        onClick={closeModal}
-                        className="px-6 py-3 rounded-full bg-gray-100 hover:bg-gray-200 text-[#352043] font-bold text-xs uppercase tracking-wider"
-                      >
-                        Close Window
-                      </button>
-                    </div>
-                  </div>
-                )}
-
               </div>
             </motion.div>
           </div>
         )}
       </AnimatePresence>
-
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export default function WhatsAppButton() {
   const whatsappUrl =
-    'https://wa.me/919442548809?text=Namaste!%20I%20would%20like%20to%20know%20more%20about%20Divya%20Yogam.';
+    'https://wa.me/919500117358?text=Namaste!%20I%20would%20like%20to%20know%20more%20about%20Divya%20Yogam.';
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 group">

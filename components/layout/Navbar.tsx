@@ -4,21 +4,42 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowRight, ChevronDown, Music, Headphones, ExternalLink } from 'lucide-react';
+import { Menu, X, ArrowRight, ChevronDown, Music, Headphones, ExternalLink, User, LogIn, UserPlus, LogOut } from 'lucide-react';
 import { NAV_LINKS, NavItem } from '@/constants/navigation';
 import TopBar from './TopBar';
 
 // Navigation layout component
 
 export default function Navbar() {
+  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [user, setUser] = useState<any>(null);
   const pathname = usePathname();
 
   const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.ignitelabs.music_app';
+
+  useEffect(() => {
+    fetch('/api/auth/me')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.authenticated && data.user) {
+          setUser(data.user);
+        } else {
+          setUser(null);
+        }
+      })
+      .catch(() => setUser(null));
+  }, [pathname]);
+
+  const handleLogout = async () => {
+    await fetch('/api/auth/logout', { method: 'POST' });
+    setUser(null);
+    router.push('/login');
+  };
 
 
   useEffect(() => {
@@ -75,8 +96,8 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Center Desktop Navigation Links with Dropdowns */}
-          <nav className="hidden lg:flex items-center justify-center flex-1 gap-3 lg:gap-4 xl:gap-7 font-body mx-2 xl:mx-6">
+          {/* Center Desktop Navigation Links with Dropdowns (Visible on 1200px+) */}
+          <nav className="hidden min-[1200px]:flex items-center justify-center flex-1 gap-3 min-[1200px]:gap-4 xl:gap-7 font-body mx-2 xl:mx-6">
             {menuLinks.map((link) => {
               const hasChildren = link.children && link.children.length > 0;
               const parentActive = isParentActive(link);
@@ -92,7 +113,7 @@ export default function Navbar() {
                     <button
                       aria-expanded={activeDropdown === link.name}
                       aria-label={`Toggle ${link.name} menu`}
-                      className={`inline-flex items-center gap-1 text-[11px] lg:text-[12px] xl:text-[13px] font-semibold uppercase tracking-wider transition-all duration-300 whitespace-nowrap leading-none ${parentActive
+                      className={`inline-flex items-center gap-1 text-[11px] min-[1200px]:text-[12px] xl:text-[13px] font-semibold uppercase tracking-wider transition-all duration-300 whitespace-nowrap leading-none ${parentActive
                           ? 'text-[#C8A34A] font-bold'
                           : 'text-[#47206A] group-hover:text-[#C8A34A]'
                         }`}
@@ -137,7 +158,7 @@ export default function Navbar() {
                 <Link
                   key={link.path}
                   href={link.path || '#'}
-                  className={`inline-flex items-center text-[11px] lg:text-[12px] xl:text-[13px] font-semibold uppercase tracking-wider transition-all duration-300 py-2 whitespace-nowrap leading-none ${parentActive
+                  className={`inline-flex items-center text-[11px] min-[1200px]:text-[12px] xl:text-[13px] font-semibold uppercase tracking-wider transition-all duration-300 py-2 whitespace-nowrap leading-none ${parentActive
                       ? 'text-[#C8A34A] font-bold'
                       : 'text-[#47206A] hover:text-[#C8A34A]'
                     }`}
@@ -157,47 +178,53 @@ export default function Navbar() {
           </nav>
 
           {/* Right Action & Menu Button */}
-          <div className="flex items-center gap-2 lg:gap-2.5 sm:gap-3 shrink-0">
-            {/* Shambala Music App - Solid Royal Purple & Gold Pill */}
-            <a
-              href={playStoreUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Experience Shambala Music App on Google Play"
-              className="hidden lg:flex relative items-center gap-1.5 lg:gap-2 px-2.5 lg:px-3.5 py-1.5 rounded-full bg-[#47206A] text-[#DFC47A] border-2 border-[#DFC47A]/80 text-xs font-bold tracking-wider shadow-md font-body whitespace-nowrap overflow-hidden"
-            >
-              {/* Modern Audio Wave Equalizer Icon */}
-              <div className="relative z-10 flex items-center gap-[2.5px] h-3.5 w-3.5 shrink-0">
-                <span className="w-[2px] h-3.5 bg-[#DFC47A] rounded-full animate-[pulse_1s_ease-in-out_infinite]" />
-                <span className="w-[2px] h-2 bg-[#DFC47A] rounded-full animate-[pulse_1.4s_ease-in-out_infinite_200ms]" />
-                <span className="w-[2px] h-3 bg-[#DFC47A] rounded-full animate-[pulse_1.1s_ease-in-out_infinite_400ms]" />
+          <div className="flex items-center gap-2 min-[1200px]:gap-2.5 sm:gap-3 shrink-0">
+            {/* Dynamic Auth & Dashboard Action Buttons */}
+            {user ? (
+              <div className="hidden min-[1200px]:flex items-center gap-2">
+                <Link
+                  href="/user/dashboard"
+                  className="px-3.5 min-[1200px]:px-4 py-1.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-[#DFC47A] hover:text-[#47206A] border border-[#DFC47A]/60 font-bold text-xs uppercase tracking-wider shadow-sm transition-all duration-300 flex items-center gap-1.5 whitespace-nowrap"
+                >
+                  <User className="w-3.5 h-3.5" />
+                  <span>Dashboard</span>
+                </Link>
+
+                <button
+                  onClick={handleLogout}
+                  title="Log out of account"
+                  className="px-3 py-1.5 rounded-full bg-red-600/80 hover:bg-red-700 text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-1 cursor-pointer whitespace-nowrap"
+                >
+                  <LogOut className="w-3.5 h-3.5" />
+                  <span>Logout</span>
+                </button>
               </div>
+            ) : (
+              <div className="hidden min-[1200px]:flex items-center gap-2">
+                <Link
+                  href="/login"
+                  className="px-3.5 min-[1200px]:px-4 py-1.5 rounded-full bg-[#FAF7F2] hover:bg-[#47206A] text-[#47206A] hover:text-white border border-[#DFC47A] font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-1 whitespace-nowrap"
+                >
+                  <LogIn className="w-3.5 h-3.5 text-[#8C5D00]" />
+                  <span>Log In</span>
+                </Link>
 
-              <span className="relative z-10 text-[10px] lg:text-[11px] font-extrabold tracking-wider uppercase">
-                Shambala App
-              </span>
+                <Link
+                  href="/register"
+                  className="px-3.5 min-[1200px]:px-4 py-1.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 flex items-center gap-1.5 font-body group whitespace-nowrap"
+                >
+                  <UserPlus className="w-3.5 h-3.5 text-[#DFC47A] group-hover:text-[#47206A]" />
+                  <span>Register</span>
+                </Link>
+              </div>
+            )}
 
-              <span className="relative z-10 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-[#DFC47A]/20 text-[#DFC47A] leading-none flex items-center gap-0.5 border border-[#DFC47A]/40">
-                <span>Music</span>
-                <ExternalLink className="w-2.5 h-2.5 inline" />
-              </span>
-            </a>
-
-            {/* Join Us Action Button */}
-            <Link
-              href="/membership"
-              className="hidden min-[1400px]:flex px-3.5 lg:px-5 py-2 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 items-center gap-1.5 font-body group whitespace-nowrap"
-            >
-              <span>Join Us</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#DFC47A] group-hover:text-[#47206A] transition-colors" />
-            </Link>
-
-            {/* Premium Royal Gold & Purple Mobile Menu Toggle Button */}
+            {/* Premium Royal Gold & Purple Mobile Menu Toggle Button (Visible below 1200px) */}
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
               aria-expanded={isMobileOpen}
               aria-label={isMobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
-              className="lg:hidden relative group flex items-center gap-2 px-3.5 py-2 rounded-full bg-gradient-to-r from-[#47206A] via-[#3B104E] to-[#20052C] text-[#DFC47A] border-2 border-[#DFC47A]/80 shadow-md hover:shadow-lg hover:border-[#C8A34A] transition-all duration-300 active:scale-95"
+              className="min-[1200px]:hidden relative group flex items-center gap-2 px-3.5 py-2 rounded-full bg-gradient-to-r from-[#47206A] via-[#3B104E] to-[#20052C] text-[#DFC47A] border-2 border-[#DFC47A]/80 shadow-md hover:shadow-lg hover:border-[#C8A34A] transition-all duration-300 active:scale-95"
             >
               {/* Outer Golden Aura Glow on Hover */}
               <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-[#C8A34A] to-[#DFC47A] opacity-0 group-hover:opacity-40 blur-xs transition-opacity duration-300 pointer-events-none" />
@@ -251,6 +278,67 @@ export default function Navbar() {
               <div className="absolute inset-2 rounded-2xl border border-[#DFC47A]/40 pointer-events-none z-0" />
 
               <div className="relative z-10 flex flex-col gap-2 font-heading">
+                {/* Action Buttons Block (Log In, Register, Music App) at Top of Mobile Menu */}
+                <div className="w-full pb-3 mb-1 border-b border-[#E9DED3] flex flex-col items-center gap-2">
+                  {user ? (
+                    <>
+                      <Link
+                        href="/user/dashboard"
+                        onClick={() => setIsMobileOpen(false)}
+                        className="w-full py-2.5 px-4 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-[#DFC47A] hover:text-[#47206A] font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-all duration-300 font-body"
+                      >
+                        <User className="w-4 h-4 text-[#DFC47A]" />
+                        <span>User Dashboard</span>
+                      </Link>
+                      <button
+                        onClick={() => {
+                          setIsMobileOpen(false);
+                          handleLogout();
+                        }}
+                        className="w-full py-2 px-4 rounded-full bg-red-600/80 hover:bg-red-700 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-all"
+                      >
+                        <LogOut className="w-4 h-4" />
+                        <span>Logout</span>
+                      </button>
+                    </>
+                  ) : (
+                    <div className="w-full grid grid-cols-2 gap-2">
+                      <Link
+                        href="/login"
+                        onClick={() => setIsMobileOpen(false)}
+                        className="py-2.5 px-3 rounded-full bg-[#FAF7F2] text-[#47206A] border border-[#DFC47A] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-sm"
+                      >
+                        <LogIn className="w-3.5 h-3.5 text-[#8C5D00]" />
+                        <span>Log In</span>
+                      </Link>
+                      <Link
+                        href="/register"
+                        onClick={() => setIsMobileOpen(false)}
+                        className="py-2.5 px-3 rounded-full bg-[#47206A] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-sm"
+                      >
+                        <UserPlus className="w-3.5 h-3.5 text-[#DFC47A]" />
+                        <span>Register</span>
+                      </Link>
+                    </div>
+                  )}
+
+                  <a
+                    href={playStoreUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMobileOpen(false)}
+                    className="w-full py-2.5 px-4 rounded-full bg-[#47206A] text-[#DFC47A] font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 font-body border-2 border-[#DFC47A]/80 shadow-sm"
+                  >
+                    <div className="flex items-center gap-[2.5px] h-3.5 w-3.5 shrink-0">
+                      <span className="w-[2px] h-3.5 bg-[#DFC47A] rounded-full animate-[pulse_1s_ease-in-out_infinite]" />
+                      <span className="w-[2px] h-2 bg-[#DFC47A] rounded-full animate-[pulse_1.4s_ease-in-out_infinite_200ms]" />
+                      <span className="w-[2px] h-3 bg-[#DFC47A] rounded-full animate-[pulse_1.1s_ease-in-out_infinite_400ms]" />
+                    </div>
+                    <span>Shambala Music App</span>
+                    <ExternalLink className="w-3.5 h-3.5 text-[#DFC47A]" />
+                  </a>
+                </div>
+
                 {menuLinks.map((link) => {
                   const hasChildren = link.children && link.children.length > 0;
                   const parentActive = isParentActive(link);
@@ -297,33 +385,6 @@ export default function Navbar() {
                     </Link>
                   );
                 })}
-
-                <div className="w-full pt-3 mt-1 border-t border-[#E9DED3] flex flex-col items-center gap-2">
-                  <Link
-                    href="/membership"
-                    onClick={() => setIsMobileOpen(false)}
-                    className="w-full py-2.5 px-4 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-all duration-300 font-body group"
-                  >
-                    <span>Join Us</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#DFC47A] group-hover:text-[#47206A]" />
-                  </Link>
-
-                  <a
-                    href={playStoreUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setIsMobileOpen(false)}
-                    className="w-full py-2.5 px-4 rounded-full bg-[#47206A] text-[#DFC47A] font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 font-body border-2 border-[#DFC47A]/80 shadow-sm"
-                  >
-                    <div className="flex items-center gap-[2.5px] h-3.5 w-3.5 shrink-0">
-                      <span className="w-[2px] h-3.5 bg-[#DFC47A] rounded-full animate-[pulse_1s_ease-in-out_infinite]" />
-                      <span className="w-[2px] h-2 bg-[#DFC47A] rounded-full animate-[pulse_1.4s_ease-in-out_infinite_200ms]" />
-                      <span className="w-[2px] h-3 bg-[#DFC47A] rounded-full animate-[pulse_1.1s_ease-in-out_infinite_400ms]" />
-                    </div>
-                    <span>Shambala Music App</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-[#DFC47A]" />
-                  </a>
-                </div>
               </div>
             </motion.div>
           </motion.div>

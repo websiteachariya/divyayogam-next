@@ -1,127 +1,122 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import {
-  ShieldCheck,
-  User,
-  Lock,
-  Eye,
-  EyeOff,
-  KeyRound,
-  ArrowLeft,
-  XCircle,
-  RefreshCw,
-  Sparkles,
-  Heart,
-  Globe,
-  Award
-} from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ShieldCheck, Lock, Mail, AlertCircle, ArrowRight, Eye, EyeOff } from 'lucide-react';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 
 export default function AdminLoginPage() {
   const router = useRouter();
-  const [loginUsername, setLoginUsername] = useState('');
-  const [loginPassword, setLoginPassword] = useState('');
+  const [identifier, setIdentifier] = useState('admin');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [loginError, setLoginError] = useState('');
-  const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
-  const handleLoginSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoginError('');
-    setIsLoggingIn(true);
+    setErrorMsg('');
+
+    if (!identifier || !password) {
+      setErrorMsg('Admin username/email and password are required.');
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
-      const res = await fetch('/api/admin/login', {
+      const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: loginUsername, password: loginPassword }),
+        body: JSON.stringify({ identifier, password }),
       });
+
       const data = await res.json();
 
-      if (res.ok && data.success) {
-        if (typeof window !== 'undefined') localStorage.setItem('divya_admin_auth', 'true');
-        router.push('/admin/memberships');
-      } else {
-        setLoginError(data.error || 'Invalid Username or Password. Please try again.');
+      if (!res.ok) {
+        throw new Error(data.error || 'Admin login failed');
       }
-    } catch (err) {
-      setLoginError('Authentication failed. Please try again.');
+
+      if (data.user?.role !== 'ADMIN') {
+        throw new Error('Access denied: User account is not an Administrator.');
+      }
+
+      router.push('/admin/dashboard');
+    } catch (err: any) {
+      setErrorMsg(err.message || 'Invalid admin credentials.');
     } finally {
-      setIsLoggingIn(false);
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF5EF] font-body text-[#352043] relative overflow-x-hidden pt-28 sm:pt-36 pb-20 flex items-center justify-center px-4">
-      {/* Texture background */}
-      <div
-        className="absolute inset-0 opacity-80 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
-        style={{
-          backgroundImage: "linear-gradient(rgba(250, 245, 239, 0.82), rgba(250, 245, 239, 0.9)), url('/images/con-6.webp')",
-        }}
-      />
+    <div className="min-h-screen bg-[#FAF7F2] text-[#47206A] flex flex-col justify-between">
+      <Navbar />
 
-      <div className="w-full max-w-lg relative z-10 space-y-6">
-        
-        {/* Mission Header */}
-        <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#352043] text-[#DFC47A] border border-[#DFC47A]/40 text-[10px] sm:text-xs font-bold uppercase tracking-widest shadow-md">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#DFC47A]" />
-            DIVYA YOGAM SECURE ADMIN CONSOLE
+      <main className="pt-44 sm:pt-48 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-md mx-auto w-full flex-1">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-white/95 backdrop-blur-xl rounded-3xl border-2 border-[#47206A] p-6 sm:p-10 shadow-2xl space-y-6 relative overflow-hidden"
+        >
+          <div className="text-center space-y-2">
+            <div className="w-12 h-12 bg-[#47206A] text-[#DFC47A] rounded-2xl flex items-center justify-center mx-auto shadow-md">
+              <ShieldCheck className="w-7 h-7" />
+            </div>
+            <h1 className="text-2xl font-extrabold font-heading text-[#47206A] tracking-wide">
+              Admin Portal Login
+            </h1>
+            <p className="text-xs text-[#8C5D00] font-semibold">
+              Authorized administrators only.
+            </p>
           </div>
 
-          <h1 className="font-heading text-3xl sm:text-4xl font-extrabold text-[#352043]">
-            Admin Sign In
-          </h1>
-        </div>
-
-        {/* Login Form Card */}
-        <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 border-2 border-[#DFC47A] shadow-2xl space-y-6">
-          {loginError && (
-            <div className="p-3.5 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs font-medium flex items-center gap-2">
-              <XCircle className="w-4 h-4 shrink-0 text-red-500" />
-              <span>{loginError}</span>
+          {errorMsg && (
+            <div className="p-4 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs font-bold flex items-center gap-2">
+              <AlertCircle className="w-4 h-4 shrink-0" />
+              <span>{errorMsg}</span>
             </div>
           )}
 
-          <form onSubmit={handleLoginSubmit} className="space-y-4">
-            <div className="space-y-1.5">
-              <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
-                <User className="w-3.5 h-3.5 text-[#8C5D00]" />
-                <span>Admin Username</span>
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
+              <label className="block text-xs font-bold text-[#47206A] uppercase tracking-wider mb-2">
+                Admin Email / Username
               </label>
               <div className="relative">
+                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8C5D00]" />
                 <input
                   type="text"
+                  value={identifier}
+                  onChange={(e) => setIdentifier(e.target.value)}
+                  placeholder="admin@divyayogam.org"
+                  className="w-full pl-10 pr-4 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none font-medium"
                   required
-                  placeholder="Enter admin username"
-                  value={loginUsername}
-                  onChange={(e) => setLoginUsername(e.target.value)}
-                  className="w-full px-4 py-3.5 rounded-xl border border-[#E9DED3] focus:border-[#C8A34A] focus:outline-none text-xs sm:text-sm font-medium bg-[#FAF5EF]/50 text-[#352043]"
                 />
               </div>
             </div>
 
-            <div className="space-y-1.5">
-              <label className="text-xs font-bold text-[#352043] uppercase tracking-wider flex items-center gap-1.5">
-                <Lock className="w-3.5 h-3.5 text-[#8C5D00]" />
-                <span>Admin Password</span>
+            <div>
+              <label className="block text-xs font-bold text-[#47206A] uppercase tracking-wider mb-2">
+                Admin Password
               </label>
               <div className="relative">
+                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8C5D00]" />
                 <input
                   type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                  className="w-full pl-10 pr-10 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none font-medium"
                   required
-                  placeholder="Enter admin password"
-                  value={loginPassword}
-                  onChange={(e) => setLoginPassword(e.target.value)}
-                  className="w-full pl-4 pr-11 py-3.5 rounded-xl border border-[#E9DED3] focus:border-[#C8A34A] focus:outline-none text-xs sm:text-sm font-medium bg-[#FAF5EF]/50 text-[#352043]"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#8C5D00] hover:text-[#352043] transition-colors"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#47206A] focus:outline-none transition-colors"
+                  title={showPassword ? 'Hide password' : 'Show password'}
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -130,34 +125,17 @@ export default function AdminLoginPage() {
 
             <button
               type="submit"
-              disabled={isLoggingIn}
-              className="w-full py-3.5 rounded-full bg-[#352043] hover:bg-[#8C5D00] text-white font-bold text-xs uppercase tracking-wider shadow-lg hover:scale-105 transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
+              disabled={isSubmitting}
+              className="w-full py-4 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-bold text-sm uppercase tracking-wider shadow-xl transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
             >
-              {isLoggingIn ? (
-                <>
-                  <RefreshCw className="w-4 h-4 text-[#DFC47A] animate-spin" />
-                  <span>Authenticating...</span>
-                </>
-              ) : (
-                <>
-                  <KeyRound className="w-4 h-4 text-[#DFC47A]" />
-                  <span>Sign In to Admin Dashboard</span>
-                </>
-              )}
+              <span>{isSubmitting ? 'Authenticating...' : 'Sign In to Admin Portal'}</span>
+              <ArrowRight className="w-4 h-4 text-[#DFC47A]" />
             </button>
           </form>
-        </div>
+        </motion.div>
+      </main>
 
-        <div className="text-center">
-          <Link
-            href="/membership"
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-[#8C5D00] hover:text-[#352043] transition-colors"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Return to Website</span>
-          </Link>
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 }

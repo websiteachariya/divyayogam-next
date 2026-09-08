@@ -186,9 +186,8 @@ export default function PrivacyPolicyPage() {
             <div className="flex items-start gap-2 text-[#352043] font-semibold">
               <Phone className="w-4 h-4 text-[#C8A34A] shrink-0 mt-0.5" />
               <div className="flex flex-wrap gap-x-4 gap-y-1">
-                <span>+91 94425 48809</span>
+                <span>+91 95001 17358</span>
                 <span>+91 94895 14685</span>
-                <span>+91 93444 97460</span>
               </div>
             </div>
             <div className="border-t border-[#E9DED3] pt-2 mt-2 space-y-1 text-xs text-[#5E5865]">

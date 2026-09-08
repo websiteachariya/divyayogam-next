@@ -233,9 +233,8 @@ export default function ContactPage() {
                       Call Support
                     </h3>
                     <div className="text-[#C8A34A] text-sm font-semibold mt-1 flex flex-col space-y-0.5">
-                      <span>+91 94425 48809</span>
-                      <span>+91 94895 14685</span>
-                      <span>+91 93444 97460</span>
+                      <a href="tel:+919500117358" className="hover:underline">+91 95001 17358</a>
+                      <a href="tel:+919489514685" className="hover:underline">+91 94895 14685</a>
                     </div>
                     <p className="text-xs text-[#8A8394] font-light mt-1">
                       Mon - Sat, 9:00 AM - 6:00 PM IST

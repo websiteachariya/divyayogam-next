@@ -114,7 +114,7 @@
   }
 }
 
-@media (min-width: 700px) and (max-width: 1299px) {
+@media (min-width: 700px) and (max-width: 1229px) {
   .topbar-container {
     display: flex !important;
     justify-content: space-between !important;
@@ -133,7 +133,7 @@
   }
 }
 
-@media (min-width: 1300px) {
+@media (min-width: 1230px) {
   .topbar-container {
     display: flex !important;
     justify-content: space-between !important;

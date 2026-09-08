@@ -47,6 +47,13 @@ export const NAV_LINKS: NavItem[] = [
   {
     name: 'Membership',
     path: '/membership',
+    children: [
+      { name: 'Membership Plans', path: '/membership' },
+      { name: 'Divya Yogam Classes', path: '/classes' },
+      { name: 'Divya Yoga Maala', path: '/maala' },
+      { name: 'Shambala Contribution', path: '/shambala-contribution' },
+      { name: 'User Dashboard', path: '/user/dashboard' },
+    ],
   },
   {
     name: 'Transformation',
@@ -81,5 +88,5 @@ export const SITE_CONFIG = {
   tagline: 'Awaken Within',
   url: 'https://divyayogam.org',
   email: 'info@divyayogam.org',
-  phone: '+91 94425 48809 / +91 94895 14685 / +91 93444 97460',
+  phone: '+91 95001 17358 / +91 94895 14685',
 } as const;

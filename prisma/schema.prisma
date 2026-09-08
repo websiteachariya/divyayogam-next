@@ -7,6 +7,223 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  USER
+  ADMIN
+}
+
+enum MembershipTier {
+  GOLD
+  PLATINUM
+  DIAMOND
+}
+
+enum OrderType {
+  MAALA
+  CONTRIBUTION
+  MEMBERSHIP
+  CLASS
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  SUCCESS
+  FAILED
+  CANCELLED
+}
+
+enum ClassStatus {
+  LOCKED
+  AVAILABLE
+  PURCHASED
+  IN_PROGRESS
+  COMPLETED
+}
+
+model User {
+  id            String               @id @default(uuid())
+  name          String
+  age           Int
+  gender        String
+  occupation    String
+  organisation  String
+  mobile        String               @unique
+  email         String               @unique
+  password      String
+  role          Role                 @default(USER)
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt
+
+  memberships   Membership[]
+  enrollments   ClassEnrollment[]
+  orders        Order[]
+  contributions Contribution[]
+  maalaPurchases MaalaPurchase[]
+  resetTokens   PasswordResetToken[]
+
+  @@index([email])
+  @@index([mobile])
+}
+
+model Membership {
+  id              String         @id @default(uuid())
+  userId          String
+  user            User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  level           MembershipTier
+  price           Float
+  discountPercent Float
+  status          PaymentStatus  @default(PENDING)
+  cfOrderId       String         @unique
+  cfPaymentId     String?
+  purchaseDate    DateTime       @default(now())
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  @@index([userId])
+}
+
+model Class {
+  id            String            @id @default(uuid())
+  slug          String            @unique // ayangara, pandava, amirtha, anandha, amoha, advaitha
+  name          String
+  price         Float
+  orderSequence Int               @unique // 1, 2, 3, 4, 5, 6
+  description   String?
+  createdAt     DateTime          @default(now())
+
+  enrollments   ClassEnrollment[]
+}
+
+model ClassEnrollment {
+  id          String      @id @default(uuid())
+  userId      String
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  classId     String
+  classItem   Class       @relation(fields: [classId], references: [id], onDelete: Cascade)
+  status      ClassStatus @default(LOCKED)
+  completedAt DateTime?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@unique([userId, classId])
+  @@index([userId])
+}
+
+model Order {
+  id                 String        @id @default(uuid())
+  orderNumber        String        @unique // e.g. ORD-172578-9812
+  userId             String
+  user               User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orderType          OrderType
+  subtotal           Float
+  discount           Float         @default(0)
+  discountPercentage Float         @default(0)
+  finalAmount        Float
+  currency           String        @default("INR")
+  status             PaymentStatus @default(PENDING)
+  cfOrderId          String        @unique
+  cfPaymentId        String?
+  paymentReference   String?
+  metadata           Json?
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+
+  orderItems         OrderItem[]
+  payments           Payment[]
+  contributions      Contribution[]
+  maalaPurchases     MaalaPurchase[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([orderType])
+}
+
+model OrderItem {
+  id          String   @id @default(uuid())
+  orderId     String
+  order       Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  itemType    String
+  itemId      String?
+  itemTitle   String
+  unitPrice   Float
+  quantity    Int      @default(1)
+  subtotal    Float
+  discount    Float    @default(0)
+  finalPrice  Float
+
+  @@index([orderId])
+}
+
+model Payment {
+  id            String        @id @default(uuid())
+  orderId       String
+  order         Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  cfOrderId     String
+  cfPaymentId   String?
+  amount        Float
+  status        PaymentStatus
+  paymentMethod String?
+  rawPayload    Json?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@index([orderId])
+}
+
+model Contribution {
+  id        String        @id @default(uuid())
+  userId    String
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orderId   String
+  order     Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  amount    Float
+  isCustom  Boolean       @default(false)
+  status    PaymentStatus @default(PENDING)
+  createdAt DateTime      @default(now())
+
+  @@index([userId])
+}
+
+model MaalaPurchase {
+  id               String        @id @default(uuid())
+  userId           String
+  user             User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orderId          String
+  order            Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  participantName  String
+  participantPhone String
+  amount           Float         @default(1000)
+  status           PaymentStatus @default(PENDING)
+  purchaseDate     DateTime      @default(now())
+  createdAt        DateTime      @default(now())
+
+  @@index([userId])
+}
+
+model PasswordResetToken {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token     String   @unique
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([token])
+}
+
+model WebhookEvent {
+  id          String   @id @default(uuid())
+  eventId     String   @unique
+  eventType   String
+  orderId     String?
+  status      String
+  rawPayload  Json?
+  processedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+}
+
 model Member {
   id            String   @id @default(uuid())
   memberId      String   @unique // e.g. DYM-2026-8492

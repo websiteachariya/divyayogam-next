@@ -3,24 +3,32 @@ import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const sessionCookie = request.cookies.get('divya_admin_session');
-  const isAuthenticated = sessionCookie?.value === 'authenticated';
+  const tokenCookie = request.cookies.get('token')?.value;
 
-  // 1. Visiting /admin or /admin/ ALWAYS redirects to the Login page (/admin/login)
+  // 1. Visiting /admin or /admin/ redirects to /admin/login or /admin/dashboard if logged in
   if (pathname === '/admin' || pathname === '/admin/') {
+    if (tokenCookie) {
+      return NextResponse.redirect(new URL('/admin/dashboard', request.url));
+    }
     return NextResponse.redirect(new URL('/admin/login', request.url));
   }
 
-  // 2. Allow access to /admin/login page so login form is always accessible
-  if (pathname.startsWith('/admin/login')) {
+  // 2. Allow access to auth pages
+  if (pathname.startsWith('/admin/login') || pathname.startsWith('/login') || pathname.startsWith('/register')) {
     return NextResponse.next();
   }
 
-  // 3. Protect all other /admin routes (e.g. /admin/memberships, /admin/seo)
+  // 3. Protect /admin routes (except login)
   if (pathname.startsWith('/admin')) {
-    if (!isAuthenticated) {
-      const loginUrl = new URL('/admin/login', request.url);
-      return NextResponse.redirect(loginUrl);
+    if (!tokenCookie) {
+      return NextResponse.redirect(new URL('/admin/login', request.url));
+    }
+  }
+
+  // 4. Protect /user routes
+  if (pathname.startsWith('/user')) {
+    if (!tokenCookie) {
+      return NextResponse.redirect(new URL('/login', request.url));
     }
   }
 
@@ -28,5 +36,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin', '/admin/:path*'],
+  matcher: ['/admin', '/admin/:path*', '/user/:path*'],
 };
