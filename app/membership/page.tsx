@@ -536,7 +536,8 @@ export default function MembershipPage() {
 
       const scriptLoaded = await loadCashfreeScript();
       if (scriptLoaded && (window as any).Cashfree) {
-        const cashfree = (window as any).Cashfree({ mode: 'sandbox' });
+        const cashfreeMode = (process.env.NEXT_PUBLIC_CASHFREE_ENV || 'production') as 'sandbox' | 'production';
+        const cashfree = (window as any).Cashfree({ mode: cashfreeMode });
         cashfree.checkout({
           paymentSessionId: data.paymentSessionId,
           redirectTarget: '_self',
@@ -557,7 +558,8 @@ export default function MembershipPage() {
     try {
       const scriptLoaded = await loadCashfreeScript();
       if (scriptLoaded && (window as any).Cashfree && orderSession?.paymentSessionId) {
-        const cashfree = (window as any).Cashfree({ mode: 'sandbox' });
+        const cashfreeMode = (process.env.NEXT_PUBLIC_CASHFREE_ENV || 'production') as 'sandbox' | 'production';
+        const cashfree = (window as any).Cashfree({ mode: cashfreeMode });
         cashfree
           .checkout({
             paymentSessionId: orderSession.paymentSessionId,
