@@ -22,7 +22,7 @@ export default function Gallery() {
   return (
     <section className="py-8 sm:py-12 lg:py-14 relative overflow-hidden font-body bg-[#FAF4EB]">
       
-      {/* Full Section Background Image (con-1.png) */}
+      {/* Full Section Background Image (con-1.webp) */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
         <Image
           src="/images/con-1.webp"
@@ -32,7 +32,7 @@ export default function Gallery() {
         />
       </div>
 
-      {/* Background Golden Floral Vine Left (deco-19.png) */}
+      {/* Background Golden Floral Vine Left (deco-19.webp) */}
       <div className="absolute bottom-0 -left-24 sm:-left-36 lg:-left-44 xl:-left-52 pointer-events-none hidden lg:block w-[300px] sm:w-[380px] lg:w-[440px] h-[480px] sm:h-[580px] lg:h-[660px] opacity-35 z-0">
         <Image
           src="/images/deco-19.webp"
@@ -42,7 +42,7 @@ export default function Gallery() {
         />
       </div>
 
-      {/* Background Golden Floral Vine Right (deco-20.png) */}
+      {/* Background Golden Floral Vine Right (deco-20.webp) */}
       <div className="absolute bottom-0 -right-24 sm:-right-36 lg:-right-44 xl:-right-52 pointer-events-none hidden lg:block w-[300px] sm:w-[380px] lg:w-[440px] h-[480px] sm:h-[580px] lg:h-[660px] opacity-35 z-0">
         <Image
           src="/images/deco-20.webp"

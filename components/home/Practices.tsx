@@ -108,7 +108,7 @@ export default function Practices() {
   return (
     <section className="py-8 sm:py-12 lg:py-14 bg-[#FAF7F2] relative overflow-hidden font-body border-t border-[#EBE4D8]">
       
-      {/* Background Golden Half-Mandala Watermark (deco-12.png) - Left */}
+      {/* Background Golden Half-Mandala Watermark (deco-12.webp) - Left */}
       <div className="absolute top-1/2 -left-28 sm:-left-36 -translate-y-1/2 opacity-35 pointer-events-none hidden lg:block w-[400px] sm:w-[500px] lg:w-[580px] h-[400px] sm:h-[500px] lg:h-[580px] z-0">
         <Image
           src="/images/deco-12.webp"
@@ -119,7 +119,7 @@ export default function Practices() {
         />
       </div>
 
-      {/* Background Golden Blossoming Lotus Watermark (deco-16.png) - Top Right */}
+      {/* Background Golden Blossoming Lotus Watermark (deco-16.webp) - Top Right */}
       <div className="absolute top-4 sm:top-8 -right-24 sm:-right-32 opacity-35 pointer-events-none hidden lg:block w-[380px] sm:w-[480px] lg:w-[540px] h-[380px] sm:h-[480px] lg:h-[540px] z-0">
         <Image
           src="/images/deco-16.webp"

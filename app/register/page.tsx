@@ -97,7 +97,14 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F2E8] text-[#47206A] flex flex-col justify-between">
+    <div className="min-h-screen bg-transparent text-[#47206A] flex flex-col justify-between relative overflow-x-hidden">
+      {/* Background Image Overlay (con-6.webp matching Wellness & Contact Page) */}
+      <div
+        className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
+        style={{
+          backgroundImage: "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+        }}
+      />
       <Navbar />
 
       <main className="pt-44 sm:pt-48 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full flex-1">

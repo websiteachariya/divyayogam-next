@@ -37,17 +37,34 @@ export default function UserProfilePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#F8F2E8] flex items-center justify-center">
-        <div className="w-10 h-10 border-4 border-[#DFC47A] border-t-[#47206A] rounded-full animate-spin" />
+      <div className="min-h-screen bg-transparent flex items-center justify-center relative overflow-x-hidden">
+        {/* Background Image Overlay (con-6.webp matching Wellness & Contact Page) */}
+        <div
+          className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
+          style={{
+            backgroundImage: "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+          }}
+        />
+        <div className="text-center font-heading text-[#47206A]">
+          <div className="w-12 h-12 border-4 border-[#DFC47A] border-t-[#47206A] rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-sm font-bold uppercase tracking-wider">Loading profile details...</p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#F8F2E8] text-[#47206A] flex flex-col justify-between">
+    <div className="min-h-screen bg-transparent text-[#47206A] flex flex-col justify-between relative overflow-x-hidden">
+      {/* Background Image Overlay (con-6.webp matching Wellness & Contact Page) */}
+      <div
+        className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
+        style={{
+          backgroundImage: "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+        }}
+      />
       <Navbar />
 
-      <main className="pt-44 sm:pt-48 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto w-full flex-1">
+      <main className="pt-32 sm:pt-36 lg:pt-40 pb-16 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto w-full flex-1">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

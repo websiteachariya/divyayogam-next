@@ -37,7 +37,7 @@ function MaalaContent() {
       if (res.ok && data.success && data.isPaid) {
         setPaymentBanner({
           type: 'success',
-          message: 'Payment Successful! Your Divya Yoga Maala order has been confirmed and activated.',
+          message: 'Payment Successful! Your Spiral Meditation Maala offering has been confirmed and activated.',
         });
         await fetchUser();
       } else {
@@ -87,7 +87,7 @@ function MaalaContent() {
     setErrorMsg('');
 
     if (!user) {
-      setErrorMsg('Registration or Login is mandatory before paying for Divya Yoga Maala. Please log in or create an account.');
+      setErrorMsg('Registration or Login is mandatory before offering for Divya Yoga Maala. Please log in or create an account.');
       return;
     }
 
@@ -141,10 +141,17 @@ function MaalaContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F2E8] text-[#47206A] flex flex-col justify-between">
+    <div className="min-h-screen bg-transparent text-[#47206A] flex flex-col justify-between relative overflow-x-hidden">
+      {/* Background Image Overlay (con-6.webp matching Wellness & Contact Page) */}
+      <div
+        className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
+        style={{
+          backgroundImage: "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+        }}
+      />
       <Navbar />
 
-      <main className="pt-44 sm:pt-48 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full flex-1">
+      <main className="pt-32 sm:pt-36 lg:pt-40 pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full flex-1">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -156,19 +163,40 @@ function MaalaContent() {
               <Sparkles className="w-4 h-4 text-[#8C5D00]" /> Sacred Offering
             </div>
             <h1 className="text-3xl sm:text-4xl font-extrabold font-heading text-[#47206A]">
-              Divya Yoga Maala
+              Divya Yogam – Spiral Meditation Maala
             </h1>
             <p className="text-xs sm:text-base text-[#8C5D00] max-w-xl mx-auto font-medium">
-              An independent sacred offering. Price: ₹1,000. Membership or class enrollment is NOT required.
+              An independent sacred offering. Sacred Value: ₹1,000. Contributionship or class enrollment is NOT required.
             </p>
           </div>
 
+          {/* Sacred Maala Image Card */}
+          <div className="relative rounded-2xl overflow-hidden border-2 border-[#DFC47A] shadow-xl group bg-[#FAF7F2] max-w-md mx-auto aspect-[16/9] w-full">
+            <img
+              src="/images/maala_placeholder.webp"
+              alt="Divya Yogam – Spiral Meditation Maala"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#20052C]/80 via-transparent to-transparent flex items-end p-4">
+              <div className="text-white">
+                <h3 className="text-base sm:text-lg font-bold font-heading text-white">
+                  Spiral Meditation Maala
+                </h3>
+              </div>
+            </div>
+          </div>
+
           {/* Date Range Validity Notice */}
-          <div className="p-4 rounded-2xl bg-[#FAF5EF] border border-[#DFC47A] flex items-center gap-3">
-            <Calendar className="w-6 h-6 text-[#C8A34A] shrink-0" />
+          <div className="p-4 rounded-2xl bg-[#FAF5EF] border border-[#DFC47A] flex items-center gap-3 shadow-sm hover:shadow-md hover:border-[#47206A] transition-all duration-300 group">
+            <Calendar className="w-6 h-6 text-[#C8A34A] shrink-0 group-hover:scale-110 transition-transform duration-300" />
             <div className="text-xs text-[#47206A]">
-              <span className="font-extrabold block uppercase tracking-wider">Purchase Validity Window:</span>
-              <span>August 15 – December 1 (Backend Enforced). Orders outside this window will be rejected.</span>
+              <span className="font-extrabold block uppercase tracking-wider text-[#8C5D00]">Contribution Window:</span>
+              <span className="font-medium mt-1 block">
+                <strong className="px-2.5 py-1 rounded-lg bg-[#47206A] text-[#DFC47A] font-extrabold inline-block shadow-sm group-hover:bg-[#C8A34A] group-hover:text-[#47206A] transition-all duration-300">
+                  August 15 – December 1
+                </strong>{' '}
+                <span className="text-[#8C5D00] font-semibold">(Backend Enforced)</span>. Contributions outside this window will be closed.
+              </span>
             </div>
           </div>
 
@@ -206,7 +234,7 @@ function MaalaContent() {
               {orderId && (
                 <div className="p-3.5 rounded-2xl bg-white/80 border border-gray-200 text-left text-xs max-w-md mx-auto space-y-1 text-gray-700">
                   <div className="flex justify-between">
-                    <span className="text-gray-500">Order Reference:</span>
+                    <span className="text-gray-500">Offering Reference:</span>
                     <span className="font-mono font-bold">{orderId}</span>
                   </div>
                   <div className="flex justify-between">
@@ -260,7 +288,7 @@ function MaalaContent() {
               <div className="flex items-center gap-2">
                 <AlertCircle className="w-5 h-5 text-[#8C5D00] shrink-0" />
                 <span className="text-[#47206A] font-bold">
-                  Registration & Log In is mandatory to pay for Maala. Please log in or create an account to proceed.
+                  Registration & Log In is mandatory to offer for Maala. Please log in or create an account to proceed.
                 </span>
               </div>
               <div className="flex items-center gap-2 shrink-0">
@@ -321,21 +349,21 @@ function MaalaContent() {
 
             <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#E9DED3] flex items-center justify-between">
               <div>
-                <span className="text-xs text-gray-500 font-bold uppercase tracking-wider">Fixed Price:</span>
+                <span className="text-xs text-gray-500 font-bold uppercase tracking-wider">Sacred Value:</span>
                 <h3 className="text-2xl font-extrabold font-heading text-[#47206A]">₹1,000</h3>
               </div>
               <span className="text-xs font-bold text-[#8C5D00] uppercase tracking-wider">
-                Independent Purchase
+                Independent Offering
               </span>
             </div>
 
             <button
               type="submit"
               disabled={isProcessing}
-              className="w-full py-4 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-bold text-sm uppercase tracking-wider shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+              className="w-full py-3.5 sm:py-4 px-3 sm:px-6 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-bold text-xs sm:text-sm uppercase tracking-wider shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 text-center leading-snug"
             >
-              <span>{isProcessing ? 'Initializing Payment...' : 'Proceed to Pay ₹1,000 via Cashfree'}</span>
-              <ArrowRight className="w-4 h-4 text-[#DFC47A]" />
+              <span>{isProcessing ? 'Initializing Sacred Value...' : 'Proceed to Sacred Value ₹1,000 via Cashfree'}</span>
+              <ArrowRight className="w-4 h-4 text-[#DFC47A] shrink-0" />
             </button>
           </form>
         </motion.div>

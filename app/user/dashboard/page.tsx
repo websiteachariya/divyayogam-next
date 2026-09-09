@@ -61,7 +61,14 @@ export default function UserDashboardPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#F8F2E8] flex items-center justify-center">
+      <div className="min-h-screen bg-transparent flex items-center justify-center relative overflow-x-hidden">
+        {/* Background Image Overlay (con-6.webp matching Wellness & Contact Page) */}
+        <div
+          className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
+          style={{
+            backgroundImage: "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+          }}
+        />
         <div className="text-center font-heading text-[#47206A]">
           <div className="w-12 h-12 border-4 border-[#DFC47A] border-t-[#47206A] rounded-full animate-spin mx-auto mb-4" />
           <p className="text-sm font-bold uppercase tracking-wider">Loading your sacred dashboard...</p>
@@ -144,10 +151,17 @@ export default function UserDashboardPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F2E8] text-[#47206A] flex flex-col justify-between">
+    <div className="min-h-screen bg-transparent text-[#47206A] flex flex-col justify-between relative overflow-x-hidden">
+      {/* Background Image Overlay (con-6.webp matching Wellness & Contact Page) */}
+      <div
+        className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
+        style={{
+          backgroundImage: "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+        }}
+      />
       <Navbar />
 
-      <main className="pt-44 sm:pt-48 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1 space-y-8">
+      <main className="pt-32 sm:pt-36 lg:pt-40 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1 space-y-6 sm:space-y-8">
         {/* Welcome Top Banner */}
         <div className="bg-gradient-to-r from-[#47206A] via-[#3B104E] to-[#20052C] rounded-3xl border-2 border-[#DFC47A] p-6 sm:p-8 text-white shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 relative overflow-hidden">
           <div className="relative z-10 space-y-1">
@@ -220,19 +234,19 @@ export default function UserDashboardPage() {
           </div>
 
           {/* Active Membership Status Card */}
-          <div className="bg-gradient-to-br from-[#FFFDF9] via-[#FAF5EF] to-[#FFF8ED] rounded-3xl border-2 border-[#DFC47A] p-6 shadow-xl space-y-4 flex flex-col justify-between">
+          <div className="bg-white/90 backdrop-blur-xl rounded-3xl border-2 border-[#DFC47A] p-6 shadow-xl space-y-4 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between border-b border-[#E9DED3] pb-3">
                 <h2 className="text-lg font-extrabold font-heading text-[#47206A] flex items-center gap-2">
-                  <Crown className="w-5 h-5 text-[#C8A34A]" /> Membership Level
+                  <Crown className="w-5 h-5 text-[#C8A34A]" /> Contribution Level
                 </h2>
                 {activeMembership ? (
                   <span className="px-3 py-1 rounded-full bg-[#47206A] text-[#DFC47A] text-xs font-bold">
                     ACTIVE
                   </span>
                 ) : (
-                  <span className="px-3 py-1 rounded-full bg-gray-200 text-gray-700 text-xs font-bold">
-                    NONE
+                  <span className="px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-extrabold border border-amber-300">
+                    NO TIER
                   </span>
                 )}
               </div>
@@ -254,37 +268,41 @@ export default function UserDashboardPage() {
                       </h3>
                     </div>
                     <div className="text-right">
-                      <span className="text-xs uppercase font-bold tracking-wider" style={{ color: activeMembership.level === 'DIAMOND' ? '#DFC47A' : activeMembership.level === 'PLATINUM' ? '#E8E8E8' : '#FFF8ED' }}>Class Discount</span>
-                      <h4 className="text-xl font-bold" style={{ color: activeMembership.level === 'DIAMOND' ? '#DFC47A' : activeMembership.level === 'PLATINUM' ? '#E8E8E8' : '#FFD700' }}>{activeMembership.discountPercent}% OFF</h4>
+                      <span className="text-xs uppercase font-bold tracking-wider" style={{ color: activeMembership.level === 'DIAMOND' ? '#DFC47A' : activeMembership.level === 'PLATINUM' ? '#E8E8E8' : '#FFF8ED' }}>Sacred Privilege</span>
+                      <h4 className="text-xl font-bold" style={{ color: activeMembership.level === 'DIAMOND' ? '#DFC47A' : activeMembership.level === 'PLATINUM' ? '#E8E8E8' : '#FFD700' }}>{activeMembership.discountPercent}% Sacred Benefit</h4>
                     </div>
                   </div>
 
                   <div className="space-y-1.5 text-xs text-[#47206A]">
-                    <div className="flex justify-between">
-                      <span className="text-gray-500">Amount Paid:</span>
-                      <span className="font-bold">₹{activeMembership.price}</span>
+                    <div className="flex justify-between py-1 border-b border-gray-100">
+                      <span className="text-gray-500 font-medium">Sacred Contribution:</span>
+                      <span className="font-bold text-[#47206A]">₹{activeMembership.price}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-500">Purchase Date:</span>
-                      <span className="font-bold">{new Date(activeMembership.purchaseDate).toLocaleDateString()}</span>
+                    <div className="flex justify-between py-1">
+                      <span className="text-gray-500 font-medium">Date:</span>
+                      <span className="font-bold text-[#47206A]">{new Date(activeMembership.purchaseDate).toLocaleDateString()}</span>
                     </div>
                   </div>
                 </div>
               ) : (
-                <div className="mt-4 text-center py-6 space-y-3">
-                  <Crown className="w-12 h-12 text-[#C8A34A] mx-auto opacity-40" />
-                  <p className="text-xs text-[#8C5D00] font-semibold">
-                    No active membership tier found. Join Gold, Platinum, or Diamond to get class discounts up to 20%!
-                  </p>
+                <div className="mt-4 text-center py-4 space-y-3">
+                  <div className="w-12 h-12 bg-amber-50 rounded-full flex items-center justify-center mx-auto border border-[#DFC47A]/60 shadow-sm">
+                    <Crown className="w-6 h-6 text-[#C8A34A]" />
+                  </div>
+                  <div className="p-3.5 rounded-2xl bg-[#FAF7F2] border border-[#E9DED3]">
+                    <p className="text-xs sm:text-sm text-[#47206A] font-extrabold leading-relaxed">
+                      No active contribution tier found. Support Gold, Platinum, or Diamond to unlock sacred privileges up to 50%!
+                    </p>
+                  </div>
                 </div>
               )}
             </div>
 
             <Link
-              href="/membership"
+              href="/contributorship"
               className="w-full py-3 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-bold text-xs uppercase tracking-wider text-center transition-all duration-300 block shadow-md"
             >
-              {activeMembership ? 'View Membership Plans' : 'Explore Membership Tiers'}
+              {activeMembership ? 'View Contribution Tiers' : 'Explore Contribution Tiers'}
             </Link>
           </div>
 
@@ -293,30 +311,30 @@ export default function UserDashboardPage() {
             <div>
               <div className="flex items-center justify-between border-b border-[#E9DED3] pb-3">
                 <h2 className="text-lg font-extrabold font-heading text-[#47206A] flex items-center gap-2">
-                  <ShoppingBag className="w-5 h-5 text-[#8C5D00]" /> Purchases & Offerings
+                  <ShoppingBag className="w-5 h-5 text-[#8C5D00]" /> Sacred Offerings & Support
                 </h2>
               </div>
 
               <div className="mt-4 space-y-3">
-                {/* Divya Yoga Maala Card */}
+                {/* Spiral Meditation Maala Card */}
                 <div className="p-3.5 rounded-2xl bg-[#FAF7F2] border border-[#E9DED3] space-y-2">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <Sparkles className="w-5 h-5 text-[#8C5D00]" />
                       <div>
-                        <h4 className="text-xs font-bold text-[#47206A]">Divya Yoga Maala</h4>
+                        <h4 className="text-xs font-bold text-[#47206A]">Spiral Meditation Maala</h4>
                         <p className="text-[11px] text-[#8C5D00]">Validity: Aug 15 – Dec 1</p>
                       </div>
                     </div>
                     <span className="text-xs font-bold text-[#47206A]">
-                      {maalaPurchases.length > 0 ? `${maalaPurchases.length} Bought` : 'Not Purchased'}
+                      {maalaPurchases.length > 0 ? `${maalaPurchases.length} Contributed` : 'Not Contributed'}
                     </span>
                   </div>
 
                   {maalaPurchases.length > 0 && (
                     <div className="pt-2 border-t border-[#E9DED3]/60 text-[11px] space-y-1 text-[#47206A]">
                       <div className="flex justify-between font-medium">
-                        <span className="text-gray-500">Last Payment:</span>
+                        <span className="text-gray-500">Last Offering:</span>
                         <span className="font-bold text-emerald-700">
                           ₹{maalaPurchases[0].amount} • {new Date(maalaPurchases[0].createdAt || maalaPurchases[0].purchaseDate).toLocaleDateString()}
                         </span>
@@ -331,13 +349,13 @@ export default function UserDashboardPage() {
                   )}
                 </div>
 
-                {/* Shambala Contribution Card */}
+                {/* Spiral Meditation Contribution Card */}
                 <div className="p-3.5 rounded-2xl bg-[#FAF7F2] border border-[#E9DED3] space-y-2">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <Heart className="w-5 h-5 text-red-500" />
                       <div>
-                        <h4 className="text-xs font-bold text-[#47206A]">Shambala Contribution</h4>
+                        <h4 className="text-xs font-bold text-[#47206A]">Spiral Meditation Contribution</h4>
                         <p className="text-[11px] text-[#8C5D00]">Sacred Foundation Support (Aug 15 – Dec 21)</p>
                       </div>
                     </div>
@@ -418,7 +436,7 @@ export default function UserDashboardPage() {
               </h3>
               <p className="text-xs text-gray-300">
                 {memberDiscountPercent > 0
-                  ? `Active ${activeMembership?.level} Member Privilege (${memberDiscountPercent}% OFF Applied)`
+                  ? `Active ${activeMembership?.level} Contributor Privilege (${memberDiscountPercent}% Sacred Benefit Applied)`
                   : 'Enroll in all 6 sequential classes at once without waiting.'}
               </p>
             </div>
@@ -474,7 +492,7 @@ export default function UserDashboardPage() {
                           <>
                             <span className="text-xs font-semibold text-gray-400 line-through">₹{cls.price.toLocaleString()}</span>
                             <span className="text-sm font-bold text-emerald-700">₹{Math.round(cls.price * (1 - memberDiscountPercent / 100)).toLocaleString()}</span>
-                            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 border border-emerald-300">{memberDiscountPercent}% OFF</span>
+                            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 border border-emerald-300">{memberDiscountPercent}% Sacred Benefit</span>
                           </>
                         ) : (
                           <span className="text-xs font-semibold text-[#8C5D00]">Price: ₹{cls.price.toLocaleString()}</span>

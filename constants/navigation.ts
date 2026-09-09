@@ -13,6 +13,7 @@ export const NAV_LINKS: NavItem[] = [
       { name: 'About Us', path: '/about' },
       { name: 'Foundation Story', path: '/foundation-story' },
       { name: 'Vision & Mission', path: '/vision' },
+      { name: 'Publications', path: '/publication' },
     ],
   },
   {
@@ -27,13 +28,13 @@ export const NAV_LINKS: NavItem[] = [
   },
 
   {
-  name: 'Sciences',
-  path: '/sciences',
-  children: [
-    { name: 'Sciences Overview', path: '/sciences' },
-    { name: 'Blog', path: '/blog' },
-  ],
-},
+    name: 'Sciences',
+    path: '/sciences',
+    children: [
+      { name: 'Sciences Overview', path: '/sciences' },
+      { name: 'Blog', path: '/blog' },
+    ],
+  },
 
 
   {
@@ -41,18 +42,17 @@ export const NAV_LINKS: NavItem[] = [
     path: '/events',
     children: [
       { name: 'Sacred Events', path: '/events' },
-      { name: 'Happy Shambhala', path: '/happy-shambhala' },
+      { name: 'Happy Shambala', path: '/happy-shambala' },
     ],
   },
   {
-    name: 'Membership',
-    path: '/membership',
+    name: 'Contribution',
+    path: '/contributorship',
     children: [
-      { name: 'Membership Plans', path: '/membership' },
+      { name: 'Divya Yogam Contributorship', path: '/contributorship' },
       { name: 'Divya Yogam Classes', path: '/classes' },
-      { name: 'Divya Yoga Maala', path: '/maala' },
-      { name: 'Shambala Contribution', path: '/shambala-contribution' },
-      { name: 'User Dashboard', path: '/user/dashboard' },
+      { name: 'Spiral Meditation Maala', path: '/maala' },
+      { name: 'Spiral Meditation Contribution', path: '/shambala-contribution' },
     ],
   },
   {

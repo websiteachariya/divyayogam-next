@@ -178,7 +178,7 @@ export default function VolunteerPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight"
           >
-            Become a <span className="text-[#DFC47A] italic font-serif">Volunteer (Sevak)</span>
+            Become a <span className="text-[#DFC47A] italic font-serif">Volunteer </span>
           </motion.h1>
 
           <motion.p
@@ -187,7 +187,7 @@ export default function VolunteerPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-[#F8F2E8] text-base sm:text-lg font-serif italic max-w-2xl mx-auto leading-relaxed"
           >
-            Serve humanity and participate in spreading Organ Meditation, Shambhala Gatherings, and Sacred Transformation. Offer your time, skills, and devotion.
+            Serve humanity and participate in spreading Organ Meditation, Shambala Gatherings, and Sacred Transformation. Offer your time, skills, and devotion.
           </motion.p>
 
           <div className="flex items-center justify-center gap-3 pt-2">
@@ -221,7 +221,7 @@ export default function VolunteerPage() {
               </span>
 
               <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#352043] leading-tight">
-                Sevak Registration <span className="text-[#8C5D00] font-serif italic">Form</span>
+                Registration <span className="text-[#8C5D00] font-serif italic">Form</span>
               </h2>
 
               <p className="text-[#5E5865] text-sm sm:text-base font-serif italic leading-relaxed">
@@ -240,7 +240,7 @@ export default function VolunteerPage() {
                 <div>
                   <p className="font-bold text-emerald-950 text-base">Volunteer Application Received!</p>
                   <p className="text-xs text-emerald-800 font-normal mt-0.5">
-                    Thank you for offering your sacred service. Our Sevak team will get in touch with you shortly.
+                    Thank you for offering your sacred service. Our team will get in touch with you shortly.
                   </p>
                 </div>
               </motion.div>
@@ -398,7 +398,7 @@ export default function VolunteerPage() {
                 className="w-full sm:w-auto px-10 py-4 rounded-full bg-gradient-to-r from-[#8C5D00] via-[#C8A34A] to-[#8C5D00] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2.5 mx-auto group cursor-pointer"
               >
                 <HeartHandshake className="w-4 h-4 text-[#FFF8E7] group-hover:rotate-12 transition-transform" />
-                <span>Submit Sevak Application</span>
+                <span>Submit Application</span>
                 <Send className="w-4 h-4 text-[#FFF8E7] group-hover:translate-x-1 transition-transform" />
               </button>
             </form>

@@ -169,7 +169,7 @@ export default function TestimonialsPage() {
                         onClick={() => handlePlayVideo(id)}
                         className="w-full h-full bg-cover bg-center cursor-pointer relative flex items-center justify-center group/btn"
                         style={{
-                          backgroundImage: `url('https://img.youtube.com/vi/${id}/hqdefault.jpg')`,
+                          backgroundImage: `url('https://img.youtube.com/vi/${id}/hqdefault.webp')`,
                         }}
                       >
                         {/* Dark Overlay gradient */}

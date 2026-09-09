@@ -77,10 +77,10 @@ const MEMBERSHIP_TIERS: MembershipTier[] = [
     popular: true,
     color: 'from-[#352043] via-[#47206A] to-[#2B083A]',
     borderColor: 'border-[#DFC47A]',
-    discountBadge: '50% OFF Coupon on All Classes',
+    discountBadge: '50% Sacred Privilege Grant on All Classes',
     discountPercentage: 50,
     benefits: [
-      '50% OFF Coupon for All Sequential Classes',
+      '50% Sacred Privilege Grant for All Sequential Classes',
       'Advanced Avadhani engagement',
       'Personalized Goal Sheet enrichment',
       'Guided meditation and mindful practices',
@@ -102,10 +102,10 @@ const MEMBERSHIP_TIERS: MembershipTier[] = [
     popular: false,
     color: 'from-[#FFFDF9] via-[#FAF5EF] to-[#FFF8ED]',
     borderColor: 'border-[#DFC47A]',
-    discountBadge: '30% OFF Coupon on All Classes',
+    discountBadge: '30% Sacred Privilege Grant on All Classes',
     discountPercentage: 30,
     benefits: [
-      '30% OFF Coupon for All Sequential Classes',
+      '30% Sacred Privilege Grant for All Sequential Classes',
       'Avadhani Sessions',
       'Goal Sheet Enrichment & Review',
       'Mindfulness and self-reflection',
@@ -127,10 +127,10 @@ const MEMBERSHIP_TIERS: MembershipTier[] = [
     popular: false,
     color: 'from-[#FFFDF9] via-[#FAF5EF] to-[#FFF8ED]',
     borderColor: 'border-[#DFC47A]',
-    discountBadge: '10% OFF Coupon on All Classes',
+    discountBadge: '10% Sacred Privilege Grant on All Classes',
     discountPercentage: 10,
     benefits: [
-      '10% OFF Coupon for All Sequential Classes',
+      '10% Sacred Privilege Grant for All Sequential Classes',
       'Avadhani Session',
       'Goal Sheet Enrichment — FREE',
       'Introduction to conscious living',
@@ -675,48 +675,54 @@ export default function MembershipPage() {
   return (
     <div className="bg-transparent font-body min-h-screen relative overflow-x-hidden text-[#352043]">
       
-      {/* Sandal Texture Background Overlay */}
+      {/* Background Image Overlay (con-6.webp matching Wellness & Contact Page) */}
       <div
         className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
         style={{
-          backgroundImage: "linear-gradient(rgba(250, 245, 239, 0.6), rgba(250, 245, 239, 0.75)), url('/images/con-6.webp')",
+          backgroundImage: "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
         }}
       />
 
       {/* Existing Membership Banner */}
       {existingMembership && (
-        <section className="pt-28 sm:pt-36 pb-0 relative z-10">
+        <section className="pt-32 sm:pt-36 lg:pt-40 pb-4 relative z-10">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-gradient-to-r from-[#47206A] via-[#3B104E] to-[#20052C] rounded-3xl border-2 border-[#DFC47A] p-6 sm:p-8 text-white shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="bg-gradient-to-r from-[#47206A] via-[#3B104E] to-[#20052C] rounded-3xl border-2 border-[#DFC47A] p-5 sm:p-7 text-white shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-2xl bg-[#DFC47A]/20 border border-[#DFC47A]/50 flex items-center justify-center">
-                  <Crown className="w-7 h-7 text-[#DFC47A]" />
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#DFC47A]/20 border border-[#DFC47A]/50 flex items-center justify-center shrink-0">
+                  <Crown className="w-6 h-6 sm:w-7 sm:h-7 text-[#DFC47A]" />
                 </div>
                 <div>
-                  <span className="text-xs text-[#DFC47A] uppercase font-bold tracking-wider">Your Active Membership</span>
-                  <h3 className="text-2xl font-extrabold font-heading text-white">{existingMembership.level} Member</h3>
-                  <p className="text-xs text-white/70 mt-0.5">Discount on classes: <span className="text-[#DFC47A] font-bold">{existingMembership.discountPercent}% OFF</span> · Paid: ₹{existingMembership.price}</p>
+                  <span className="text-xs text-[#DFC47A] uppercase font-bold tracking-wider">Your Active Contribution Tier</span>
+                  <h3 className="text-xl sm:text-2xl font-extrabold font-heading text-white">{existingMembership.level} Contributor</h3>
+                  <p className="text-xs text-white/80 mt-1 flex items-center gap-1.5 flex-wrap">
+                    <span>Sacred Privilege Grant:</span>
+                    <span className="px-2 py-0.5 rounded-md bg-[#DFC47A] text-[#2B083A] font-black text-xs shadow-sm">
+                      {existingMembership.discountPercent}%
+                    </span>
+                    <span>on All Sequential Classes · Sacred Contribution: ₹{existingMembership.price}</span>
+                  </p>
                 </div>
               </div>
-              <Link href="/user/dashboard" className="px-6 py-3 rounded-full bg-[#DFC47A] text-[#2B083A] font-bold text-xs uppercase tracking-wider hover:scale-105 transition-all shadow-lg">Go to Dashboard</Link>
+              <Link href="/user/dashboard" className="px-6 py-2.5 rounded-full bg-[#DFC47A] text-[#2B083A] font-bold text-xs uppercase tracking-wider hover:scale-105 transition-all shadow-lg shrink-0">Go to Dashboard</Link>
             </div>
           </div>
         </section>
       )}
 
       {/* MEMBERSHIP TIERS GRID */}
-      <section className="pt-28 sm:pt-36 pb-12 sm:pb-16 relative z-10" id="MembershipCards">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <section className={`${existingMembership ? 'pt-6 sm:pt-8' : 'pt-32 sm:pt-36 lg:pt-40'} pb-12 sm:pb-16 relative z-10`} id="MembershipCards">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#352043] text-[#DFC47A] border border-[#DFC47A]/40 text-xs font-bold uppercase tracking-widest shadow-md">
               <Sparkles className="w-3.5 h-3.5 text-[#DFC47A]" />
-              DIVINE GRACE MEMBERSHIP
+              DIVINE GRACE SACRED CONTRIBUTORSHIP
             </span>
             <h2 className="font-heading text-3xl sm:text-5xl font-extrabold text-[#352043]">
-              Choose Your <span className="font-serif italic font-normal text-[#8C5D00]">Sacred Plan</span>
+              Choose Your <span className="font-serif italic font-normal text-[#8C5D00]">Sacred Contributorship</span>
             </h2>
             <p className="text-[#5E5865] text-sm sm:text-base font-normal max-w-xl mx-auto">
-              Select a membership plan below to enroll, define your goals, and begin your journey of conscious living and holistic growth.
+              Select a sacred contributorship tier below to support Divya Yogam mission, enroll, define your goals, and begin your journey of conscious living.
             </p>
           </div>
 
@@ -755,14 +761,24 @@ export default function MembershipPage() {
                     <Sparkles className={`w-4 h-4 ${tier.id === 'diamond' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'} group-hover:scale-110 transition-transform`} />
                   </div>
 
-                  {/* Class Discount Coupon Badge */}
-                  <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold border ${
-                    tier.id === 'diamond'
-                      ? 'bg-[#DFC47A]/20 text-[#DFC47A] border-[#DFC47A]/40'
-                      : 'bg-[#8C5D00]/10 text-[#8C5D00] border-[#8C5D00]/30'
-                  }`}>
-                    <Tag className="w-3.5 h-3.5" />
-                    <span>{tier.discountBadge}</span>
+                  {/* Top Eye-Catching Percentage Badge Pill - Separated % Highlight */}
+                  <div className="flex items-center justify-start pt-1">
+                    <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border-2 shadow-lg transition-all duration-300 group-hover:scale-[1.03] ${
+                      tier.id === 'diamond'
+                        ? 'bg-[#2B083A]/90 border-[#DFC47A] text-white'
+                        : 'bg-[#FAF5EF] border-[#DFC47A] text-[#352043]'
+                    }`}>
+                      <div className={`px-2.5 py-0.5 rounded-full font-black text-xs sm:text-sm shadow-md border ${
+                        tier.id === 'diamond'
+                          ? 'bg-gradient-to-r from-[#DFC47A] via-[#F3E5AB] to-[#C8A34A] text-[#2B083A] border-white'
+                          : 'bg-[#47206A] text-[#DFC47A] border-[#DFC47A]'
+                      }`}>
+                        {tier.discountPercentage}%
+                      </div>
+                      <span className="text-[11px] font-extrabold uppercase tracking-wider">
+                        Sacred Privilege Grant on All Classes
+                      </span>
+                    </div>
                   </div>
 
                   <div className="space-y-1">
@@ -780,7 +796,7 @@ export default function MembershipPage() {
                       {tier.price}
                     </span>
                     <span className={`text-xs font-medium ${tier.id === 'diamond' ? 'text-white/70' : 'text-[#5E5865]'}`}>
-                      / membership
+                      / sacred contribution
                     </span>
                   </div>
 
@@ -799,8 +815,21 @@ export default function MembershipPage() {
                       {tier.benefits.map((benefit, bIdx) => (
                         <li key={bIdx} className="flex items-start gap-2">
                           <CheckCircle2 className={`w-4 h-4 shrink-0 mt-0.5 ${tier.id === 'diamond' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'}`} />
-                          <span className={tier.id === 'diamond' ? 'text-white' : 'text-[#352043]'}>
-                            {benefit}
+                          <span className={tier.id === 'diamond' ? 'text-white font-medium' : 'text-[#352043] font-medium'}>
+                            {benefit.includes('%') ? (
+                              <>
+                                <strong className={`px-2 py-0.5 rounded-md text-xs font-black mr-1.5 shadow-md inline-block transform group-hover:scale-105 transition-transform ${
+                                  tier.id === 'diamond'
+                                    ? 'bg-gradient-to-r from-[#DFC47A] via-[#F3E5AB] to-[#C8A34A] text-[#2B083A] border border-white'
+                                    : 'bg-[#47206A] text-[#DFC47A] border border-[#DFC47A]/60'
+                                }`}>
+                                  {tier.discountPercentage}%
+                                </strong>
+                                {benefit.replace(/^\d+%\s*/, '')}
+                              </>
+                            ) : (
+                              benefit
+                            )}
                           </span>
                         </li>
                       ))}
@@ -825,8 +854,8 @@ export default function MembershipPage() {
                       : 'bg-gray-100 text-gray-500 border border-gray-300 cursor-not-allowed'
                   }`}>
                     {existingMembership.level.toLowerCase() === tier.id
-                      ? '✓ Your Active Plan'
-                      : 'Already a Member'}
+                      ? '✓ Active Sacred Contribution Tier'
+                      : 'Active Contribution'}
                   </div>
                 ) : (
                   <button
@@ -838,7 +867,7 @@ export default function MembershipPage() {
                     }`}
                   >
                     <Ticket className="w-4 h-4 text-[#DFC47A]" />
-                    <span>Enroll in {tier.name}</span>
+                    <span>Contribute via {tier.name}</span>
                   </button>
                 )}
               </motion.div>
@@ -1192,19 +1221,19 @@ export default function MembershipPage() {
                       <button
                         type="submit"
                         disabled={isProcessing}
-                        className={`px-8 py-3.5 rounded-full bg-[#352043] hover:bg-[#8C5D00] text-white font-bold text-xs uppercase tracking-wider shadow-lg transition-all flex items-center gap-2 ${
+                        className={`px-4 sm:px-8 py-3.5 rounded-full bg-[#352043] hover:bg-[#8C5D00] text-white font-bold text-xs uppercase tracking-wider shadow-lg transition-all flex items-center gap-2 text-center justify-center ${
                           isProcessing ? 'opacity-70 cursor-wait' : 'hover:scale-105'
                         }`}
                       >
                         {isProcessing ? (
                           <>
-                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin shrink-0" />
                             <span>Connecting Cashfree...</span>
                           </>
                         ) : (
                           <>
-                            <span>Proceed to Pay Now</span>
-                            <ArrowRight className="w-4 h-4 text-[#DFC47A]" />
+                            <span>Proceed to Sacred Value</span>
+                            <ArrowRight className="w-4 h-4 text-[#DFC47A] shrink-0" />
                           </>
                         )}
                       </button>

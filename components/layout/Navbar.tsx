@@ -81,23 +81,23 @@ export default function Navbar() {
         }`}
     >
       <TopBar isScrolled={isScrolled} />
-      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300 ${isScrolled ? 'py-2.5' : 'py-3.5'}`}>
-        <div className="flex items-center justify-between gap-3">
+      <div className={`max-w-[1750px] mx-auto px-3 sm:px-6 lg:px-8 xl:px-10 transition-all duration-300 ${isScrolled ? 'py-2' : 'py-3'}`}>
+        <div className="flex items-center justify-between gap-2 min-[1200px]:gap-3">
 
           {/* Left Brand Logo */}
           <Link href="/" className="flex items-center shrink-0 group relative">
             <Image
-              src="/images/shambalalogo.png"
+              src="/images/shambalalogo.webp"
               alt="Divya Yogam - Awaken the Divine Within"
-              width={240}
-              height={60}
-              className="h-9 sm:h-10 md:h-11 lg:h-12 xl:h-13 w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300"
+              width={260}
+              height={65}
+              className="h-[38px] sm:h-[42px] md:h-[46px] min-[1200px]:h-[44px] min-[1400px]:h-[48px] xl:h-14 w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300"
               priority
             />
           </Link>
 
           {/* Center Desktop Navigation Links with Dropdowns (Visible on 1200px+) */}
-          <nav className="hidden min-[1200px]:flex items-center justify-center flex-1 gap-3 min-[1200px]:gap-4 xl:gap-7 font-body mx-2 xl:mx-6">
+          <nav className="hidden min-[1200px]:flex items-center justify-center flex-1 gap-1.5 min-[1280px]:gap-2.5 min-[1400px]:gap-4 min-[1550px]:gap-5 xl:gap-6 2xl:gap-7 font-body mx-1 min-[1300px]:mx-3 xl:mx-6 shrink-0">
             {menuLinks.map((link) => {
               const hasChildren = link.children && link.children.length > 0;
               const parentActive = isParentActive(link);
@@ -106,14 +106,14 @@ export default function Navbar() {
                 return (
                   <div
                     key={link.name}
-                    className="relative group py-2 flex items-center"
+                    className="relative group py-2 flex items-center shrink-0"
                     onMouseEnter={() => setActiveDropdown(link.name)}
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
                     <button
                       aria-expanded={activeDropdown === link.name}
                       aria-label={`Toggle ${link.name} menu`}
-                      className={`inline-flex items-center gap-1 text-[11px] min-[1200px]:text-[12px] xl:text-[13px] font-semibold uppercase tracking-wider transition-all duration-300 whitespace-nowrap leading-none ${parentActive
+                      className={`inline-flex items-center gap-0.5 min-[1300px]:gap-1 text-[11px] min-[1350px]:text-[12px] min-[1550px]:text-[13px] font-semibold uppercase tracking-wide min-[1400px]:tracking-wider transition-all duration-300 whitespace-nowrap leading-none ${parentActive
                           ? 'text-[#C8A34A] font-bold'
                           : 'text-[#47206A] group-hover:text-[#C8A34A]'
                         }`}
@@ -127,12 +127,12 @@ export default function Navbar() {
                           />
                         )}
                       </span>
-                      <ChevronDown className="w-3.5 h-3.5 text-[#C8A34A] group-hover:rotate-180 transition-transform duration-300 shrink-0" />
+                      <ChevronDown className="w-3 h-3 min-[1300px]:w-3.5 min-[1300px]:h-3.5 text-[#C8A34A] group-hover:rotate-180 transition-transform duration-300 shrink-0" />
                     </button>
 
                     {/* Dropdown Card */}
                     <div className="absolute top-full left-1/2 -translate-x-1/2 pt-1 pointer-events-none group-hover:pointer-events-auto opacity-0 group-hover:opacity-100 transition-all duration-300 z-50">
-                      <div className="w-52 bg-white/95 backdrop-blur-xl rounded-2xl border border-[#DFC47A]/50 shadow-2xl p-2 space-y-1 text-left">
+                      <div className="min-w-[260px] bg-white/95 backdrop-blur-xl rounded-2xl border border-[#DFC47A]/50 shadow-2xl p-2 space-y-1 text-left">
                         {link.children?.map((subItem) => {
                           const childActive = isActive(subItem.path);
                           return (
@@ -158,7 +158,7 @@ export default function Navbar() {
                 <Link
                   key={link.path}
                   href={link.path || '#'}
-                  className={`inline-flex items-center text-[11px] min-[1200px]:text-[12px] xl:text-[13px] font-semibold uppercase tracking-wider transition-all duration-300 py-2 whitespace-nowrap leading-none ${parentActive
+                  className={`inline-flex items-center text-[11px] min-[1350px]:text-[12px] min-[1550px]:text-[13px] font-semibold uppercase tracking-wide min-[1400px]:tracking-wider transition-all duration-300 py-2 whitespace-nowrap leading-none shrink-0 ${parentActive
                       ? 'text-[#C8A34A] font-bold'
                       : 'text-[#47206A] hover:text-[#C8A34A]'
                     }`}
@@ -178,73 +178,93 @@ export default function Navbar() {
           </nav>
 
           {/* Right Action & Menu Button */}
-          <div className="flex items-center gap-2 min-[1200px]:gap-2.5 sm:gap-3 shrink-0">
-            {/* Dynamic Auth & Dashboard Action Buttons */}
+          <div className="flex items-center gap-1.5 min-[1200px]:gap-2 sm:gap-3 shrink-0">
+            {/* Dynamic Auth & Dashboard Action Buttons for Desktop (Visible on 1200px+) */}
             {user ? (
-              <div className="hidden min-[1200px]:flex items-center gap-2">
+              <div className="hidden min-[1200px]:flex items-center gap-1.5 min-[1350px]:gap-2 shrink-0">
                 <Link
                   href="/user/dashboard"
-                  className="px-3.5 min-[1200px]:px-4 py-1.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-[#DFC47A] hover:text-[#47206A] border border-[#DFC47A]/60 font-bold text-xs uppercase tracking-wider shadow-sm transition-all duration-300 flex items-center gap-1.5 whitespace-nowrap"
+                  className="px-2.5 min-[1300px]:px-3.5 min-[1500px]:px-4 py-1.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-[#DFC47A] hover:text-[#47206A] border border-[#DFC47A]/60 font-bold text-[11px] min-[1300px]:text-xs uppercase tracking-wider shadow-sm transition-all duration-300 flex items-center gap-1 min-[1300px]:gap-1.5 whitespace-nowrap shrink-0"
                 >
-                  <User className="w-3.5 h-3.5" />
+                  <User className="w-3 h-3 min-[1300px]:w-3.5 min-[1300px]:h-3.5" />
                   <span>Dashboard</span>
                 </Link>
 
                 <button
                   onClick={handleLogout}
                   title="Log out of account"
-                  className="px-3 py-1.5 rounded-full bg-red-600/80 hover:bg-red-700 text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-1 cursor-pointer whitespace-nowrap"
+                  className="px-2.5 min-[1300px]:px-3 min-[1500px]:px-3.5 py-1.5 rounded-full bg-red-600/80 hover:bg-red-700 text-white font-bold text-[11px] min-[1300px]:text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-1 cursor-pointer whitespace-nowrap shrink-0"
                 >
-                  <LogOut className="w-3.5 h-3.5" />
+                  <LogOut className="w-3 h-3 min-[1300px]:w-3.5 min-[1300px]:h-3.5" />
                   <span>Logout</span>
                 </button>
               </div>
             ) : (
-              <div className="hidden min-[1200px]:flex items-center gap-2">
+              <div className="hidden min-[1200px]:flex items-center gap-1.5 min-[1350px]:gap-2 shrink-0">
                 <Link
                   href="/login"
-                  className="px-3.5 min-[1200px]:px-4 py-1.5 rounded-full bg-[#FAF7F2] hover:bg-[#47206A] text-[#47206A] hover:text-white border border-[#DFC47A] font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-1 whitespace-nowrap"
+                  className="px-2.5 min-[1300px]:px-3.5 min-[1500px]:px-4 py-1.5 rounded-full bg-[#FAF7F2] hover:bg-[#47206A] text-[#47206A] hover:text-white border border-[#DFC47A] font-bold text-[11px] min-[1300px]:text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-1 whitespace-nowrap shrink-0"
                 >
-                  <LogIn className="w-3.5 h-3.5 text-[#8C5D00]" />
+                  <LogIn className="w-3 h-3 min-[1300px]:w-3.5 min-[1300px]:h-3.5 text-[#8C5D00]" />
                   <span>Log In</span>
                 </Link>
 
                 <Link
                   href="/register"
-                  className="px-3.5 min-[1200px]:px-4 py-1.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 flex items-center gap-1.5 font-body group whitespace-nowrap"
+                  className="px-2.5 min-[1300px]:px-3.5 min-[1500px]:px-4 py-1.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-[11px] min-[1300px]:text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 flex items-center gap-1 min-[1300px]:gap-1.5 font-body group whitespace-nowrap shrink-0"
                 >
-                  <UserPlus className="w-3.5 h-3.5 text-[#DFC47A] group-hover:text-[#47206A]" />
+                  <UserPlus className="w-3 h-3 min-[1300px]:w-3.5 min-[1300px]:h-3.5 text-[#DFC47A] group-hover:text-[#47206A]" />
                   <span>Register</span>
                 </Link>
               </div>
             )}
 
-            {/* Premium Royal Gold & Purple Mobile Menu Toggle Button (Visible below 1200px) */}
-            <button
-              onClick={() => setIsMobileOpen(!isMobileOpen)}
-              aria-expanded={isMobileOpen}
-              aria-label={isMobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
-              className="min-[1200px]:hidden relative group flex items-center gap-2 px-3.5 py-2 rounded-full bg-gradient-to-r from-[#47206A] via-[#3B104E] to-[#20052C] text-[#DFC47A] border-2 border-[#DFC47A]/80 shadow-md hover:shadow-lg hover:border-[#C8A34A] transition-all duration-300 active:scale-95"
-            >
-              {/* Outer Golden Aura Glow on Hover */}
-              <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-[#C8A34A] to-[#DFC47A] opacity-0 group-hover:opacity-40 blur-xs transition-opacity duration-300 pointer-events-none" />
+            {/* Mobile & Tablet Header Controls (Visible below 1200px) */}
+            <div className="flex min-[1200px]:hidden items-center gap-2.5 sm:gap-3">
+              {user ? (
+                /* User Profile Icon for sm/md screens -> Links to Dashboard */
+                <Link
+                  href="/user/dashboard"
+                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-r from-[#47206A] via-[#3B104E] to-[#20052C] border-2 border-[#DFC47A]/80 flex items-center justify-center text-[#DFC47A] hover:border-[#C8A34A] group transition-all duration-300 shadow-md active:scale-95 shrink-0"
+                  title="Go to Dashboard"
+                >
+                  <User className="w-5 h-5 sm:w-5.5 sm:h-5.5 text-[#DFC47A] group-hover:text-white transition-colors" />
+                </Link>
+              ) : (
+                /* Log In Button next to Menu Toggle on sm/md screens */
+                <Link
+                  href="/login"
+                  className="px-3.5 py-1.5 rounded-full bg-[#FAF7F2] hover:bg-[#47206A] text-[#47206A] hover:text-white border border-[#DFC47A] font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-1.5 whitespace-nowrap shadow-sm"
+                >
+                  <LogIn className="w-4 h-4 text-[#8C5D00]" />
+                  <span>Log In</span>
+                </Link>
+              )}
 
-              {/* Custom 2-Bar / X Icon matching reference image */}
-              <div className="relative z-10 flex flex-col justify-center items-center w-4 h-4">
-                {isMobileOpen ? (
-                  <X className="w-4 h-4 text-[#DFC47A]" />
-                ) : (
-                  <div className="flex flex-col justify-center gap-1.5 w-4">
-                    <span className="block w-full h-[2px] bg-[#DFC47A] rounded-full group-hover:bg-white transition-colors" />
-                    <span className="block w-full h-[2px] bg-[#DFC47A] rounded-full group-hover:bg-white transition-colors" />
-                  </div>
-                )}
-              </div>
+              {/* 3-Bar Mobile Menu Toggle Button (No MENU text, 3 horizontal bars) */}
+              <button
+                onClick={() => setIsMobileOpen(!isMobileOpen)}
+                aria-expanded={isMobileOpen}
+                aria-label={isMobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+                className="relative group flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-r from-[#47206A] via-[#3B104E] to-[#20052C] text-[#DFC47A] border-2 border-[#DFC47A]/80 shadow-md hover:shadow-lg hover:border-[#C8A34A] transition-all duration-300 active:scale-95 shrink-0"
+              >
+                {/* Outer Golden Aura Glow on Hover */}
+                <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-[#C8A34A] to-[#DFC47A] opacity-0 group-hover:opacity-40 blur-xs transition-opacity duration-300 pointer-events-none" />
 
-              <span className="relative z-10 text-[11px] font-bold tracking-wider uppercase font-body text-[#DFC47A] group-hover:text-white transition-colors pr-0.5">
-                {isMobileOpen ? 'Close' : 'Menu'}
-              </span>
-            </button>
+                {/* 3-Bar / X Icon */}
+                <div className="relative z-10 flex flex-col justify-center items-center w-5 h-5">
+                  {isMobileOpen ? (
+                    <X className="w-5 h-5 text-[#DFC47A]" />
+                  ) : (
+                    <div className="flex flex-col justify-center gap-1 w-5">
+                      <span className="block w-full h-[2px] bg-[#DFC47A] rounded-full group-hover:bg-white transition-colors" />
+                      <span className="block w-full h-[2px] bg-[#DFC47A] rounded-full group-hover:bg-white transition-colors" />
+                      <span className="block w-full h-[2px] bg-[#DFC47A] rounded-full group-hover:bg-white transition-colors" />
+                    </div>
+                  )}
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>

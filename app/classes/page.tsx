@@ -153,7 +153,7 @@ function ClassesContent() {
     setCalculation(null);
 
     if (!user) {
-      setErrorMsg('Registration & Login is mandatory to purchase Divya Yogam classes. Please log in or create an account.');
+      setErrorMsg('Registration & Login is mandatory to enroll in Divya Yogam classes. Please log in or create an account.');
       return;
     }
 
@@ -251,25 +251,38 @@ function ClassesContent() {
 
   return (
     <div className="space-y-10">
-      {/* Hero Header */}
-      <div className="text-center space-y-3">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#47206A]/10 text-[#47206A] text-xs font-extrabold uppercase tracking-wider border border-[#DFC47A]">
-          <BookOpen className="w-4 h-4 text-[#8C5D00]" /> 6-Stage Sequential Class Progression
+      {/* Hero Header Card with Guaranteed Royal Violet Gradient */}
+      <div
+        className="text-center space-y-4 max-w-4xl mx-auto p-6 sm:p-10 rounded-3xl border-2 border-[#DFC47A] shadow-2xl text-white relative z-10"
+        style={{ background: 'linear-gradient(to right, #2B083A, #47206A, #20052C)' }}
+      >
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#DFC47A] text-[#2B083A] text-xs font-extrabold uppercase tracking-wider shadow-sm">
+          <BookOpen className="w-4 h-4 text-[#2B083A]" /> 6-Stage Sequential Class Progression
         </div>
-        <h1 className="text-3xl sm:text-5xl font-extrabold font-heading text-[#47206A]">
+        <h1 className="text-3xl sm:text-5xl font-extrabold font-heading text-[#DFC47A] drop-shadow-md">
           Divya Yogam Classes
         </h1>
-        <p className="text-xs sm:text-base text-[#8C5D00] max-w-2xl mx-auto font-medium">
-          Unlock each sacred class in succession (1 to 6) or buy the All-in-One Master Bundle. Active Gold members get <strong>10% OFF</strong>, Platinum <strong>30% OFF</strong>, Diamond <strong>50% OFF</strong> automatically! <strong>Active Membership is required to purchase classes.</strong>
+        <p className="text-sm sm:text-base text-amber-100 max-w-2xl mx-auto font-medium leading-relaxed">
+          Unlock each sacred class in succession (1 to 6) or buy the All-in-One Master Bundle. Active Gold contributors receive <strong className="text-[#DFC47A]">10% Sacred Privilege</strong>, Platinum <strong className="text-[#DFC47A]">30% Sacred Privilege</strong>, Diamond <strong className="text-[#DFC47A]">50% Sacred Privilege</strong> automatically! <strong className="text-white">Active Contributionship is required to enroll in classes.</strong>
         </p>
 
         {activeMembership ? (
-          <div className="inline-flex items-center gap-2 mt-2 px-4 py-2 rounded-2xl bg-[#47206A] text-[#DFC47A] text-xs font-bold shadow-md">
-            <Crown className="w-4 h-4 text-[#DFC47A]" /> Active {activeMembership.level} Member ({membershipPercent}% OFF All Classes Automatically Applied)
+          <div className="inline-flex items-center gap-2 mt-2 px-5 py-2.5 rounded-2xl bg-[#47206A] border border-[#DFC47A] text-[#DFC47A] text-xs sm:text-sm font-extrabold shadow-lg">
+            <Crown className="w-4 h-4 text-[#DFC47A]" /> Active {activeMembership.level} Contributor ({membershipPercent}% Sacred Privilege Applied)
           </div>
         ) : (
-          <div className="inline-flex items-center gap-2 mt-2 px-4 py-2 rounded-2xl bg-amber-100 text-amber-900 border border-amber-400 text-xs font-bold shadow-sm">
-            <Crown className="w-4 h-4 text-amber-700" /> Membership Required: Non-members cannot purchase classes directly. <Link href="/membership" className="underline font-black text-[#47206A]">Join Gold, Platinum, or Diamond Membership First</Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 mt-2 px-4 sm:px-6 py-3 rounded-2xl bg-[#20052C] border border-[#DFC47A] text-[#DFC47A] text-xs sm:text-sm font-bold shadow-md text-center max-w-2xl mx-auto">
+            <div className="flex items-center gap-2">
+              <Crown className="w-4 h-4 text-[#DFC47A] shrink-0" />
+              <span>Contributionship Required: Non-contributors cannot enroll in classes directly.</span>
+            </div>
+            <Link
+              href="/contributorship"
+              className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-black text-[#DFC47A] hover:text-white underline underline-offset-2 shrink-0 bg-[#DFC47A]/15 px-3 py-1.5 rounded-full border border-[#DFC47A]/40 hover:bg-[#DFC47A] hover:text-[#2B083A] transition-all"
+            >
+              <span>Join Contributorship First</span>
+              <ArrowRight className="w-3 h-3" />
+            </Link>
           </div>
         )}
       </div>
@@ -281,8 +294,8 @@ function ClassesContent() {
           animate={{ opacity: 1, scale: 1 }}
           className={`p-6 sm:p-8 rounded-3xl border-2 text-center space-y-4 shadow-xl max-w-2xl mx-auto ${
             paymentBanner.type === 'success'
-              ? 'bg-emerald-50/90 border-emerald-400 text-emerald-900'
-              : 'bg-amber-50/90 border-amber-400 text-amber-900'
+              ? 'bg-emerald-50 border-emerald-400 text-emerald-900'
+              : 'bg-amber-50 border-amber-400 text-amber-900'
           }`}
         >
           <div className="flex flex-col items-center gap-3">
@@ -306,7 +319,7 @@ function ClassesContent() {
           </div>
 
           {orderId && (
-            <div className="p-3.5 rounded-2xl bg-white/80 border border-gray-200 text-left text-xs max-w-md mx-auto space-y-1 text-gray-700">
+            <div className="p-3.5 rounded-2xl bg-white border border-gray-200 text-left text-xs max-w-md mx-auto space-y-1 text-gray-700">
               <div className="flex justify-between">
                 <span className="text-gray-500">Order Reference:</span>
                 <span className="font-mono font-bold">{orderId}</span>
@@ -340,25 +353,28 @@ function ClassesContent() {
         </motion.div>
       )}
 
-      {/* Auth Requirement Notice for Guests */}
+      {/* Auth Requirement Notice for Guests with Guaranteed Royal Violet Gradient Background */}
       {!user && (
-        <div className="p-4 rounded-2xl bg-amber-50 border border-[#DFC47A] text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 max-w-4xl mx-auto">
-          <div className="flex items-center gap-2">
-            <AlertCircle className="w-5 h-5 text-[#8C5D00] shrink-0" />
-            <span className="text-[#47206A] font-bold">
-              Registration & Log In is mandatory to enroll or purchase classes. Please log in or create an account.
+        <div
+          className="p-4 sm:p-5 rounded-2xl border-2 border-[#DFC47A] text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 max-w-4xl mx-auto shadow-2xl text-white relative z-10"
+          style={{ background: 'linear-gradient(to right, #2B083A, #47206A, #20052C)' }}
+        >
+          <div className="flex items-center gap-2.5">
+            <AlertCircle className="w-5 h-5 text-[#DFC47A] shrink-0" />
+            <span className="text-[#DFC47A] font-extrabold text-xs sm:text-sm">
+              Registration & Log In is mandatory to enroll in sacred classes. Please log in or create an account.
             </span>
           </div>
           <div className="flex items-center gap-2 shrink-0">
             <Link
               href="/login"
-              className="px-4 py-1.5 rounded-full bg-[#47206A] text-[#DFC47A] text-[11px] font-bold hover:bg-[#C8A34A] hover:text-[#47206A] transition-all"
+              className="px-5 py-2 rounded-full bg-[#DFC47A] hover:bg-white text-[#2B083A] text-xs font-black uppercase tracking-wider transition-all shadow-md"
             >
               Log In
             </Link>
             <Link
               href="/register"
-              className="px-4 py-1.5 rounded-full bg-[#FAF7F2] text-[#47206A] border border-[#DFC47A] text-[11px] font-bold hover:bg-[#47206A] hover:text-white transition-all"
+              className="px-5 py-2 rounded-full bg-[#47206A] hover:bg-white hover:text-[#2B083A] text-[#DFC47A] border border-[#DFC47A] text-xs font-black uppercase tracking-wider transition-all"
             >
               Register
             </Link>
@@ -379,7 +395,7 @@ function ClassesContent() {
             Complete 6-Class Pass (Ayangara to Advaitha)
           </h2>
           <p className="text-xs sm:text-sm text-gray-200 leading-relaxed font-normal">
-            Unlock all 6 sequential classes at once without waiting! Full tier discount privileges apply dynamically based on your membership (Gold 10%, Platinum 30%, Diamond 50%).
+            Unlock all 6 sequential classes at once without waiting! Full tier discount privileges apply dynamically based on your contributionship (Gold 10%, Platinum 30%, Diamond 50%).
           </p>
         </div>
 
@@ -387,8 +403,8 @@ function ClassesContent() {
           <div className="text-center md:text-right">
             <span className="text-[11px] uppercase tracking-wider text-[#DFC47A] font-extrabold block">
               {membershipPercent > 0
-                ? `${activeMembership?.level} Member Discount (${membershipPercent}% OFF)`
-                : 'Standard All-in-One Price (0% Discount)'}
+                ? `${activeMembership?.level} Contributor Privilege (${membershipPercent}% Sacred Benefit)`
+                : 'Standard Master Pass Contribution'}
             </span>
             <div className="flex items-baseline gap-2 justify-center md:justify-end mt-1">
               {membershipPercent > 0 && (
@@ -437,7 +453,7 @@ function ClassesContent() {
 
           {!user ? (
             <div className="text-center py-6 space-y-4">
-              <p className="text-xs text-red-600 font-bold">Please log in to complete your class purchase.</p>
+              <p className="text-xs text-red-600 font-bold">Please log in to complete your class enrollment.</p>
               <Link
                 href="/login"
                 className="inline-block px-6 py-3 rounded-full bg-[#47206A] text-white font-bold text-xs uppercase tracking-wider shadow-md hover:bg-[#C8A34A] hover:text-[#47206A]"
@@ -455,20 +471,20 @@ function ClassesContent() {
                 <div className="flex items-start gap-2.5">
                   <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-extrabold text-sm text-[#47206A]">Membership Required to Purchase Classes</h4>
+                    <h4 className="font-extrabold text-sm text-[#47206A]">Contributionship Required to Enroll in Classes</h4>
                     <p className="text-gray-700 mt-0.5 leading-relaxed">{errorMsg}</p>
                   </div>
                 </div>
 
                 <div className="p-3 rounded-xl bg-white/90 border border-amber-200 space-y-2">
                   <span className="text-[11px] font-extrabold text-[#8C5D00] uppercase tracking-wider block">
-                    Unlock Exclusive Membership Tier Savings & Privileges:
+                    Unlock Exclusive Contributionship Tier Savings & Privileges:
                   </span>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] font-bold">
                     <div className="p-2 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 text-center">
                       <span className="text-xs text-[#47206A] block font-extrabold">GOLD</span>
                       <span className="block text-[10px]">10% OFF All-in-One</span>
-                      <span className="block text-[10px] text-gray-500 font-normal">0% OFF Individual Class</span>
+                      <span className="block text-[10px] text-amber-800 font-semibold">5% OFF Individual Class</span>
                       <span className="block text-xs text-[#8C5D00] font-extrabold mt-1">₹1,000</span>
                     </div>
                     <div className="p-2 rounded-lg bg-purple-50 border border-purple-200 text-purple-900 text-center">
@@ -487,11 +503,11 @@ function ClassesContent() {
                 </div>
 
                 <Link
-                  href="/membership"
+                  href="/contributorship"
                   className="w-full py-3 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-bold text-xs uppercase tracking-wider shadow-lg transition-all flex items-center justify-center gap-2"
                 >
                   <Crown className="w-4 h-4 text-[#DFC47A]" />
-                  <span>Choose Your Membership Tier Now</span>
+                  <span>Choose Your Contributionship Tier Now</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -500,16 +516,16 @@ function ClassesContent() {
             <div className="space-y-4">
               <div className="space-y-2 text-xs">
                 <div className="flex justify-between py-1.5 border-b border-gray-100">
-                  <span className="text-gray-500">Original Class Price:</span>
-                  <span className="font-bold text-[#47206A]">₹{selectedClass.price.toLocaleString()}</span>
+                  <span className="text-gray-500">Sacred Class Value:</span>
+                <span className="font-bold text-[#47206A]">₹{selectedClass.price.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between py-1.5 border-b border-gray-100">
-                  <span className="text-gray-500">Active Membership Tier:</span>
-                  <span className="font-bold text-[#8C5D00]">{activeMembership?.level || 'None (0%)'}</span>
+                  <span className="text-gray-500">Active Contributionship Tier:</span>
+                  <span className="font-bold text-[#8C5D00]">{activeMembership?.level || 'None (Standard Value)'}</span>
                 </div>
                 {calculation.discountPercentage > 0 && (
                   <div className="flex justify-between py-1.5 border-b border-gray-100 text-emerald-700">
-                    <span className="font-semibold">Membership Discount ({calculation.discountPercentage}%):</span>
+                    <span className="font-semibold">Sacred Contributor Privilege ({calculation.discountPercentage}%):</span>
                     <span className="font-bold">-₹{calculation.discountAmount.toLocaleString()}</span>
                   </div>
                 )}
@@ -518,27 +534,27 @@ function ClassesContent() {
                   <span>₹{calculation.amount.toLocaleString()}</span>
                 </div>
 
-                {/* Membership Upgrade Callout Notification */}
+                {/* Contributionship Upgrade Callout Notification */}
                 {(!activeMembership || activeMembership.level !== 'DIAMOND') && (
                   <div className="p-3.5 rounded-2xl bg-amber-50 border border-[#DFC47A] text-xs space-y-1.5">
                     <div className="flex items-center gap-1.5 font-bold text-[#8C5D00]">
                       <Crown className="w-4 h-4 text-[#C8A34A] shrink-0" />
                       <span>
                         {!activeMembership
-                          ? 'Save Money with Divya Yogam Membership!'
-                          : `Upgrade to Diamond for Maximum 50% OFF Savings!`}
+                          ? 'Unlock Sacred Privileges with Divya Yogam Contributionship!'
+                          : `Upgrade to Diamond Contributionship for Maximum 50% Sacred Privilege!`}
                       </span>
                     </div>
                     <p className="text-gray-600 text-[11px]">
                       {!activeMembership
-                        ? 'Non-members pay full price. Get a Gold, Platinum, or Diamond membership to save up to 50% on all future classes!'
-                        : `As a ${activeMembership.level} member, you currently save ${calculation.discountPercentage}%. Get Diamond membership to unlock 50% OFF on All-in-One or 20% OFF on individual classes!`}
+                        ? 'Non-contributors pay standard contribution. Join Gold, Platinum, or Diamond contributionship to unlock up to 50% sacred privilege on all future classes!'
+                        : `As a ${activeMembership.level} contributor, you currently receive ${calculation?.discountPercentage ?? calculation?.discountPercent ?? membershipPercent}% sacred privilege. Support Diamond contributionship to unlock 50% Sacred Privilege on All-in-One or 20% on individual classes!`}
                     </p>
                     <Link
-                      href="/membership"
+                      href="/contributorship"
                       className="inline-flex items-center gap-1 text-[11px] font-extrabold text-[#47206A] underline hover:text-[#C8A34A] mt-1"
                     >
-                      <span>Explore Membership Plans & Upgrade Now</span>
+                      <span>Explore Contributionship Tiers & Upgrade Now</span>
                       <ArrowRight className="w-3 h-3" />
                     </Link>
                   </div>
@@ -548,38 +564,58 @@ function ClassesContent() {
               <button
                 onClick={handleBuyClass}
                 disabled={isProcessing}
-                className="w-full py-4 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-bold text-sm uppercase tracking-wider shadow-xl transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                className="w-full py-3.5 sm:py-4 px-3 sm:px-6 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xl transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 text-center leading-snug"
               >
-                <span>{isProcessing ? 'Connecting Cashfree...' : `Pay ₹${calculation.amount.toLocaleString()} via Cashfree`}</span>
-                <ArrowRight className="w-4 h-4 text-[#DFC47A]" />
+                <span>{isProcessing ? 'Connecting Cashfree...' : `Enroll for Sacred Value ₹${calculation.amount.toLocaleString()} via Cashfree`}</span>
+                <ArrowRight className="w-4 h-4 text-[#DFC47A] shrink-0" />
               </button>
             </div>
           ) : null}
         </motion.div>
       )}
 
-      {/* 6 Sequential Classes Grid */}
-      <div className="space-y-4">
-        <h3 className="text-xl font-extrabold font-heading text-[#47206A] flex items-center gap-2">
-          <BookOpen className="w-5 h-5 text-[#8C5D00]" /> Sequential Individual Class Progression
-        </h3>
+      {/* 6 Sequential Classes Grid Header */}
+      <div className="space-y-6 pt-2">
+        <div
+          className="p-4 sm:p-5 rounded-2xl border-2 border-[#DFC47A] shadow-2xl text-white relative z-10 flex items-center justify-between gap-4"
+          style={{ background: 'linear-gradient(to right, #2B083A, #47206A, #20052C)' }}
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-[#DFC47A] flex items-center justify-center text-[#2B083A] shrink-0 shadow-md">
+              <BookOpen className="w-5 h-5 text-[#2B083A]" />
+            </div>
+            <div>
+              <h3 className="text-lg sm:text-2xl font-extrabold font-heading text-[#DFC47A] drop-shadow-sm">
+                Sequential Individual Class Progression
+              </h3>
+              <p className="text-xs sm:text-sm text-amber-100 font-medium">
+                Enroll in sacred classes sequentially from Level 01 to Level 06
+              </p>
+            </div>
+          </div>
+          <div className="hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#47206A] border border-[#DFC47A] text-[#DFC47A] text-xs font-extrabold shrink-0 shadow-sm">
+            <Sparkles className="w-4 h-4 text-[#DFC47A]" /> 6 Sacred Levels
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {individualClasses.map((cls) => {
             const status = getClassStatus(cls.slug, cls.orderSequence);
             const isSelected = selectedClass?.slug === cls.slug;
 
-            // Separate discount structure for individual classes: Diamond 20%, Platinum 10%, Gold 0%
+            // Separate discount structure for individual classes: Diamond 20%, Platinum 10%, Gold 5%
             const individualClassDiscountPercent = activeMembership
               ? activeMembership.level === 'DIAMOND'
                 ? 20
                 : activeMembership.level === 'PLATINUM'
                 ? 10
+                : activeMembership.level === 'GOLD'
+                ? 5
                 : 0
               : 0;
 
-            const discountAmt = Math.round((cls.price * individualClassDiscountPercent) / 100);
-            const finalPrice = cls.price - discountAmt;
+            const finalPrice = Math.round(cls.price * (1 - individualClassDiscountPercent / 100));
+            const discountAmt = cls.price - finalPrice;
 
             return (
               <motion.div
@@ -603,7 +639,7 @@ function ClassesContent() {
                       </span>
                     ) : status === 'PURCHASED' ? (
                       <span className="px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold border border-amber-300">
-                        PURCHASED
+                        ENROLLED
                       </span>
                     ) : status === 'AVAILABLE' ? (
                       <span className="px-3 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-bold border border-purple-300">
@@ -628,7 +664,7 @@ function ClassesContent() {
                     <div className="p-3.5 rounded-2xl bg-[#FAF7F2] border border-[#DFC47A] flex items-center justify-between">
                       <div>
                         <span className="text-[10px] font-extrabold text-emerald-800 uppercase tracking-wider block">
-                          {activeMembership?.level} Member ({individualClassDiscountPercent}% OFF)
+                          {activeMembership?.level} Contributor ({individualClassDiscountPercent}% Sacred Privilege)
                         </span>
                         <span className="text-xs font-bold text-gray-400 line-through">
                           ₹{cls.price.toLocaleString()}
@@ -639,7 +675,7 @@ function ClassesContent() {
                           ₹{finalPrice.toLocaleString()}
                         </span>
                         <span className="text-[10px] text-emerald-700 font-bold block">
-                          Save ₹{discountAmt.toLocaleString()}
+                          Privilege Grant ₹{discountAmt.toLocaleString()}
                         </span>
                       </div>
                     </div>
@@ -647,10 +683,10 @@ function ClassesContent() {
                     <div className="p-3.5 rounded-2xl bg-[#FAF7F2] border border-[#E9DED3] flex items-center justify-between">
                       <div>
                         <span className="text-[10px] font-bold text-[#8C5D00] uppercase tracking-wider block">
-                          Standard Fee (0% Discount)
+                          Standard Contribution (Standard Value)
                         </span>
                         <span className="text-xs text-gray-500 font-semibold">
-                          Original Price
+                          Sacred Value
                         </span>
                       </div>
                       <span className="text-lg font-extrabold text-[#47206A]">₹{cls.price.toLocaleString()}</span>
@@ -664,7 +700,7 @@ function ClassesContent() {
                       onClick={() => handleSelectClass(cls)}
                       className="w-full py-3 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-bold text-xs uppercase tracking-wider shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
                     >
-                      <span>{isSelected ? 'Selected' : 'Enroll / Buy'}</span>
+                      <span>{isSelected ? 'Selected' : 'Enroll in Sacred Class'}</span>
                       <ArrowRight className="w-4 h-4" />
                     </button>
                   ) : status === 'LOCKED' ? (
@@ -688,9 +724,16 @@ function ClassesContent() {
 
 export default function ClassesPage() {
   return (
-    <div className="min-h-screen bg-[#F8F2E8] text-[#47206A] flex flex-col justify-between">
+    <div className="min-h-screen bg-transparent text-[#47206A] flex flex-col justify-between relative overflow-x-hidden">
+      {/* Background Image Overlay (con-6.webp matching Wellness & Contact Page) */}
+      <div
+        className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
+        style={{
+          backgroundImage: "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+        }}
+      />
       <Navbar />
-      <main className="pt-44 sm:pt-48 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
+      <main className="pt-32 sm:pt-36 lg:pt-40 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
         <Suspense fallback={<div className="text-center py-10">Loading classes...</div>}>
           <ClassesContent />
         </Suspense>

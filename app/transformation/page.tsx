@@ -13,7 +13,7 @@ export default function TransformationPage() {
       {/* Transformation Page Hero */}
       <TransformationHero />
 
-      {/* Transformation in Motion (Videos with trans-1.png & trans-2.png), 7 Dimensions & Conclusion Banner */}
+      {/* Transformation in Motion (Videos with trans-1.webp & trans-2.webp), 7 Dimensions & Conclusion Banner */}
       <TransformationContent />
     </div>
   );

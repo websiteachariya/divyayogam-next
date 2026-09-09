@@ -341,7 +341,7 @@ export default function AdminMembershipsPage() {
           <div className="space-y-1">
             <div className="flex items-center gap-2">
               <Link
-                href="/membership"
+                href="/contributorship"
                 className="inline-flex items-center gap-1 text-xs font-bold text-[#8C5D00] hover:text-[#352043] transition-colors"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />

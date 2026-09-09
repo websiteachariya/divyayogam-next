@@ -11,7 +11,7 @@ export default function ContactPage() {
     name: '',
     email: '',
     phone: '',
-    subject: 'General Inquiry',
+    subject: '',
     message: '',
   });
 
@@ -86,7 +86,7 @@ export default function ContactPage() {
     });
     setTimeout(() => {
       setIsSubmitted(false);
-      setFormData({ name: '', email: '', phone: '', subject: 'General Inquiry', message: '' });
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
       setErrors({});
       setTouched({});
       setSubmitAttempted(false);
@@ -307,12 +307,11 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={(e) => handleInputChange('name', e.target.value)}
                         onBlur={() => handleBlur('name')}
-                        placeholder="e.g. Anand Kumar"
-                        className={`w-full px-4 py-3.5 rounded-full bg-[#FFFDF9] border text-[#352043] placeholder:text-[#8A8394] text-sm focus:outline-none transition-all font-body ${
-                          touched.name && errors.name
+                        placeholder="Enter your full name"
+                        className={`w-full px-4 py-3.5 rounded-full bg-[#FFFDF9] border text-[#352043] placeholder:text-[#8A8394] text-sm focus:outline-none transition-all font-body ${touched.name && errors.name
                             ? 'border-red-400 focus:border-red-500 bg-red-50/20'
                             : 'border-[#E9DED3] focus:border-[#C8A34A]'
-                        }`}
+                          }`}
                       />
                       {touched.name && errors.name && (
                         <p className="text-[11px] text-red-500 font-semibold flex items-center gap-1 mt-1">
@@ -331,12 +330,11 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={(e) => handleInputChange('email', e.target.value)}
                         onBlur={() => handleBlur('email')}
-                        placeholder="anand@example.com"
-                        className={`w-full px-4 py-3.5 rounded-full bg-[#FFFDF9] border text-[#352043] placeholder:text-[#8A8394] text-sm focus:outline-none transition-all font-body ${
-                          touched.email && errors.email
+                        placeholder="Enter your email address"
+                        className={`w-full px-4 py-3.5 rounded-full bg-[#FFFDF9] border text-[#352043] placeholder:text-[#8A8394] text-sm focus:outline-none transition-all font-body ${touched.email && errors.email
                             ? 'border-red-400 focus:border-red-500 bg-red-50/20'
                             : 'border-[#E9DED3] focus:border-[#C8A34A]'
-                        }`}
+                          }`}
                       />
                       {touched.email && errors.email && (
                         <p className="text-[11px] text-red-500 font-semibold flex items-center gap-1 mt-1">
@@ -358,12 +356,11 @@ export default function ContactPage() {
                         value={formData.phone}
                         onChange={(e) => handleInputChange('phone', e.target.value)}
                         onBlur={() => handleBlur('phone')}
-                        placeholder="Enter 10-digit mobile number"
-                        className={`w-full px-4 py-3.5 rounded-full bg-[#FFFDF9] border text-[#352043] placeholder:text-[#8A8394] text-sm focus:outline-none transition-all font-body ${
-                          touched.phone && errors.phone
+                        placeholder="Enter your mobile number"
+                        className={`w-full px-4 py-3.5 rounded-full bg-[#FFFDF9] border text-[#352043] placeholder:text-[#8A8394] text-sm focus:outline-none transition-all font-body ${touched.phone && errors.phone
                             ? 'border-red-400 focus:border-red-500 bg-red-50/20'
                             : 'border-[#E9DED3] focus:border-[#C8A34A]'
-                        }`}
+                          }`}
                       />
                       {touched.phone && errors.phone && (
                         <p className="text-[11px] text-red-500 font-semibold flex items-center gap-1 mt-1">
@@ -377,17 +374,13 @@ export default function ContactPage() {
                       <label className="text-xs font-semibold uppercase text-[#C8A34A] tracking-wider font-body">
                         Subject
                       </label>
-                      <select
+                      <input
+                        type="text"
                         value={formData.subject}
-                        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                        className="w-full px-4 py-3.5 rounded-full bg-[#FFFDF9] border border-[#E9DED3] text-[#352043] text-sm focus:outline-none focus:border-[#C8A34A] focus:ring-2 focus:ring-[#C8A34A]/20 transition-all font-body"
-                      >
-                        <option value="General Inquiry">General Inquiry</option>
-                        <option value="Organ Meditation">Organ Meditation Course</option>
-                        <option value="Quantum Habits">Quantum Habits Program</option>
-                        <option value="Retreat Registration">Retreat & Event Registration</option>
-                        <option value="Ji Consultation">Personal Guidance with Ji</option>
-                      </select>
+                        onChange={(e) => handleInputChange('subject', e.target.value)}
+                        placeholder="Enter subject of inquiry"
+                        className="w-full px-4 py-3.5 rounded-full bg-[#FFFDF9] border border-[#E9DED3] text-[#352043] placeholder:text-[#8A8394] text-sm focus:outline-none focus:border-[#C8A34A] focus:ring-2 focus:ring-[#C8A34A]/20 transition-all font-body"
+                      />
                     </div>
                   </div>
 
@@ -400,12 +393,11 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={(e) => handleInputChange('message', e.target.value)}
                       onBlur={() => handleBlur('message')}
-                      placeholder="Write your message or question here..."
-                      className={`w-full px-5 py-4 rounded-[20px] bg-[#FFFDF9] border text-[#352043] placeholder:text-[#8A8394] text-sm focus:outline-none transition-all resize-none font-body ${
-                        touched.message && errors.message
+                      placeholder="Enter your message here..."
+                      className={`w-full px-5 py-4 rounded-[20px] bg-[#FFFDF9] border text-[#352043] placeholder:text-[#8A8394] text-sm focus:outline-none transition-all resize-none font-body ${touched.message && errors.message
                           ? 'border-red-400 focus:border-red-500 bg-red-50/20'
                           : 'border-[#E9DED3] focus:border-[#C8A34A]'
-                      }`}
+                        }`}
                     />
                     {touched.message && errors.message && (
                       <p className="text-[11px] text-red-500 font-semibold flex items-center gap-1 mt-1">

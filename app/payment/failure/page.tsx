@@ -40,7 +40,7 @@ function PaymentFailureContent() {
 
       <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
         <Link
-          href="/membership"
+          href="/contributorship"
           className="px-6 py-3.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-bold text-xs uppercase tracking-wider shadow-md transition-all flex items-center justify-center gap-2"
         >
           <RotateCcw className="w-4 h-4 text-[#DFC47A]" />

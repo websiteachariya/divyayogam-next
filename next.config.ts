@@ -16,6 +16,18 @@ const nextConfig: NextConfig = {
     qualities: [80, 85, 90, 95, 100],
     minimumCacheTTL: 31536000,
   },
+  async rewrites() {
+    return [
+      {
+        source: '/contributorship/',
+        destination: '/membership/',
+      },
+      {
+        source: '/contributorship',
+        destination: '/membership/',
+      },
+    ];
+  },
 };
 
 export default nextConfig;

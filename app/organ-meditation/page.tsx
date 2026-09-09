@@ -15,6 +15,7 @@ import {
   UploadCloud,
   Sun,
   Calendar,
+  ArrowRight,
 } from 'lucide-react';
 
 export default function OrganMeditationPage() {
@@ -509,6 +510,8 @@ export default function OrganMeditationPage() {
               </div>
             </motion.div>
           </AnimatePresence>
+
+
 
           {/* SECTION 4: COMPLETE SCHEDULE AT A GLANCE (5-COLUMN SUMMARY GRID) */}
           <div className="mb-24 space-y-8">

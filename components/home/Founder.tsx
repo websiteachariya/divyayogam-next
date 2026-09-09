@@ -72,7 +72,7 @@ export default function Founder() {
               Awakening <span className="text-[#8C5D00]">The Divine Within.</span>
             </h2>
 
-            {/* Sacred Golden Lotus Underline Divider (deco-15.png) */}
+            {/* Sacred Golden Lotus Underline Divider (deco-15.webp) */}
             <div className="relative w-full max-w-sm sm:max-w-lg lg:max-w-xl h-10 sm:h-14 lg:h-16 my-1 pointer-events-none">
               <Image
                 src="/images/deco-15.webp"

@@ -35,9 +35,21 @@ export async function getActiveMembership(userId: string) {
  * Enforces sequential progression: Ayangara -> Pandava -> Amirtha -> Anandha -> Amoha -> Advaitha
  */
 export async function getClassEligibility(userId: string, classSlug: string) {
-  const targetClass = await prisma.class.findUnique({
+  let targetClass = await prisma.class.findUnique({
     where: { slug: classSlug },
   });
+
+  if (!targetClass && classSlug === 'all-in-one') {
+    targetClass = {
+      id: 'all-in-one',
+      name: 'All-in-One Master Bundle',
+      slug: 'all-in-one',
+      price: 52500,
+      orderSequence: 7,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    } as any;
+  }
 
   if (!targetClass) {
     return { isEligible: false, reason: 'Class not found', targetClass: null };
@@ -62,12 +74,45 @@ export async function getClassEligibility(userId: string, classSlug: string) {
     };
   }
 
-  // Class Sequence 1 (Ayangara) or All-in-One bundle is always eligible for purchase
-  if (targetClass.slug === 'all-in-one' || targetClass.orderSequence === 1 || targetClass.orderSequence === 7) {
+  // Special rules for All-in-One Master Pass
+  if (targetClass.slug === 'all-in-one') {
+    const activeMembership = await getActiveMembership(userId);
+    if (!activeMembership) {
+      return {
+        isEligible: false,
+        reason: 'All-in-One Master Pass offer is NOT APPLICABLE for Non-Members. Active Gold, Platinum, or Diamond Membership is required to unlock All-in-One Master Pass.',
+        targetClass,
+      };
+    }
+
+    // Check if user has already started individual class progression
+    const anyIndividualEnrollment = await prisma.classEnrollment.findFirst({
+      where: {
+        userId,
+        classItem: {
+          orderSequence: { in: [1, 2, 3, 4, 5, 6] },
+        },
+        status: { in: ['PURCHASED', 'COMPLETED', 'IN_PROGRESS'] },
+      },
+    });
+
+    if (anyIndividualEnrollment) {
+      return {
+        isEligible: false,
+        reason: 'All-in-One Master Pass is NOT APPLICABLE because individual class progression has already been started.',
+        targetClass,
+      };
+    }
+
     return { isEligible: true, targetClass, existingEnrollment };
   }
 
-  // For Sequence N (> 1), check if Sequence N-1 is COMPLETED
+  // Class Sequence 1 (Ayangara) is always eligible for purchase (Non-members and Members alike)
+  if (targetClass.orderSequence === 1) {
+    return { isEligible: true, targetClass, existingEnrollment };
+  }
+
+  // For Sequence N (> 1), check if Sequence N-1 is COMPLETED, PURCHASED, or IN_PROGRESS
   const previousSequence = targetClass.orderSequence - 1;
   const previousClass = await prisma.class.findUnique({
     where: { orderSequence: previousSequence },
@@ -106,7 +151,19 @@ export async function calculateClassDiscount(
   classSlug: string
 ): Promise<ClassDiscountResult> {
   const eligibility = await getClassEligibility(userId, classSlug);
-  const targetClass = eligibility.targetClass;
+  let targetClass = eligibility.targetClass;
+
+  if (!targetClass && classSlug === 'all-in-one') {
+    targetClass = {
+      id: 'all-in-one',
+      name: 'All-in-One Master Bundle',
+      slug: 'all-in-one',
+      price: 52500,
+      orderSequence: 7,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    } as any;
+  }
 
   if (!targetClass) {
     throw new Error('Class not found');
@@ -114,25 +171,25 @@ export async function calculateClassDiscount(
 
   const activeMembership = await getActiveMembership(userId);
 
-  if (!activeMembership) {
-    return {
-      classId: targetClass.id,
-      className: targetClass.name,
-      slug: targetClass.slug,
-      orderSequence: targetClass.orderSequence,
-      originalPrice: targetClass.price,
-      activeMembership: null,
-      discountPercentage: 0,
-      discountAmount: 0,
-      finalAmount: targetClass.price,
-      isEligible: false,
-      reason: 'Active Membership is required to purchase Divya Yogam classes. Please purchase Gold, Platinum, or Diamond membership first.',
-    };
-  }
-
   let discountPercentage = 0;
 
   if (targetClass.slug === 'all-in-one') {
+    if (!activeMembership || !eligibility.isEligible) {
+      return {
+        classId: targetClass.id,
+        className: targetClass.name,
+        slug: targetClass.slug,
+        orderSequence: targetClass.orderSequence,
+        originalPrice: targetClass.price,
+        activeMembership: activeMembership ? activeMembership.level : null,
+        discountPercentage: 0,
+        discountAmount: 0,
+        finalAmount: targetClass.price,
+        isEligible: false,
+        reason: eligibility.reason || 'All-in-One Master Pass is NOT APPLICABLE for Non-Members. Active Membership is required.',
+      };
+    }
+
     // All-in-One Master Pass Discounts: Diamond 50%, Platinum 30%, Gold 10%
     if (activeMembership.level === MembershipTier.DIAMOND) {
       discountPercentage = 50;
@@ -142,13 +199,15 @@ export async function calculateClassDiscount(
       discountPercentage = 10;
     }
   } else {
-    // Individual Sequential Class Discounts: Diamond 20%, Platinum 10%, Gold 0%
-    if (activeMembership.level === MembershipTier.DIAMOND) {
-      discountPercentage = 20;
-    } else if (activeMembership.level === MembershipTier.PLATINUM) {
-      discountPercentage = 10;
-    } else if (activeMembership.level === MembershipTier.GOLD) {
-      discountPercentage = 0;
+    // Individual Sequential Class Discounts: Diamond 20%, Platinum 10%, Gold 5%, Non-Member 0%
+    if (activeMembership) {
+      if (activeMembership.level === MembershipTier.DIAMOND) {
+        discountPercentage = 20;
+      } else if (activeMembership.level === MembershipTier.PLATINUM) {
+        discountPercentage = 10;
+      } else if (activeMembership.level === MembershipTier.GOLD) {
+        discountPercentage = 5;
+      }
     }
   }
 
@@ -162,7 +221,7 @@ export async function calculateClassDiscount(
     slug: targetClass.slug,
     orderSequence: targetClass.orderSequence,
     originalPrice,
-    activeMembership: activeMembership.level,
+    activeMembership: activeMembership ? activeMembership.level : null,
     discountPercentage,
     discountAmount,
     finalAmount,

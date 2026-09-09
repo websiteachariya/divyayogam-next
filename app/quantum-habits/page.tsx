@@ -213,7 +213,7 @@ export default function QuantumHabitsPage() {
         }}
       />
 
-      {/* HERO SECTION WITH QH-3.PNG BACKGROUND & GRAPHIC */}
+      {/* HERO SECTION WITH QH-3.webp BACKGROUND & GRAPHIC */}
       <header
         className="relative bg-gradient-to-br from-[#401952] via-[#64287F] to-[#2E0F3D] pt-36 sm:pt-40 md:pt-44 lg:pt-48 pb-20 sm:pb-24 overflow-hidden text-white bg-cover bg-center"
         style={{
@@ -248,9 +248,36 @@ export default function QuantumHabitsPage() {
               <p className="text-lg sm:text-xl text-white/95 font-serif italic max-w-xl mx-auto lg:mx-0 leading-relaxed font-semibold">
                 Transform Your Daily Life into Higher Consciousness
               </p>
+
+              {/* Two Action Buttons: Contributorship & Classes (Matching Royal Purple & Gold Style) */}
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-3 font-body">
+                <div className="relative group inline-block w-full sm:w-auto">
+                  <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#DFC47A] via-[#C8A34A] to-[#DFC47A] opacity-80 blur-md group-hover:opacity-100 animate-pulse transition-all" />
+                  <Link
+                    href="/contributorship"
+                    className="relative z-10 inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-[#DFC47A] hover:text-[#47206A] border-2 border-[#DFC47A] font-extrabold text-xs uppercase tracking-wider shadow-xl hover:scale-105 transition-all duration-300 group cursor-pointer whitespace-nowrap w-full sm:w-auto"
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-[#DFC47A] group-hover:rotate-12 transition-transform shrink-0" />
+                    <span>DIVYA YOGAM CONTRIBUTORSHIP</span>
+                    <ArrowRight className="w-3.5 h-3.5 shrink-0" />
+                  </Link>
+                </div>
+
+                <div className="relative group inline-block w-full sm:w-auto">
+                  <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#DFC47A] via-[#C8A34A] to-[#DFC47A] opacity-80 blur-md group-hover:opacity-100 animate-pulse transition-all" />
+                  <Link
+                    href="/classes"
+                    className="relative z-10 inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-[#DFC47A] hover:text-[#47206A] border-2 border-[#DFC47A] font-extrabold text-xs uppercase tracking-wider shadow-xl hover:scale-105 transition-all duration-300 group cursor-pointer whitespace-nowrap w-full sm:w-auto"
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-[#DFC47A] group-hover:rotate-12 transition-transform shrink-0" />
+                    <span>DIVYA YOGAM CLASSES</span>
+                    <ArrowRight className="w-3.5 h-3.5 shrink-0" />
+                  </Link>
+                </div>
+              </div>
             </motion.div>
 
-            {/* Hero Right Featured Image: qh-1.png */}
+            {/* Hero Right Featured Image: qh-1.webp */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -480,7 +507,7 @@ export default function QuantumHabitsPage() {
         </div>
       </section>
 
-      {/* SECTION 3: 12 TRANSFORMATIONAL BENEFITS WITH QH-1.PNG */}
+      {/* SECTION 3: 12 TRANSFORMATIONAL BENEFITS WITH QH-1.webp */}
       <section
         className="py-20 text-white relative overflow-hidden bg-cover bg-center w-full z-10"
         style={{
@@ -680,13 +707,13 @@ export default function QuantumHabitsPage() {
         </div>
       </section>
 
-      {/* SECTION 7: BEGIN YOUR TRANSFORMATION TODAY WITH QH-2.PNG */}
+      {/* SECTION 7: BEGIN YOUR TRANSFORMATION TODAY WITH QH-2.webp */}
       <section className="py-12 sm:py-16 lg:py-20 bg-transparent relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="bg-white rounded-3xl p-8 sm:p-14 shadow-2xl border-2 border-[#DFC47A] relative overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
               
-              {/* Left Image Graphic: qh-2.png */}
+              {/* Left Image Graphic: qh-2.webp */}
               <div className="lg:col-span-5 relative flex justify-center">
                 <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-[#DFC47A] shadow-2xl">
                   <Image
@@ -714,14 +741,30 @@ export default function QuantumHabitsPage() {
                   Small daily habits. Infinite transformation. Your journey to a Higher Life starts now.
                 </p>
 
-                <div className="pt-2">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#C8A34A] hover:bg-[#352043] text-[#352043] hover:text-[#DFC47A] font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-xl hover:scale-105 transition-all duration-300 font-body border-2 border-[#DFC47A]"
-                  >
-                    <span>START YOUR JOURNEY</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
+                <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-3 font-body">
+                  <div className="relative group inline-block w-full sm:w-auto">
+                    <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#DFC47A] via-[#C8A34A] to-[#DFC47A] opacity-80 blur-md group-hover:opacity-100 animate-pulse transition-all" />
+                    <Link
+                      href="/contributorship"
+                      className="relative z-10 inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-[#DFC47A] hover:text-[#47206A] border-2 border-[#DFC47A] font-extrabold text-xs uppercase tracking-wider shadow-xl hover:scale-105 transition-all duration-300 group cursor-pointer whitespace-nowrap w-full sm:w-auto"
+                    >
+                      <Sparkles className="w-3.5 h-3.5 text-[#DFC47A] group-hover:rotate-12 transition-transform shrink-0" />
+                      <span>DIVYA YOGAM CONTRIBUTORSHIP</span>
+                      <ArrowRight className="w-3.5 h-3.5 shrink-0" />
+                    </Link>
+                  </div>
+
+                  <div className="relative group inline-block w-full sm:w-auto">
+                    <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#DFC47A] via-[#C8A34A] to-[#DFC47A] opacity-80 blur-md group-hover:opacity-100 animate-pulse transition-all" />
+                    <Link
+                      href="/classes"
+                      className="relative z-10 inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-[#DFC47A] hover:text-[#47206A] border-2 border-[#DFC47A] font-extrabold text-xs uppercase tracking-wider shadow-xl hover:scale-105 transition-all duration-300 group cursor-pointer whitespace-nowrap w-full sm:w-auto"
+                    >
+                      <Sparkles className="w-3.5 h-3.5 text-[#DFC47A] group-hover:rotate-12 transition-transform shrink-0" />
+                      <span>DIVYA YOGAM CLASSES</span>
+                      <ArrowRight className="w-3.5 h-3.5 shrink-0" />
+                    </Link>
+                  </div>
                 </div>
               </div>
 

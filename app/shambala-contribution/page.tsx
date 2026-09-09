@@ -95,7 +95,7 @@ function ShambalaContributionContent() {
     if (isCustom) {
       const num = Number(customAmount);
       if (isNaN(num) || num <= 10000) {
-        setErrorMsg('Custom contribution amount must be greater than ₹10,000.');
+        setErrorMsg('Custom sacred value must be greater than ₹10,000.');
         return;
       }
       amountToPay = num;
@@ -138,10 +138,17 @@ function ShambalaContributionContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F2E8] text-[#47206A] flex flex-col justify-between">
+    <div className="min-h-screen bg-transparent text-[#47206A] flex flex-col justify-between relative overflow-x-hidden">
+      {/* Background Image Overlay (con-6.webp matching Wellness & Contact Page) */}
+      <div
+        className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
+        style={{
+          backgroundImage: "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+        }}
+      />
       <Navbar />
 
-      <main className="pt-44 sm:pt-48 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full flex-1">
+      <main className="pt-32 sm:pt-36 lg:pt-40 pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full flex-1">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -152,7 +159,7 @@ function ShambalaContributionContent() {
               <Heart className="w-4 h-4 text-red-500" /> Sacred Contribution
             </div>
             <h1 className="text-3xl sm:text-4xl font-extrabold font-heading text-[#47206A]">
-              Shambala Contribution
+              Divya Yogam – Spiral Meditation Contribution
             </h1>
             <p className="text-xs sm:text-base text-[#8C5D00] max-w-xl mx-auto font-medium">
               Independent contribution to support Divine Grace Foundation activities, wellness centers, and meditation events.
@@ -160,11 +167,16 @@ function ShambalaContributionContent() {
           </div>
 
           {/* Date Range Validity Notice */}
-          <div className="p-4 rounded-2xl bg-[#FAF5EF] border border-[#DFC47A] flex items-center gap-3">
-            <Calendar className="w-6 h-6 text-[#C8A34A] shrink-0" />
+          <div className="p-4 rounded-2xl bg-[#FAF5EF] border border-[#DFC47A] flex items-center gap-3 shadow-sm hover:shadow-md hover:border-[#47206A] transition-all duration-300 group">
+            <Calendar className="w-6 h-6 text-[#C8A34A] shrink-0 group-hover:scale-110 transition-transform duration-300" />
             <div className="text-xs text-[#47206A]">
-              <span className="font-extrabold block uppercase tracking-wider">Contribution Window:</span>
-              <span>August 15 – December 21 (Backend Enforced). Contributions outside this window will be closed.</span>
+              <span className="font-extrabold block uppercase tracking-wider text-[#8C5D00]">Contribution Window:</span>
+              <span className="font-medium mt-1 block">
+                <strong className="px-2.5 py-1 rounded-lg bg-[#47206A] text-[#DFC47A] font-extrabold inline-block shadow-sm group-hover:bg-[#C8A34A] group-hover:text-[#47206A] transition-all duration-300">
+                  August 15 – December 21
+                </strong>{' '}
+                <span className="text-[#8C5D00] font-semibold">(Backend Enforced)</span>. Contributions outside this window will be closed.
+              </span>
             </div>
           </div>
 
@@ -280,7 +292,7 @@ function ShambalaContributionContent() {
             {/* Presets */}
             <div>
               <label className="block text-xs font-bold text-[#47206A] uppercase tracking-wider mb-3">
-                Select Contribution Amount
+                Select Sacred Value
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {presets.map((preset) => (
@@ -314,41 +326,47 @@ function ShambalaContributionContent() {
                   className="w-4 h-4 accent-[#47206A] cursor-pointer"
                 />
                 <label htmlFor="customToggle" className="text-xs font-bold text-[#47206A] uppercase tracking-wider cursor-pointer">
-                  Enter Custom Contribution Amount (&gt; ₹10,000)
+                  Enter Custom Sacred Value (&gt; ₹10,000)
                 </label>
               </div>
 
-              {isCustom && (
-                <div>
-                  <input
-                    type="number"
-                    value={customAmount}
-                    onChange={(e) => setCustomAmount(e.target.value)}
-                    placeholder="e.g. 15000"
-                    className="w-full px-4 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none font-bold"
-                  />
-                  <p className="text-[11px] text-[#8C5D00] mt-1 font-semibold">
-                    Note: Backend enforces custom contributions must strictly be greater than ₹10,000.
-                  </p>
-                </div>
-              )}
+              <div>
+                <input
+                  type="number"
+                  value={customAmount}
+                  onFocus={() => setIsCustom(true)}
+                  onChange={(e) => {
+                    setCustomAmount(e.target.value);
+                    setIsCustom(true);
+                  }}
+                  placeholder="Enter custom sacred value in ₹ (e.g. 15,000)"
+                  className={`w-full px-4 py-3 bg-[#FAF7F2] border rounded-xl text-sm outline-none font-bold transition-all ${
+                    isCustom
+                      ? 'border-[#47206A] ring-2 ring-[#47206A]/20 bg-white'
+                      : 'border-[#E9DED3] focus:border-[#47206A]'
+                  }`}
+                />
+                <p className="text-[11px] text-[#8C5D00] mt-1 font-semibold">
+                  Note: Backend enforces custom contributions must strictly be greater than ₹10,000.
+                </p>
+              </div>
             </div>
 
             <button
               type="submit"
               disabled={isProcessing}
-              className="w-full py-4 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-bold text-sm uppercase tracking-wider shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+              className="w-full py-3.5 sm:py-4 px-3 sm:px-6 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-bold text-xs sm:text-sm uppercase tracking-wider shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 text-center leading-snug"
             >
               <span>
                 {isProcessing
                   ? 'Connecting Cashfree...'
-                  : `Contribute ₹${
-                      isCustom
-                        ? Number(customAmount || 0).toLocaleString()
-                        : selectedPreset.toLocaleString()
-                    } via Cashfree`}
+                  : isCustom
+                  ? customAmount && Number(customAmount) > 0
+                    ? `Contribute ₹${Number(customAmount).toLocaleString()} via Cashfree`
+                    : 'Contribute Custom Sacred Value via Cashfree'
+                  : `Contribute ₹${selectedPreset.toLocaleString()} via Cashfree`}
               </span>
-              <ArrowRight className="w-4 h-4 text-[#DFC47A]" />
+              <ArrowRight className="w-4 h-4 text-[#DFC47A] shrink-0" />
             </button>
           </form>
         </motion.div>

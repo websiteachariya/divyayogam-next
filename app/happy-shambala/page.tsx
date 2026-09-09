@@ -46,7 +46,7 @@ import {
   AlertCircle
 } from 'lucide-react';
 
-export default function HappyShambhalaLandingPage() {
+export default function HappyShambalaLandingPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeTab, setActiveTab] = useState<'all' | 'tickets' | 'guidelines'>('all');
 
@@ -397,7 +397,7 @@ export default function HappyShambhalaLandingPage() {
 
   const slides = [
     {
-      title: 'Maha Shambhala 2026',
+      title: 'Maha Shambala 2026',
       subtitle: 'Global Grand Celebration of Oneness & Initiation',
       bgImage: '/images/banner-1.webp',
       badge: 'DECEMBER 12, 2026',
@@ -437,6 +437,8 @@ export default function HappyShambhalaLandingPage() {
     color: string;
     borderColor: string;
     benefits: string[];
+    discountBadge: string;
+    discountPercentage: number;
   }
 
   const ticketTiers: TicketTier[] = [
@@ -446,14 +448,17 @@ export default function HappyShambhalaLandingPage() {
       name: 'Diamond',
       price: '₹5,000',
       priceNum: 5000,
-      period: 'membership',
+      period: 'sacred contribution',
       tagline: 'Embrace Holistic Living',
       desc: 'A deeper wellness journey integrating body, mind, emotions and inner well-being.',
       message: '“Live Consciously. Grow Holistically. Transform Your Life.”',
       popular: true,
       color: 'from-[#352043] via-[#47206A] to-[#2B083A]',
       borderColor: 'border-[#DFC47A]',
+      discountBadge: '50% Sacred Privilege Grant on All Classes',
+      discountPercentage: 50,
       benefits: [
+        '50% Sacred Privilege Grant for All Sequential Classes',
         'Advanced Avadhani engagement',
         'Personalized Goal Sheet enrichment',
         'Guided meditation and mindful practices',
@@ -466,16 +471,19 @@ export default function HappyShambhalaLandingPage() {
       id: 'platinum',
       badge: 'PLATINUM — ENRICH',
       name: 'Platinum',
-      price: '₹1,500',
-      priceNum: 1500,
-      period: 'membership',
+      price: '₹2,000',
+      priceNum: 2000,
+      period: 'sacred contribution',
       tagline: 'Build Healthy Habits',
       desc: 'For members ready to deepen their practice and bring greater consistency into daily life.',
       message: '“Practice With Purpose. Grow With Discipline.”',
       popular: false,
       color: 'from-[#FFFDF9] via-[#FAF5EF] to-[#FFF8ED]',
       borderColor: 'border-[#DFC47A]',
+      discountBadge: '30% Sacred Privilege Grant on All Classes',
+      discountPercentage: 30,
       benefits: [
+        '30% Sacred Privilege Grant for All Sequential Classes',
         'Avadhani Sessions',
         'Goal Sheet Enrichment & Review',
         'Mindfulness and self-reflection',
@@ -488,16 +496,19 @@ export default function HappyShambhalaLandingPage() {
       id: 'gold',
       badge: 'GOLD — AWAKEN',
       name: 'Gold',
-      price: '₹500',
-      priceNum: 500,
-      period: 'membership',
+      price: '₹1,000',
+      priceNum: 1000,
+      period: 'sacred contribution',
       tagline: 'Begin with Awareness',
       desc: 'A simple entry point into the Divine Grace wellness journey.',
       message: '“Know Yourself. Define Your Goals. Begin Your Journey.”',
       popular: false,
       color: 'from-[#FFFDF9] via-[#FAF5EF] to-[#FFF8ED]',
       borderColor: 'border-[#DFC47A]',
+      discountBadge: '10% Sacred Privilege Grant on All Classes',
+      discountPercentage: 10,
       benefits: [
+        '10% Sacred Privilege Grant for All Sequential Classes',
         'Avadhani Session',
         'Goal Sheet Enrichment — FREE',
         'Introduction to conscious living',
@@ -508,13 +519,13 @@ export default function HappyShambhalaLandingPage() {
   ];
 
   const galleryImages = [
-    { src: null, isPending: true, title: 'Shambhala Celebration' },
+    { src: null, isPending: true, title: 'Shambala Celebration' },
     { src: null, isPending: true, title: 'Oneness Sadhana Gathering' },
     { src: null, isPending: true, title: 'Spiritual Initiation' },
     { src: null, isPending: true, title: 'Consciousness Meditation' },
     { src: null, isPending: true, title: 'Deep Inner Peace' },
     { src: null, isPending: true, title: 'Sanctuary Satsang' },
-    { src: null, isPending: true, title: 'Maha Shambhala Moments' },
+    { src: null, isPending: true, title: 'Maha Shambala Moments' },
     { src: null, isPending: true, title: 'Divine Awakening' },
     { src: null, isPending: true, title: 'Cellular Healing Session' },
     { src: null, isPending: true, title: 'Sacred Reflection' },
@@ -525,10 +536,10 @@ export default function HappyShambhalaLandingPage() {
   const testimonialVideos = [
     { id: 'GqDjm6amEu0', title: 'Deep Inner Healing Experience' },
     { id: '5Ut6CCT_Gms', title: 'Awakening Consciousness' },
-    { id: 'G_otnJtf1qs', title: 'Shambhala Meditation Journey' },
-    { id: 'HwA-qgzVWEk', title: 'Shambhala Sadhana Realization' },
+    { id: 'G_otnJtf1qs', title: 'Shambala Meditation Journey' },
+    { id: 'HwA-qgzVWEk', title: 'Shambala Sadhana Realization' },
     { id: '-UnFkMbnXs8', title: 'Mindfulness & Clarity' },
-    { id: 'TXARPCnXUwM', title: 'Shambhala Transformation' },
+    { id: 'TXARPCnXUwM', title: 'Shambala Transformation' },
     { id: 'vq2XTPdfttA', title: 'Soul Connection & Peace' },
     { id: 'VRgLuk0Etjw', title: 'Divine Energy Activation' },
     { id: 'ubDdVwaOKbI', title: 'Higher Consciousness State' },
@@ -569,7 +580,7 @@ export default function HappyShambhalaLandingPage() {
       date: '31, October',
       day: '31',
       month: 'OCT',
-      venue: 'Chennai Shambhala Sanctuary',
+      venue: 'Chennai Shambala Sanctuary',
       badge: 'CHENNAI SATSANG',
     },
     {
@@ -593,7 +604,7 @@ export default function HappyShambhalaLandingPage() {
       date: '28, November',
       day: '28',
       month: 'NOV',
-      venue: 'Karaikal Shambhala Meditation Center',
+      venue: 'Karaikal Shambala Meditation Center',
       badge: 'KARAIKAL SATSANG',
     },
   ];
@@ -601,7 +612,7 @@ export default function HappyShambhalaLandingPage() {
   const guidelines = [
     { icon: CameraOff, title: 'Zero Camera Movement', desc: 'Recording devices and active photography are strictly prohibited inside the meditation sanctuary.' },
     { icon: Ban, title: 'No Movement After Start', desc: 'To maintain the collective energy field, movement is restricted once the initiation commences.' },
-    { icon: VolumeX, title: 'Maintain Noble Silence', desc: 'Observe total noble silence before, during, and after the guided Shambhala initiation.' },
+    { icon: VolumeX, title: 'Maintain Noble Silence', desc: 'Observe total noble silence before, during, and after the guided Shambala initiation.' },
     { icon: ShieldAlert, title: 'Strictly Adults Only', desc: 'For deep meditation concentration, infants and children below 12 years are not permitted.' },
     { icon: UserCheck, title: 'Designated Entry & Exit', desc: 'Please strictly follow specified movement pathways guided by Divya Yogam volunteers.' },
     { icon: CheckCircle2, title: 'Cleanliness & Zero Littering', desc: 'Respect the pristine sanctuary environment. Keep all personal belongings organized.' },
@@ -661,7 +672,7 @@ export default function HappyShambhalaLandingPage() {
                   <span>THE GUIDING LIGHT · SANTOSHI SHRI. ARAWINDHAN JI</span>
                 </div>
                 <Link
-                  href="/membership"
+                  href="/shambala-contribution"
                   className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/40 text-emerald-300 hover:text-white text-xs font-bold uppercase tracking-widest shadow-md backdrop-blur-sm hover:scale-105 transition-all cursor-pointer"
                 >
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
@@ -675,7 +686,7 @@ export default function HappyShambhalaLandingPage() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-white"
               >
-                Happy <span className="text-[#DFC47A] italic font-serif font-normal block sm:inline">Shambhala 2026</span>
+                Happy <span className="text-[#DFC47A] italic font-serif font-normal block sm:inline">Shambala 2026</span>
               </motion.h1>
 
               <motion.p
@@ -684,43 +695,47 @@ export default function HappyShambhalaLandingPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="font-serif italic text-base sm:text-lg text-[#F8F2E8] leading-relaxed max-w-xl mx-auto lg:mx-0"
               >
-                Join Arawindhan Ji and thousands of seekers worldwide for the Maha Shambhala initiation, collective meditation, and spiritual awakening.
+                Join Arawindhan Ji and thousands of seekers worldwide for the Maha Shambala initiation, collective meditation, and spiritual awakening.
               </motion.p>
 
-              {/* 4 Feature Badges Grid (Matching User Mockup) */}
+              {/* 4 Feature Badges Grid (Linking to Maala & Shambala Contribution) */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.25 }}
                 className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1 max-w-xl mx-auto lg:mx-0"
               >
-                <div className="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-white/5 border border-[#DFC47A]/30 backdrop-blur-sm text-center">
-                  <div className="w-9 h-9 rounded-full bg-[#C8A34A]/20 border border-[#DFC47A]/50 flex items-center justify-center text-[#DFC47A] mb-1.5 shadow-xs">
+                <Link href="/maala" className="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-white/5 border border-[#DFC47A]/30 hover:border-[#DFC47A] hover:bg-white/10 hover:scale-105 transition-all backdrop-blur-sm text-center group cursor-pointer">
+                  <div className="w-9 h-9 rounded-full bg-[#C8A34A]/20 border border-[#DFC47A]/50 flex items-center justify-center text-[#DFC47A] mb-1.5 shadow-xs group-hover:bg-[#C8A34A] group-hover:text-[#352043] transition-colors">
                     <Users className="w-4 h-4" />
                   </div>
                   <span className="text-[11px] font-bold text-white uppercase tracking-wider">One Humanity</span>
-                </div>
+                  <span className="text-[9px] font-extrabold text-[#DFC47A] mt-0.5">Maala Link</span>
+                </Link>
 
-                <div className="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-white/5 border border-[#DFC47A]/30 backdrop-blur-sm text-center">
-                  <div className="w-9 h-9 rounded-full bg-[#C8A34A]/20 border border-[#DFC47A]/50 flex items-center justify-center text-[#DFC47A] mb-1.5 shadow-xs">
+                <Link href="/shambala-contribution" className="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-white/5 border border-[#DFC47A]/30 hover:border-[#DFC47A] hover:bg-white/10 hover:scale-105 transition-all backdrop-blur-sm text-center group cursor-pointer">
+                  <div className="w-9 h-9 rounded-full bg-[#C8A34A]/20 border border-[#DFC47A]/50 flex items-center justify-center text-[#DFC47A] mb-1.5 shadow-xs group-hover:bg-[#C8A34A] group-hover:text-[#352043] transition-colors">
                     <Sparkles className="w-4 h-4" />
                   </div>
                   <span className="text-[11px] font-bold text-white uppercase tracking-wider">Higher Consciousness</span>
-                </div>
+                  <span className="text-[9px] font-extrabold text-[#DFC47A] mt-0.5">Shambala Link</span>
+                </Link>
 
-                <div className="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-white/5 border border-[#DFC47A]/30 backdrop-blur-sm text-center">
-                  <div className="w-9 h-9 rounded-full bg-[#C8A34A]/20 border border-[#DFC47A]/50 flex items-center justify-center text-[#DFC47A] mb-1.5 shadow-xs">
+                <Link href="/maala" className="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-white/5 border border-[#DFC47A]/30 hover:border-[#DFC47A] hover:bg-white/10 hover:scale-105 transition-all backdrop-blur-sm text-center group cursor-pointer">
+                  <div className="w-9 h-9 rounded-full bg-[#C8A34A]/20 border border-[#DFC47A]/50 flex items-center justify-center text-[#DFC47A] mb-1.5 shadow-xs group-hover:bg-[#C8A34A] group-hover:text-[#352043] transition-colors">
                     <Globe className="w-4 h-4" />
                   </div>
                   <span className="text-[11px] font-bold text-white uppercase tracking-wider">Global Meditation</span>
-                </div>
+                  <span className="text-[9px] font-extrabold text-[#DFC47A] mt-0.5">Maala Link</span>
+                </Link>
 
-                <div className="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-white/5 border border-[#DFC47A]/30 backdrop-blur-sm text-center">
-                  <div className="w-9 h-9 rounded-full bg-[#C8A34A]/20 border border-[#DFC47A]/50 flex items-center justify-center text-[#DFC47A] mb-1.5 shadow-xs">
+                <Link href="/shambala-contribution" className="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-white/5 border border-[#DFC47A]/30 hover:border-[#DFC47A] hover:bg-white/10 hover:scale-105 transition-all backdrop-blur-sm text-center group cursor-pointer">
+                  <div className="w-9 h-9 rounded-full bg-[#C8A34A]/20 border border-[#DFC47A]/50 flex items-center justify-center text-[#DFC47A] mb-1.5 shadow-xs group-hover:bg-[#C8A34A] group-hover:text-[#352043] transition-colors">
                     <Heart className="w-4 h-4" />
                   </div>
                   <span className="text-[11px] font-bold text-white uppercase tracking-wider">A Better World</span>
-                </div>
+                  <span className="text-[9px] font-extrabold text-[#DFC47A] mt-0.5">Shambala Link</span>
+                </Link>
               </motion.div>
 
               {/* Callout Quote + Action Buttons */}
@@ -730,24 +745,22 @@ export default function HappyShambhalaLandingPage() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="space-y-4 pt-1"
               >
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
                   <Link
-                    href="/membership"
-                    className="px-7 py-3.5 rounded-full bg-[#C8A34A] hover:bg-white text-[#352043] font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-2"
+                    href="/maala"
+                    className="px-6 py-3.5 rounded-full bg-[#C8A34A] hover:bg-white text-[#352043] font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-2 border border-[#DFC47A]"
                   >
-                    <Ticket className="w-4 h-4" />
-                    <span>Book Tickets Now</span>
+                    <Ticket className="w-4 h-4 text-[#352043]" />
+                    <span>MAALA CONTRIBUTION</span>
                   </Link>
                   <Link
-                    href="/membership"
-                    className="px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-[#DFC47A]/50 text-[#DFC47A] hover:text-white font-bold text-xs sm:text-sm uppercase tracking-wider backdrop-blur-md transition-all duration-300 flex items-center gap-2"
+                    href="/shambala-contribution"
+                    className="px-6 py-3.5 rounded-full bg-[#352043] hover:bg-[#C8A34A] text-white hover:text-[#352043] border border-[#DFC47A]/70 font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-2"
                   >
-                    <Play className="w-3.5 h-3.5 fill-[#DFC47A]" />
-                    <span>Explore Shambhala</span>
+                    <Sparkles className="w-4 h-4 text-[#DFC47A]" />
+                    <span>SHAMBALA CONTRIBUTION</span>
                   </Link>
                 </div>
-
-
               </motion.div>
             </div>
 
@@ -764,20 +777,6 @@ export default function HappyShambhalaLandingPage() {
                     src="https://res.cloudinary.com/y2q2jsq0/video/upload/v1787284239/watermark-removed-gemini_generated_video_288afa14_oifrwr.mp4"
                     className="w-full h-full object-cover"
                   />
-                </div>
-                <div className="bg-[#351A4A] px-4 py-3 text-center border-t border-[#DFC47A]/40 flex items-center justify-between gap-2">
-                  <span className="text-[11px] font-bold text-[#DFC47A]/90 uppercase tracking-wider hidden sm:inline">
-                    A Brighter Tomorrow Together
-                  </span>
-                  <div className="flex items-center gap-1.5 mx-auto sm:mx-0">
-                    <Sparkles className="w-4 h-4 text-[#DFC47A]" />
-                    <span className="text-xs sm:text-sm font-bold text-[#DFC47A] uppercase tracking-wider">
-                      Happy Shambhala Initiation Video
-                    </span>
-                  </div>
-                  <span className="text-[10px] font-extrabold text-[#DFC47A] uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#C8A34A]/20 border border-[#DFC47A]/40 hidden md:inline">
-                    Meditate • Unite • Transform
-                  </span>
                 </div>
               </motion.div>
             </div>
@@ -1004,19 +1003,19 @@ export default function HappyShambhalaLandingPage() {
             </div>
 
             {/* Left Logo / Emblem */}
-            <Link href="/membership" className="lg:col-span-4 flex flex-col items-center justify-center text-center border-b lg:border-b-0 lg:border-r border-[#DFC47A]/30 pb-6 lg:pb-0 lg:pr-8 relative z-10 group cursor-pointer">
+            <Link href="/contributorship" className="lg:col-span-4 flex flex-col items-center justify-center text-center border-b lg:border-b-0 lg:border-r border-[#DFC47A]/30 pb-6 lg:pb-0 lg:pr-8 relative z-10 group cursor-pointer">
               <div className="relative w-40 h-40 sm:w-48 sm:h-48 mb-3">
                 {/* Glowing ring behind image */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#DFC47A]/30 to-[#8C5D00]/20 blur-md group-hover:scale-105 transition-transform" />
                 <Image
                   src="/images/MD-99.webp"
-                  alt="Happy Shambhala Logo"
+                  alt="Happy Shambala Logo"
                   fill
                   className="object-contain drop-shadow-xl relative z-10 group-hover:scale-105 transition-transform"
                 />
               </div>
               <span className="font-heading font-extrabold text-xl text-[#352043] uppercase tracking-widest flex items-center gap-1.5 justify-center group-hover:text-[#8C5D00] transition-colors">
-                <span>Happy Shambhala</span>
+                <span>Happy Shambala</span>
               </span>
               <span className="text-xs text-[#8C5D00] font-bold uppercase tracking-wider mt-1 px-3 py-0.5 rounded-full bg-[#FAF5EF] border border-[#DFC47A]/50 shadow-xs group-hover:bg-[#8C5D00] group-hover:text-white transition-all">
                 Grand Oneness Gathering 2026
@@ -1027,42 +1026,42 @@ export default function HappyShambhalaLandingPage() {
             <div className="lg:col-span-8 space-y-6 text-center lg:text-left relative z-10">
               <div className="space-y-3">
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
-                  <Link href="/membership" className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#352043] text-[#DFC47A] text-xs font-extrabold uppercase tracking-widest shadow-sm hover:bg-[#4A2E5D] transition-colors">
+                  <Link href="/contributorship" className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#352043] text-[#DFC47A] text-xs font-extrabold uppercase tracking-widest shadow-sm hover:bg-[#4A2E5D] transition-colors">
                     <Calendar className="w-3.5 h-3.5 text-[#DFC47A]" />
                     <span>MAIN EVENT DATE</span>
                   </Link>
-                  <Link href="/membership" className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#8C5D00]/10 text-[#8C5D00] text-xs font-bold border border-[#8C5D00]/30 hover:bg-[#8C5D00]/20 transition-colors">
+                  <Link href="/contributorship" className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#8C5D00]/10 text-[#8C5D00] text-xs font-bold border border-[#8C5D00]/30 hover:bg-[#8C5D00]/20 transition-colors">
                     <span className="w-2 h-2 rounded-full bg-[#8C5D00] animate-pulse" />
                     <span>Live Registration Open</span>
                   </Link>
-                  <Link href="/membership" className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#C8A34A]/20 border border-[#DFC47A]/60 text-[#8C5D00] text-xs font-extrabold uppercase tracking-wider shadow-xs hover:bg-[#C8A34A]/30 transition-colors">
+                  <Link href="/contributorship" className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#C8A34A]/20 border border-[#DFC47A]/60 text-[#8C5D00] text-xs font-extrabold uppercase tracking-wider shadow-xs hover:bg-[#C8A34A]/30 transition-colors">
                     <MapPin className="w-3.5 h-3.5 text-[#8C5D00]" />
                     <span>VILLIANUR, PUDUCHERRY</span>
                   </Link>
                 </div>
 
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 pt-0.5">
-                  <Link href="/membership" className="font-heading text-xl sm:text-3xl lg:text-4xl font-extrabold text-[#352043] leading-tight hover:text-[#8C5D00] transition-colors">
+                  <Link href="/contributorship" className="font-heading text-xl sm:text-3xl lg:text-4xl font-extrabold text-[#352043] leading-tight hover:text-[#8C5D00] transition-colors">
                     12th DECEMBER 2026,
                   </Link>
-                  <Link href="/membership" className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#8C5D00]/10 border border-[#8C5D00]/30 text-[#8C5D00] font-body not-italic text-xs sm:text-sm md:text-base font-extrabold shadow-xs whitespace-nowrap hover:bg-[#8C5D00]/20 transition-colors">
+                  <Link href="/contributorship" className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#8C5D00]/10 border border-[#8C5D00]/30 text-[#8C5D00] font-body not-italic text-xs sm:text-sm md:text-base font-extrabold shadow-xs whitespace-nowrap hover:bg-[#8C5D00]/20 transition-colors">
                     <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#8C5D00]" />
                     05:00 PM IST
                   </Link>
-                  <Link href="/membership" className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#352043] text-[#DFC47A] text-xs sm:text-sm font-extrabold shadow-sm whitespace-nowrap uppercase tracking-wider hover:bg-[#4A2E5D] transition-colors">
+                  <Link href="/contributorship" className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#352043] text-[#DFC47A] text-xs sm:text-sm font-extrabold shadow-sm whitespace-nowrap uppercase tracking-wider hover:bg-[#4A2E5D] transition-colors">
                     <MapPin className="w-3.5 h-3.5 text-[#DFC47A]" />
                     VILLIANUR
                   </Link>
                 </div>
 
                 <p className="text-[#5E5865] text-xs sm:text-sm font-medium leading-relaxed max-w-2xl">
-                  We heartily welcome you to receive the new Impact, Initiation in abundance and redirect the meaning in your life. Become Peaceful, Purposeful and Powerful by participating in <Link href="/membership" className="text-[#352043] font-bold underline decoration-[#DFC47A] underline-offset-2 hover:text-[#8C5D00] transition-colors">SHAMBHALA 2026</Link>.
+                  We heartily welcome you to receive the new Impact, Initiation in abundance and redirect the meaning in your life. Become Peaceful, Purposeful and Powerful by participating in <Link href="/contributorship" className="text-[#352043] font-bold underline decoration-[#DFC47A] underline-offset-2 hover:text-[#8C5D00] transition-colors">Shambala 2026</Link>.
                 </p>
               </div>
 
-              {/* Animated Countdown Grid & CTA Button */}
+              {/* Animated Countdown Grid & CTA Buttons */}
               <div className="flex flex-col sm:flex-row items-center gap-4 pt-1">
-                <Link href="/membership" className="grid grid-cols-4 gap-2 sm:gap-4 w-full max-w-md">
+                <div className="grid grid-cols-4 gap-2 sm:gap-4 w-full max-w-md">
                   <div className="bg-gradient-to-b from-white to-[#FAF5EF] border border-[#DFC47A]/60 rounded-2xl p-3 sm:p-4 text-center shadow-md hover:border-[#8C5D00] hover:scale-105 transition-all">
                     <span className="font-heading font-extrabold text-2xl sm:text-3xl text-[#352043] block leading-none">
                       {timeLeft.days}
@@ -1098,23 +1097,31 @@ export default function HappyShambhalaLandingPage() {
                       Secs
                     </span>
                   </div>
-                </Link>
+                </div>
 
-                <Link
-                  href="/membership"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#8C5D00] via-[#C8A34A] to-[#8C5D00] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group"
-                >
-                  <Sparkles className="w-4 h-4 text-[#FFF8E7] group-hover:rotate-12 transition-transform" />
-                  <span>Register For Membership & Pass</span>
-                  <ArrowRight className="w-4 h-4 text-[#FFF8E7] group-hover:translate-x-1 transition-transform" />
-                </Link>
+                <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full sm:w-auto">
+                  <Link
+                    href="/maala"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-[#352043] hover:bg-[#8C5D00] text-white font-extrabold text-xs uppercase tracking-wider shadow-lg hover:scale-105 transition-all border border-[#DFC47A]/50 group"
+                  >
+                    <Sparkles className="w-4 h-4 text-[#DFC47A] group-hover:rotate-12 transition-transform" />
+                    <span>MAALA CONTRIBUTION</span>
+                  </Link>
+                  <Link
+                    href="/shambala-contribution"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-[#8C5D00] via-[#C8A34A] to-[#8C5D00] text-white font-extrabold text-xs uppercase tracking-wider shadow-lg hover:scale-105 transition-all border border-[#DFC47A]/50 group"
+                  >
+                    <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
+                    <span>SHAMBALA CONTRIBUTION</span>
+                  </Link>
+                </div>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* 2.5 MAHA SHAMBHALA REGIONAL EVENTS ROADMAP */}
+      {/* 2.5 MAHA Shambala REGIONAL EVENTS ROADMAP */}
       <section className="py-6 sm:py-10 relative z-20 overflow-hidden" id="OutsidePondy">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6 sm:space-y-8">
 
@@ -1126,11 +1133,11 @@ export default function HappyShambhalaLandingPage() {
             </span>
 
             <h2 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#352043] leading-tight">
-              Maha Shambhala <span className="font-serif italic font-normal text-[#8C5D00]">Outside Pondyzone</span>
+              Maha Shambala <span className="font-serif italic font-normal text-[#8C5D00]">Outside Pondyzone</span>
             </h2>
 
             <p className="text-[#5E5865] text-sm sm:text-base font-serif italic max-w-2xl mx-auto leading-relaxed">
-              Experience regional Shambhala initiation sessions hosted across 7 major centers leading up to the Grand Oneness Gathering in Puducherry.
+              Experience regional Shambala initiation sessions hosted across 7 major centers leading up to the Grand Oneness Gathering in Puducherry.
             </p>
           </div>
 
@@ -1188,14 +1195,21 @@ export default function HappyShambhalaLandingPage() {
                   </div>
                 </div>
 
-                {/* Card CTA Button */}
-                <Link
-                  href="/membership"
-                  className="w-full py-3 rounded-full bg-[#FAF5EF] group-hover:bg-[#352043] text-[#352043] group-hover:text-white border-2 border-[#DFC47A]/60 group-hover:border-[#352043] font-bold text-xs uppercase tracking-wider shadow-sm transition-all duration-300 flex items-center justify-center gap-2 relative z-10"
-                >
-                  <span>Register Interest</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-[#8C5D00] group-hover:text-[#DFC47A] group-hover:translate-x-1 transition-all" />
-                </Link>
+                {/* Dual Action Buttons */}
+                <div className="flex items-center gap-2 relative z-10">
+                  <Link
+                    href="/maala"
+                    className="flex-1 py-2.5 rounded-full bg-[#352043] hover:bg-[#8C5D00] text-white font-extrabold text-[11px] uppercase tracking-wider text-center shadow-sm hover:scale-102 transition-all border border-[#DFC47A]/40"
+                  >
+                    Maala
+                  </Link>
+                  <Link
+                    href="/shambala-contribution"
+                    className="flex-1 py-2.5 rounded-full bg-[#8C5D00] hover:bg-[#352043] text-white font-extrabold text-[11px] uppercase tracking-wider text-center shadow-sm hover:scale-102 transition-all border border-[#DFC47A]/40"
+                  >
+                    Shambala
+                  </Link>
+                </div>
               </motion.div>
             ))}
 
@@ -1242,17 +1256,24 @@ export default function HappyShambhalaLandingPage() {
 
                 <div className="pt-3 border-t border-white/15 flex items-start gap-2 text-xs text-[#F8F2E8]/90 font-medium leading-relaxed">
                   <MapPin className="w-4 h-4 text-[#DFC47A] shrink-0 mt-0.5" />
-                  <span>Grand Oneness Shambhala Sanctuary, Puducherry</span>
+                  <span>Grand Oneness Shambala Sanctuary, Puducherry</span>
                 </div>
               </div>
 
-              <Link
-                href="/membership"
-                className="w-full py-3 rounded-full bg-[#C8A34A] hover:bg-white text-[#352043] font-bold text-xs uppercase tracking-wider shadow-lg hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2 relative z-10"
-              >
-                <span>Book Main Event Pass</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#352043]" />
-              </Link>
+              <div className="flex items-center gap-2 relative z-10">
+                <Link
+                  href="/maala"
+                  className="flex-1 py-2.5 rounded-full bg-[#C8A34A] hover:bg-white text-[#352043] font-bold text-xs uppercase tracking-wider text-center shadow-md hover:scale-102 transition-all"
+                >
+                  Maala
+                </Link>
+                <Link
+                  href="/shambala-contribution"
+                  className="flex-1 py-2.5 rounded-full bg-white/15 hover:bg-white text-white hover:text-[#352043] font-bold text-xs uppercase tracking-wider text-center shadow-md hover:scale-102 transition-all border border-white/30"
+                >
+                  Shambala
+                </Link>
+              </div>
             </motion.div>
           </div>
 
@@ -1268,7 +1289,7 @@ export default function HappyShambhalaLandingPage() {
               <span>FEATURED VIDEO HIGHLIGHT</span>
             </span>
             <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-[#352043]">
-              Experience the Spirit of <span className="font-serif italic font-normal text-[#8C5D00]">Happy Shambhala</span>
+              Experience the Spirit of <span className="font-serif italic font-normal text-[#8C5D00]">Happy Shambala</span>
             </h2>
           </div>
 
@@ -1295,7 +1316,7 @@ export default function HappyShambhalaLandingPage() {
               Register Your <span className="font-serif italic font-normal text-[#8C5D00]">Slot Pass</span>
             </h2>
             <p className="text-[#5E5865] text-xs sm:text-base font-normal max-w-xl mx-auto">
-              Secure your participation for the Global Grand Event on Happy Shambhala.
+              Secure your participation for the Global Grand Event on Happy Shambala.
             </p>
           </div>
 
@@ -1334,6 +1355,26 @@ export default function HappyShambhalaLandingPage() {
                     <Sparkles className={`w-4 h-4 ${tier.id === 'diamond' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'} group-hover:scale-110 transition-transform`} />
                   </div>
 
+                  {/* Top Eye-Catching Percentage Badge Pill - Separated % Highlight */}
+                  <div className="flex items-center justify-start pt-1">
+                    <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border-2 shadow-lg transition-all duration-300 group-hover:scale-[1.03] ${
+                      tier.id === 'diamond'
+                        ? 'bg-[#2B083A]/90 border-[#DFC47A] text-white'
+                        : 'bg-[#FAF5EF] border-[#DFC47A] text-[#352043]'
+                    }`}>
+                      <div className={`px-2.5 py-0.5 rounded-full font-black text-xs sm:text-sm shadow-md border ${
+                        tier.id === 'diamond'
+                          ? 'bg-gradient-to-r from-[#DFC47A] via-[#F3E5AB] to-[#C8A34A] text-[#2B083A] border-white'
+                          : 'bg-[#47206A] text-[#DFC47A] border-[#DFC47A]'
+                      }`}>
+                        {tier.discountPercentage}%
+                      </div>
+                      <span className="text-[11px] font-extrabold uppercase tracking-wider">
+                        Sacred Privilege Grant on All Classes
+                      </span>
+                    </div>
+                  </div>
+
                   <div className="space-y-1">
                     <h3 className={`font-heading text-xl sm:text-2xl font-extrabold ${tier.id === 'diamond' ? 'text-white' : 'text-[#352043]'}`}>
                       {tier.name}
@@ -1349,7 +1390,7 @@ export default function HappyShambhalaLandingPage() {
                       {tier.price}
                     </span>
                     <span className={`text-xs font-medium ${tier.id === 'diamond' ? 'text-white/70' : 'text-[#5E5865]'}`}>
-                      / membership
+                      / sacred contribution
                     </span>
                   </div>
 
@@ -1386,17 +1427,16 @@ export default function HappyShambhalaLandingPage() {
                   </div>
                 </div>
 
-                {/* Card Action Button */}
+                {/* Card Action Button matching Screenshot 1 */}
                 <Link
-                  href="/membership"
-                  className={`w-full py-3.5 rounded-full font-bold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 ${
+                  href="/contributorship"
+                  className={`w-full py-3.5 rounded-full font-extrabold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 ${
                     tier.id === 'diamond'
                       ? 'bg-gradient-to-r from-[#DFC47A] via-[#E3C582] to-[#C8A34A] text-[#2B083A] hover:bg-white'
                       : 'bg-[#352043] hover:bg-[#8C5D00] text-white'
                   }`}
                 >
-                  <Ticket className="w-4 h-4 text-[#DFC47A]" />
-                  <span>Enroll in {tier.name}</span>
+                  <span>CONTRIBUTE VIA {tier.name.toUpperCase()}</span>
                 </Link>
               </motion.div>
             ))}
@@ -1468,7 +1508,7 @@ export default function HappyShambhalaLandingPage() {
         </div>
       </section>
 
-      {/* 7. ABOUT SHAMBHALA (3 CORE PILLARS SECTION) */}
+      {/* 7. ABOUT Shambala (3 CORE PILLARS SECTION) */}
       <section className="py-8 sm:py-12 relative overflow-hidden bg-transparent border-t border-[#DFC47A]/30" id="Aboutus">
         {/* Background Mandala Overlay */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none">
@@ -1483,10 +1523,10 @@ export default function HappyShambhalaLandingPage() {
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#352043] text-[#DFC47A] border border-[#DFC47A]/40 text-xs font-bold uppercase tracking-widest shadow-md">
               <Sparkles className="w-3.5 h-3.5 text-[#DFC47A]" />
-              ABOUT SHAMBHALA
+              ABOUT Shambala
             </span>
             <h2 className="font-heading text-3xl sm:text-5xl font-extrabold text-[#352043]">
-              Global Grand Event on <span className="font-serif italic font-normal text-[#8C5D00]">Happy Shambhala</span>
+              Global Grand Event on <span className="font-serif italic font-normal text-[#8C5D00]">Happy Shambala</span>
             </h2>
             <p className="text-[#5E5865] text-sm sm:text-base font-serif italic max-w-xl mx-auto">
               Bringing together people of all ages to explore their minds, transform inner experiences, and awaken collective wisdom.
@@ -1521,11 +1561,11 @@ export default function HappyShambhalaLandingPage() {
                     KNOW OUR MISSION !
                   </h3>
                   <p className="text-[#5E5865] text-xs sm:text-sm leading-relaxed font-normal">
-                    Shambhala in ACHARIYA brings people together of all ages and all areas of life who are interested in exploring their own minds, transforming experience, and awakening our potentials for an enlightened society.
+                    Shambala in ACHARIYA brings people together of all ages and all areas of life who are interested in exploring their own minds, transforming experience, and awakening our potentials for an enlightened society.
                   </p>
                 </div>
                 <Link
-                  href="/membership"
+                  href="/contributorship"
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#352043] group-hover:bg-[#8C5D00] text-white font-extrabold text-xs uppercase tracking-wider shadow-sm transition-all duration-300 self-start"
                 >
                   <span>Read More</span>
@@ -1561,11 +1601,11 @@ export default function HappyShambhalaLandingPage() {
                     WHAT YOU WILL LEARN?
                   </h3>
                   <p className="text-[#5E5865] text-xs sm:text-sm leading-relaxed font-normal">
-                    The inner search and the spiritual path are basic requirements like both sides of a coin to bring transformation in the behavior of mankind. SHAMBHALA creates a path towards oneness by awakening or expanding consciousness.
+                    The inner search and the spiritual path are basic requirements like both sides of a coin to bring transformation in the behavior of mankind. Shambala creates a path towards oneness by awakening or expanding consciousness.
                   </p>
                 </div>
                 <Link
-                  href="/membership"
+                  href="/contributorship"
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#352043] group-hover:bg-[#8C5D00] text-white font-extrabold text-xs uppercase tracking-wider shadow-sm transition-all duration-300 self-start"
                 >
                   <span>Read More</span>
@@ -1605,7 +1645,7 @@ export default function HappyShambhalaLandingPage() {
                   </p>
                 </div>
                 <Link
-                  href="/membership"
+                  href="/contributorship"
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#352043] group-hover:bg-[#8C5D00] text-white font-extrabold text-xs uppercase tracking-wider shadow-sm transition-all duration-300 self-start"
                 >
                   <span>Read More</span>
@@ -1617,7 +1657,7 @@ export default function HappyShambhalaLandingPage() {
         </div>
       </section>
 
-      {/* 8. SHAMBHALA PHILOSOPHY (SPLIT FEATURE) */}
+      {/* 8. Shambala PHILOSOPHY (SPLIT FEATURE) */}
       <section className="py-8 sm:py-12 relative overflow-hidden bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -1629,7 +1669,7 @@ export default function HappyShambhalaLandingPage() {
               </span>
 
               <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-[#352043] leading-tight">
-                Shambhala @ <span className="font-serif italic font-normal text-[#8C5D00]">ACHARIYA</span>
+                Shambala @ <span className="font-serif italic font-normal text-[#8C5D00]">ACHARIYA</span>
               </h2>
 
               <p className="text-[#5E5865] text-sm sm:text-base leading-relaxed">
@@ -1670,14 +1710,14 @@ export default function HappyShambhalaLandingPage() {
               <div className="relative group h-[440px] sm:h-[500px] w-full max-w-md rounded-3xl overflow-hidden border-2 border-[#DFC47A] shadow-2xl bg-[#352043]">
                 <Image
                   src="/images/011A6549.webp"
-                  alt="Shambhala Poster"
+                  alt="Shambala Poster"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#2A133B]/95 via-[#2A133B]/20 to-transparent group-hover:opacity-95 transition-opacity duration-300" />
                 <div className="absolute bottom-6 left-6 right-6 text-white space-y-2 text-center">
                   <span className="inline-block px-3.5 py-1 rounded-full bg-[#352043]/85 border border-[#DFC47A]/50 text-[#DFC47A] font-heading font-extrabold text-lg sm:text-xl uppercase tracking-widest backdrop-blur-md shadow-md">
-                    HAPPY SHAMBHALA
+                    HAPPY Shambala
                   </span>
                   <p className="text-xs sm:text-sm text-[#F8F2E8] font-medium leading-relaxed">
                     Global Grand Event &amp; Mass Oneness Initiation
@@ -1716,7 +1756,7 @@ export default function HappyShambhalaLandingPage() {
                   <>
                     <Image
                       src={item.src}
-                      alt={item.title || `Shambhala Gallery Image ${idx + 1}`}
+                      alt={item.title || `Shambala Gallery Image ${idx + 1}`}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                     />
@@ -1724,7 +1764,7 @@ export default function HappyShambhalaLandingPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#2A133B]/85 via-transparent to-transparent opacity-85 group-hover:opacity-95 transition-opacity duration-300 flex items-end p-4">
                       <div className="space-y-1 text-left w-full">
                         <span className="inline-block px-3 py-1 rounded-full bg-[#352043]/85 border border-[#DFC47A]/50 text-[#DFC47A] text-[10px] font-extrabold uppercase tracking-widest backdrop-blur-sm shadow-xs">
-                          {item.title || 'Shambhala Celebration'}
+                          {item.title || 'Shambala Celebration'}
                         </span>
                       </div>
                     </div>
@@ -1766,7 +1806,7 @@ export default function HappyShambhalaLandingPage() {
               Our Testimonial <span className="font-serif italic font-normal text-[#8C5D00]">Gallery</span>
             </h2>
             <p className="text-[#5E5865] text-sm sm:text-base font-normal max-w-xl mx-auto">
-              Real experiences and spiritual transformations shared by Happy Shambhala participants.
+              Real experiences and spiritual transformations shared by Happy Shambala participants.
             </p>
           </div>
 
@@ -2284,3 +2324,4 @@ export default function HappyShambhalaLandingPage() {
     </div>
   );
 }
+

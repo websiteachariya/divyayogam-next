@@ -10,7 +10,7 @@ export default function Footer() {
 
       {/* Top Newsletter & Social Banner matching Reference UI */}
       <div className="bg-[#2D1A39] border-b border-[#DFC47A]/20 relative overflow-hidden py-12">
-        {/* Background Royal Golden Floral Corner (deco-21.png) Right */}
+        {/* Background Royal Golden Floral Corner (deco-21.webp) Right */}
         <div className="absolute -right-2 sm:right-0 top-0 bottom-0 pointer-events-none hidden lg:block w-[280px] sm:w-[340px] h-full z-0 opacity-75">
           <Image
             src="/images/deco-21.webp"
@@ -83,7 +83,7 @@ export default function Footer() {
           <div className="lg:col-span-4 space-y-3">
             <Link href="/" className="flex items-center group relative">
               <Image
-                src="/images/shambalalogo.png"
+                src="/images/shambalalogo.webp"
                 alt="Divya Yogam - Awaken the Divine Within"
                 width={320}
                 height={80}
@@ -94,7 +94,7 @@ export default function Footer() {
               />
             </Link>
 
-            <p className="text-xs sm:text-sm text-[#F8F2E8]/75 leading-relaxed max-w-xs font-light">
+            <p className="text-xs sm:text-sm text-[#F8F2E8]/80 leading-relaxed max-w-xs font-light">
               A spiritual movement dedicated to inner transformation and global peace.
             </p>
             <p className="text-xs sm:text-sm text-[#DFC47A] font-light italic">
@@ -122,7 +122,7 @@ export default function Footer() {
             <h4 className="font-heading text-sm font-bold text-[#DFC47A] uppercase tracking-wider">
               Explore
             </h4>
-            <ul className="space-y-1.5 text-xs sm:text-sm text-[#F8F2E8]/80">
+            <ul className="space-y-1.5 text-xs sm:text-sm text-[#F8F2E8]/85 font-normal">
               <li><Link href="/about" className="hover:text-[#C8A34A] transition-colors">About Us</Link></li>
               <li><Link href="/vision" className="hover:text-[#C8A34A] transition-colors">Our Path</Link></li>
               <li><Link href="/practices" className="hover:text-[#C8A34A] transition-colors">Programs</Link></li>
@@ -136,26 +136,26 @@ export default function Footer() {
             <h4 className="font-heading text-sm font-bold text-[#DFC47A] uppercase tracking-wider">
               Resources
             </h4>
-            <ul className="space-y-1.5 text-xs sm:text-sm text-[#F8F2E8]/80">
+            <ul className="space-y-1.5 text-xs sm:text-sm text-[#F8F2E8]/85 font-normal">
               <li><Link href="/organ-meditation" className="hover:text-[#C8A34A] transition-colors">Meditation</Link></li>
-              <li><Link href="/practices" className="hover:text-[#C8A34A] transition-colors">Yoga</Link></li>
+              <li><Link href="/testimonials" className="hover:text-[#C8A34A] transition-colors">Testimonials</Link></li>
               <li><Link href="/events" className="hover:text-[#C8A34A] transition-colors">Events</Link></li>
               <li><Link href="/beneficiaries" className="hover:text-[#C8A34A] transition-colors">Beneficiaries</Link></li>
               <li><Link href="/quantum-habits" className="hover:text-[#C8A34A] transition-colors">Quantum Habits</Link></li>
             </ul>
           </div>
 
-          {/* Support Links */}
+          {/* Contribution Links */}
           <div className="lg:col-span-2 space-y-2">
             <h4 className="font-heading text-sm font-bold text-[#DFC47A] uppercase tracking-wider">
-              Support
+              Contribution
             </h4>
-            <ul className="space-y-1.5 text-xs sm:text-sm text-[#F8F2E8]/80">
-              <li><Link href="/testimonials" className="hover:text-[#C8A34A] transition-colors">Testimonials</Link></li>
+            <ul className="space-y-1.5 text-xs sm:text-sm text-[#F8F2E8]/85 font-normal">
+              <li><Link href="/contributorship" className="hover:text-[#C8A34A] transition-colors">Contributorship</Link></li>
+              <li><Link href="/classes" className="hover:text-[#C8A34A] transition-colors">Classes</Link></li>
+              <li><Link href="/maala" className="hover:text-[#C8A34A] transition-colors">Meditation Maala</Link></li>
+              <li><Link href="/shambala-contribution" className="hover:text-[#C8A34A] transition-colors">Sacred Contribution</Link></li>
               <li><Link href="/contact" className="hover:text-[#C8A34A] transition-colors">Contact Us</Link></li>
-              <li><Link href="/volunteer" className="hover:text-[#C8A34A] transition-colors">Volunteer</Link></li>
-              <li><Link href="/membership" className="hover:text-[#C8A34A] transition-colors">Membership</Link></li>
-              <li><Link href="/contact" className="hover:text-[#C8A34A] transition-colors">Donate</Link></li>
             </ul>
           </div>
 
@@ -164,7 +164,7 @@ export default function Footer() {
             <h4 className="font-heading text-sm font-bold text-[#DFC47A] uppercase tracking-wider">
               Contact Us
             </h4>
-            <ul className="space-y-2 text-xs sm:text-sm text-[#F8F2E8]/80">
+            <ul className="space-y-2 text-xs sm:text-sm text-[#F8F2E8]/85 font-normal">
               <li className="flex items-start gap-2.5">
                 <Phone className="w-4 sm:w-4.5 h-4 sm:h-4.5 text-[#C8A34A] shrink-0 mt-0.5" />
                 <div className="flex flex-col space-y-0.5">
@@ -182,15 +182,14 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 mt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-[#F8F2E8]/60 gap-4">
+        <div className="pt-8 mt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-[#F8F2E8]/70 gap-4">
           <div className="text-center sm:text-left space-y-1">
             <p>© 2026 Divya Yogam. An initiative of Divine Grace Foundation. All Rights Reserved.</p>
-            <p className="text-[10px] text-[#F8F2E8]/40">R.S.Nos.222/1, 222/2, Pondy Main Road, Villianur, Puducherry - 605 110</p>
+            <p className="text-[10px] text-[#F8F2E8]/50">R.S.Nos.222/1, 222/2, Pondy Main Road, Villianur, Puducherry - 605 110</p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 shrink-0">
             <Link href="/privacy-policy" className="hover:text-[#C8A34A] transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-[#C8A34A] transition-colors">Terms &amp; Conditions</Link>
-            <Link href="/refund-policy" className="hover:text-[#C8A34A] transition-colors">Refund &amp; Cancellation Policy</Link>
           </div>
         </div>
       </div>

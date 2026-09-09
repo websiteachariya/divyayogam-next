@@ -166,7 +166,16 @@ export default function TermsPage() {
   ];
 
   return (
-    <div className="bg-[#F8F2E8] font-body">
+    <div className="bg-transparent font-body min-h-screen relative overflow-x-hidden">
+      {/* Background Image Overlay (con-6.webp matching Wellness & Contact Page) */}
+      <div
+        className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+        }}
+      />
+
       <PageHero
         badge="Terms & Agreements"
         title="Terms &"
@@ -174,7 +183,7 @@ export default function TermsPage() {
         description="Guidelines governing the use of Divya Yogam content, courses, retreats, and spiritual platforms."
       />
 
-      <section className="py-8 sm:py-12 lg:py-14 bg-[#FFFDF9]">
+      <section className="py-8 sm:py-12 lg:py-14 relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
 
           {/* Banner */}
@@ -235,9 +244,7 @@ export default function TermsPage() {
           {/* Bottom callout */}
           <div className="text-center pt-6 text-xs text-[#8A8394]">
             Also view our{' '}
-            <Link href="/privacy-policy" className="text-[#C8A34A] underline font-medium hover:text-[#352043]">Privacy Policy</Link>{' '}
-            and{' '}
-            <Link href="/refund-policy" className="text-[#C8A34A] underline font-medium hover:text-[#352043]">Refund &amp; Cancellation Policy</Link>.
+            <Link href="/privacy-policy" className="text-[#C8A34A] underline font-medium hover:text-[#352043]">Privacy Policy</Link>.
           </div>
 
         </div>

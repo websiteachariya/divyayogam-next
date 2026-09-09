@@ -1,6 +1,8 @@
 'use client';
 
+import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function Pathways() {
   const steps = [
@@ -249,6 +251,34 @@ export default function Pathways() {
             </motion.div>
           ))}
         </div>
+
+        {/* CTA Button Below 7th Step linking to Divya Yogam Classes with Outer Golden Glow Animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-center mt-10 sm:mt-14 relative z-20 flex justify-center"
+        >
+          <div className="relative group inline-block">
+            {/* Outer Pulsing Golden Glow Aura Ring */}
+            <div className="absolute -inset-1 sm:-inset-1.5 rounded-full bg-gradient-to-r from-[#DFC47A] via-[#C8A34A] via-[#FFF3B0] to-[#DFC47A] opacity-80 blur-md group-hover:opacity-100 animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite] transition-all duration-300" />
+            
+            {/* Soft Ambient Golden Halo Glow */}
+            <div className="absolute -inset-3 rounded-full bg-[#C8A34A]/25 blur-xl pointer-events-none" />
+
+            <Link
+              href="/classes"
+              className="relative z-10 inline-flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-4.5 rounded-full bg-gradient-to-r from-[#47206A] via-[#351A4A] to-[#200D2E] text-[#DFC47A] hover:text-white border-2 border-[#DFC47A] font-extrabold text-xs sm:text-sm uppercase tracking-widest shadow-[0_0_25px_rgba(200,163,74,0.45)] hover:shadow-[0_0_40px_rgba(200,163,74,0.75)] hover:scale-105 transition-all duration-300 group cursor-pointer"
+            >
+              <Sparkles className="w-4 h-4 text-[#DFC47A] group-hover:rotate-12 transition-transform shrink-0" />
+              <span>DIVYA YOGAM CLASSES — ENROLL NOW</span>
+              <div className="w-7 h-7 rounded-full bg-[#DFC47A]/20 group-hover:bg-[#DFC47A] flex items-center justify-center text-[#DFC47A] group-hover:text-[#47206A] transition-colors shrink-0">
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
+          </div>
+        </motion.div>
 
       </div>
     </section>

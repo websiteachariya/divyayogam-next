@@ -41,18 +41,17 @@ export default function TopBar({ isScrolled = false }: TopBarProps) {
         </div>
       </div>
 
-      {/* Center Live Masterclass Announcement Line (Displayed on ALL screens) */}
+      {/* Center Live Announcement Line */}
       <div className="flex items-center gap-1.5 sm:gap-2 relative z-10 px-1 text-center truncate max-w-full justify-center min-w-0">
-        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#C8A34A]/25 border border-[#DFC47A]/40 text-[#DFC47A] text-[9px] sm:text-[10px] font-bold uppercase tracking-wider animate-pulse shrink-0">
+        <span className="hidden min-[671px]:inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#C8A34A]/25 border border-[#DFC47A]/40 text-[#DFC47A] text-[9px] sm:text-[10px] font-bold uppercase tracking-wider animate-pulse shrink-0">
           <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#DFC47A]" />
           Masterclass
         </span>
         <Link
-          href="/membership"
-          className="text-[10px] sm:text-[11px] text-[#F8F2E8] hover:text-[#DFC47A] font-medium transition-colors underline underline-offset-2 decoration-[#DFC47A]/50 hover:decoration-[#DFC47A] truncate min-w-0"
+          href="/classes"
+          className="text-[10px] sm:text-[11px] text-[#F8F2E8] hover:text-[#DFC47A] font-semibold transition-colors underline underline-offset-2 decoration-[#DFC47A]/50 hover:decoration-[#DFC47A] truncate min-w-0"
         >
-          <span className="hidden sm:inline">Organ Rejuvenation &amp; Sacred Sciences — Join Now</span>
-          <span className="inline sm:hidden">Organ Rejuvenation — Join Now</span>
+          <span>Divya Yogam Classes — Enroll Now</span>
         </Link>
       </div>
 

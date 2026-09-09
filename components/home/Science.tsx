@@ -41,7 +41,7 @@ export default function Science() {
   return (
     <section className="py-24 bg-[#FDF7F1] relative overflow-hidden font-body">
       
-      {/* Background Golden Half-Mandala Watermarks Left & Right (deco-1.png) */}
+      {/* Background Golden Half-Mandala Watermarks Left & Right (deco-1.webp) */}
       <div className="absolute top-1/2 -left-28 sm:-left-36 -translate-y-1/2 opacity-35 pointer-events-none hidden lg:block w-[400px] sm:w-[480px] h-[600px] z-0">
         <Image
           src="/images/deco-1.webp"
@@ -117,7 +117,7 @@ export default function Science() {
             </div>
           </motion.div>
 
-          {/* Center Golden Vertical Ornament (deo-1.png) */}
+          {/* Center Golden Vertical Ornament (deo-1.webp) */}
           <div className="hidden lg:flex lg:col-span-2 items-center justify-center pointer-events-none py-0">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
