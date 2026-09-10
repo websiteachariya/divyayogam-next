@@ -1,5 +1,6 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
+import { requireAdmin } from '@/lib/auth';
 
 export async function POST(request: Request) {
   try {
@@ -40,12 +41,18 @@ export async function POST(request: Request) {
   }
 }
 
-export async function GET() {
-  const cookieStore = await cookies();
-  const session = cookieStore.get('divya_admin_session');
-  const isAuthenticated = session?.value === 'authenticated';
+export async function GET(req: NextRequest) {
+  try {
+    const admin = await requireAdmin(req);
+    const cookieStore = await cookies();
+    const session = cookieStore.get('divya_admin_session');
+    const isAuthenticated = !!admin || session?.value === 'authenticated';
 
-  return NextResponse.json({
-    authenticated: isAuthenticated,
-  });
+    return NextResponse.json({
+      authenticated: isAuthenticated,
+      user: admin ? { id: admin.id, email: admin.email, name: admin.name } : null,
+    });
+  } catch (err) {
+    return NextResponse.json({ authenticated: false });
+  }
 }

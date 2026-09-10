@@ -34,25 +34,27 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   metadataBase: new URL('https://divyayogam.org'),
   title: {
-    default: 'Divya Yogam — Awaken Within | Organ Meditation & Sacred Sciences',
+    default: 'Divya Yogam - Spiritual Meditation & Inner Transformation',
     template: '%s | Divya Yogam',
   },
   description:
-    'Discover profound inner stillness, cellular organ rejuvenation, and sacred Vedic wisdom with Divya Yogam guided by Arawindhan Ji.',
+    'Experience inner peace, spiritual awakening, and guided organ meditation through Divya Yogam’s sacred Vedic practices and transformative journeys.',
   keywords: [
     'Divya Yogam',
+    'Inner peace medidation',
+    'Organ meditation',
+    'Inner transformation',
+    'Self transformation',
     'Arawindhan Ji',
-    'Organ Meditation',
     'Quantum Habits',
-    'Pancha Kosha Purification',
-    'Vedic Sciences',
-    'Meditation Retreats',
-    'Spiritual Awakening',
-    'Cellular Rejuvenation',
+    'Vedic Practices',
   ],
   authors: [{ name: 'Divya Yogam' }],
   creator: 'Divya Yogam',
   publisher: 'Divya Yogam Foundation',
+  alternates: {
+    canonical: 'https://divyayogam.org/',
+  },
   formatDetection: {
     email: false,
     address: false,
@@ -72,17 +74,17 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: 'Divya Yogam — Awaken Within | Organ Meditation & Sacred Sciences',
+    title: 'Divya Yogam - Spiritual Meditation & Inner Transformation',
     description:
-      'Awaken the divine within and live a life of purpose, peace, and cellular health through authentic yogic practices and organ meditation.',
-    url: 'https://divyayogam.org',
+      'Experience inner peace, spiritual awakening, and guided organ meditation through Divya Yogam’s sacred Vedic practices and transformative journeys.',
+    url: 'https://divyayogam.org/',
     siteName: 'Divya Yogam',
     images: [
       {
         url: '/images/011A6549.webp',
         width: 1200,
         height: 630,
-        alt: 'Divya Yogam Community Gathering',
+        alt: 'Divya Yogam Spiritual Meditation',
       },
     ],
     locale: 'en_US',

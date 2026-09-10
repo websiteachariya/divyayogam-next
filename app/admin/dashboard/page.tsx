@@ -24,7 +24,8 @@ import {
   Filter,
   X,
   Calendar,
-  Download
+  Download,
+  Globe
 } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -305,7 +306,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex gap-2 border-b border-[#E9DED3] pb-2 overflow-x-auto">
+        <div className="flex items-center gap-2 pb-2 overflow-x-auto">
           <button
             onClick={() => setActiveTab('overview')}
             className={`px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer ${
@@ -335,6 +336,14 @@ export default function AdminDashboardPage() {
             }`}
           >
             Orders & Revenue ({orders.length})
+          </button>
+
+          <button
+            onClick={() => router.push('/admin/seo')}
+            className="px-5 py-2.5 rounded-full font-extrabold text-xs uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer bg-[#47206A] text-[#DFC47A] border-2 border-[#DFC47A] hover:bg-[#DFC47A] hover:text-[#47206A] flex items-center gap-2 shadow-md hover:scale-105 ml-3 no-underline outline-none focus:outline-none"
+          >
+            <Globe className="w-4 h-4" />
+            <span>SEO Manager</span>
           </button>
         </div>
 

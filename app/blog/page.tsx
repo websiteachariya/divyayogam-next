@@ -12,84 +12,83 @@ export default function BlogPage() {
 
   const categories = [
     'All',
-    'Meditation Science',
+    'Organ Meditation',
+    'Panchakosha Wisdom',
     'Quantum Habits',
-    'Vedic Philosophy',
-    'Organ Health',
-    'Mindfulness',
+    'Chakra Alignment',
+    'Sacred Sciences',
   ];
 
   const featuredPost = {
-    title: 'Understanding Cellular Memory & Emotional Release in Organ Meditation',
-    category: 'Meditation Science',
-    date: 'August 24, 2026',
+    title: 'The Science of 12 Noon Golden Smile Organ Meditation: Cellular Rejuvenation & Healing',
+    category: 'Organ Meditation',
+    date: 'September 5, 2026',
     readTime: '8 min read',
-    author: 'Swami Divyananda',
-    authorRole: 'Master Practitioner',
-    excerpt: 'Discover how specific sound frequencies, bio-cellular vibrations, and conscious breath retention help flush stored emotional trauma from human organ tissues.',
-    image: '/images/beni-1.webp',
+    author: 'Master Arawindhan Ji',
+    authorRole: 'Founder & Spiritual Guide',
+    excerpt: 'Discover how daily 12 Noon Golden Smile practice sends bio-vibrational healing frequencies directly into vital organ tissues, flushing stored emotional trauma and rejuvenating cellular vitality.',
   };
 
   const posts = [
     {
       id: 1,
-      title: 'Brahma Muhurta: The Ambrosial Hours of Cosmic Awakening',
-      category: 'Quantum Habits',
-      date: 'August 18, 2026',
+      title: 'The 5 Panchakosha Sheaths: Purification from Physical Body to Divine Bliss',
+      category: 'Panchakosha Wisdom',
+      date: 'August 28, 2026',
       readTime: '7 min read',
-      author: 'Achyuta Dasa',
-      excerpt: 'Why waking up between 4:30 AM and 6:00 AM aligns your neurobiology with subtle cosmic energy fields.',
-      image: '/images/beni-4.webp',
+      author: 'Master Arawindhan Ji',
+      excerpt: 'A deep-dive exploration of Annamaya, Pranamaya, Manomaya, Vijnanamaya, and Anandamaya koshas, detailing how targeted organ meditation purifies all five layers of human consciousness.',
+      link: '/quantum-habits',
     },
     {
       id: 2,
-      title: 'The Pancha Kosha Map: Cleansing the 5 Sheaths of Consciousness',
-      category: 'Vedic Philosophy',
-      date: 'August 12, 2026',
+      title: '7 Energy Chakras & Bio-Vibrational Sound Alignment in Divya Yogam',
+      category: 'Chakra Alignment',
+      date: 'August 22, 2026',
       readTime: '6 min read',
-      author: 'Dr. Anand Kumar',
-      excerpt: 'A comprehensive guide to systematically purifying your physical, vital, mental, intuitive, and bliss bodies.',
-      image: '/images/beni-1.webp',
+      author: 'Divya Yogam Research Team',
+      excerpt: 'How specific sound mantras, color visualization, and natural breath retention awaken Muladhara through Sahasrara for total energetic equilibrium.',
+      link: '/organ-meditation',
     },
     {
       id: 3,
-      title: 'Bio-Vibrational Sound Therapy for Cellular Rejuvenation',
-      category: 'Organ Health',
-      date: 'August 5, 2026',
+      title: 'Quantum Habits: Transforming Daily Micro-Routines into Sacred Sadhana',
+      category: 'Quantum Habits',
+      date: 'August 15, 2026',
       readTime: '5 min read',
-      author: 'Swami Divyananda',
-      excerpt: 'How ancient Vedic mantras resonate at harmonic frequencies to revitalize vital organs and restore immunity.',
-      image: '/images/beni-4.webp',
+      author: 'Master Arawindhan Ji',
+      excerpt: 'Learn how elevating subconscious daily habits—eating, breathing, sleeping, and speaking—creates profound quantum shifts in mental clarity and spiritual awareness.',
+      link: '/quantum-habits',
     },
     {
       id: 4,
-      title: 'Mastering Mindful Breathing in Fast-Paced Corporate Workspaces',
-      category: 'Mindfulness',
-      date: 'July 28, 2026',
-      readTime: '5 min read',
-      author: 'Radhika Sharma',
-      excerpt: 'Practical micro-meditation techniques designed for high-stress professionals seeking instant mental clarity.',
-      image: '/images/beni-1.webp',
+      title: 'Organ Meditation & Emotional Detoxification: Releasing Stored Cellular Stress',
+      category: 'Organ Meditation',
+      date: 'August 10, 2026',
+      readTime: '6 min read',
+      author: 'Divya Yogam Research Team',
+      excerpt: 'How directed positive intention and smile energy nourish the lungs, heart, liver, spleen, and kidneys, neutralizing chronic stress and anxiety.',
+      link: '/organ-meditation',
     },
     {
       id: 5,
-      title: 'Subtle Energy Channels: Balancing Nadis and Chakra Vortices',
-      category: 'Meditation Science',
-      date: 'July 20, 2026',
-      readTime: '9 min read',
-      author: 'Achyuta Dasa',
-      excerpt: 'Unlocking the flow of Prana through Ida, Pingala, and Sushumna nadis for deep inner transformation.',
-      image: '/images/beni-4.webp',
+      title: 'The Achariya Vision: Nurturing Spiritual Intelligence & Character in Students',
+      category: 'Sacred Sciences',
+      date: 'August 3, 2026',
+      readTime: '7 min read',
+      author: 'Achariya Educational Council',
+      excerpt: 'How integrating daily 1 Noon Golden Smile meditation across Achariya schools fosters emotional well-being, academic excellence, and compassionate global leadership.',
+      link: '/foundation-story',
     },
     {
       id: 6,
-      title: 'Quantum Intentions: Transforming Daily Routines into Sacred Sadhana',
-      category: 'Quantum Habits',
-      date: 'July 14, 2026',
-      readTime: '6 min read',
-      author: 'Swami Divyananda',
-      excerpt: 'Infusing conscious awareness into eating, walking, sleeping, and speaking for holistic well-being.',
-      image: '/images/beni-1.webp',
+      title: 'Sacred Mudras & Conscious Breathing for Instant Inner Peace',
+      category: 'Sacred Sciences',
+      date: 'July 26, 2026',
+      readTime: '5 min read',
+      author: 'Master Arawindhan Ji',
+      excerpt: 'Practical mudra techniques paired with gentle spinal posture alignment to harmonize nervous system responses during daily challenges.',
+      link: '/wellness-services',
     },
   ];
 
@@ -204,7 +203,7 @@ export default function BlogPage() {
         </div>
       </header>
 
-      {/* ═══ FEATURED ARTICLE SPOTLIGHT ═══ */}
+      {/* ═══ FEATURED ARTICLE SPOTLIGHT (NO ARTICLE IMAGES) ═══ */}
       <section id="featured-article" className="py-16 sm:py-20 relative overflow-hidden">
         {/* Rich Sandal Background Image Overlay (con-6.webp) matching About Page */}
         <div
@@ -223,55 +222,41 @@ export default function BlogPage() {
             </div>
           </div>
 
-          <div className="bg-white border-2 border-[#DFC47A] rounded-[32px] p-6 sm:p-8 lg:p-10 shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Featured Image */}
-            <div className="lg:col-span-6 relative aspect-[16/10] lg:aspect-[4/3] rounded-2xl overflow-hidden shadow-md group">
-              <Image
-                src={featuredPost.image}
-                alt={featuredPost.title}
-                fill
-                quality={100}
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute top-4 left-4 bg-[#351A4A] text-[#DFC47A] text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-[#DFC47A]/40">
+          <div className="bg-white border-2 border-[#DFC47A] rounded-[32px] p-6 sm:p-8 lg:p-10 shadow-xl overflow-hidden space-y-6">
+            <div className="flex flex-wrap items-center gap-4 text-xs text-[#5A4866]">
+              <span className="px-3.5 py-1 rounded-full bg-[#351A4A] text-[#DFC47A] text-xs font-bold uppercase tracking-wider border border-[#DFC47A]/40">
                 {featuredPost.category}
-              </div>
+              </span>
+              <span className="flex items-center gap-1">
+                <Calendar className="w-3.5 h-3.5 text-[#8C5D00]" />
+                {featuredPost.date}
+              </span>
+              <span className="flex items-center gap-1">
+                <Clock className="w-3.5 h-3.5 text-[#8C5D00]" />
+                {featuredPost.readTime}
+              </span>
+              <span className="flex items-center gap-1">
+                <User className="w-3.5 h-3.5 text-[#8C5D00]" />
+                {featuredPost.author} ({featuredPost.authorRole})
+              </span>
             </div>
 
-            {/* Featured Content */}
-            <div className="lg:col-span-6 space-y-6">
-              <div className="flex flex-wrap items-center gap-4 text-xs text-[#5A4866]">
-                <span className="flex items-center gap-1">
-                  <Calendar className="w-3.5 h-3.5 text-[#8C5D00]" />
-                  {featuredPost.date}
-                </span>
-                <span className="flex items-center gap-1">
-                  <Clock className="w-3.5 h-3.5 text-[#8C5D00]" />
-                  {featuredPost.readTime}
-                </span>
-                <span className="flex items-center gap-1">
-                  <User className="w-3.5 h-3.5 text-[#8C5D00]" />
-                  {featuredPost.author} ({featuredPost.authorRole})
-                </span>
-              </div>
+            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#2A1338] leading-tight hover:text-[#8C5D00] transition-colors">
+              {featuredPost.title}
+            </h2>
 
-              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#2A1338] leading-tight hover:text-[#8C5D00] transition-colors">
-                {featuredPost.title}
-              </h2>
+            <p className="font-body text-sm sm:text-base text-[#5A4866] leading-relaxed max-w-4xl">
+              {featuredPost.excerpt}
+            </p>
 
-              <p className="font-body text-sm sm:text-base text-[#5A4866] leading-relaxed">
-                {featuredPost.excerpt}
-              </p>
-
-              <div className="pt-2">
-                <Link
-                  href="/sciences"
-                  className="px-7 py-3 rounded-full bg-[#351A4A] hover:bg-[#8C5D00] text-[#DFC47A] hover:text-white font-bold text-xs uppercase tracking-wider shadow-md inline-flex items-center gap-2 transition-all duration-300 group"
-                >
-                  <span>Read Full Article</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
+            <div className="pt-2">
+              <Link
+                href="/organ-meditation"
+                className="px-7 py-3 rounded-full bg-[#351A4A] hover:bg-[#8C5D00] text-[#DFC47A] hover:text-white font-bold text-xs uppercase tracking-wider shadow-md inline-flex items-center gap-2 transition-all duration-300 group"
+              >
+                <span>Read Full Article</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </div>
           </div>
 
@@ -321,7 +306,7 @@ export default function BlogPage() {
             </div>
           </div>
 
-          {/* ═══ ARTICLES GRID ═══ */}
+          {/* ═══ ARTICLES GRID (TEXT-FOCUSED & ELEGANT, NO IMAGES) ═══ */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map((post) => (
               <motion.article
@@ -330,57 +315,39 @@ export default function BlogPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="bg-white border-2 border-[#DFC47A]/60 hover:border-[#8C5D00] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group"
+                className="bg-white border-2 border-[#DFC47A]/60 hover:border-[#8C5D00] rounded-3xl p-6 sm:p-7 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group space-y-4"
               >
-                <div>
-                  {/* Article Thumbnail */}
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      fill
-                      quality={100}
-                      className="object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className="absolute top-3 left-3 bg-[#351A4A]/90 text-[#DFC47A] text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full border border-[#DFC47A]/40 backdrop-blur-md">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="bg-[#351A4A] text-[#DFC47A] text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full border border-[#DFC47A]/40">
                       {post.category}
+                    </span>
+                    <div className="flex items-center gap-1.5 text-[11px] text-[#8C5D00] font-semibold">
+                      <Clock className="w-3 h-3" />
+                      {post.readTime}
                     </div>
                   </div>
 
-                  {/* Article Body */}
-                  <div className="p-6 space-y-3">
-                    <div className="flex items-center gap-3 text-[11px] text-[#8C5D00] font-semibold">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
-                        {post.date}
-                      </span>
-                      <span>•</span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
-                        {post.readTime}
-                      </span>
-                    </div>
+                  <h3 className="font-heading font-extrabold text-xl text-[#2A1338] group-hover:text-[#8C5D00] transition-colors leading-snug">
+                    {post.title}
+                  </h3>
 
-                    <h3 className="font-heading font-extrabold text-xl text-[#2A1338] group-hover:text-[#8C5D00] transition-colors leading-snug line-clamp-2">
-                      {post.title}
-                    </h3>
-
-                    <p className="font-body text-xs text-[#5A4866] leading-relaxed line-clamp-3">
-                      {post.excerpt}
-                    </p>
-                  </div>
+                  <p className="font-body text-xs text-[#5A4866] leading-relaxed">
+                    {post.excerpt}
+                  </p>
                 </div>
 
                 {/* Card Footer */}
-                <div className="px-6 pb-6 pt-2 border-t border-[#DFC47A]/30 flex items-center justify-between">
-                  <span className="text-[11px] text-[#5A4866] font-medium italic">
-                    By {post.author}
-                  </span>
+                <div className="pt-4 border-t border-[#DFC47A]/30 flex items-center justify-between">
+                  <div className="flex items-center gap-1.5 text-[11px] text-[#5A4866] font-medium italic">
+                    <User className="w-3 h-3 text-[#8C5D00]" />
+                    <span>By {post.author}</span>
+                  </div>
                   <Link
-                    href="/sciences"
+                    href={post.link || '/contributorship'}
                     className="text-xs font-bold text-[#8C5D00] group-hover:text-[#351A4A] flex items-center gap-1 transition-colors"
                   >
-                    <span>Read More</span>
+                    <span>Read Article</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>

@@ -1,0 +1,11 @@
+# Divya Yogam Robots.txt
+User-agent: *
+Allow: /
+
+# Disallow Private & Admin Areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+
+# Sitemap Location
+Sitemap: https://divyayogam.org/sitemap.xml

@@ -84,11 +84,11 @@ export default function AdminSeoPage() {
           <div className="space-y-1">
             <div className="flex items-center gap-2">
               <Link
-                href="/contributorship"
+                href="/admin/dashboard"
                 className="inline-flex items-center gap-1 text-xs font-bold text-[#8C5D00] hover:text-[#352043] transition-colors"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Back to Membership Page</span>
+                <span>Back to Admin Dashboard</span>
               </Link>
               <span className="text-[#DFC47A]">•</span>
               <span className="px-2.5 py-0.5 rounded-full bg-[#352043] text-[#DFC47A] text-[10px] font-bold uppercase tracking-wider">
@@ -119,11 +119,11 @@ export default function AdminSeoPage() {
         <div className="flex flex-wrap items-center justify-between gap-4 bg-white/90 backdrop-blur-md p-2 rounded-2xl border-2 border-[#DFC47A] shadow-lg">
           <div className="flex items-center gap-2">
             <Link
-              href="/admin/memberships"
+              href="/admin/dashboard"
               className="px-5 py-3 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2.5 transition-all text-[#352043] hover:bg-[#FAF5EF]"
             >
               <Users className="w-4 h-4 text-[#8C5D00]" />
-              <span>Subscribers & Revenue</span>
+              <span>Dashboard & Analytics</span>
             </Link>
 
             <Link

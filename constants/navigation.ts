@@ -14,6 +14,7 @@ export const NAV_LINKS: NavItem[] = [
       { name: 'Foundation Story', path: '/foundation-story' },
       { name: 'Vision & Mission', path: '/vision' },
       { name: 'Publications', path: '/publication' },
+      { name: 'Sciences Overview', path: '/sciences' },
     ],
   },
   {
@@ -26,17 +27,6 @@ export const NAV_LINKS: NavItem[] = [
       { name: 'Wellness & Services', path: '/wellness-services' },
     ],
   },
-
-  {
-    name: 'Sciences',
-    path: '/sciences',
-    children: [
-      { name: 'Sciences Overview', path: '/sciences' },
-      { name: 'Blog', path: '/blog' },
-    ],
-  },
-
-
   {
     name: 'Events',
     path: '/events',
@@ -54,6 +44,10 @@ export const NAV_LINKS: NavItem[] = [
       { name: 'Spiral Meditation Maala', path: '/maala' },
       { name: 'Spiral Meditation Contribution', path: '/shambala-contribution' },
     ],
+  },
+  {
+    name: 'Blog',
+    path: '/blog',
   },
   {
     name: 'Transformation',

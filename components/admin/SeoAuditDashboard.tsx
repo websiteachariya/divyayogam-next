@@ -49,9 +49,9 @@ const defaultSiteRoutesData: RouteSeoData[] = [
     path: '/',
     name: 'Home Page',
     category: 'Core',
-    title: 'Divya Yogam — Awaken Within | Organ Meditation & Sacred Sciences',
-    description: 'Discover profound inner stillness, cellular organ rejuvenation, and sacred Vedic wisdom with Divya Yogam guided by Arawindhan Ji.',
-    keywords: ['Divya Yogam', 'Arawindhan Ji', 'Organ Meditation', 'Quantum Habits', 'Vedic Sciences', 'Cellular Rejuvenation'],
+    title: 'Divya Yogam - Spiritual Meditation & Inner Transformation',
+    description: 'Experience inner peace, spiritual awakening, and guided organ meditation through Divya Yogam’s sacred Vedic practices and transformative journeys.',
+    keywords: ['Divya Yogam', 'Inner peace medidation', 'Organ meditation', 'Inner transformation', 'Self transformation', 'Arawindhan Ji', 'Quantum Habits'],
     canonical: 'https://divyayogam.org/',
     ogImage: '/images/011A6549.webp',
     ogType: 'website',
@@ -62,13 +62,13 @@ const defaultSiteRoutesData: RouteSeoData[] = [
     score: 100,
   },
   {
-    path: '/membership',
-    name: 'Membership Page',
+    path: '/contributorship',
+    name: 'Contributorship Page',
     category: 'Memberships',
-    title: 'Divine Membership Plans — Gold, Platinum & Diamond | Divya Yogam',
-    description: 'Join Divya Yogam with Gold (₹500), Platinum (₹1,500), or Diamond (₹5,000) membership. Includes Avadhani sessions, goal sheet enrichment, and holistic wellness.',
-    keywords: ['Divya Yogam Membership', 'Gold Plan', 'Platinum Plan', 'Diamond Plan', 'Avadhani Session', 'Goal Sheet Enrichment'],
-    canonical: 'https://divyayogam.org/membership',
+    title: 'Divya Yogam Contributorship — Gold, Platinum & Diamond Plans',
+    description: 'Join Divya Yogam Contributorship with Gold (₹500), Platinum (₹1,500), or Diamond (₹5,000) contribution. Includes Avadhani sessions, goal sheet enrichment, and holistic wellness.',
+    keywords: ['Divya Yogam Contributorship', 'Gold Plan', 'Platinum Plan', 'Diamond Plan', 'Avadhani Session', 'Goal Sheet Enrichment'],
+    canonical: 'https://divyayogam.org/contributorship',
     ogImage: '/images/banner-4.webp',
     ogType: 'website',
     twitterCard: 'summary_large_image',
@@ -331,7 +331,7 @@ const siteImagesAudit = [
 
 export default function SeoAuditDashboard() {
   const [routesData, setRoutesData] = useState<RouteSeoData[]>(defaultSiteRoutesData);
-  const [selectedRoutePath, setSelectedRoutePath] = useState<string>('/membership');
+  const [selectedRoutePath, setSelectedRoutePath] = useState<string>('/contributorship');
   const [categoryFilter, setCategoryFilter] = useState<string>('ALL');
   const [searchQuery, setSearchQuery] = useState('');
   const [copiedTag, setCopiedTag] = useState(false);
@@ -346,7 +346,18 @@ export default function SeoAuditDashboard() {
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          setRoutesData(parsed);
+          const updated = parsed.map((item: any) => {
+            if (item.path === '/membership') {
+              return {
+                ...item,
+                path: '/contributorship',
+                name: 'Contributorship Page',
+                canonical: 'https://divyayogam.org/contributorship',
+              };
+            }
+            return item;
+          });
+          setRoutesData(updated);
         }
       }
     } catch (err) {
