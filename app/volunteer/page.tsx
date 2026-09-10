@@ -131,7 +131,7 @@ export default function VolunteerPage() {
       {/* HERO SECTION */}
       <header className="relative bg-gradient-to-b from-[#351A4A] via-[#2A133B] to-[#200D2E] pt-36 sm:pt-40 md:pt-44 lg:pt-48 pb-16 sm:pb-20 text-center text-white overflow-hidden">
         {/* Left Side Accent Image */}
-        <div className="absolute top-[55%] sm:top-[53%] lg:top-1/2 left-0 -translate-y-1/2 opacity-60 sm:opacity-75 pointer-events-none w-24 h-24 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-[340px] lg:h-[340px] -translate-x-1/4 sm:translate-x-0">
+        <div className="absolute top-[55%] sm:top-[53%] lg:top-1/2 left-0 -translate-y-1/2 opacity-60 sm:opacity-70 md:opacity-75 lg:opacity-80 xl:opacity-85 pointer-events-none w-20 h-20 min-[420px]:w-28 min-[420px]:h-28 sm:w-36 sm:h-36 md:w-52 md:h-52 lg:w-[320px] lg:h-[320px] xl:w-[440px] xl:h-[440px] 2xl:w-[520px] 2xl:h-[520px] -translate-x-1/4 sm:translate-x-0 transition-all duration-300">
           <Image
             src="/images/test-1.webp"
             alt="Left Sacred Ornament"
@@ -142,7 +142,7 @@ export default function VolunteerPage() {
         </div>
 
         {/* Right Side Accent Image */}
-        <div className="absolute top-[55%] sm:top-[53%] lg:top-1/2 right-0 -translate-y-1/2 opacity-60 sm:opacity-75 pointer-events-none w-24 h-24 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-[340px] lg:h-[340px] translate-x-1/4 sm:translate-x-0 scale-x-[-1]">
+        <div className="absolute top-[55%] sm:top-[53%] lg:top-1/2 right-0 -translate-y-1/2 opacity-60 sm:opacity-70 md:opacity-75 lg:opacity-80 xl:opacity-85 pointer-events-none w-20 h-20 min-[420px]:w-28 min-[420px]:h-28 sm:w-36 sm:h-36 md:w-52 md:h-52 lg:w-[320px] lg:h-[320px] xl:w-[440px] xl:h-[440px] 2xl:w-[520px] 2xl:h-[520px] translate-x-1/4 sm:translate-x-0 scale-x-[-1] transition-all duration-300">
           <Image
             src="/images/test-1.webp"
             alt="Right Sacred Ornament"
@@ -207,12 +207,18 @@ export default function VolunteerPage() {
 
       {/* SEVAK PILLARS & ENROLLMENT SECTION */}
       <section className="py-12 sm:py-16 relative overflow-hidden">
+        {/* Rich Sandal Texture Background Overlay (con-6.webp) matching About & Contact Page */}
+        <div
+          className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+          }}
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
           
-
-
           {/* VOLUNTEER REGISTRATION FORM CARD */}
-          <div className="luxury-card rounded-[32px] p-8 sm:p-12 md:p-14 border-2 border-[#DFC47A]/60 bg-gradient-to-br from-white via-[#FAF5EF]/95 to-[#F8F2E8]/95 shadow-xl relative overflow-hidden space-y-8">
+          <div className="luxury-card rounded-[32px] p-8 sm:p-12 md:p-14 border-2 border-[#DFC47A]/70 bg-white/95 backdrop-blur-md shadow-2xl relative overflow-hidden space-y-8 max-w-5xl mx-auto">
             
             <div className="text-center max-w-3xl mx-auto space-y-3">
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#352043] text-[#DFC47A] text-xs font-extrabold uppercase tracking-widest shadow-md">
