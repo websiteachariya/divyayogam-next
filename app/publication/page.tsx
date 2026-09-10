@@ -314,12 +314,8 @@ export default function PublicationPage() {
               >
                 {/* Book Image Cover Frame */}
                 <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-b from-[#FAF7F2] to-[#FAF5EF] border border-[#DFC47A]/40 flex items-center justify-center p-3 shadow-inner group-hover:border-[#DFC47A] transition-colors">
-                  {book.isBestseller && (
-                    <span className="absolute top-3 right-3 z-20 px-3 py-1 rounded-full bg-[#DFC47A] text-[#2B083A] text-[10px] font-extrabold uppercase tracking-wider shadow-md border border-white/60">
-                      Featured Work
-                    </span>
-                  )}
-                  
+                
+
                   <div className="relative w-full h-full transform group-hover:scale-105 transition-transform duration-500 flex items-center justify-center">
                     <Image
                       src={book.frontCover}

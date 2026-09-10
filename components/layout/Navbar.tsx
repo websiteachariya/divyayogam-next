@@ -17,6 +17,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileAccordion, setMobileAccordion] = useState<string | null>(null);
   const [user, setUser] = useState<any>(null);
   const pathname = usePathname();
 
@@ -53,6 +54,7 @@ export default function Navbar() {
   useEffect(() => {
     setIsMobileOpen(false);
     setActiveDropdown(null);
+    setMobileAccordion(null);
   }, [pathname]);
 
   const isActive = (path?: string) => {
@@ -362,31 +364,62 @@ export default function Navbar() {
                 {menuLinks.map((link) => {
                   const hasChildren = link.children && link.children.length > 0;
                   const parentActive = isParentActive(link);
+                  const isAccordionOpen = mobileAccordion === link.name;
 
                   if (hasChildren) {
                     return (
-                      <div key={link.name} className="space-y-1 py-0.5">
-                        <div className="text-xs sm:text-sm font-extrabold text-[#8C5D00] uppercase tracking-[0.2em] border-b border-[#E9DED3] pb-0.5 mb-0.5">
-                          {link.name}
-                        </div>
-                        <div className="space-y-0.5 pl-2">
-                          {link.children?.map((subItem) => {
-                            const childActive = isActive(subItem.path);
-                            return (
-                              <Link
-                                key={subItem.path}
-                                href={subItem.path}
-                                onClick={() => setIsMobileOpen(false)}
-                                className={`block text-sm sm:text-base tracking-wider font-bold uppercase py-1 px-3 rounded-lg transition-all duration-200 ${childActive
-                                    ? 'text-[#C8A34A] bg-[#47206A]/5 font-extrabold'
-                                    : 'text-[#47206A] hover:text-[#C8A34A]'
-                                  }`}
-                              >
-                                {subItem.name}
-                              </Link>
-                            );
-                          })}
-                        </div>
+                      <div key={link.name} className="border-b border-[#E9DED3]/60 last:border-b-0">
+                        <button
+                          onClick={() => setMobileAccordion(isAccordionOpen ? null : link.name)}
+                          className={`w-full flex items-center justify-between py-2.5 px-3 rounded-xl transition-all duration-200 cursor-pointer ${
+                            parentActive || isAccordionOpen
+                              ? 'text-[#C8A34A] bg-[#47206A]/5'
+                              : 'text-[#47206A] hover:bg-[#47206A]/5'
+                          }`}
+                        >
+                          <span className={`text-sm sm:text-base tracking-[0.15em] font-extrabold uppercase ${
+                            parentActive ? 'text-[#C8A34A]' : ''
+                          }`}>
+                            {link.name}
+                          </span>
+                          <ChevronDown
+                            className={`w-4 h-4 text-[#8C5D00] transition-transform duration-300 ${
+                              isAccordionOpen ? 'rotate-180' : ''
+                            }`}
+                          />
+                        </button>
+
+                        <AnimatePresence initial={false}>
+                          {isAccordionOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.25, ease: 'easeInOut' }}
+                              className="overflow-hidden"
+                            >
+                              <div className="pl-4 pr-2 pb-2 space-y-0.5">
+                                {link.children?.map((subItem) => {
+                                  const childActive = isActive(subItem.path);
+                                  return (
+                                    <Link
+                                      key={subItem.path}
+                                      href={subItem.path}
+                                      onClick={() => setIsMobileOpen(false)}
+                                      className={`block text-[13px] sm:text-sm tracking-wider font-bold uppercase py-2 px-3 rounded-lg transition-all duration-200 ${
+                                        childActive
+                                          ? 'text-[#C8A34A] bg-[#47206A]/10 font-extrabold'
+                                          : 'text-[#47206A]/80 hover:text-[#C8A34A] hover:bg-[#47206A]/5'
+                                      }`}
+                                    >
+                                      {subItem.name}
+                                    </Link>
+                                  );
+                                })}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
                     );
                   }
@@ -396,10 +429,11 @@ export default function Navbar() {
                       key={link.path}
                       href={link.path || '#'}
                       onClick={() => setIsMobileOpen(false)}
-                      className={`text-sm sm:text-base tracking-[0.15em] font-bold uppercase transition-all duration-300 py-1 px-3 rounded-lg w-full text-center ${parentActive
-                          ? 'text-[#C8A34A] font-extrabold'
-                          : 'text-[#47206A] hover:text-[#C8A34A]'
-                        }`}
+                      className={`block text-sm sm:text-base tracking-[0.15em] font-extrabold uppercase transition-all duration-300 py-2.5 px-3 rounded-xl w-full text-left border-b border-[#E9DED3]/60 last:border-b-0 ${
+                        parentActive
+                          ? 'text-[#C8A34A] bg-[#47206A]/5'
+                          : 'text-[#47206A] hover:text-[#C8A34A] hover:bg-[#47206A]/5'
+                      }`}
                     >
                       {link.name}
                     </Link>

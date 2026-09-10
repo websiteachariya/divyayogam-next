@@ -12,22 +12,22 @@ export default function TestimonialsPage() {
     setPlayingVideos((prev) => ({ ...prev, [id]: true }));
   };
 
-  const videoIds = [
-    'GqDjm6amEu0',
-    '5Ut6CCT_Gms',
-    'G_otnJtf1qs',
-    'XA0KtAyh6dE',
-    'g1z50SgRisM',
-    '-UnFkMbnXs8',
-    'TXARPCnXUwM',
-    'vq2XTPdfttA',
-    'VRgLuk0Etjw',
-    'ubDdVwaOKbI',
-    'nu3F8DD1nmo',
-    'HwA-qgzVWEk',
-    'xLCFA-8bjH0',
-    'PyP9Rs_iI58',
-    'lZZxM58Uy7s',
+  const videos = [
+    { id: 'GqDjm6amEu0', title: 'Sacred Organ Meditation Experience', category: 'Transformation Story' },
+    { id: '5Ut6CCT_Gms', title: 'Divine Yogam Awakening Journey', category: 'Seeker Testimonial' },
+    { id: 'G_otnJtf1qs', title: 'Inner Healing & Energy Elevation', category: 'Practitioner Review' },
+    { id: 'XA0KtAyh6dE', title: 'Quantum Habits & Daily Meditation', category: 'Life Transformation' },
+    { id: 'g1z50SgRisM', title: 'Spiral Meditation Maala Experience', category: 'Spiritual Growth' },
+    { id: '-UnFkMbnXs8', title: 'Shambala Contribution Journey', category: 'Global Family' },
+    { id: 'TXARPCnXUwM', title: 'Deep Dhyana & Consciousness', category: 'Meditation Story' },
+    { id: 'vq2XTPdfttA', title: 'Sacred Science of Wellness', category: 'Healing Testimonial' },
+    { id: 'VRgLuk0Etjw', title: 'Awakening Within — Divine Grace', category: 'Personal Journey' },
+    { id: 'ubDdVwaOKbI', title: 'Mindfulness & Harmony Practices', category: 'Wisdom Sharing' },
+    { id: 'nu3F8DD1nmo', title: 'Sacred Class Progression Story', category: 'Class Experience' },
+    { id: 'HwA-qgzVWEk', title: 'Self Realization & Peace', category: 'Transformation Story' },
+    { id: 'xLCFA-8bjH0', title: 'Divineyogam Organ Rejuvenation', category: 'Health & Vitality' },
+    { id: 'PyP9Rs_iI58', title: 'Global Online Sanctuary Experience', category: 'Community Voice' },
+    { id: 'lZZxM58Uy7s', title: 'Sacred Pilgrimage & Divine Bliss', category: 'Sacred Journey' },
   ];
 
   return (
@@ -141,24 +141,24 @@ export default function TestimonialsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-            {videoIds.map((id, idx) => {
-              const isPlaying = playingVideos[id];
+            {videos.map((item, idx) => {
+              const isPlaying = playingVideos[item.id];
 
               return (
                 <motion.div
-                  key={id}
+                  key={item.id}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: (idx % 3) * 0.1 }}
-                  className="relative p-3 rounded-tl-[48px] rounded-br-[48px] rounded-tr-[20px] rounded-bl-[20px] border-2 border-[#DFC47A] bg-gradient-to-b from-white via-[#FFFDF9] to-[#FAF4EB] shadow-xl hover:border-[#8C5D00] hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 group"
+                  className="relative p-2.5 sm:p-3 rounded-tl-[48px] rounded-br-[48px] rounded-tr-[20px] rounded-bl-[20px] border-2 border-[#DFC47A] bg-gradient-to-b from-white via-[#FFFDF9] to-[#FAF4EB] shadow-xl hover:border-[#8C5D00] hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 group"
                 >
                   {/* Video Container with matching asymmetric leaf curve */}
                   <div className="relative w-full aspect-video rounded-tl-[38px] rounded-br-[38px] rounded-tr-[12px] rounded-bl-[12px] overflow-hidden bg-black border border-[#DFC47A]/40 shadow-inner">
                     {isPlaying ? (
                       <iframe
                         suppressHydrationWarning
-                        src={`https://www.youtube.com/embed/${id}?autoplay=1&enablejsapi=1`}
+                        src={`https://www.youtube.com/embed/${item.id}?autoplay=1&enablejsapi=1`}
                         title={`Testimonial Video ${idx + 1}`}
                         className="w-full h-full border-0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -166,18 +166,25 @@ export default function TestimonialsPage() {
                       />
                     ) : (
                       <div
-                        onClick={() => handlePlayVideo(id)}
-                        className="w-full h-full bg-cover bg-center cursor-pointer relative flex items-center justify-center group/btn"
-                        style={{
-                          backgroundImage: `url('https://img.youtube.com/vi/${id}/hqdefault.webp')`,
-                        }}
+                        onClick={() => handlePlayVideo(item.id)}
+                        className="w-full h-full cursor-pointer relative flex items-center justify-center group/btn overflow-hidden"
                       >
+                        <img
+                          src={`https://i.ytimg.com/vi/${item.id}/hqdefault.jpg`}
+                          alt={`Divya Yogam Seeker Testimonial Video ${idx + 1}`}
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover/btn:scale-105"
+                          onError={(e: any) => {
+                            e.target.onerror = null;
+                            e.target.src = `https://img.youtube.com/vi/${item.id}/0.jpg`;
+                          }}
+                        />
+
                         {/* Dark Overlay gradient */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent group-hover/btn:from-black/30 transition-colors" />
 
-                        {/* Custom Violet & Gold Play Button */}
-                        <div className="relative z-10 w-15 h-15 sm:w-16 sm:h-16 rounded-full bg-[#47206A] border-3 border-[#DFC47A] flex items-center justify-center shadow-[0_8px_25px_rgba(71,32,106,0.6)] group-hover/btn:scale-110 group-hover/btn:bg-[#8C5D00] group-hover/btn:border-white transition-all duration-300">
-                          <Play className="w-6 h-6 text-[#DFC47A] group-hover/btn:text-white fill-[#DFC47A] group-hover/btn:fill-white translate-x-0.5" />
+                        {/* Custom Violet & Gold Play Button - Reduced size on lg screens */}
+                        <div className="relative z-10 w-12 h-12 sm:w-14 sm:h-14 lg:w-12 lg:h-12 rounded-full bg-[#47206A] border-2 border-[#DFC47A] flex items-center justify-center shadow-[0_6px_20px_rgba(71,32,106,0.6)] group-hover/btn:scale-110 group-hover/btn:bg-[#8C5D00] group-hover/btn:border-white transition-all duration-300">
+                          <Play className="w-5 h-5 text-[#DFC47A] group-hover/btn:text-white fill-[#DFC47A] group-hover/btn:fill-white translate-x-0.5" />
                         </div>
                       </div>
                     )}

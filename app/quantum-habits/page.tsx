@@ -504,6 +504,33 @@ export default function QuantumHabitsPage() {
             </div>
           )}
 
+          {/* Action Buttons below Panchakosha & Seven Chakras (Matching Royal Purple & Gold Style) */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6 font-body">
+            <div className="relative group inline-block w-full sm:w-auto">
+              <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#DFC47A] via-[#C8A34A] to-[#DFC47A] opacity-80 blur-md group-hover:opacity-100 animate-pulse transition-all" />
+              <Link
+                href="/contributorship"
+                className="relative z-10 inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-[#DFC47A] hover:text-[#47206A] border-2 border-[#DFC47A] font-extrabold text-xs uppercase tracking-wider shadow-xl hover:scale-105 transition-all duration-300 group cursor-pointer whitespace-nowrap w-full sm:w-auto"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-[#DFC47A] group-hover:rotate-12 transition-transform shrink-0" />
+                <span>DIVYA YOGAM CONTRIBUTORSHIP</span>
+                <ArrowRight className="w-3.5 h-3.5 shrink-0" />
+              </Link>
+            </div>
+
+            <div className="relative group inline-block w-full sm:w-auto">
+              <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#DFC47A] via-[#C8A34A] to-[#DFC47A] opacity-80 blur-md group-hover:opacity-100 animate-pulse transition-all" />
+              <Link
+                href="/classes"
+                className="relative z-10 inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-[#DFC47A] hover:text-[#47206A] border-2 border-[#DFC47A] font-extrabold text-xs uppercase tracking-wider shadow-xl hover:scale-105 transition-all duration-300 group cursor-pointer whitespace-nowrap w-full sm:w-auto"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-[#DFC47A] group-hover:rotate-12 transition-transform shrink-0" />
+                <span>DIVYA YOGAM CLASSES</span>
+                <ArrowRight className="w-3.5 h-3.5 shrink-0" />
+              </Link>
+            </div>
+          </div>
+
         </div>
       </section>
 

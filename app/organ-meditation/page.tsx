@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import {
   GraduationCap,
   Sparkles,
@@ -211,6 +212,33 @@ export default function OrganMeditationPage() {
                 Inner Peace, Emotional Well-being<br />
                 &amp; Holistic Development
               </p>
+
+              {/* Two Action Buttons: Contributorship & Classes (Matching Royal Purple & Gold Style) */}
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-3 font-body">
+                <div className="relative group inline-block w-full sm:w-auto">
+                  <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#DFC47A] via-[#C8A34A] to-[#DFC47A] opacity-80 blur-md group-hover:opacity-100 animate-pulse transition-all" />
+                  <Link
+                    href="/contributorship"
+                    className="relative z-10 inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-[#DFC47A] hover:text-[#47206A] border-2 border-[#DFC47A] font-extrabold text-xs uppercase tracking-wider shadow-xl hover:scale-105 transition-all duration-300 group cursor-pointer whitespace-nowrap w-full sm:w-auto"
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-[#DFC47A] group-hover:rotate-12 transition-transform shrink-0" />
+                    <span>DIVYA YOGAM CONTRIBUTORSHIP</span>
+                    <ArrowRight className="w-3.5 h-3.5 shrink-0" />
+                  </Link>
+                </div>
+
+                <div className="relative group inline-block w-full sm:w-auto">
+                  <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#DFC47A] via-[#C8A34A] to-[#DFC47A] opacity-80 blur-md group-hover:opacity-100 animate-pulse transition-all" />
+                  <Link
+                    href="/classes"
+                    className="relative z-10 inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-[#DFC47A] hover:text-[#47206A] border-2 border-[#DFC47A] font-extrabold text-xs uppercase tracking-wider shadow-xl hover:scale-105 transition-all duration-300 group cursor-pointer whitespace-nowrap w-full sm:w-auto"
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-[#DFC47A] group-hover:rotate-12 transition-transform shrink-0" />
+                    <span>DIVYA YOGAM CLASSES</span>
+                    <ArrowRight className="w-3.5 h-3.5 shrink-0" />
+                  </Link>
+                </div>
+              </div>
             </motion.div>
 
             {/* Hero Right Blended Artwork (Integrated directly into section background) */}
@@ -344,8 +372,35 @@ export default function OrganMeditationPage() {
 
           </div>
 
+          {/* Action Buttons (Contributorship & Classes) above Weekly Schedule */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 my-10 font-body">
+            <div className="relative group inline-block w-full sm:w-auto">
+              <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#DFC47A] via-[#C8A34A] to-[#DFC47A] opacity-80 blur-md group-hover:opacity-100 animate-pulse transition-all" />
+              <Link
+                href="/contributorship"
+                className="relative z-10 inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-[#DFC47A] hover:text-[#47206A] border-2 border-[#DFC47A] font-extrabold text-xs uppercase tracking-wider shadow-xl hover:scale-105 transition-all duration-300 group cursor-pointer whitespace-nowrap w-full sm:w-auto"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-[#DFC47A] group-hover:rotate-12 transition-transform shrink-0" />
+                <span>DIVYA YOGAM CONTRIBUTORSHIP</span>
+                <ArrowRight className="w-3.5 h-3.5 shrink-0" />
+              </Link>
+            </div>
+
+            <div className="relative group inline-block w-full sm:w-auto">
+              <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#DFC47A] via-[#C8A34A] to-[#DFC47A] opacity-80 blur-md group-hover:opacity-100 animate-pulse transition-all" />
+              <Link
+                href="/classes"
+                className="relative z-10 inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-[#DFC47A] hover:text-[#47206A] border-2 border-[#DFC47A] font-extrabold text-xs uppercase tracking-wider shadow-xl hover:scale-105 transition-all duration-300 group cursor-pointer whitespace-nowrap w-full sm:w-auto"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-[#DFC47A] group-hover:rotate-12 transition-transform shrink-0" />
+                <span>DIVYA YOGAM CLASSES</span>
+                <ArrowRight className="w-3.5 h-3.5 shrink-0" />
+              </Link>
+            </div>
+          </div>
+
           {/* WEEKLY SCHEDULE HEADER */}
-          <div className="text-center max-w-3xl mx-auto mb-10 space-y-3 pt-6">
+          <div className="text-center max-w-3xl mx-auto mb-10 space-y-3 pt-4">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#352043] text-[#DFC47A] border border-[#DFC47A]/40 text-xs font-extrabold uppercase tracking-widest shadow-md">
               <Calendar className="w-3.5 h-3.5 text-[#DFC47A]" />
               <span>WEEKLY SCHEDULE</span>
@@ -704,6 +759,8 @@ export default function OrganMeditationPage() {
 
             </div>
           </motion.div>
+
+         
 
         </div>
       </section>

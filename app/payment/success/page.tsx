@@ -4,7 +4,7 @@ import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { CheckCircle2, ShieldCheck, ArrowRight, Home, BookOpen, Clock } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, ArrowRight, Home, BookOpen, Clock, Download } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
@@ -62,36 +62,47 @@ function PaymentSuccessContent() {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-white/90 backdrop-blur-xl rounded-3xl border-2 border-amber-400 p-8 sm:p-12 shadow-2xl text-center space-y-6 max-w-xl mx-auto"
+        className="p-8 sm:p-12 rounded-3xl border-4 text-center space-y-6 max-w-xl mx-auto shadow-2xl relative z-20"
+        style={{
+          background: 'linear-gradient(135deg, #2A0818 0%, #4A1028 100%)',
+          borderColor: '#F87171',
+          color: '#FFFFFF',
+        }}
       >
-        <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto text-amber-600 border-2 border-amber-300 shadow-md">
-          <Clock className="w-10 h-10" />
+        <div className="w-16 h-16 bg-[#F87171] rounded-full flex items-center justify-center mx-auto text-white border-2 border-white shadow-lg">
+          <Clock className="w-10 h-10 stroke-[2.5]" />
         </div>
 
         <div className="space-y-2">
-          <h1 className="text-2xl sm:text-3xl font-extrabold font-heading text-[#47206A]">
+          <h1 className="text-2xl sm:text-3xl font-black font-heading tracking-wide text-[#FCA5A5]">
             Payment Not Completed
           </h1>
-          <p className="text-xs sm:text-sm text-amber-900 font-semibold max-w-md mx-auto">
+          <p className="text-sm sm:text-base font-bold text-white max-w-md mx-auto leading-relaxed">
             {errorMsg || 'The payment was not completed or was cancelled at checkout.'}
           </p>
         </div>
 
         {orderId && (
-          <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#E9DED3] text-left text-xs space-y-2">
-            <div className="flex justify-between py-1 border-b border-gray-100">
-              <span className="text-gray-500">Cashfree Order ID:</span>
-              <span className="font-mono font-bold text-[#47206A]">{orderId}</span>
+          <div
+            className="p-4 sm:p-5 rounded-2xl text-left text-xs sm:text-sm max-w-md mx-auto space-y-2.5 shadow-inner border"
+            style={{
+              background: '#1D0410',
+              borderColor: 'rgba(248, 113, 113, 0.4)',
+            }}
+          >
+            <div className="flex justify-between items-center py-1 border-b border-white/10">
+              <span className="font-extrabold text-[#FCA5A5]">Cashfree Order ID:</span>
+              <span className="font-mono font-black text-white text-sm tracking-wider">{orderId}</span>
             </div>
             {orderInfo && (
               <>
-                <div className="flex justify-between py-1 border-b border-gray-100">
-                  <span className="text-gray-500">Order Status:</span>
-                  <span className="font-bold text-amber-700">{orderInfo.status || 'USER_CANCELLED'}</span>
+                <div className="flex justify-between items-center py-1 border-b border-white/10">
+                  <span className="font-extrabold text-[#FCA5A5]">Order Status:</span>
+                  <span className="font-black text-[#F87171]">{orderInfo.status || 'USER_CANCELLED'}</span>
                 </div>
-                <div className="flex justify-between py-1">
-                  <span className="text-gray-500">Amount:</span>
-                  <span className="font-bold text-[#47206A]">₹{orderInfo.finalAmount?.toLocaleString()}</span>
+                <div className="flex justify-between items-center py-1">
+                  <span className="font-extrabold text-[#FCA5A5]">Amount:</span>
+                  <span className="font-black text-white">₹{orderInfo.finalAmount?.toLocaleString()}</span>
                 </div>
               </>
             )}
@@ -101,16 +112,18 @@ function PaymentSuccessContent() {
         <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/classes"
-            className="px-6 py-3.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-bold text-xs uppercase tracking-wider shadow-md transition-all flex items-center justify-center gap-2"
+            className="px-7 py-3.5 rounded-full font-black text-xs sm:text-sm uppercase tracking-wider shadow-xl transition-all flex items-center justify-center gap-2"
+            style={{ background: '#DFC47A', color: '#1C0526' }}
           >
             <span>Return to Classes</span>
-            <ArrowRight className="w-4 h-4 text-[#DFC47A]" />
+            <ArrowRight className="w-4 h-4 stroke-[3]" />
           </Link>
           <Link
             href="/user/dashboard"
-            className="px-6 py-3.5 rounded-full bg-[#FAF7F2] text-[#47206A] border border-[#DFC47A] font-bold text-xs uppercase tracking-wider hover:bg-[#47206A] hover:text-white transition-all flex items-center justify-center gap-2"
+            className="px-6 py-3.5 rounded-full font-bold text-xs sm:text-sm uppercase tracking-wider transition-all text-center shadow-md hover:bg-white hover:text-black"
+            style={{ background: 'rgba(255, 255, 255, 0.15)', color: '#FFFFFF', border: '1px solid rgba(255, 255, 255, 0.3)' }}
           >
-            <span>User Dashboard</span>
+            User Dashboard
           </Link>
         </div>
       </motion.div>
@@ -121,36 +134,47 @@ function PaymentSuccessContent() {
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="bg-white/90 backdrop-blur-xl rounded-3xl border-2 border-emerald-400 p-8 sm:p-12 shadow-2xl text-center space-y-6 max-w-xl mx-auto"
+      className="p-8 sm:p-12 rounded-3xl border-4 text-center space-y-6 max-w-xl mx-auto shadow-2xl relative z-20"
+      style={{
+        background: 'linear-gradient(135deg, #1C0526 0%, #3B1554 100%)',
+        borderColor: '#DFC47A',
+        color: '#FFFFFF',
+      }}
     >
-      <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto text-emerald-600 border-2 border-emerald-300 shadow-md">
-        <CheckCircle2 className="w-10 h-10" />
+      <div className="w-16 h-16 bg-[#DFC47A] rounded-full flex items-center justify-center mx-auto text-[#1C0526] border-2 border-white shadow-lg">
+        <CheckCircle2 className="w-10 h-10 stroke-[2.5]" />
       </div>
 
       <div className="space-y-2">
-        <h1 className="text-3xl font-extrabold font-heading text-[#47206A]">
+        <h1 className="text-3xl font-black font-heading tracking-wide text-[#DFC47A]">
           Payment Successful!
         </h1>
-        <p className="text-xs sm:text-sm text-emerald-800 font-semibold">
+        <p className="text-sm sm:text-base font-bold text-white max-w-md mx-auto leading-relaxed">
           Your Cashfree payment has been verified and your purchase is activated.
         </p>
       </div>
 
       {orderId && (
-        <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#E9DED3] text-left text-xs space-y-2">
-          <div className="flex justify-between py-1 border-b border-gray-100">
-            <span className="text-gray-500">Cashfree Order ID:</span>
-            <span className="font-mono font-bold text-[#47206A]">{orderId}</span>
+        <div
+          className="p-4 sm:p-5 rounded-2xl text-left text-xs sm:text-sm max-w-md mx-auto space-y-2.5 shadow-inner border"
+          style={{
+            background: '#12031A',
+            borderColor: 'rgba(223, 196, 122, 0.4)',
+          }}
+        >
+          <div className="flex justify-between items-center py-1 border-b border-white/10">
+            <span className="font-extrabold text-[#DFC47A]">Cashfree Order ID:</span>
+            <span className="font-mono font-black text-white text-sm tracking-wider">{orderId}</span>
           </div>
           {orderInfo && (
             <>
-              <div className="flex justify-between py-1 border-b border-gray-100">
-                <span className="text-gray-500">Order Type:</span>
-                <span className="font-bold text-[#8C5D00]">{orderInfo.orderType}</span>
+              <div className="flex justify-between items-center py-1 border-b border-white/10">
+                <span className="font-extrabold text-[#DFC47A]">Order Type:</span>
+                <span className="font-black text-[#DFC47A]">{orderInfo.orderType}</span>
               </div>
-              <div className="flex justify-between py-1">
-                <span className="text-gray-500">Total Amount:</span>
-                <span className="font-bold text-[#47206A]">₹{orderInfo.finalAmount?.toLocaleString()}</span>
+              <div className="flex justify-between items-center py-1">
+                <span className="font-extrabold text-[#DFC47A]">Total Amount:</span>
+                <span className="font-black text-white">₹{orderInfo.finalAmount?.toLocaleString()}</span>
               </div>
             </>
           )}
@@ -160,10 +184,11 @@ function PaymentSuccessContent() {
       <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
         <Link
           href="/user/dashboard"
-          className="px-6 py-3.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-bold text-xs uppercase tracking-wider shadow-md transition-all flex items-center justify-center gap-2"
+          className="px-7 py-3.5 rounded-full font-black text-xs sm:text-sm uppercase tracking-wider shadow-xl transition-all flex items-center justify-center gap-2 hover:scale-105"
+          style={{ background: '#DFC47A', color: '#1C0526' }}
         >
           <span>Go to User Dashboard</span>
-          <ArrowRight className="w-4 h-4 text-[#DFC47A]" />
+          <ArrowRight className="w-4 h-4 stroke-[3]" />
         </Link>
       </div>
     </motion.div>

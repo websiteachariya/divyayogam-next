@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Sparkles, Calendar, CheckCircle2, AlertCircle, ArrowRight, User, Phone } from 'lucide-react';
+import { Sparkles, Calendar, CheckCircle2, AlertCircle, ArrowRight, User, Phone, Download } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
@@ -206,60 +206,78 @@ function MaalaContent() {
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className={`p-6 sm:p-8 rounded-3xl border-2 text-center space-y-4 shadow-xl ${
-                paymentBanner.type === 'success'
-                  ? 'bg-emerald-50/90 border-emerald-400 text-emerald-900'
-                  : 'bg-amber-50/90 border-amber-400 text-amber-900'
-              }`}
+              className="p-6 sm:p-8 rounded-3xl border-4 text-center space-y-4 shadow-2xl max-w-2xl mx-auto relative z-20"
+              style={{
+                background: paymentBanner.type === 'success'
+                  ? 'linear-gradient(135deg, #1C0526 0%, #3B1554 100%)'
+                  : 'linear-gradient(135deg, #2A0818 0%, #4A1028 100%)',
+                borderColor: paymentBanner.type === 'success' ? '#DFC47A' : '#F87171',
+                color: '#FFFFFF',
+              }}
             >
               <div className="flex flex-col items-center gap-3">
                 {paymentBanner.type === 'success' ? (
-                  <div className="w-14 h-14 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 border-2 border-emerald-300 shadow-md">
-                    <CheckCircle2 className="w-8 h-8" />
+                  <div className="w-16 h-16 bg-[#DFC47A] rounded-full flex items-center justify-center text-[#1C0526] border-2 border-white shadow-lg">
+                    <CheckCircle2 className="w-10 h-10 stroke-[2.5]" />
                   </div>
                 ) : (
-                  <div className="w-14 h-14 bg-amber-100 rounded-full flex items-center justify-center text-amber-600 border-2 border-amber-300 shadow-md">
-                    <AlertCircle className="w-8 h-8" />
+                  <div className="w-16 h-16 bg-[#F87171] rounded-full flex items-center justify-center text-white border-2 border-white shadow-lg">
+                    <AlertCircle className="w-10 h-10 stroke-[2.5]" />
                   </div>
                 )}
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-extrabold font-heading">
+                  <h3 className="text-2xl sm:text-3xl font-black font-heading tracking-wide" style={{ color: paymentBanner.type === 'success' ? '#DFC47A' : '#FCA5A5' }}>
                     {paymentBanner.type === 'success' ? 'Payment Successful!' : 'Payment Not Completed'}
                   </h3>
-                  <p className="text-xs sm:text-sm font-semibold max-w-md mx-auto mt-1">
+                  <p className="text-sm sm:text-base font-bold max-w-md mx-auto mt-2.5 leading-relaxed text-white">
                     {paymentBanner.message}
                   </p>
                 </div>
               </div>
 
               {orderId && (
-                <div className="p-3.5 rounded-2xl bg-white/80 border border-gray-200 text-left text-xs max-w-md mx-auto space-y-1 text-gray-700">
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">Offering Reference:</span>
-                    <span className="font-mono font-bold">{orderId}</span>
+                <div
+                  className="p-4 sm:p-5 rounded-2xl text-left text-xs sm:text-sm max-w-md mx-auto space-y-2.5 shadow-inner border"
+                  style={{
+                    background: '#12031A',
+                    borderColor: paymentBanner.type === 'success' ? 'rgba(223, 196, 122, 0.4)' : 'rgba(248, 113, 113, 0.4)',
+                  }}
+                >
+                  <div className="flex justify-between items-center py-1 border-b border-white/10">
+                    <span className="font-extrabold" style={{ color: paymentBanner.type === 'success' ? '#DFC47A' : '#FCA5A5' }}>
+                      Offering Reference:
+                    </span>
+                    <span className="font-mono font-black text-white text-sm tracking-wider">{orderId}</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">Status:</span>
-                    <span className={`font-bold ${paymentBanner.type === 'success' ? 'text-emerald-700' : 'text-amber-700'}`}>
+                  <div className="flex justify-between items-center py-1">
+                    <span className="font-extrabold" style={{ color: paymentBanner.type === 'success' ? '#DFC47A' : '#FCA5A5' }}>
+                      Status:
+                    </span>
+                    <span
+                      className="font-black tracking-wider text-sm"
+                      style={{ color: paymentBanner.type === 'success' ? '#34D399' : '#F87171' }}
+                    >
                       {paymentBanner.type === 'success' ? 'PAID / CONFIRMED' : 'CANCELLED / UNPAID'}
                     </span>
                   </div>
                 </div>
               )}
 
-              <div className="pt-2 flex justify-center gap-3">
+              <div className="pt-3 flex flex-wrap justify-center gap-4">
                 {paymentBanner.type === 'success' && (
                   <Link
                     href="/user/dashboard"
-                    className="px-5 py-2.5 rounded-full bg-[#47206A] text-white font-bold text-xs uppercase tracking-wider hover:bg-[#C8A34A] hover:text-[#47206A] transition-all flex items-center gap-1.5"
+                    className="px-7 py-3.5 rounded-full font-black text-xs sm:text-sm uppercase tracking-wider transition-all flex items-center gap-2 shadow-xl hover:scale-105"
+                    style={{ background: '#DFC47A', color: '#1C0526' }}
                   >
                     <span>View in Dashboard</span>
-                    <ArrowRight className="w-4 h-4 text-[#DFC47A]" />
+                    <ArrowRight className="w-4 h-4 stroke-[3]" />
                   </Link>
                 )}
                 <button
                   onClick={() => setPaymentBanner(null)}
-                  className="px-4 py-2.5 rounded-full bg-white text-gray-700 border border-gray-300 font-bold text-xs uppercase tracking-wider hover:bg-gray-100 transition-all cursor-pointer"
+                  className="px-6 py-3.5 rounded-full font-bold text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer shadow-md hover:bg-white hover:text-black"
+                  style={{ background: 'rgba(255, 255, 255, 0.15)', color: '#FFFFFF', border: '1px solid rgba(255, 255, 255, 0.3)' }}
                 >
                   Dismiss Card
                 </button>

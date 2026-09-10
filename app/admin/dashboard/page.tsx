@@ -20,7 +20,11 @@ import {
   Unlock,
   LogOut,
   RefreshCw,
-  Trash2
+  Trash2,
+  Filter,
+  X,
+  Calendar,
+  Download
 } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -34,6 +38,17 @@ export default function AdminDashboardPage() {
   const [orders, setOrders] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [updatingUserClass, setUpdatingUserClass] = useState(false);
+
+  // User filter states
+  const [userMembershipFilter, setUserMembershipFilter] = useState<string>('ALL');
+  const [userClassProgressFilter, setUserClassProgressFilter] = useState<string>('ALL');
+
+  // Order filter states
+  const [orderSearch, setOrderSearch] = useState('');
+  const [orderTypeFilter, setOrderTypeFilter] = useState<string>('ALL');
+  const [orderStatusFilter, setOrderStatusFilter] = useState<string>('ALL');
+  const [orderDateFrom, setOrderDateFrom] = useState<string>('');
+  const [orderDateTo, setOrderDateTo] = useState<string>('');
 
   useEffect(() => {
     fetchAdminData();
@@ -114,10 +129,134 @@ export default function AdminDashboardPage() {
   };
 
   const filteredUsers = users.filter((u) => {
-    if (!searchQuery) return true;
-    const q = searchQuery.toLowerCase();
-    return u.name.toLowerCase().includes(q) || u.email.toLowerCase().includes(q) || u.mobile.includes(q);
+    // Text search
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      const matchesSearch = u.name.toLowerCase().includes(q) || u.email.toLowerCase().includes(q) || u.mobile.includes(q);
+      if (!matchesSearch) return false;
+    }
+    // Membership level filter
+    if (userMembershipFilter !== 'ALL') {
+      const activeMem = u.memberships?.[0];
+      if (userMembershipFilter === 'NONE') {
+        if (activeMem) return false;
+      } else {
+        if (!activeMem || activeMem.level !== userMembershipFilter) return false;
+      }
+    }
+    // Class progress filter
+    if (userClassProgressFilter !== 'ALL') {
+      const hasStatus = u.enrollments?.some((enr: any) => enr.status === userClassProgressFilter);
+      if (!hasStatus) return false;
+    }
+    return true;
   });
+
+  const hasActiveUserFilters = searchQuery || userMembershipFilter !== 'ALL' || userClassProgressFilter !== 'ALL';
+
+  const clearAllUserFilters = () => {
+    setSearchQuery('');
+    setUserMembershipFilter('ALL');
+    setUserClassProgressFilter('ALL');
+  };
+
+  // Export Users to CSV
+  const exportUsersToCSV = () => {
+    const headers = ['Name', 'Email', 'Mobile', 'Age', 'Gender', 'Occupation', 'Organisation', 'Membership Level', 'Discount %', 'Joined Date', 'Class Progress'];
+    const rows = filteredUsers.map((u) => {
+      const activeMem = u.memberships?.[0];
+      const classProgress = u.enrollments?.map((enr: any) => `${enr.classItem?.name || 'Class'}:${enr.status}`).join(' | ') || 'None';
+      return [
+        u.name,
+        u.email,
+        u.mobile,
+        u.age,
+        u.gender,
+        u.occupation || '',
+        u.organisation || '',
+        activeMem ? activeMem.level : 'None',
+        activeMem ? activeMem.discountPercent : '0',
+        new Date(u.createdAt).toLocaleDateString(),
+        classProgress
+      ];
+    });
+
+    const csvContent = [headers, ...rows].map(row => row.map((cell: any) => `"${String(cell).replace(/"/g, '""')}"`).join(',')).join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `divyayogam_users_${new Date().toISOString().split('T')[0]}.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  // Export Orders to CSV
+  const exportOrdersToCSV = () => {
+    const headers = ['Order No', 'User', 'Mobile', 'Type', 'Subtotal', 'Discount', 'Discount %', 'Final Amount', 'Status', 'Date'];
+    const rows = filteredOrders.map((ord) => [
+      ord.orderNumber,
+      ord.user?.name || '',
+      ord.user?.mobile || '',
+      ord.orderType,
+      ord.subtotal,
+      ord.discount || 0,
+      ord.discountPercentage || 0,
+      ord.finalAmount,
+      ord.status,
+      new Date(ord.createdAt).toLocaleDateString()
+    ]);
+
+    const csvContent = [headers, ...rows].map(row => row.map((cell: any) => `"${String(cell).replace(/"/g, '""')}"`).join(',')).join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `divyayogam_orders_${new Date().toISOString().split('T')[0]}.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  // Filter orders based on all active filters
+  const filteredOrders = orders.filter((ord) => {
+    // Text search: order number, user name, mobile
+    if (orderSearch) {
+      const q = orderSearch.toLowerCase();
+      const matchesSearch =
+        ord.orderNumber?.toLowerCase().includes(q) ||
+        ord.user?.name?.toLowerCase().includes(q) ||
+        ord.user?.mobile?.includes(q);
+      if (!matchesSearch) return false;
+    }
+    // Type filter
+    if (orderTypeFilter !== 'ALL' && ord.orderType !== orderTypeFilter) return false;
+    // Status filter
+    if (orderStatusFilter !== 'ALL' && ord.status !== orderStatusFilter) return false;
+    // Date range filter
+    if (orderDateFrom) {
+      const orderDate = new Date(ord.createdAt);
+      const fromDate = new Date(orderDateFrom);
+      fromDate.setHours(0, 0, 0, 0);
+      if (orderDate < fromDate) return false;
+    }
+    if (orderDateTo) {
+      const orderDate = new Date(ord.createdAt);
+      const toDate = new Date(orderDateTo);
+      toDate.setHours(23, 59, 59, 999);
+      if (orderDate > toDate) return false;
+    }
+    return true;
+  });
+
+  const hasActiveOrderFilters = orderSearch || orderTypeFilter !== 'ALL' || orderStatusFilter !== 'ALL' || orderDateFrom || orderDateTo;
+
+  const clearAllOrderFilters = () => {
+    setOrderSearch('');
+    setOrderTypeFilter('ALL');
+    setOrderStatusFilter('ALL');
+    setOrderDateFrom('');
+    setOrderDateTo('');
+  };
 
   if (loading) {
     return (
@@ -263,17 +402,79 @@ export default function AdminDashboardPage() {
               <h2 className="text-xl font-extrabold font-heading text-[#47206A]">
                 User Accounts & Class Progress Controls
               </h2>
-
-              <div className="relative w-full sm:w-72">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search user by name, email, or mobile..."
-                  className="w-full pl-10 pr-4 py-2 bg-[#FAF7F2] border border-[#E9DED3] rounded-full text-xs outline-none"
-                />
+              <div className="flex items-center gap-2">
+                {hasActiveUserFilters && (
+                  <button
+                    onClick={clearAllUserFilters}
+                    className="px-3 py-1.5 rounded-full bg-red-50 text-red-700 hover:bg-red-100 text-[11px] font-bold border border-red-200 transition-all inline-flex items-center gap-1 cursor-pointer"
+                  >
+                    <X className="w-3.5 h-3.5" /> Clear Filters
+                  </button>
+                )}
+                <button
+                  onClick={exportUsersToCSV}
+                  className="px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 hover:bg-emerald-100 text-[11px] font-bold border border-emerald-200 transition-all inline-flex items-center gap-1 cursor-pointer"
+                >
+                  <Download className="w-3.5 h-3.5" /> Export CSV
+                </button>
               </div>
+            </div>
+
+            {/* User Filter Toolbar */}
+            <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#E9DED3] space-y-3">
+              <div className="flex items-center gap-2 text-xs font-bold text-[#47206A] uppercase tracking-wider">
+                <Filter className="w-3.5 h-3.5 text-[#8C5D00]" /> Filters & Search
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                {/* Search */}
+                <div className="relative lg:col-span-2">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400" />
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search by name, email, or mobile..."
+                    className="w-full pl-9 pr-3 py-2 bg-white border border-[#E9DED3] rounded-xl text-xs outline-none focus:border-[#DFC47A] transition-colors"
+                  />
+                </div>
+
+                {/* Membership Level Filter */}
+                <select
+                  value={userMembershipFilter}
+                  onChange={(e) => setUserMembershipFilter(e.target.value)}
+                  className="w-full py-2 px-3 bg-white border border-[#E9DED3] rounded-xl text-xs font-semibold text-[#47206A] outline-none cursor-pointer focus:border-[#DFC47A] transition-colors"
+                >
+                  <option value="ALL">All Memberships</option>
+                  <option value="GOLD">👑 Gold</option>
+                  <option value="PLATINUM">💎 Platinum</option>
+                  <option value="DIAMOND">✨ Diamond</option>
+                  <option value="NONE">❌ No Membership</option>
+                </select>
+
+                {/* Class Progress Filter */}
+                <select
+                  value={userClassProgressFilter}
+                  onChange={(e) => setUserClassProgressFilter(e.target.value)}
+                  className="w-full py-2 px-3 bg-white border border-[#E9DED3] rounded-xl text-xs font-semibold text-[#47206A] outline-none cursor-pointer focus:border-[#DFC47A] transition-colors"
+                >
+                  <option value="ALL">All Class Progress</option>
+                  <option value="LOCKED">🔒 Locked</option>
+                  <option value="AVAILABLE">🔓 Available</option>
+                  <option value="PURCHASED">💰 Purchased</option>
+                  <option value="IN_PROGRESS">📖 In Progress</option>
+                  <option value="COMPLETED">✅ Completed</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Results Summary */}
+            <div className="text-[11px] font-semibold text-gray-500">
+              Showing <span className="font-extrabold text-[#47206A]">{filteredUsers.length}</span> of{' '}
+              <span className="font-extrabold text-[#47206A]">{users.length}</span> users
+              {hasActiveUserFilters && (
+                <span className="ml-2 px-2 py-0.5 bg-[#DFC47A]/20 text-[#8C5D00] rounded-full font-bold">Filtered</span>
+              )}
             </div>
 
             <div className="space-y-6">
@@ -345,16 +546,127 @@ export default function AdminDashboardPage() {
                   </div>
                 );
               })}
+              {filteredUsers.length === 0 && (
+                <div className="p-8 text-center text-gray-400 font-semibold rounded-2xl bg-[#FAF7F2] border border-[#E9DED3]">
+                  No users match your filters. Try adjusting your search criteria.
+                </div>
+              )}
             </div>
           </div>
         )}
 
         {/* TAB 3: ORDERS & REVENUE TABLE */}
         {activeTab === 'orders' && (
-          <div className="bg-white rounded-3xl border-2 border-[#DFC47A] p-6 sm:p-8 shadow-xl space-y-4">
-            <h2 className="text-xl font-extrabold font-heading text-[#47206A] border-b border-gray-100 pb-3">
-              Orders & Cashfree Payment Logs
-            </h2>
+          <div className="bg-white rounded-3xl border-2 border-[#DFC47A] p-6 sm:p-8 shadow-xl space-y-5">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-gray-100 pb-4">
+              <h2 className="text-xl font-extrabold font-heading text-[#47206A]">
+                Orders & Cashfree Payment Logs
+              </h2>
+              <div className="flex items-center gap-2">
+                {hasActiveOrderFilters && (
+                  <button
+                    onClick={clearAllOrderFilters}
+                    className="px-3 py-1.5 rounded-full bg-red-50 text-red-700 hover:bg-red-100 text-[11px] font-bold border border-red-200 transition-all inline-flex items-center gap-1 cursor-pointer"
+                  >
+                    <X className="w-3.5 h-3.5" /> Clear Filters
+                  </button>
+                )}
+                <button
+                  onClick={exportOrdersToCSV}
+                  className="px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 hover:bg-emerald-100 text-[11px] font-bold border border-emerald-200 transition-all inline-flex items-center gap-1 cursor-pointer"
+                >
+                  <Download className="w-3.5 h-3.5" /> Export CSV
+                </button>
+              </div>
+            </div>
+
+            {/* Filter Toolbar */}
+            <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#E9DED3] space-y-3">
+              <div className="flex items-center gap-2 text-xs font-bold text-[#47206A] uppercase tracking-wider">
+                <Filter className="w-3.5 h-3.5 text-[#8C5D00]" /> Filters & Search
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                {/* Search */}
+                <div className="relative lg:col-span-2">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400" />
+                  <input
+                    type="text"
+                    value={orderSearch}
+                    onChange={(e) => setOrderSearch(e.target.value)}
+                    placeholder="Search order no, user, mobile..."
+                    className="w-full pl-9 pr-3 py-2 bg-white border border-[#E9DED3] rounded-xl text-xs outline-none focus:border-[#DFC47A] transition-colors"
+                  />
+                </div>
+
+                {/* Type Filter */}
+                <select
+                  value={orderTypeFilter}
+                  onChange={(e) => setOrderTypeFilter(e.target.value)}
+                  className="w-full py-2 px-3 bg-white border border-[#E9DED3] rounded-xl text-xs font-semibold text-[#47206A] outline-none cursor-pointer focus:border-[#DFC47A] transition-colors"
+                >
+                  <option value="ALL">All Types</option>
+                  <option value="MEMBERSHIP">Membership</option>
+                  <option value="CLASS">Class</option>
+                  <option value="MAALA">Maala</option>
+                  <option value="CONTRIBUTION">Contribution</option>
+                </select>
+
+                {/* Status Filter */}
+                <select
+                  value={orderStatusFilter}
+                  onChange={(e) => setOrderStatusFilter(e.target.value)}
+                  className="w-full py-2 px-3 bg-white border border-[#E9DED3] rounded-xl text-xs font-semibold text-[#47206A] outline-none cursor-pointer focus:border-[#DFC47A] transition-colors"
+                >
+                  <option value="ALL">All Status</option>
+                  <option value="PAID">✅ Paid</option>
+                  <option value="PENDING">⏳ Pending</option>
+                  <option value="FAILED">❌ Failed</option>
+                </select>
+              </div>
+
+              {/* Date Range */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-3.5 h-3.5 text-[#8C5D00]" />
+                  <span className="text-[11px] font-bold text-[#47206A] uppercase">Date Range:</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="date"
+                    value={orderDateFrom}
+                    onChange={(e) => setOrderDateFrom(e.target.value)}
+                    className="py-1.5 px-3 bg-white border border-[#E9DED3] rounded-xl text-xs outline-none cursor-pointer focus:border-[#DFC47A] transition-colors"
+                  />
+                  <span className="text-xs text-gray-400 font-bold">to</span>
+                  <input
+                    type="date"
+                    value={orderDateTo}
+                    onChange={(e) => setOrderDateTo(e.target.value)}
+                    className="py-1.5 px-3 bg-white border border-[#E9DED3] rounded-xl text-xs outline-none cursor-pointer focus:border-[#DFC47A] transition-colors"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Results Summary */}
+            <div className="flex items-center justify-between text-[11px] font-semibold text-gray-500">
+              <span>
+                Showing <span className="font-extrabold text-[#47206A]">{filteredOrders.length}</span> of{' '}
+                <span className="font-extrabold text-[#47206A]">{orders.length}</span> orders
+                {hasActiveOrderFilters && (
+                  <span className="ml-2 px-2 py-0.5 bg-[#DFC47A]/20 text-[#8C5D00] rounded-full font-bold">Filtered</span>
+                )}
+              </span>
+              {filteredOrders.length > 0 && (
+                <span>
+                  Filtered Revenue:{' '}
+                  <span className="font-extrabold text-[#47206A]">
+                    ₹{filteredOrders.filter(o => o.status === 'PAID').reduce((sum: number, o: any) => sum + (o.finalAmount || 0), 0).toLocaleString()}
+                  </span>
+                </span>
+              )}
+            </div>
 
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs text-[#47206A]">
@@ -372,42 +684,50 @@ export default function AdminDashboardPage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
-                  {orders.map((ord: any) => (
-                    <tr key={ord.id} className="hover:bg-[#FAF5EF]/50">
-                      <td className="p-3 font-mono font-bold">{ord.orderNumber}</td>
-                      <td className="p-3 font-semibold">{ord.user?.name} ({ord.user?.mobile})</td>
-                      <td className="p-3 font-bold text-[#8C5D00]">{ord.orderType}</td>
-                      <td className="p-3 font-medium">₹{ord.subtotal}</td>
-                      <td className="p-3 text-emerald-600 font-semibold">
-                        {ord.discount > 0 ? `-₹${ord.discount} (${ord.discountPercentage}%)` : '₹0'}
-                      </td>
-                      <td className="p-3 font-extrabold text-[#47206A]">₹{ord.finalAmount}</td>
-                      <td className="p-3">
-                        <span
-                          className={`px-2.5 py-1 rounded-full text-[10px] font-bold ${
-                            ord.status === 'PAID'
-                              ? 'bg-emerald-100 text-emerald-800'
-                              : ord.status === 'PENDING'
-                              ? 'bg-amber-100 text-amber-800'
-                              : 'bg-red-100 text-red-800'
-                          }`}
-                        >
-                          {ord.status}
-                        </span>
-                      </td>
-                      <td className="p-3 text-gray-500">{new Date(ord.createdAt).toLocaleDateString()}</td>
-                      <td className="p-3 text-center">
-                        <button
-                          onClick={() => handleDeleteOrder(ord.id, ord.orderNumber)}
-                          className="px-2.5 py-1 rounded-lg bg-red-50 text-red-700 hover:bg-red-600 hover:text-white text-[11px] font-bold border border-red-200 transition-all inline-flex items-center gap-1 cursor-pointer"
-                          title="Delete Order Log"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                          <span>Delete</span>
-                        </button>
+                  {filteredOrders.length === 0 ? (
+                    <tr>
+                      <td colSpan={9} className="p-8 text-center text-gray-400 font-semibold">
+                        No orders match your filters. Try adjusting your search criteria.
                       </td>
                     </tr>
-                  ))}
+                  ) : (
+                    filteredOrders.map((ord: any) => (
+                      <tr key={ord.id} className="hover:bg-[#FAF5EF]/50">
+                        <td className="p-3 font-mono font-bold">{ord.orderNumber}</td>
+                        <td className="p-3 font-semibold">{ord.user?.name} ({ord.user?.mobile})</td>
+                        <td className="p-3 font-bold text-[#8C5D00]">{ord.orderType}</td>
+                        <td className="p-3 font-medium">₹{ord.subtotal}</td>
+                        <td className="p-3 text-emerald-600 font-semibold">
+                          {ord.discount > 0 ? `-₹${ord.discount} (${ord.discountPercentage}%)` : '₹0'}
+                        </td>
+                        <td className="p-3 font-extrabold text-[#47206A]">₹{ord.finalAmount}</td>
+                        <td className="p-3">
+                          <span
+                            className={`px-2.5 py-1 rounded-full text-[10px] font-bold ${
+                              ord.status === 'PAID'
+                                ? 'bg-emerald-100 text-emerald-800'
+                                : ord.status === 'PENDING'
+                                ? 'bg-amber-100 text-amber-800'
+                                : 'bg-red-100 text-red-800'
+                            }`}
+                          >
+                            {ord.status}
+                          </span>
+                        </td>
+                        <td className="p-3 text-gray-500">{new Date(ord.createdAt).toLocaleDateString()}</td>
+                        <td className="p-3 text-center">
+                          <button
+                            onClick={() => handleDeleteOrder(ord.id, ord.orderNumber)}
+                            className="px-2.5 py-1 rounded-lg bg-red-50 text-red-700 hover:bg-red-600 hover:text-white text-[11px] font-bold border border-red-200 transition-all inline-flex items-center gap-1 cursor-pointer"
+                            title="Delete Order Log"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                            <span>Delete</span>
+                          </button>
+                        </td>
+                      </tr>
+                    ))
+                  )}
                 </tbody>
               </table>
             </div>
