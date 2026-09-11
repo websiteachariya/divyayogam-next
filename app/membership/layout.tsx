@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Divine Membership Plans — Gold, Platinum & Diamond | Divya Yogam',
+  title: 'Divine Contributorship Plans — Gold, Platinum & Diamond | Divya Yogam',
   description:
-    'Join Divya Yogam with Gold (₹500), Platinum (₹1,500), or Diamond (₹5,000) membership. Includes Avadhani sessions, goal sheet enrichment, and holistic wellness.',
+    'Join Divya Yogam Contributorship with Gold (₹500), Platinum (₹1,500), or Diamond (₹5,000) contribution. Includes Avadhani sessions, goal sheet enrichment, and holistic wellness.',
   keywords: [
-    'Divya Yogam Membership',
+    'Divya Yogam Contributorship',
     'Gold Plan',
     'Platinum Plan',
     'Diamond Plan',
@@ -14,20 +14,20 @@ export const metadata: Metadata = {
     'Arawindhan Ji',
   ],
   alternates: {
-    canonical: 'https://divyayogam.org/membership',
+    canonical: 'https://divyayogam.org/contributorship',
   },
   openGraph: {
-    title: 'Divine Membership Plans — Gold, Platinum & Diamond | Divya Yogam',
+    title: 'Divine Contributorship Plans — Gold, Platinum & Diamond | Divya Yogam',
     description:
       'Transform your life with guided Avadhani sessions, goal sheet enrichment, and holistic wellness plans.',
-    url: 'https://divyayogam.org/membership',
+    url: 'https://divyayogam.org/contributorship',
     siteName: 'Divya Yogam',
     images: [
       {
         url: '/images/banner-4.webp',
         width: 1200,
         height: 630,
-        alt: 'Divya Yogam Divine Membership Plans',
+        alt: 'Divya Yogam Divine Contributorship Plans',
       },
     ],
     locale: 'en_US',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Divine Membership Plans — Gold, Platinum & Diamond | Divya Yogam',
+    title: 'Divine Contributorship Plans — Gold, Platinum & Diamond | Divya Yogam',
     description:
       'Transform your life with guided Avadhani sessions, goal sheet enrichment, and holistic wellness plans.',
     images: ['/images/banner-4.webp'],

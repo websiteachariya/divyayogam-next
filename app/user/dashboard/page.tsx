@@ -29,11 +29,24 @@ import Footer from '@/components/layout/Footer';
 export default function UserDashboardPage() {
   const router = useRouter();
   const [userData, setUserData] = useState<any>(null);
+  const [localMembership, setLocalMembership] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
     fetchUserData();
+    if (typeof window !== 'undefined') {
+      try {
+        const stored = localStorage.getItem('divyaYogamMemberships');
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            const userMem = parsed.find((m: any) => m.status === 'SUCCESS');
+            if (userMem) setLocalMembership(userMem);
+          }
+        }
+      } catch (e) {}
+    }
   }, []);
 
   const fetchUserData = async () => {
@@ -61,7 +74,7 @@ export default function UserDashboardPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-transparent flex items-center justify-center relative overflow-x-hidden">
+      <div className="min-h-screen bg-transparent flex items-center justify-center relative overflow-x-hidden p-4">
         {/* Background Image Overlay (con-6.webp matching Wellness & Contact Page) */}
         <div
           className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
@@ -69,15 +82,22 @@ export default function UserDashboardPage() {
             backgroundImage: "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
           }}
         />
-        <div className="text-center font-heading text-[#47206A]">
-          <div className="w-12 h-12 border-4 border-[#DFC47A] border-t-[#47206A] rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-sm font-bold uppercase tracking-wider">Loading your sacred dashboard...</p>
+        <div className="relative z-10 bg-white/95 backdrop-blur-2xl rounded-3xl border-2 border-[#DFC47A] p-8 sm:p-10 shadow-2xl text-center space-y-4 max-w-sm w-full">
+          <div className="w-14 h-14 border-4 border-[#DFC47A] border-t-[#352043] rounded-full animate-spin mx-auto shadow-md" />
+          <div>
+            <p className="text-base sm:text-lg font-extrabold font-heading text-[#352043] uppercase tracking-wider">
+              Loading your sacred dashboard...
+            </p>
+            <p className="text-xs font-extrabold text-[#8C5D00] mt-1">
+              Connecting to Divya Yogam Portal
+            </p>
+          </div>
         </div>
       </div>
     );
   }
 
-  const activeMembership = userData?.memberships?.[0];
+  const activeMembership = userData?.memberships?.[0] || localMembership;
   const enrollments = userData?.enrollments || [];
   const orders = userData?.orders || [];
   const maalaPurchases = (userData?.maalaPurchases || []).filter((p: any) => p.status === 'SUCCESS');
@@ -164,13 +184,38 @@ export default function UserDashboardPage() {
       <main className="pt-32 sm:pt-36 lg:pt-40 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1 space-y-6 sm:space-y-8">
         {/* Welcome Top Banner */}
         <div className="bg-gradient-to-r from-[#47206A] via-[#3B104E] to-[#20052C] rounded-3xl border-2 border-[#DFC47A] p-6 sm:p-8 text-white shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 relative overflow-hidden">
-          <div className="relative z-10 space-y-1">
+          <div className="relative z-10 space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#DFC47A]/20 text-[#DFC47A] text-xs font-bold border border-[#DFC47A]/40 uppercase tracking-wider mb-1">
               <Sparkles className="w-3.5 h-3.5" /> Divya Yogam Sacred Portal
             </div>
-            <h1 className="text-2xl sm:text-4xl font-extrabold font-heading text-white tracking-wide">
-              Welcome back, {userData?.name}!
-            </h1>
+            
+            <div className="flex flex-wrap items-center gap-3">
+              <h1 className="text-2xl sm:text-4xl font-extrabold font-heading text-white tracking-wide">
+                Welcome back, {userData?.name}!
+              </h1>
+
+              {/* Membership Tier Badge (Platinum, Gold, Diamond, or Non-Contributor) */}
+              {activeMembership ? (
+                <span
+                  className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider shadow-lg border ${
+                    activeMembership.level === 'DIAMOND'
+                      ? 'bg-gradient-to-r from-[#47206A] via-[#6B2D8C] to-[#47206A] text-[#DFC47A] border-[#DFC47A]'
+                      : activeMembership.level === 'PLATINUM'
+                      ? 'bg-gradient-to-r from-[#3A3D40] via-[#565B60] to-[#2E3134] text-white border-slate-300'
+                      : 'bg-gradient-to-r from-[#8C5D00] via-[#C8A34A] to-[#8C5D00] text-white border-[#DFC47A]'
+                  }`}
+                >
+                  <Crown className="w-4 h-4 text-amber-300 animate-pulse" />
+                  {activeMembership.level} Contributor
+                </span>
+              ) : (
+                <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-[#DFC47A]/15 text-[#DFC47A] border border-[#DFC47A]/40 backdrop-blur-sm shadow-sm">
+                  <UserIcon className="w-3.5 h-3.5" />
+                  Non-Contributor
+                </span>
+              )}
+            </div>
+
             <p className="text-xs sm:text-sm text-[#DFC47A] font-medium">
               {userData?.email} • {userData?.mobile}
             </p>
@@ -211,6 +256,18 @@ export default function UserDashboardPage() {
                 <span className="font-bold text-[#47206A]">{userData?.name}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-gray-100">
+                <span className="text-gray-500 font-medium">Contribution Tier:</span>
+                {activeMembership ? (
+                  <span className="font-extrabold text-[#8C5D00] flex items-center gap-1">
+                    <Crown className="w-3.5 h-3.5 text-[#C8A34A]" /> {activeMembership.level} Contributor
+                  </span>
+                ) : (
+                  <span className="font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded-full text-xs border border-amber-200">
+                    Non-Contributor
+                  </span>
+                )}
+              </div>
+              <div className="flex justify-between py-1 border-b border-gray-100">
                 <span className="text-gray-500 font-medium">Age & Gender:</span>
                 <span className="font-bold text-[#47206A]">{userData?.age} Yrs • {userData?.gender}</span>
               </div>
@@ -242,11 +299,11 @@ export default function UserDashboardPage() {
                 </h2>
                 {activeMembership ? (
                   <span className="px-3 py-1 rounded-full bg-[#47206A] text-[#DFC47A] text-xs font-bold">
-                    ACTIVE
+                    ACTIVE TIER
                   </span>
                 ) : (
                   <span className="px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-extrabold border border-amber-300">
-                    NO TIER
+                    NON-CONTRIBUTOR
                   </span>
                 )}
               </div>
@@ -291,7 +348,7 @@ export default function UserDashboardPage() {
                   </div>
                   <div className="p-3.5 rounded-2xl bg-[#FAF7F2] border border-[#E9DED3]">
                     <p className="text-xs sm:text-sm text-[#47206A] font-extrabold leading-relaxed">
-                      No active contribution tier found. Support Gold, Platinum, or Diamond to unlock sacred privileges up to 50%!
+                      Status: <span className="text-amber-800 font-black">Non-Contributor</span>. Support Gold, Platinum, or Diamond to unlock sacred privileges up to 50%!
                     </p>
                   </div>
                 </div>

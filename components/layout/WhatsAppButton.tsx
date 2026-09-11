@@ -1,9 +1,16 @@
 'use client';
 
 import React from 'react';
+import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 
 export default function WhatsAppButton() {
+  const pathname = usePathname();
+
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
+
   const whatsappUrl =
     'https://wa.me/919500117358?text=Namaste!%20I%20would%20like%20to%20know%20more%20about%20Divya%20Yogam.';
 

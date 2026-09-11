@@ -85,7 +85,7 @@ export default function TopBar({ isScrolled = false }: TopBarProps) {
         {/* Social Icons (Full details: 1300px+) */}
         <div className="topbar-full-only items-center gap-2 border-l border-[#DFC47A]/30 pl-3 pr-1">
           <a
-            href="https://facebook.com"
+            href="https://www.facebook.com/profile.php?id=61594495401217"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
@@ -94,7 +94,7 @@ export default function TopBar({ isScrolled = false }: TopBarProps) {
             <Facebook className="w-3.5 h-3.5" />
           </a>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/happyshambala/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
@@ -103,7 +103,7 @@ export default function TopBar({ isScrolled = false }: TopBarProps) {
             <Instagram className="w-3.5 h-3.5" />
           </a>
           <a
-            href="https://youtube.com"
+            href="https://www.youtube.com/@divyayogamofficial"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="YouTube"

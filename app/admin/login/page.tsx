@@ -4,8 +4,6 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Lock, Mail, AlertCircle, ArrowRight, Eye, EyeOff } from 'lucide-react';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -52,14 +50,25 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-[#47206A] flex flex-col justify-between">
-      <Navbar />
+    <div className="min-h-screen bg-transparent text-[#47206A] flex flex-col justify-center items-center py-12 px-4 relative overflow-hidden font-body">
+      {/* Fixed Background Image Overlay (con-6.webp Sandal Texture matching site design) */}
+      <div
+        suppressHydrationWarning
+        className="fixed inset-0 pointer-events-none z-0 opacity-80"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(250, 245, 239, 0.45), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+        }}
+      />
 
-      <main className="pt-44 sm:pt-48 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-md mx-auto w-full flex-1">
+      <main className="max-w-md mx-auto w-full relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white/95 backdrop-blur-xl rounded-3xl border-2 border-[#47206A] p-6 sm:p-10 shadow-2xl space-y-6 relative overflow-hidden"
+          className="bg-white/85 backdrop-blur-xl rounded-3xl border-2 border-[#DFC47A] p-6 sm:p-10 shadow-2xl space-y-6 relative overflow-hidden"
         >
           <div className="text-center space-y-2">
             <div className="w-12 h-12 bg-[#47206A] text-[#DFC47A] rounded-2xl flex items-center justify-center mx-auto shadow-md">
@@ -92,7 +101,7 @@ export default function AdminLoginPage() {
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
                   placeholder="admin@divyayogam.org"
-                  className="w-full pl-10 pr-4 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none font-medium"
+                  className="w-full pl-10 pr-4 py-3 bg-white/80 backdrop-blur-sm border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none font-medium"
                   required
                 />
               </div>
@@ -109,7 +118,7 @@ export default function AdminLoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full pl-10 pr-10 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none font-medium"
+                  className="w-full pl-10 pr-10 py-3 bg-white/80 backdrop-blur-sm border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none font-medium"
                   required
                 />
                 <button
@@ -134,8 +143,6 @@ export default function AdminLoginPage() {
           </form>
         </motion.div>
       </main>
-
-      <Footer />
     </div>
   );
 }

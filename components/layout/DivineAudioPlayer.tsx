@@ -10,7 +10,7 @@ function getGlobalAudio(): HTMLAudioElement | null {
 
   const win = window as any;
   if (!win.__DIVYA_SPIRITUAL_AUDIO__) {
-    const audio = new Audio('/divine_spiritual_medium_music.wav');
+    const audio = new Audio('/music/divya-yogam_high_clarity_5min.mp3');
     audio.loop = true;
     audio.preload = 'auto';
     audio.volume = 0.8;

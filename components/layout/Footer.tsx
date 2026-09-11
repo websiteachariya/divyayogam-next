@@ -2,9 +2,16 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { Facebook, Instagram, Youtube, Phone, Mail } from 'lucide-react';
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
+
   return (
     <footer className="bg-[#352043] text-[#F8F2E8] relative overflow-hidden font-body">
 
@@ -58,11 +65,17 @@ export default function Footer() {
                 Follow Us
               </span>
               <div className="flex items-center gap-3">
-                {[Facebook, Instagram, Youtube].map((Icon, i) => (
+                {[
+                  { Icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61594495401217', label: 'Facebook' },
+                  { Icon: Instagram, href: 'https://www.instagram.com/happyshambala/', label: 'Instagram' },
+                  { Icon: Youtube, href: 'https://www.youtube.com/@divyayogamofficial', label: 'YouTube' },
+                ].map(({ Icon, href, label }, i) => (
                   <a
                     key={i}
-                    href="#"
-                    aria-label="Follow us on social media"
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Follow us on ${label}`}
                     className="w-9 sm:w-10 h-9 sm:h-10 rounded-full bg-white/10 border border-[#DFC47A]/30 flex items-center justify-center text-[#DFC47A] hover:bg-[#C8A34A] hover:text-[#47206A] transition-all hover:scale-110 shadow-sm"
                   >
                     <Icon className="w-4 sm:w-5 h-4 sm:h-5" />

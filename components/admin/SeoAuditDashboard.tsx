@@ -30,7 +30,7 @@ import {
 export interface RouteSeoData {
   path: string;
   name: string;
-  category: 'Core' | 'Memberships' | 'Practices' | 'Legal' | 'Admin';
+  category: 'Core' | 'Contributorship' | 'Practices' | 'Legal' | 'Admin';
   title: string;
   description: string;
   keywords: string[];
@@ -64,7 +64,7 @@ const defaultSiteRoutesData: RouteSeoData[] = [
   {
     path: '/contributorship',
     name: 'Contributorship Page',
-    category: 'Memberships',
+    category: 'Contributorship',
     title: 'Divya Yogam Contributorship — Gold, Platinum & Diamond Plans',
     description: 'Join Divya Yogam Contributorship with Gold (₹500), Platinum (₹1,500), or Diamond (₹5,000) contribution. Includes Avadhani sessions, goal sheet enrichment, and holistic wellness.',
     keywords: ['Divya Yogam Contributorship', 'Gold Plan', 'Platinum Plan', 'Diamond Plan', 'Avadhani Session', 'Goal Sheet Enrichment'],
@@ -80,7 +80,7 @@ const defaultSiteRoutesData: RouteSeoData[] = [
   {
     path: '/happy-shambala',
     name: 'Happy Shambala Page',
-    category: 'Memberships',
+    category: 'Contributorship',
     title: 'Happy Shambala — Divine Consciousness & Rejuvenation | Divya Yogam',
     description: 'Experience Happy Shambala, a sacred journey into cellular healing, organ meditation, and high-vibrational living under Master Arawindhan Ji.',
     keywords: ['Happy Shambala', 'Divya Yogam', 'Cellular Rejuvenation', 'Organ Meditation', 'Arawindhan Ji'],
@@ -242,7 +242,7 @@ const defaultSiteRoutesData: RouteSeoData[] = [
     name: 'Contact Page',
     category: 'Core',
     title: 'Contact Divya Yogam Foundation | Connect With Us',
-    description: 'Reach out to Divya Yogam Foundation for membership inquiries, program support, retreat bookings, and volunteer opportunities.',
+    description: 'Reach out to Divya Yogam Foundation for contributorship inquiries, program support, retreat bookings, and volunteer opportunities.',
     keywords: ['Contact Divya Yogam', 'Spiritual Counseling Inquiry', 'Support Email'],
     canonical: 'https://divyayogam.org/contact',
     ogImage: '/images/logo-badge.webp',
@@ -274,8 +274,8 @@ const defaultSiteRoutesData: RouteSeoData[] = [
     name: 'Terms & Conditions',
     category: 'Legal',
     title: 'Terms and Conditions | Divya Yogam Foundation',
-    description: 'Terms of service, membership rules, and acceptable usage guidelines for Divya Yogam platforms.',
-    keywords: ['Divya Yogam Terms', 'Membership Rules'],
+    description: 'Terms of service, contributorship rules, and acceptable usage guidelines for Divya Yogam platforms.',
+    keywords: ['Divya Yogam Terms', 'Contributorship Rules'],
     canonical: 'https://divyayogam.org/terms-and-conditions',
     ogImage: '/images/logo-badge.webp',
     ogType: 'website',
@@ -290,7 +290,7 @@ const defaultSiteRoutesData: RouteSeoData[] = [
     name: 'Refund & Cancellation',
     category: 'Legal',
     title: 'Refund and Cancellation Policy | Divya Yogam Foundation',
-    description: 'Refund guidelines, membership cancellation policies, and transaction processing rules.',
+    description: 'Refund guidelines, contributorship cancellation policies, and transaction processing rules.',
     keywords: ['Divya Yogam Refund Policy', 'Cancellation Rules'],
     canonical: 'https://divyayogam.org/refund-and-cancellation',
     ogImage: '/images/logo-badge.webp',
@@ -352,7 +352,14 @@ export default function SeoAuditDashboard() {
                 ...item,
                 path: '/contributorship',
                 name: 'Contributorship Page',
+                category: 'Contributorship',
                 canonical: 'https://divyayogam.org/contributorship',
+              };
+            }
+            if (item.category === 'Memberships') {
+              return {
+                ...item,
+                category: 'Contributorship',
               };
             }
             return item;
@@ -364,6 +371,18 @@ export default function SeoAuditDashboard() {
       console.warn('Could not load custom SEO data:', err);
     }
   }, []);
+
+  // Calculate dynamic overall SEO health score from all active routes
+  const overallHealthScore = Math.round(
+    routesData.reduce((acc, r) => acc + (r.score || 95), 0) / (routesData.length || 1)
+  );
+
+  const getRatingLabel = (score: number) => {
+    if (score >= 95) return 'OUTSTANDING RATING';
+    if (score >= 85) return 'EXCELLENT RATING';
+    if (score >= 70) return 'GOOD RATING';
+    return 'NEEDS IMPROVEMENT';
+  };
 
   const selectedRoute = routesData.find((r) => r.path === selectedRoutePath) || routesData[1];
 
@@ -487,13 +506,13 @@ export default function SeoAuditDashboard() {
           {/* Audit Score Badge */}
           <div className="flex items-center gap-4 bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-[#DFC47A]/50 shrink-0">
             <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#DFC47A] to-[#8C5D00] flex items-center justify-center text-white font-heading font-extrabold text-2xl shadow-lg">
-              98%
+              {overallHealthScore}%
             </div>
             <div>
               <span className="text-xs text-[#DFC47A] font-bold block uppercase tracking-wider">Overall SEO Health</span>
               <span className="text-sm font-extrabold text-emerald-300 flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                OUTSTANDING RATING
+                {getRatingLabel(overallHealthScore)}
               </span>
             </div>
           </div>
@@ -615,7 +634,7 @@ export default function SeoAuditDashboard() {
               </div>
 
               <div className="flex flex-wrap gap-1.5 text-[10px] font-bold">
-                {['ALL', 'Core', 'Memberships', 'Practices', 'Legal', 'Admin'].map((cat) => (
+                {['ALL', 'Core', 'Contributorship', 'Practices', 'Legal', 'Admin'].map((cat) => (
                   <button
                     key={cat}
                     onClick={() => setCategoryFilter(cat)}
@@ -648,7 +667,7 @@ export default function SeoAuditDashboard() {
                         {route.path}
                       </span>
                       <span className={`px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase ${
-                        route.category === 'Memberships'
+                        route.category === 'Contributorship'
                           ? 'bg-[#DFC47A] text-[#352043]'
                           : isSelected
                           ? 'bg-white/20 text-white'
@@ -1016,7 +1035,7 @@ export default function SeoAuditDashboard() {
                 {routesData.filter((r) => r.category !== 'Admin').map((r) => (
                   <div key={r.path} className="flex justify-between text-[11px]">
                     <span className="text-[#352043]">{r.canonical}</span>
-                    <span className="font-bold text-amber-700">{r.path === '/' ? '1.0' : r.category === 'Memberships' ? '0.9' : '0.8'}</span>
+                    <span className="font-bold text-amber-700">{r.path === '/' ? '1.0' : r.category === 'Contributorship' ? '0.9' : '0.8'}</span>
                   </div>
                 ))}
               </div>

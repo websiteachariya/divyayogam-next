@@ -21,6 +21,10 @@ export default function Navbar() {
   const [user, setUser] = useState<any>(null);
   const pathname = usePathname();
 
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
+
   const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.ignitelabs.music_app';
 
   useEffect(() => {

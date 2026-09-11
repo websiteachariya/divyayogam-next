@@ -116,7 +116,7 @@ export default function CorePurpose() {
               </h2>
 
               <p className="text-[#5E5865] text-base sm:text-lg leading-relaxed font-light">
-                Divya Yogam is a journey of awareness, inner balance and conscious living— bringing together the physical, mental, emotional, intellectual and spiritual dimensions of human life.
+                Divya Yogam is a journey of awareness, inner balance and conscious living, bringing together the physical, mental, emotional, intellectual and spiritual dimensions of human life.
               </p>
             </div>
 
@@ -201,7 +201,7 @@ export default function CorePurpose() {
           </h3>
 
           <p className="text-[#5E5865] text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">
-            Divya Yogam follows a progressive movement—from self-observation to self-awareness, from inner balance to deeper experience.
+            Divya Yogam follows a progressive movement from self-observation to self-awareness, from inner balance to deeper experience.
           </p>
 
           <div className="pt-4 border-t border-[#E9DED3] flex items-center justify-center gap-3 max-w-xl mx-auto">

@@ -144,9 +144,9 @@ export default function RootLayout({
                     name: 'Arawindhan Ji',
                   },
                   sameAs: [
-                    'https://facebook.com/divyayogam',
-                    'https://instagram.com/divyayogam',
-                    'https://youtube.com/@divyayogam',
+                    'https://www.facebook.com/profile.php?id=61594495401217',
+                    'https://www.instagram.com/happyshambala/',
+                    'https://www.youtube.com/@divyayogamofficial',
                   ],
                 },
                 {
@@ -161,9 +161,9 @@ export default function RootLayout({
                 {
                   '@type': 'EducationalOrganization',
                   name: 'Divya Yogam Wellness & Meditation Academy',
-                  url: 'https://divyayogam.org/membership',
+                  url: 'https://divyayogam.org/contributorship',
                   description:
-                    'Offering Gold (₹500), Platinum (₹1,500), and Diamond (₹5,000) wellness membership plans for organ meditation and cellular rejuvenation.',
+                    'Offering Gold (₹500), Platinum (₹1,500), and Diamond (₹5,000) sacred contributorship plans for organ meditation and cellular rejuvenation.',
                 },
               ],
             }),

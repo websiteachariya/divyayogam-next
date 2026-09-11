@@ -46,7 +46,7 @@ export default function AdminSeoPage() {
 
   if (checkingAuth) {
     return (
-      <div className="min-h-screen bg-[#FAF5EF] flex items-center justify-center pt-36 pb-16">
+      <div className="min-h-screen bg-[#FAF5EF] flex items-center justify-center pt-8 pb-16">
         <div className="flex items-center gap-3 text-[#352043] font-bold text-sm bg-white/90 px-6 py-4 rounded-2xl border border-[#DFC47A] shadow-lg">
           <RefreshCw className="w-5 h-5 text-[#C8A34A] animate-spin" />
           <span>Verifying Admin Session...</span>
@@ -57,7 +57,7 @@ export default function AdminSeoPage() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-[#FAF5EF] flex items-center justify-center pt-36 pb-16">
+      <div className="min-h-screen bg-[#FAF5EF] flex items-center justify-center pt-8 pb-16">
         <div className="flex items-center gap-3 text-[#352043] font-bold text-sm bg-white/90 px-6 py-4 rounded-2xl border border-[#DFC47A] shadow-lg">
           <RefreshCw className="w-5 h-5 text-[#C8A34A] animate-spin" />
           <span>Redirecting to Admin Login...</span>
@@ -67,7 +67,7 @@ export default function AdminSeoPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FAF5EF] font-body text-[#352043] relative overflow-x-hidden pt-36 sm:pt-44 md:pt-48 pb-16">
+    <div className="min-h-screen bg-[#FAF5EF] font-body text-[#352043] relative overflow-x-hidden pt-6 sm:pt-8 md:pt-10 pb-16">
       
       {/* Texture background */}
       <div

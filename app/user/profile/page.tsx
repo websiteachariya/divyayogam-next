@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { User, Phone, Mail, Building, Briefcase, Calendar, ArrowLeft } from 'lucide-react';
+import { User, Phone, Mail, Building, Briefcase, Calendar, ArrowLeft, Crown } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
@@ -35,9 +35,11 @@ export default function UserProfilePage() {
     }
   };
 
+  const activeMembership = userData?.memberships?.[0];
+
   if (loading) {
     return (
-      <div className="min-h-screen bg-transparent flex items-center justify-center relative overflow-x-hidden">
+      <div className="min-h-screen bg-transparent flex items-center justify-center relative overflow-x-hidden p-4">
         {/* Background Image Overlay (con-6.webp matching Wellness & Contact Page) */}
         <div
           className="absolute inset-0 opacity-85 pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed z-0"
@@ -45,9 +47,16 @@ export default function UserProfilePage() {
             backgroundImage: "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
           }}
         />
-        <div className="text-center font-heading text-[#47206A]">
-          <div className="w-12 h-12 border-4 border-[#DFC47A] border-t-[#47206A] rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-sm font-bold uppercase tracking-wider">Loading profile details...</p>
+        <div className="relative z-10 bg-white/95 backdrop-blur-2xl rounded-3xl border-2 border-[#DFC47A] p-8 sm:p-10 shadow-2xl text-center space-y-4 max-w-sm w-full">
+          <div className="w-14 h-14 border-4 border-[#DFC47A] border-t-[#352043] rounded-full animate-spin mx-auto shadow-md" />
+          <div>
+            <p className="text-base sm:text-lg font-extrabold font-heading text-[#352043] uppercase tracking-wider">
+              Loading profile details...
+            </p>
+            <p className="text-xs font-extrabold text-[#8C5D00] mt-1">
+              Fetching User Profile
+            </p>
+          </div>
         </div>
       </div>
     );
@@ -91,6 +100,17 @@ export default function UserProfilePage() {
             <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#E9DED3] space-y-1">
               <span className="text-xs text-gray-500 font-bold uppercase tracking-wider block">Full Name</span>
               <p className="text-base font-extrabold text-[#47206A]">{userData?.name}</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#E9DED3] space-y-1">
+              <span className="text-xs text-gray-500 font-bold uppercase tracking-wider block">Contribution Status</span>
+              {activeMembership ? (
+                <p className="text-base font-extrabold text-[#8C5D00] flex items-center gap-1.5">
+                  <Crown className="w-4 h-4 text-[#C8A34A]" /> {activeMembership.level} Contributor
+                </p>
+              ) : (
+                <p className="text-base font-extrabold text-amber-800">Non-Contributor</p>
+              )}
             </div>
 
             <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#E9DED3] space-y-1">
