@@ -31,6 +31,7 @@ export async function GET(req: NextRequest) {
         age: true,
         gender: true,
         occupation: true,
+        branchCampus: true,
         organisation: true,
         role: true,
         createdAt: true,

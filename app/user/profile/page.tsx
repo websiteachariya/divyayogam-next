@@ -124,6 +124,11 @@ export default function UserProfilePage() {
             </div>
 
             <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#E9DED3] space-y-1">
+              <span className="text-xs text-gray-500 font-bold uppercase tracking-wider block">Branch / Campus</span>
+              <p className="text-base font-extrabold text-[#47206A]">{userData?.branchCampus || 'N/A'}</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#E9DED3] space-y-1">
               <span className="text-xs text-gray-500 font-bold uppercase tracking-wider block">Organisation / Location</span>
               <p className="text-base font-extrabold text-[#47206A]">{userData?.organisation}</p>
             </div>

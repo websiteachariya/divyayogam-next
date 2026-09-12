@@ -55,7 +55,7 @@ export async function GET(req: NextRequest) {
             userId: dbOrder.userId,
             level: levelEnum,
             price: dbOrder.finalAmount,
-            discountPercent: levelEnum === MembershipTier.DIAMOND ? 50 : levelEnum === MembershipTier.PLATINUM ? 30 : 10,
+            discountPercent: levelEnum === MembershipTier.DIAMOND ? 20 : levelEnum === MembershipTier.PLATINUM ? 10 : 5,
             status: 'SUCCESS',
             cfOrderId: orderId,
             cfPaymentId,

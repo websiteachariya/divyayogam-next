@@ -161,7 +161,7 @@ export default function AdminDashboardPage() {
 
   // Export Users to CSV
   const exportUsersToCSV = () => {
-    const headers = ['Name', 'Email', 'Mobile', 'Age', 'Gender', 'Occupation', 'Organisation', 'Membership Level', 'Discount %', 'Joined Date', 'Class Progress'];
+    const headers = ['Name', 'Email', 'Mobile', 'Age', 'Gender', 'Occupation', 'Branch / Campus', 'Organisation / Location', 'Membership Level', 'Discount %', 'Joined Date', 'Class Progress'];
     const rows = filteredUsers.map((u) => {
       const activeMem = u.memberships?.[0];
       const classProgress = u.enrollments?.map((enr: any) => `${enr.classItem?.name || 'Class'}:${enr.status}`).join(' | ') || 'None';
@@ -172,6 +172,7 @@ export default function AdminDashboardPage() {
         u.age,
         u.gender,
         u.occupation || '',
+        u.branchCampus || '',
         u.organisation || '',
         activeMem ? activeMem.level : 'None',
         activeMem ? activeMem.discountPercent : '0',
@@ -255,6 +256,25 @@ export default function AdminDashboardPage() {
     setOrderStatusFilter('ALL');
     setOrderDateFrom('');
     setOrderDateTo('');
+  };
+
+  const handleStatusChange = async (orderId: string, newStatus: string) => {
+    try {
+      const res = await fetch('/api/admin/orders/update-status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ orderId, status: newStatus }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Failed to update status');
+
+      // Update local state
+      setOrders((prev: any[]) =>
+        prev.map((o) => (o.id === orderId ? { ...o, status: newStatus } : o))
+      );
+    } catch (err: any) {
+      alert(err.message || 'Error updating order status');
+    }
   };
 
   if (loading) {
@@ -508,7 +528,7 @@ export default function AdminDashboardPage() {
                           {u.email} • {u.mobile} • {u.age} Yrs ({u.gender})
                         </p>
                         <p className="text-[11px] text-gray-500 font-medium mt-0.5">
-                          {u.occupation} | {u.organisation}
+                          {u.occupation} {u.branchCampus ? `| ${u.branchCampus}` : ''} | {u.organisation}
                         </p>
                       </div>
 
@@ -720,17 +740,21 @@ export default function AdminDashboardPage() {
                         </td>
                         <td className="p-3 font-extrabold text-[#47206A]">₹{ord.finalAmount}</td>
                         <td className="p-3">
-                          <span
-                            className={`px-2.5 py-1 rounded-full text-[10px] font-bold ${
+                          <select
+                            value={ord.status}
+                            onChange={(e) => handleStatusChange(ord.id, e.target.value)}
+                            className={`px-2.5 py-1 rounded-full text-[10px] font-extrabold outline-none cursor-pointer border transition-all ${
                               ord.status === 'PAID'
-                                ? 'bg-emerald-100 text-emerald-800'
+                                ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
                                 : ord.status === 'PENDING'
-                                ? 'bg-amber-100 text-amber-800'
-                                : 'bg-red-100 text-red-800'
+                                ? 'bg-amber-100 text-amber-800 border-amber-300'
+                                : 'bg-red-100 text-red-800 border-red-300'
                             }`}
                           >
-                            {ord.status}
-                          </span>
+                            <option value="PAID">PAID</option>
+                            <option value="PENDING">PENDING</option>
+                            <option value="FAILED">FAILED</option>
+                          </select>
                         </td>
                         <td className="p-3 text-gray-500">{new Date(ord.createdAt).toLocaleDateString()}</td>
                         <td className="p-3 text-center">

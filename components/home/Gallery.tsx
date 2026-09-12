@@ -77,32 +77,31 @@ export default function Gallery() {
               </p>
             </div>
 
-            {/* 3 Waiting for Image to be Uploaded Placeholder Cards */}
+            {/* Gallery Image Preview Cards */}
             <div className="grid grid-cols-3 gap-3">
-              {[1, 2, 3].map((_, idx) => (
-                <div
+              {[
+                { src: '/images/0I5A6612.webp', title: 'Inner Silence' },
+                { src: '/images/191A4490.webp', title: 'Harmony' },
+                { src: '/images/2D7A0617.webp', title: "Nature's Grace" },
+              ].map((img, idx) => (
+                <Link
                   key={idx}
-                  className="relative group rounded-2xl overflow-hidden luxury-card border-2 border-dashed border-[#DFC47A]/60 aspect-[4/3] shadow-sm bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EF] to-[#F8F2E8] flex flex-col items-center justify-center p-2 text-center"
+                  href="/gallery"
+                  className="relative group rounded-2xl overflow-hidden luxury-card border-2 border-[#DFC47A]/60 aspect-[4/3] shadow-md bg-[#2B1439] block"
                 >
-                  {/* Subtle Background Pattern */}
-                  <div className="absolute inset-0 bg-[radial-gradient(#C8A34A_1px,transparent_1px)] [background-size:12px_12px] opacity-15 pointer-events-none" />
-
-                  {/* Pulsing Icon Badge */}
-                  <div className="relative z-10 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/90 backdrop-blur-sm border border-[#C8A34A]/50 shadow-sm flex items-center justify-center mb-1 group-hover:scale-105 transition-transform duration-300">
-                    <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#C8A34A]/20 to-[#8C5D00]/20 animate-pulse pointer-events-none" />
-                    <UploadCloud className="w-4 h-4 sm:w-5 sm:h-5 text-[#8C5D00]" />
-                  </div>
-
-                  {/* Text Container */}
-                  <div className="relative z-10 space-y-0.5">
-                    <span className="inline-block px-2 py-0.5 rounded-full bg-[#8C5D00]/10 text-[#8C5D00] text-[9px] sm:text-[10px] font-bold uppercase tracking-wider border border-[#8C5D00]/20">
-                      Pending
+                  <Image
+                    src={img.src}
+                    alt={img.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
+                  <div className="absolute bottom-2 left-2 right-2 z-10 text-center">
+                    <span className="text-[10px] sm:text-xs font-bold text-[#DFC47A] group-hover:text-white transition-colors truncate block">
+                      {img.title}
                     </span>
-                    <p className="text-[10px] sm:text-xs font-semibold text-[#352043] leading-tight line-clamp-1">
-                      Image to be uploaded
-                    </p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
 

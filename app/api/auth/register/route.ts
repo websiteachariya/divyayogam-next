@@ -5,7 +5,7 @@ import { hashPassword, signToken } from '@/lib/auth';
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, age, gender, occupation, organisation, mobile, email, password } = body;
+    const { name, age, gender, occupation, branchCampus, organisation, mobile, email, password } = body;
 
     // Backend Mandatory Validation
     if (!name || name.trim().length < 3) {
@@ -21,8 +21,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Please select a valid gender' }, { status: 400 });
     }
 
-    if (!occupation || occupation.trim().length < 2) {
-      return NextResponse.json({ error: 'Occupation is required' }, { status: 400 });
+    const validOccupationPrefixes = ['Staff', 'Head', 'Student', 'Corporate', 'Others'];
+    if (!occupation || !validOccupationPrefixes.some((pref) => occupation.startsWith(pref))) {
+      return NextResponse.json({ error: 'Please select a valid occupation' }, { status: 400 });
+    }
+
+    if (!branchCampus || branchCampus.trim().length < 2) {
+      return NextResponse.json({ error: 'Branch / Campus is required' }, { status: 400 });
     }
 
     if (!organisation || organisation.trim().length < 2) {
@@ -66,7 +71,8 @@ export async function POST(req: NextRequest) {
         name: name.trim(),
         age: numericAge,
         gender,
-        occupation: occupation.trim(),
+        occupation,
+        branchCampus: branchCampus.trim(),
         organisation: organisation.trim(),
         mobile: cleanMobile,
         email: cleanEmail,

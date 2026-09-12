@@ -77,10 +77,11 @@ const MEMBERSHIP_TIERS: MembershipTier[] = [
     popular: true,
     color: 'from-[#352043] via-[#47206A] to-[#2B083A]',
     borderColor: 'border-[#DFC47A]',
-    discountBadge: '50% Sacred Privilege Grant on All Classes',
+    discountBadge: '50% Sacred Privilege Grant on All 6 Classes',
     discountPercentage: 50,
     benefits: [
-      '50% Sacred Privilege Grant for All Sequential Classes',
+      '20% Sacred Privilege Grant for Individual Classes',
+      '50% Sacred Privilege Grant for All 6 Classes (All-in-One Master Pass)',
       'Advanced Avadhani engagement',
       'Personalized Goal Sheet enrichment',
       'Guided meditation and mindful practices',
@@ -102,10 +103,11 @@ const MEMBERSHIP_TIERS: MembershipTier[] = [
     popular: false,
     color: 'from-[#FFFDF9] via-[#FAF5EF] to-[#FFF8ED]',
     borderColor: 'border-[#DFC47A]',
-    discountBadge: '30% Sacred Privilege Grant on All Classes',
+    discountBadge: '30% Sacred Privilege Grant on All 6 Classes',
     discountPercentage: 30,
     benefits: [
-      '30% Sacred Privilege Grant for All Sequential Classes',
+      '10% Sacred Privilege Grant for Individual Classes',
+      '30% Sacred Privilege Grant for All 6 Classes (All-in-One Master Pass)',
       'Avadhani Sessions',
       'Goal Sheet Enrichment & Review',
       'Mindfulness and self-reflection',
@@ -127,10 +129,11 @@ const MEMBERSHIP_TIERS: MembershipTier[] = [
     popular: false,
     color: 'from-[#FFFDF9] via-[#FAF5EF] to-[#FFF8ED]',
     borderColor: 'border-[#DFC47A]',
-    discountBadge: '10% Sacred Privilege Grant on All Classes',
+    discountBadge: '10% Sacred Privilege Grant on All 6 Classes',
     discountPercentage: 10,
     benefits: [
-      '10% Sacred Privilege Grant for All Sequential Classes',
+      '5% Sacred Privilege Grant for Individual Classes',
+      '10% Sacred Privilege Grant for All 6 Classes (All-in-One Master Pass)',
       'Avadhani Session',
       'Goal Sheet Enrichment — FREE',
       'Introduction to conscious living',
@@ -700,9 +703,13 @@ export default function MembershipPage() {
                   <p className="text-xs text-white/80 mt-1 flex items-center gap-1.5 flex-wrap">
                     <span>Sacred Privilege Grant:</span>
                     <span className="px-2 py-0.5 rounded-md bg-[#DFC47A] text-[#2B083A] font-black text-xs shadow-sm">
-                      {existingMembership.discountPercent}%
+                      {existingMembership.level === 'DIAMOND' ? '20%' : existingMembership.level === 'PLATINUM' ? '10%' : '5%'}
                     </span>
-                    <span>on All Sequential Classes · Sacred Contribution: ₹{existingMembership.price}</span>
+                    <span>Individual Classes ·</span>
+                    <span className="px-2 py-0.5 rounded-md bg-[#DFC47A] text-[#2B083A] font-black text-xs shadow-sm">
+                      {existingMembership.level === 'DIAMOND' ? '50%' : existingMembership.level === 'PLATINUM' ? '30%' : '10%'}
+                    </span>
+                    <span>All 6 Classes · Contribution: ₹{existingMembership.price}</span>
                   </p>
                 </div>
               </div>
@@ -763,26 +770,6 @@ export default function MembershipPage() {
                     <Sparkles className={`w-4 h-4 ${tier.id === 'diamond' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'} group-hover:scale-110 transition-transform`} />
                   </div>
 
-                  {/* Top Eye-Catching Percentage Badge Pill - Separated % Highlight */}
-                  <div className="flex items-center justify-start pt-1">
-                    <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border-2 shadow-lg transition-all duration-300 group-hover:scale-[1.03] ${
-                      tier.id === 'diamond'
-                        ? 'bg-[#2B083A]/90 border-[#DFC47A] text-white'
-                        : 'bg-[#FAF5EF] border-[#DFC47A] text-[#352043]'
-                    }`}>
-                      <div className={`px-2.5 py-0.5 rounded-full font-black text-xs sm:text-sm shadow-md border ${
-                        tier.id === 'diamond'
-                          ? 'bg-gradient-to-r from-[#DFC47A] via-[#F3E5AB] to-[#C8A34A] text-[#2B083A] border-white'
-                          : 'bg-[#47206A] text-[#DFC47A] border-[#DFC47A]'
-                      }`}>
-                        {tier.discountPercentage}%
-                      </div>
-                      <span className="text-[11px] font-extrabold uppercase tracking-wider">
-                        Sacred Privilege Grant on All Classes
-                      </span>
-                    </div>
-                  </div>
-
                   <div className="space-y-1">
                     <h3 className={`font-heading text-xl sm:text-2xl font-extrabold ${tier.id === 'diamond' ? 'text-white' : 'text-[#352043]'}`}>
                       {tier.name}
@@ -818,14 +805,14 @@ export default function MembershipPage() {
                         <li key={bIdx} className="flex items-start gap-2">
                           <CheckCircle2 className={`w-4 h-4 shrink-0 mt-0.5 ${tier.id === 'diamond' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'}`} />
                           <span className={tier.id === 'diamond' ? 'text-white font-medium' : 'text-[#352043] font-medium'}>
-                            {benefit.includes('%') ? (
+                            {benefit.match(/^\d+%/) ? (
                               <>
                                 <strong className={`px-2 py-0.5 rounded-md text-xs font-black mr-1.5 shadow-md inline-block transform group-hover:scale-105 transition-transform ${
                                   tier.id === 'diamond'
                                     ? 'bg-gradient-to-r from-[#DFC47A] via-[#F3E5AB] to-[#C8A34A] text-[#2B083A] border border-white'
                                     : 'bg-[#47206A] text-[#DFC47A] border border-[#DFC47A]/60'
                                 }`}>
-                                  {tier.discountPercentage}%
+                                  {benefit.match(/^(\d+%)/)?.[1]}
                                 </strong>
                                 {benefit.replace(/^\d+%\s*/, '')}
                               </>

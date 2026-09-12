@@ -831,7 +831,7 @@ export default function SeoAuditDashboard() {
                       value={selectedRoute.ogImage}
                       onChange={(e) => handleFieldChange('ogImage', e.target.value)}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-[#E9DED3] focus:border-[#C8A34A] focus:outline-none text-xs font-mono font-medium bg-[#FAF5EF]/50"
-                      placeholder="/images/banner-4.webp or full URL..."
+                      placeholder="/images/banner-4.webp"
                     />
                   </div>
 

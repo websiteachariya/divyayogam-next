@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { User, Phone, Mail, Lock, Building, Briefcase, Calendar, Users, AlertCircle, ArrowRight, CheckCircle2, Eye, EyeOff } from 'lucide-react';
+import { User, Phone, Mail, Lock, Building, Briefcase, Calendar, Users, AlertCircle, ArrowRight, CheckCircle2, Eye, EyeOff, ChevronDown } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
@@ -13,8 +13,10 @@ export default function RegisterPage() {
   const [formData, setFormData] = useState({
     name: '',
     age: '',
-    gender: 'Male',
+    gender: '',
     occupation: '',
+    customOccupation: '',
+    branchCampus: '',
     organisation: '',
     mobile: '',
     email: '',
@@ -42,8 +44,14 @@ export default function RegisterPage() {
       newErrors.gender = 'Please select a gender.';
     }
 
-    if (!formData.occupation || formData.occupation.trim().length < 2) {
-      newErrors.occupation = 'Occupation is required.';
+    if (!formData.occupation) {
+      newErrors.occupation = 'Please select an occupation.';
+    } else if (formData.occupation === 'Others' && !formData.customOccupation.trim()) {
+      newErrors.customOccupation = 'Please specify your occupation.';
+    }
+
+    if (!formData.branchCampus || formData.branchCampus.trim().length < 2) {
+      newErrors.branchCampus = 'Branch / Campus is required.';
     }
 
     if (!formData.organisation || formData.organisation.trim().length < 2) {
@@ -76,10 +84,17 @@ export default function RegisterPage() {
     setIsSubmitting(true);
 
     try {
+      const finalPayload = {
+        ...formData,
+        occupation: formData.occupation === 'Others' && formData.customOccupation.trim()
+          ? `Others (${formData.customOccupation.trim()})`
+          : formData.occupation,
+      };
+
       const res = await fetch('/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(finalPayload),
       });
 
       const data = await res.json();
@@ -178,13 +193,19 @@ export default function RegisterPage() {
                   <select
                     value={formData.gender}
                     onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
-                    className="w-full pl-10 pr-4 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none transition-all appearance-none cursor-pointer"
+                    className={`w-full pl-10 pr-10 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none transition-all appearance-none cursor-pointer ${
+                      !formData.gender ? 'text-gray-400' : 'text-[#47206A]'
+                    }`}
                   >
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                    <option value="Prefer not to say">Prefer not to say</option>
+                    <option value="" disabled hidden>
+                      Select Gender
+                    </option>
+                    <option value="Male" className="text-[#47206A]">Male</option>
+                    <option value="Female" className="text-[#47206A]">Female</option>
+                    <option value="Other" className="text-[#47206A]">Other</option>
+                    <option value="Prefer not to say" className="text-[#47206A]">Prefer not to say</option>
                   </select>
+                  <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8C5D00] pointer-events-none" />
                 </div>
                 {errors.gender && <p className="text-xs text-red-500 mt-1 font-medium">{errors.gender}</p>}
               </div>
@@ -202,28 +223,71 @@ export default function RegisterPage() {
                     value={formData.mobile}
                     onChange={(e) => setFormData({ ...formData, mobile: e.target.value.replace(/\D/g, '') })}
                     placeholder="9876543210"
-                    className="w-full pl-10 pr-4 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none transition-all"
+                    className="w-full pl-10 pr-4 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none transition-all text-[#47206A]"
                   />
                 </div>
                 {errors.mobile && <p className="text-xs text-red-500 mt-1 font-medium">{errors.mobile}</p>}
               </div>
 
-              {/* Occupation */}
+              {/* Occupation Dropdown */}
               <div>
                 <label className="block text-xs font-bold text-[#47206A] uppercase tracking-wider mb-2">
                   Occupation <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
                   <Briefcase className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8C5D00]" />
+                  <select
+                    value={formData.occupation}
+                    onChange={(e) => setFormData({ ...formData, occupation: e.target.value, customOccupation: e.target.value !== 'Others' ? '' : formData.customOccupation })}
+                    className={`w-full pl-10 pr-10 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none transition-all appearance-none cursor-pointer ${
+                      !formData.occupation ? 'text-gray-400' : 'text-[#47206A]'
+                    }`}
+                  >
+                    <option value="" disabled hidden>
+                      Select Occupation
+                    </option>
+                    <option value="Staff" className="text-[#47206A]">Staff</option>
+                    <option value="Head" className="text-[#47206A]">Head</option>
+                    <option value="Student" className="text-[#47206A]">Student</option>
+                    <option value="Corporate" className="text-[#47206A]">Corporate</option>
+                    <option value="Others" className="text-[#47206A]">Others</option>
+                  </select>
+                  <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8C5D00] pointer-events-none" />
+                </div>
+                {errors.occupation && <p className="text-xs text-red-500 mt-1 font-medium">{errors.occupation}</p>}
+
+                {formData.occupation === 'Others' && (
+                  <div className="mt-2.5 relative">
+                    <input
+                      type="text"
+                      value={formData.customOccupation}
+                      onChange={(e) => setFormData({ ...formData, customOccupation: e.target.value })}
+                      placeholder="Please specify your occupation"
+                      className="w-full px-4 py-2.5 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none transition-all text-[#47206A]"
+                    />
+                    {errors.customOccupation && (
+                      <p className="text-xs text-red-500 mt-1 font-medium">{errors.customOccupation}</p>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* Branch / Campus */}
+              <div>
+                <label className="block text-xs font-bold text-[#47206A] uppercase tracking-wider mb-2">
+                  Branch / Campus <span className="text-red-500">*</span>
+                </label>
+                <div className="relative">
+                  <Building className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8C5D00]" />
                   <input
                     type="text"
-                    value={formData.occupation}
-                    onChange={(e) => setFormData({ ...formData, occupation: e.target.value })}
-                    placeholder="e.g. Software Engineer, Doctor, Student"
+                    value={formData.branchCampus}
+                    onChange={(e) => setFormData({ ...formData, branchCampus: e.target.value })}
+                    placeholder="e.g. Main Campus / South Branch"
                     className="w-full pl-10 pr-4 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none transition-all"
                   />
                 </div>
-                {errors.occupation && <p className="text-xs text-red-500 mt-1 font-medium">{errors.occupation}</p>}
+                {errors.branchCampus && <p className="text-xs text-red-500 mt-1 font-medium">{errors.branchCampus}</p>}
               </div>
 
               {/* Organisation / Location */}
@@ -245,7 +309,7 @@ export default function RegisterPage() {
               </div>
 
               {/* Email Address */}
-              <div className="sm:col-span-2">
+              <div>
                 <label className="block text-xs font-bold text-[#47206A] uppercase tracking-wider mb-2">
                   Email Address <span className="text-red-500">*</span>
                 </label>
@@ -255,7 +319,7 @@ export default function RegisterPage() {
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="name@domain.com"
+                    placeholder="Enter your email address"
                     className="w-full pl-10 pr-4 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none transition-all"
                   />
                 </div>

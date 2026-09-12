@@ -105,7 +105,7 @@ export default function UserDashboardPage() {
 
   // Compute discount percentage from membership
   const memberDiscountPercent = activeMembership
-    ? (activeMembership.level === 'DIAMOND' ? 50 : activeMembership.level === 'PLATINUM' ? 30 : activeMembership.level === 'GOLD' ? 10 : 0)
+    ? (activeMembership.level === 'DIAMOND' ? 20 : activeMembership.level === 'PLATINUM' ? 10 : activeMembership.level === 'GOLD' ? 5 : 0)
     : 0;
 
   // Default class progression list if not in DB yet
@@ -276,6 +276,10 @@ export default function UserDashboardPage() {
                 <span className="font-bold text-[#47206A]">{userData?.occupation}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-gray-100">
+                <span className="text-gray-500 font-medium">Branch / Campus:</span>
+                <span className="font-bold text-[#47206A]">{userData?.branchCampus || 'N/A'}</span>
+              </div>
+              <div className="flex justify-between py-1 border-b border-gray-100">
                 <span className="text-gray-500 font-medium">Organisation:</span>
                 <span className="font-bold text-[#47206A]">{userData?.organisation}</span>
               </div>
@@ -323,10 +327,6 @@ export default function UserDashboardPage() {
                         <Crown className="w-6 h-6" style={{ color: activeMembership.level === 'DIAMOND' ? '#DFC47A' : activeMembership.level === 'PLATINUM' ? '#E8E8E8' : '#FFD700' }} />
                         {activeMembership.level}
                       </h3>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-xs uppercase font-bold tracking-wider" style={{ color: activeMembership.level === 'DIAMOND' ? '#DFC47A' : activeMembership.level === 'PLATINUM' ? '#E8E8E8' : '#FFF8ED' }}>Sacred Privilege</span>
-                      <h4 className="text-xl font-bold" style={{ color: activeMembership.level === 'DIAMOND' ? '#DFC47A' : activeMembership.level === 'PLATINUM' ? '#E8E8E8' : '#FFD700' }}>{activeMembership.discountPercent}% Sacred Benefit</h4>
                     </div>
                   </div>
 

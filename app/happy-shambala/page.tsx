@@ -42,6 +42,7 @@ import {
   Check,
   Printer,
   X,
+  Maximize2,
   ShieldCheck,
   AlertCircle
 } from 'lucide-react';
@@ -49,6 +50,7 @@ import {
 export default function HappyShambalaLandingPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeTab, setActiveTab] = useState<'all' | 'tickets' | 'guidelines'>('all');
+  const [selectedShambalaImg, setSelectedShambalaImg] = useState<{ src: string; title: string } | null>(null);
 
   // Registration & Payment Modal State
   const [selectedTier, setSelectedTier] = useState<TicketTier | null>(null);
@@ -456,10 +458,11 @@ export default function HappyShambalaLandingPage() {
       popular: true,
       color: 'from-[#352043] via-[#47206A] to-[#2B083A]',
       borderColor: 'border-[#DFC47A]',
-      discountBadge: '50% Sacred Privilege Grant on All Classes',
+      discountBadge: '50% Sacred Privilege Grant on All 6 Classes',
       discountPercentage: 50,
       benefits: [
-        '50% Sacred Privilege Grant for All Sequential Classes',
+        '20% Sacred Privilege Grant for Individual Classes',
+        '50% Sacred Privilege Grant for All 6 Classes (All-in-One Master Pass)',
         'Advanced Avadhani engagement',
         'Personalized Goal Sheet enrichment',
         'Guided meditation and mindful practices',
@@ -481,10 +484,11 @@ export default function HappyShambalaLandingPage() {
       popular: false,
       color: 'from-[#FFFDF9] via-[#FAF5EF] to-[#FFF8ED]',
       borderColor: 'border-[#DFC47A]',
-      discountBadge: '30% Sacred Privilege Grant on All Classes',
+      discountBadge: '30% Sacred Privilege Grant on All 6 Classes',
       discountPercentage: 30,
       benefits: [
-        '30% Sacred Privilege Grant for All Sequential Classes',
+        '10% Sacred Privilege Grant for Individual Classes',
+        '30% Sacred Privilege Grant for All 6 Classes (All-in-One Master Pass)',
         'Avadhani Sessions',
         'Goal Sheet Enrichment & Review',
         'Mindfulness and self-reflection',
@@ -506,10 +510,11 @@ export default function HappyShambalaLandingPage() {
       popular: false,
       color: 'from-[#FFFDF9] via-[#FAF5EF] to-[#FFF8ED]',
       borderColor: 'border-[#DFC47A]',
-      discountBadge: '10% Sacred Privilege Grant on All Classes',
+      discountBadge: '10% Sacred Privilege Grant on All 6 Classes',
       discountPercentage: 10,
       benefits: [
-        '10% Sacred Privilege Grant for All Sequential Classes',
+        '5% Sacred Privilege Grant for Individual Classes',
+        '10% Sacred Privilege Grant for All 6 Classes (All-in-One Master Pass)',
         'Avadhani Session',
         'Goal Sheet Enrichment — FREE',
         'Introduction to conscious living',
@@ -520,18 +525,15 @@ export default function HappyShambalaLandingPage() {
   ];
 
   const galleryImages = [
-    { src: null, isPending: true, title: 'Shambala Celebration' },
-    { src: null, isPending: true, title: 'Oneness Sadhana Gathering' },
-    { src: null, isPending: true, title: 'Spiritual Initiation' },
-    { src: null, isPending: true, title: 'Consciousness Meditation' },
-    { src: null, isPending: true, title: 'Deep Inner Peace' },
-    { src: null, isPending: true, title: 'Sanctuary Satsang' },
-    { src: null, isPending: true, title: 'Maha Shambala Moments' },
-    { src: null, isPending: true, title: 'Divine Awakening' },
-    { src: null, isPending: true, title: 'Cellular Healing Session' },
-    { src: null, isPending: true, title: 'Sacred Reflection' },
-    { src: null, isPending: true, title: 'Upcoming Celebration' },
-    { src: null, isPending: true, title: 'Sanctuary Highlights' },
+    { src: '/images/IMG_0920.webp', isPending: false, title: 'Shambala Celebration' },
+    { src: '/images/0I5A7781.webp', isPending: false, title: 'Oneness Sadhana Gathering' },
+    { src: '/images/IMG_8392.webp', isPending: false, title: 'Spiritual Initiation' },
+    { src: '/images/DSC09271.webp', isPending: false, title: 'Consciousness Meditation' },
+    { src: '/images/DSC01509.webp', isPending: false, title: 'Deep Inner Peace' },
+    { src: '/images/0W7A8546.webp', isPending: false, title: 'Sanctuary Satsang' },
+    { src: '/images/DSC01538.webp', isPending: false, title: 'Maha Shambala Moments' },
+    { src: '/images/0I5A4602.webp', isPending: false, title: 'Divine Awakening' },
+    
   ];
 
   const testimonialVideos = [
@@ -1356,26 +1358,6 @@ export default function HappyShambalaLandingPage() {
                     <Sparkles className={`w-4 h-4 ${tier.id === 'diamond' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'} group-hover:scale-110 transition-transform`} />
                   </div>
 
-                  {/* Top Eye-Catching Percentage Badge Pill - Separated % Highlight */}
-                  <div className="flex items-center justify-start pt-1">
-                    <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border-2 shadow-lg transition-all duration-300 group-hover:scale-[1.03] ${
-                      tier.id === 'diamond'
-                        ? 'bg-[#2B083A]/90 border-[#DFC47A] text-white'
-                        : 'bg-[#FAF5EF] border-[#DFC47A] text-[#352043]'
-                    }`}>
-                      <div className={`px-2.5 py-0.5 rounded-full font-black text-xs sm:text-sm shadow-md border ${
-                        tier.id === 'diamond'
-                          ? 'bg-gradient-to-r from-[#DFC47A] via-[#F3E5AB] to-[#C8A34A] text-[#2B083A] border-white'
-                          : 'bg-[#47206A] text-[#DFC47A] border-[#DFC47A]'
-                      }`}>
-                        {tier.discountPercentage}%
-                      </div>
-                      <span className="text-[11px] font-extrabold uppercase tracking-wider">
-                        Sacred Privilege Grant on All Classes
-                      </span>
-                    </div>
-                  </div>
-
                   <div className="space-y-1">
                     <h3 className={`font-heading text-xl sm:text-2xl font-extrabold ${tier.id === 'diamond' ? 'text-white' : 'text-[#352043]'}`}>
                       {tier.name}
@@ -1410,8 +1392,21 @@ export default function HappyShambalaLandingPage() {
                       {tier.benefits.map((benefit, bIdx) => (
                         <li key={bIdx} className="flex items-start gap-2">
                           <CheckCircle2 className={`w-4 h-4 shrink-0 mt-0.5 ${tier.id === 'diamond' ? 'text-[#DFC47A]' : 'text-[#8C5D00]'}`} />
-                          <span className={tier.id === 'diamond' ? 'text-white' : 'text-[#352043]'}>
-                            {benefit}
+                          <span className={tier.id === 'diamond' ? 'text-white font-medium' : 'text-[#352043] font-medium'}>
+                            {benefit.match(/^\d+%/) ? (
+                              <>
+                                <strong className={`px-2 py-0.5 rounded-md text-xs font-black mr-1.5 shadow-md inline-block transform group-hover:scale-105 transition-transform ${
+                                  tier.id === 'diamond'
+                                    ? 'bg-gradient-to-r from-[#DFC47A] via-[#F3E5AB] to-[#C8A34A] text-[#2B083A] border border-white'
+                                    : 'bg-[#47206A] text-[#DFC47A] border border-[#DFC47A]/60'
+                                }`}>
+                                  {benefit.match(/^(\d+%)/)?.[1]}
+                                </strong>
+                                {benefit.replace(/^\d+%\s*/, '')}
+                              </>
+                            ) : (
+                              benefit
+                            )}
                           </span>
                         </li>
                       ))}
@@ -1625,7 +1620,7 @@ export default function HappyShambalaLandingPage() {
             >
               <div className="relative h-60 w-full overflow-hidden bg-[#FAF5EF]">
                 <Image
-                  src="/images/service-10.webp"
+                  src="/images/0W7A3056.webp"
                   alt="Benefits of Meditation"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
@@ -1707,22 +1702,15 @@ export default function HappyShambalaLandingPage() {
             </div>
 
             {/* Right Poster Showcase */}
-            <div className="lg:col-span-5 relative flex items-center justify-center">
-              <div className="relative group h-[440px] sm:h-[500px] w-full max-w-md rounded-3xl overflow-hidden border-2 border-[#DFC47A] shadow-2xl bg-[#352043]">
-                <Image
-                  src="/images/011A6549.webp"
-                  alt="Shambala Poster"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#2A133B]/95 via-[#2A133B]/20 to-transparent group-hover:opacity-95 transition-opacity duration-300" />
-                <div className="absolute bottom-6 left-6 right-6 text-white space-y-2 text-center">
-                  <span className="inline-block px-3.5 py-1 rounded-full bg-[#352043]/85 border border-[#DFC47A]/50 text-[#DFC47A] font-heading font-extrabold text-lg sm:text-xl uppercase tracking-widest backdrop-blur-md shadow-md">
-                    HAPPY Shambala
-                  </span>
-                  <p className="text-xs sm:text-sm text-[#F8F2E8] font-medium leading-relaxed">
-                    Global Grand Event &amp; Mass Oneness Initiation
-                  </p>
+            <div className="lg:col-span-5 relative flex items-stretch h-full">
+              <div className="relative group w-full h-full min-h-[460px] sm:min-h-[520px] rounded-3xl overflow-hidden border-2 border-[#DFC47A] shadow-xl bg-white p-3 flex items-center justify-center">
+                <div className="relative w-full h-full min-h-[440px]">
+                  <Image
+                    src="/images/shambala-2026.webp"
+                    alt="Maha Shambala 2026 Poster"
+                    fill
+                    className="object-contain group-hover:scale-105 transition-transform duration-700 ease-out"
+                  />
                 </div>
               </div>
             </div>
@@ -1751,7 +1739,8 @@ export default function HappyShambalaLandingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.05 }}
-                className="relative h-56 sm:h-64 rounded-3xl overflow-hidden border-2 border-[#DFC47A]/60 hover:border-[#8C5D00] shadow-lg hover:shadow-2xl transition-all duration-500 group bg-white/95 backdrop-blur-md flex flex-col items-center justify-center text-center"
+                onClick={() => item.src && setSelectedShambalaImg({ src: item.src, title: item.title })}
+                className="relative h-56 sm:h-64 rounded-3xl overflow-hidden border-2 border-[#DFC47A]/60 hover:border-[#8C5D00] shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 group bg-white/95 backdrop-blur-md flex flex-col items-center justify-center text-center cursor-pointer"
               >
                 {item.src && !item.isPending ? (
                   <>
@@ -1761,12 +1750,16 @@ export default function HappyShambalaLandingPage() {
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                     />
-                    {/* Dark Golden Gradient Vignette Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#2A133B]/85 via-transparent to-transparent opacity-85 group-hover:opacity-95 transition-opacity duration-300 flex items-end p-4">
-                      <div className="space-y-1 text-left w-full">
-                        <span className="inline-block px-3 py-1 rounded-full bg-[#352043]/85 border border-[#DFC47A]/50 text-[#DFC47A] text-[10px] font-extrabold uppercase tracking-widest backdrop-blur-sm shadow-xs">
+                    {/* Dark Golden Gradient Vignette Overlay with Zoom Icon */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#2A133B]/90 via-black/20 to-transparent opacity-85 group-hover:opacity-95 transition-opacity duration-300 flex items-end justify-between p-4">
+                      <div className="space-y-1 text-left">
+                        <span className="inline-block px-3 py-1 rounded-full bg-[#352043]/85 border border-[#DFC47A]/50 text-[#DFC47A] text-[10px] sm:text-[11px] font-extrabold uppercase tracking-widest backdrop-blur-sm shadow-xs">
                           {item.title || 'Shambala Celebration'}
                         </span>
+                      </div>
+
+                      <div className="w-8 h-8 rounded-full bg-[#352043]/90 backdrop-blur-md border border-[#DFC47A]/60 flex items-center justify-center text-[#DFC47A] opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 shrink-0 shadow-md">
+                        <Maximize2 className="w-3.5 h-3.5" />
                       </div>
                     </div>
                   </>
@@ -1791,6 +1784,17 @@ export default function HappyShambalaLandingPage() {
                 )}
               </motion.div>
             ))}
+          </div>
+
+          {/* View Full Gallery Action Button */}
+          <div className="pt-4 sm:pt-6 text-center">
+            <Link
+              href="/gallery"
+              className="inline-flex items-center gap-2.5 px-7 py-3 rounded-full bg-[#352043] hover:bg-[#8C5D00] text-white font-heading font-extrabold text-xs sm:text-sm uppercase tracking-widest shadow-xl hover:scale-105 transition-all duration-300 group border border-[#DFC47A]/50"
+            >
+              <span>View Full Gallery</span>
+              <ArrowRight className="w-4 h-4 text-[#DFC47A] group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
         </div>
       </section>
@@ -2319,6 +2323,56 @@ export default function HappyShambalaLandingPage() {
               </div>
             </motion.div>
           </div>
+        )}
+      </AnimatePresence>
+
+      {/* Interactive Lightbox Modal */}
+      <AnimatePresence>
+        {selectedShambalaImg && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedShambalaImg(null)}
+            className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-5xl w-full bg-[#2B1439] rounded-3xl p-4 sm:p-6 border-2 border-[#DFC47A]/50 overflow-hidden shadow-2xl space-y-4"
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedShambalaImg(null)}
+                aria-label="Close image"
+                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-[#DFC47A] hover:bg-[#C8A34A] text-[#2B1439] flex items-center justify-center transition-colors shadow-md cursor-pointer font-bold"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Large Image Container */}
+              <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-2xl overflow-hidden bg-black/20 border border-[#DFC47A]/30">
+                <Image
+                  src={selectedShambalaImg.src}
+                  alt={selectedShambalaImg.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
+              {/* Image Title Banner */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 px-2 pt-2">
+                <h3 className="font-heading text-lg sm:text-2xl font-bold text-[#DFC47A]">
+                  {selectedShambalaImg.title}
+                </h3>
+                <span className="px-3.5 py-1 rounded-full bg-white/10 border border-[#DFC47A]/30 text-xs font-semibold text-white uppercase tracking-wider">
+                  HAPPY SHAMBALA GALLERY
+                </span>
+              </div>
+            </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>
 

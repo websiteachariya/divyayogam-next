@@ -103,7 +103,7 @@ export function validateContributionAmount(
  * Diamond: ₹5,000 (20% discount)
  */
 export const MEMBERSHIP_TIER_PRICES: Record<string, { name: string; price: number; discountPercent: number }> = {
-  gold: { name: 'Gold', price: 1000, discountPercent: 10 },
-  platinum: { name: 'Platinum', price: 2000, discountPercent: 30 },
-  diamond: { name: 'Diamond', price: 5000, discountPercent: 50 },
+  gold: { name: 'Gold', price: 1000, discountPercent: 5 },
+  platinum: { name: 'Platinum', price: 2000, discountPercent: 10 },
+  diamond: { name: 'Diamond', price: 5000, discountPercent: 20 },
 };

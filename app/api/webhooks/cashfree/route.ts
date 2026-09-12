@@ -99,7 +99,7 @@ export async function POST(req: NextRequest) {
               userId: order.userId,
               level: levelEnum,
               price: order.finalAmount,
-              discountPercent: levelEnum === MembershipTier.DIAMOND ? 50 : levelEnum === MembershipTier.PLATINUM ? 30 : 10,
+              discountPercent: levelEnum === MembershipTier.DIAMOND ? 20 : levelEnum === MembershipTier.PLATINUM ? 10 : 5,
               status: 'SUCCESS',
               cfOrderId,
               cfPaymentId,

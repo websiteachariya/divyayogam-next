@@ -11,6 +11,7 @@ import {
   Heart,
   Sun,
   Home,
+  Leaf,
   Maximize2,
   X,
 } from 'lucide-react';
@@ -20,84 +21,141 @@ interface GalleryCard {
   title: string;
   category: string;
   icon: any;
+  objectPosition?: string;
+  transform?: string;
+  hoverTransform?: string;
 }
 
 export default function GalleryPage() {
   const [selectedImg, setSelectedImg] = useState<GalleryCard | null>(null);
 
-  // Gallery items using valid high-resolution existing image files
+  // Gallery items expanded to 16 cards (0I5A7729.webp at 7th position)
   const galleryItems: GalleryCard[] = [
     {
-      src: '/images/gal-1.webp',
-      title: 'Rituals & Ceremonies',
-      category: 'RITUALS & CEREMONIES',
+      src: '/images/0I5A6612.webp',
+      title: 'Meditation Posture',
+      category: 'INNER SILENCE',
+      icon: Flame,
+      objectPosition: 'center center',
+    },
+    {
+      src: '/images/0W7A8546.webp',
+      title: 'Spiritual Balance',
+      category: 'HARMONY',
+      icon: Sun,
+      objectPosition: 'center center',
+    },
+    {
+      src: '/images/2D7A0617.webp',
+      title: 'Nature and Peace',
+      category: "NATURE'S GRACE",
+      icon: Leaf,
+      objectPosition: 'center center',
+    },
+    {
+      src: '/images/R_RL3496.webp',
+      title: 'Candlelight Meditation',
+      category: 'AWAKENING',
       icon: Sparkles,
+      objectPosition: 'center center',
     },
     {
-      src: '/images/011A6549.webp',
-      title: 'Satsang & Discourses',
-      category: 'SATSANG & DISCOURSES',
+      src: '/images/2D7A0606.webp',
+      title: 'Community Connection',
+      category: 'COMMUNITY SERVICE',
       icon: Users,
+      objectPosition: 'center center',
     },
     {
-      src: '/images/gal-2.webp',
-      title: 'Ashram Life',
-      category: 'ASHRAM LIFE',
+      src: '/images/0I5A0390.webp',
+      title: 'Yoga Studio',
+      category: 'SACRED SPACE',
       icon: Home,
+      objectPosition: 'center center',
+    },
+    {
+      src: '/images/0I5A7729.webp',
+      title: 'Mass Circular Meditation',
+      category: 'MASS MEDITATION',
+      icon: Globe,
+      objectPosition: 'center center',
+    },
+    {
+      src: '/images/0I5A9374.webp',
+      title: 'Peaceful Environment',
+      category: 'SANCTUARY',
+      icon: Heart,
+      objectPosition: 'center center',
     },
     {
       src: '/images/011A6598.webp',
       title: 'Candle Light Meditation',
       category: 'CANDLE LIGHT MEDITATION',
       icon: Flame,
+      objectPosition: 'center center',
+    },
+    {
+      src: '/images/2D7A1254.webp',
+      title: 'Devotional Balance',
+      category: 'SPIRITUAL HARMONY',
+      icon: Sun,
+      objectPosition: 'center center',
+    },
+    {
+      src: '/images/2D7A9684.webp',
+      title: 'Ashram Gardens & Peace',
+      category: 'NATURE & PEACE',
+      icon: Leaf,
+      objectPosition: '40% center',
+    },
+    {
+      src: '/images/gal-1.webp',
+      title: 'Sacred Traditions',
+      category: 'RITUALS & CEREMONIES',
+      icon: Sparkles,
+      objectPosition: 'center center',
+    },
+    {
+      src: '/images/gal-2.webp',
+      title: 'Ancient Wisdom',
+      category: 'TRADITIONAL TEACHINGS',
+      icon: Globe,
+      objectPosition: 'center 25%',
+    },
+    {
+      src: '/images/191A4534.webp',
+      title: 'Master Teachings',
+      category: 'SATSANG & DISCOURSES',
+      icon: Users,
+      objectPosition: 'center center',
     },
     {
       src: '/images/0I5A6953.webp',
-      title: 'Group Meditations',
+      title: 'Collective Consciousness',
       category: 'GROUP MEDITATIONS',
       icon: Users,
+      objectPosition: 'center center',
     },
     {
-      src: '/images/0I5A7629.webp',
+      src: '/images/gallery3d.webp',
+      title: 'Spiritual Wellness',
+      category: 'WORKSHOPS & HEALING',
+      icon: Heart,
+      objectPosition: 'center center',
+    },
+    {
+      src: '/images/IMG_8441.webp',
       title: 'Global Gatherings',
       category: 'GLOBAL GATHERINGS',
       icon: Globe,
+      objectPosition: 'center center',
     },
     {
-      src: '/images/0I5A7685.webp',
-      title: 'Mass Meditation',
-      category: 'MASS MEDITATION',
-      icon: Flame,
-    },
-    {
-      src: '/images/0I5A7729.webp',
-      title: 'Spiritual Events',
-      category: 'SPIRITUAL EVENTS',
-      icon: Sparkles,
-    },
-    {
-      src: '/images/0I5A8707.webp',
-      title: 'Workshops & Healing',
-      category: 'WORKSHOPS & HEALING',
-      icon: Heart,
-    },
-    {
-      src: '/images/0I5A9336.webp',
-      title: 'Devotion & Prayer',
-      category: 'DEVOTION & PRAYER',
-      icon: Heart,
-    },
-    {
-      src: '/images/0I5A9374.webp',
-      title: 'Unity & Oneness',
-      category: 'UNITY & ONENESS',
-      icon: Users,
-    },
-    {
-      src: '/images/2D7A0565.webp',
+      src: '/images/DSC06562.webp',
       title: 'Divine Energy',
       category: 'DIVINE ENERGY',
       icon: Sun,
+      objectPosition: 'center center',
     },
   ];
 
@@ -264,17 +322,25 @@ export default function GalleryPage() {
                 >
                   {/* Inner Rectangular Container (Clean edge-to-edge image, no inside borders) */}
                   <div className="relative w-full aspect-[4/3] rounded-[20px] overflow-hidden bg-[#2B1439]">
-                    {/* Photo Image */}
+                    {/* Photo Image with Custom Position & Transform */}
                     <Image
                       src={item.src}
                       alt={item.title}
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      style={{
+                        objectPosition: item.objectPosition || 'center',
+                        transform: item.transform || undefined,
+                      }}
+                      className={`object-cover transition-transform duration-700 ${
+                        item.src.includes('gal-2')
+                          ? 'group-hover:scale-125'
+                          : 'group-hover:scale-110'
+                      }`}
                       priority={idx < 3}
                     />
 
-                    {/* Gradient Overlay for Text Readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#2B1439]/90 via-black/20 to-transparent group-hover:from-[#2B1439]/95 transition-all duration-300" />
+                    {/* Gradient Overlay for Readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#2B1439]/80 via-transparent to-transparent group-hover:from-[#2B1439]/90 transition-all duration-300" />
 
                     {/* Bottom Category Badge Pill with Gold/Violet Styling */}
                     <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 z-20 flex items-center justify-between pointer-events-none">
@@ -332,15 +398,24 @@ export default function GalleryPage() {
                   src={selectedImg.src}
                   alt={selectedImg.title}
                   fill
+                  style={{
+                    objectPosition: selectedImg.objectPosition || 'center',
+                    transform: selectedImg.transform || undefined,
+                  }}
                   className="object-cover"
                 />
               </div>
 
               {/* Image Title Banner */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 px-2 pt-2">
-                <h3 className="font-heading text-lg sm:text-2xl font-bold text-[#DFC47A]">
-                  {selectedImg.title}
-                </h3>
+                <div>
+                  <h3 className="font-heading text-lg sm:text-2xl font-bold text-[#DFC47A]">
+                    {selectedImg.category}
+                  </h3>
+                  <p className="text-[#F8F2E8]/80 text-sm font-serif italic">
+                    {selectedImg.title}
+                  </p>
+                </div>
                 <span className="px-3.5 py-1 rounded-full bg-white/10 border border-[#DFC47A]/30 text-xs font-semibold text-white uppercase tracking-wider">
                   {selectedImg.category}
                 </span>
