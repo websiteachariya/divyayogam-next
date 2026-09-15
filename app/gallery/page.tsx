@@ -32,21 +32,22 @@ export default function GalleryPage() {
   // Gallery items expanded to 16 cards (0I5A7729.webp at 7th position)
   const galleryItems: GalleryCard[] = [
     {
-      src: '/images/0I5A6612.webp',
+      src: '/images/2D7A0606.webp',
       title: 'Meditation Posture',
       category: 'INNER SILENCE',
       icon: Flame,
       objectPosition: 'center center',
+      transform: 'rotate-90 scale-150',
     },
     {
-      src: '/images/0W7A8546.webp',
+      src: '/images/011A6598.webp',
       title: 'Spiritual Balance',
       category: 'HARMONY',
       icon: Sun,
       objectPosition: 'center center',
     },
     {
-      src: '/images/2D7A0617.webp',
+      src: '/images/0I5A9641.webp',
       title: 'Nature and Peace',
       category: "NATURE'S GRACE",
       icon: Leaf,
@@ -74,7 +75,7 @@ export default function GalleryPage() {
       objectPosition: 'center center',
     },
     {
-      src: '/images/0I5A7729.webp',
+      src: '/images/0I5A7431.webp',
       title: 'Mass Circular Meditation',
       category: 'MASS MEDITATION',
       icon: Globe,
@@ -88,7 +89,7 @@ export default function GalleryPage() {
       objectPosition: 'center center',
     },
     {
-      src: '/images/011A6598.webp',
+      src: '/images/0I5A9336.webp',
       title: 'Candle Light Meditation',
       category: 'CANDLE LIGHT MEDITATION',
       icon: Flame,
@@ -109,7 +110,7 @@ export default function GalleryPage() {
       objectPosition: '40% center',
     },
     {
-      src: '/images/gal-1.webp',
+      src: '/images/2D7A9602.webp',
       title: 'Sacred Traditions',
       category: 'RITUALS & CEREMONIES',
       icon: Sparkles,

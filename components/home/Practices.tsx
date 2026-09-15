@@ -61,7 +61,8 @@ export default function Practices() {
       desc: 'Harmonize your internal organs, calm the nervous system, and awaken cellular vitality through targeted organ meditation.',
       badge: 'CELLULAR RENEWAL',
       path: '/organ-meditation',
-      image: '/images/practice-pranayama.webp',
+      image: '/images/galll-1.webp',
+      imageClass: 'object-center',
       badgeIcon: MeditationBadgeIcon,
     },
     {
@@ -69,7 +70,8 @@ export default function Practices() {
       desc: 'Master ancient breath control techniques to balance your energy channels, dissolve stress, and expand conscious vitality.',
       badge: 'PRANIC ENERGY',
       path: '/quantum-habits',
-      image: '/images/practice-pranayama.webp',
+      image: '/images/galll-2.webp',
+      imageClass: 'object-top',
       badgeIcon: PranayamaBadgeIcon,
     },
     {
@@ -77,7 +79,8 @@ export default function Practices() {
       desc: 'Unite body, mind, and spirit through authentic postures, subtle chakra alignment, and deep spiritual awareness.',
       badge: 'TRIADIC ALIGNMENT',
       path: '/practices',
-      image: '/images/practice-pranayama.webp',
+      image: '/images/galll-3.webp',
+      imageClass: 'object-center',
       badgeIcon: YogaBadgeIcon,
     },
   ];
@@ -217,7 +220,7 @@ export default function Practices() {
                       src={practice.image}
                       alt={practice.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      className={`object-cover ${practice.imageClass || 'object-center'} group-hover:scale-105 transition-transform duration-700`}
                     />
                   </div>
                 </div>

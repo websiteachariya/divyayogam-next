@@ -80,9 +80,9 @@ export default function Gallery() {
             {/* Gallery Image Preview Cards */}
             <div className="grid grid-cols-3 gap-3">
               {[
-                { src: '/images/0I5A6612.webp', title: 'Inner Silence' },
-                { src: '/images/191A4490.webp', title: 'Harmony' },
-                { src: '/images/2D7A0617.webp', title: "Nature's Grace" },
+                { src: '/images/0I5A6953.webp', title: 'Inner Silence', className: 'rotate-0 scale-150' },
+                { src: '/images/011A6598.webp', title: 'Harmony' },
+                { src: '/images/0I5A9641.webp', title: "Nature's Grace" },
               ].map((img, idx) => (
                 <Link
                   key={idx}
@@ -93,7 +93,7 @@ export default function Gallery() {
                     src={img.src}
                     alt={img.title}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    className={`object-cover group-hover:scale-110 transition-transform duration-500 ${img.className || ''}`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
                   <div className="absolute bottom-2 left-2 right-2 z-10 text-center">

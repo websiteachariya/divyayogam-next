@@ -13,21 +13,10 @@ export default function TestimonialsPage() {
   };
 
   const videos = [
-    { id: 'GqDjm6amEu0', title: 'Sacred Organ Meditation Experience', category: 'Transformation Story' },
-    { id: '5Ut6CCT_Gms', title: 'Divine Yogam Awakening Journey', category: 'Seeker Testimonial' },
-    { id: 'G_otnJtf1qs', title: 'Inner Healing & Energy Elevation', category: 'Practitioner Review' },
+   
     { id: 'XA0KtAyh6dE', title: 'Quantum Habits & Daily Meditation', category: 'Life Transformation' },
-    { id: 'g1z50SgRisM', title: 'Spiral Meditation Maala Experience', category: 'Spiritual Growth' },
-    { id: '-UnFkMbnXs8', title: 'Shambala Contribution Journey', category: 'Global Family' },
-    { id: 'TXARPCnXUwM', title: 'Deep Dhyana & Consciousness', category: 'Meditation Story' },
-    { id: 'vq2XTPdfttA', title: 'Sacred Science of Wellness', category: 'Healing Testimonial' },
-    { id: 'VRgLuk0Etjw', title: 'Awakening Within — Divine Grace', category: 'Personal Journey' },
-    { id: 'ubDdVwaOKbI', title: 'Mindfulness & Harmony Practices', category: 'Wisdom Sharing' },
-    { id: 'nu3F8DD1nmo', title: 'Sacred Class Progression Story', category: 'Class Experience' },
-    { id: 'HwA-qgzVWEk', title: 'Self Realization & Peace', category: 'Transformation Story' },
     { id: 'xLCFA-8bjH0', title: 'Divineyogam Organ Rejuvenation', category: 'Health & Vitality' },
-    { id: 'PyP9Rs_iI58', title: 'Global Online Sanctuary Experience', category: 'Community Voice' },
-    { id: 'lZZxM58Uy7s', title: 'Sacred Pilgrimage & Divine Bliss', category: 'Sacred Journey' },
+   
   ];
 
   return (

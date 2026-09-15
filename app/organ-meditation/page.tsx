@@ -697,34 +697,17 @@ export default function OrganMeditationPage() {
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
               
-              {/* Left Column: Waiting for Image to be Uploaded Spotlight Frame */}
+              {/* Left Column: Achariya Vision Image */}
               <div className="lg:col-span-5 relative group">
                 <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-[#C8A34A] via-[#DFC47A] to-[#8C5D00] opacity-30 group-hover:opacity-60 transition-opacity duration-700 blur-xl pointer-events-none" />
-                <div className="relative rounded-3xl overflow-hidden border-2 border-[#DFC47A]/70 shadow-2xl bg-white/95 backdrop-blur-md p-4">
-                  <div className="relative rounded-2xl overflow-hidden bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EF] to-[#F8F2E8] aspect-[4/5] flex flex-col items-center justify-center p-6 text-center border-2 border-dashed border-[#DFC47A]/70">
-                    
-                    {/* Subtle Background Pattern */}
-                    <div className="absolute inset-0 bg-[radial-gradient(#C8A34A_1px,transparent_1px)] [background-size:16px_16px] opacity-20 pointer-events-none" />
-
-                    {/* Pulsing Icon Badge */}
-                    <div className="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/90 backdrop-blur-sm border-2 border-[#C8A34A]/60 shadow-lg flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-500">
-                      <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#C8A34A]/20 to-[#8C5D00]/20 animate-pulse pointer-events-none" />
-                      <UploadCloud className="w-9 h-9 sm:w-10 sm:h-10 text-[#8C5D00]" />
-                    </div>
-
-                    {/* Text Details */}
-                    <div className="relative z-10 space-y-2 max-w-[240px]">
-                      <span className="inline-block px-3.5 py-1 rounded-full bg-[#8C5D00]/15 text-[#8C5D00] text-[11px] font-extrabold uppercase tracking-widest border border-[#8C5D00]/30 shadow-xs">
-                        Pending Upload
-                      </span>
-                      <h4 className="font-heading text-base sm:text-lg font-bold text-[#352043] leading-snug">
-                        Waiting for Image to be Uploaded
-                      </h4>
-                      <p className="text-xs text-[#5E5865] font-light">
-                        Achariya vision photograph will be updated here
-                      </p>
-                    </div>
-
+                <div className="relative rounded-3xl overflow-hidden border-2 border-[#DFC47A]/70 shadow-2xl bg-white p-3">
+                  <div className="relative rounded-2xl overflow-hidden aspect-[4/3] w-full">
+                    <Image
+                      src="/images/IMG_0576.webp"
+                      alt="The Achariya Vision - Nurturing Spiritual & Global Leaders"
+                      fill
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                    />
                   </div>
                 </div>
               </div>

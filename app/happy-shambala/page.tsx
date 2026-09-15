@@ -533,24 +533,12 @@ export default function HappyShambalaLandingPage() {
     { src: '/images/0W7A8546.webp', isPending: false, title: 'Sanctuary Satsang' },
     { src: '/images/DSC01538.webp', isPending: false, title: 'Maha Shambala Moments' },
     { src: '/images/0I5A4602.webp', isPending: false, title: 'Divine Awakening' },
-    
   ];
 
   const testimonialVideos = [
-    { id: 'GqDjm6amEu0', title: 'Deep Inner Healing Experience' },
-    { id: '5Ut6CCT_Gms', title: 'Awakening Consciousness' },
-    { id: 'G_otnJtf1qs', title: 'Shambala Meditation Journey' },
-    { id: 'HwA-qgzVWEk', title: 'Shambala Sadhana Realization' },
-    { id: '-UnFkMbnXs8', title: 'Mindfulness & Clarity' },
-    { id: 'TXARPCnXUwM', title: 'Shambala Transformation' },
-    { id: 'vq2XTPdfttA', title: 'Soul Connection & Peace' },
-    { id: 'VRgLuk0Etjw', title: 'Divine Energy Activation' },
-    { id: 'ubDdVwaOKbI', title: 'Higher Consciousness State' },
-    { id: 'nu3F8DD1nmo', title: 'Inner Harmony & Love' },
+   
     { id: 'xLCFA-8bjH0', title: 'Peaceful Mind & Purpose' },
-    { id: 'PyP9Rs_iI58', title: 'Cellular Health Awakening' },
-    { id: 'tSPIoOmVqhg', title: 'Spiritual Alignment Grace' },
-    { id: 'lZZxM58Uy7s', title: 'ACHARIYA Culture Blessings' },
+   
   ];
 
   const outsidePondyEvents = [
@@ -1482,21 +1470,19 @@ export default function HappyShambalaLandingPage() {
               })}
             </div>
 
-            {/* Guideline Video Container */}
+            {/* Guideline Image Container */}
             <div className="lg:col-span-5">
               <div className="bg-[#FAF5EF] p-4 rounded-3xl border-2 border-[#E9DED3] shadow-lg space-y-3">
-                <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-inner">
-                  <iframe
-                    suppressHydrationWarning
-                    src="https://www.youtube.com/embed/5Ut6CCT_Gms?enablejsapi=1"
-                    title="Meditation Guidelines Video"
-                    className="w-full h-full border-0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
+                <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden shadow-inner">
+                  <Image
+                    src="/images/080A0497.webp"
+                    alt="Oneness Meditation Guidance"
+                    fill
+                    className="object-cover object-center"
                   />
                 </div>
                 <p className="text-center text-xs font-bold text-[#352043] uppercase tracking-wider">
-                  Watch Orientation &amp; Guidance Instructions
+                  Sanctuary Orientation &amp; Guidance
                 </p>
               </div>
             </div>

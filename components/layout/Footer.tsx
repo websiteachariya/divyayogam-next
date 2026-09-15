@@ -67,7 +67,7 @@ export default function Footer() {
               <div className="flex items-center gap-3">
                 {[
                   { Icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61594495401217', label: 'Facebook' },
-                  { Icon: Instagram, href: 'https://www.instagram.com/happyshambala/', label: 'Instagram' },
+                  { Icon: Instagram, href: 'https://www.instagram.com/divyayogam_official/', label: 'Instagram' },
                   { Icon: Youtube, href: 'https://www.youtube.com/@divyayogamofficial', label: 'YouTube' },
                 ].map(({ Icon, href, label }, i) => (
                   <a

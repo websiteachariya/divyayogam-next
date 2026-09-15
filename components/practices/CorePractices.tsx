@@ -3,14 +3,16 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Quote } from 'lucide-react';
+import { ArrowRight, Quote, Sparkles } from 'lucide-react';
 
 export default function CorePractices() {
   const topPractices = [
     {
       title: 'Meditation',
-      desc: 'Silence the mind, connect within.',
+      desc: 'Silence the mind and harmonize internal organ vitality through targeted meditation.',
       link: '/organ-meditation',
+      image: '/images/galll-1.webp',
+      imageClass: 'object-center',
       icon: (
         <svg viewBox="0 0 64 64" className="w-8 h-8" fill="none" stroke="#C8A34A" strokeWidth="2">
           <path d="M32 14C32 14 38 24 38 34C38 40 35 44 32 46C29 44 26 40 26 34C26 24 32 14 32 14Z" fill="rgba(200, 163, 74, 0.2)" />
@@ -20,8 +22,10 @@ export default function CorePractices() {
     },
     {
       title: 'Pranic Energy',
-      desc: 'Harness life force, elevate energy.',
+      desc: 'Harness life force and elevate conscious energy through ancient breath practices.',
       link: '/quantum-habits',
+      image: '/images/galll-2.webp',
+      imageClass: 'object-top',
       icon: (
         <svg viewBox="0 0 64 64" className="w-8 h-8" fill="none" stroke="#C8A34A" strokeWidth="2">
           <path d="M12 32C22 18 42 46 52 32" strokeLinecap="round" />
@@ -32,14 +36,39 @@ export default function CorePractices() {
     },
     {
       title: 'Yoga',
-      desc: 'Unite body, mind and soul.',
+      desc: 'Unite body, mind, and spirit with subtle chakra alignment and deep awareness.',
       link: '/practices',
+      image: '/images/galll-3.webp',
+      imageClass: 'object-center',
       icon: (
         <svg viewBox="0 0 64 64" className="w-8 h-8" fill="none" stroke="#C8A34A" strokeWidth="2">
           <circle cx="32" cy="18" r="6" fill="rgba(200, 163, 74, 0.2)" />
           <path d="M32 24V42M20 34H44M26 50L32 42L38 50" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       ),
+    },
+  ];
+
+  const gallerySpotlight = [
+    {
+      src: '/images/IMG_0480.webp',
+      title: 'Mass Meditation Gathering',
+      desc: 'Hundreds of seekers united in deep silent meditation.',
+    },
+    {
+      src: '/images/IMG_0644.webp',
+      title: 'Pranic Energy & Asana Mastery',
+      desc: 'Awakening vital energy through conscious movement.',
+    },
+    {
+      src: '/images/IMG_0817.webp',
+      title: 'Spiritual Discourses & Wisdom',
+      desc: 'Guidance by Achariya Ji & Revered Spiritual Masters.',
+    },
+    {
+      src: '/images/IMG_0863.webp',
+      title: 'Sacred Light & Devotion',
+      desc: 'Collective lamp ceremony and divine harmony.',
     },
   ];
 
@@ -71,8 +100,8 @@ export default function CorePractices() {
           </h2>
         </motion.div>
 
-        {/* Top 3 Cards Row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        {/* Top 3 Practice Cards with Image Previews */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
           {topPractices.map((practice, idx) => (
             <motion.div
               key={idx}
@@ -80,10 +109,10 @@ export default function CorePractices() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="luxury-card rounded-[28px] p-6 border border-[#E9DED3] flex flex-col justify-between group shadow-sm bg-white text-center hover:border-[#8C5D00] transition-all space-y-4"
+              className="luxury-card rounded-[28px] p-5 sm:p-6 border border-[#E9DED3] flex flex-col justify-between group shadow-sm bg-white text-center hover:border-[#8C5D00] transition-all space-y-4"
             >
               <div className="space-y-3">
-                <div className="w-14 h-14 mx-auto rounded-2xl bg-[#F8F2E8] border border-[#E9DED3] flex items-center justify-center text-[#8C5D00] shadow-sm group-hover:scale-110 transition-transform">
+                <div className="w-13 h-13 mx-auto rounded-2xl bg-[#F8F2E8] border border-[#E9DED3] flex items-center justify-center text-[#8C5D00] shadow-sm group-hover:scale-110 transition-transform">
                   {practice.icon}
                 </div>
 
@@ -94,6 +123,16 @@ export default function CorePractices() {
                 <p className="text-[#352043] text-xs sm:text-sm font-normal leading-relaxed">
                   {practice.desc}
                 </p>
+
+                {/* Image Preview Box */}
+                <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden mt-3 shadow-sm border border-[#E9DED3]">
+                  <Image
+                    src={practice.image}
+                    alt={practice.title}
+                    fill
+                    className={`object-cover ${practice.imageClass} group-hover:scale-105 transition-transform duration-500`}
+                  />
+                </div>
               </div>
 
               <div className="pt-3 border-t border-[#E9DED3] flex justify-center">
@@ -107,6 +146,50 @@ export default function CorePractices() {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* Sacred Gatherings & Events Spotlight Grid */}
+        <div className="mb-14 space-y-6">
+          <div className="text-center space-y-2">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#8C5D00]/10 border border-[#8C5D00]/20 text-[#8C5D00] text-[11px] font-bold uppercase tracking-widest">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>SACRED MOMENTS</span>
+            </div>
+            <h3 className="font-heading text-2xl sm:text-3xl font-bold text-[#352043]">
+              Living Experiences <span className="text-[#8C5D00] italic font-serif">&amp; Gatherings</span>
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {gallerySpotlight.map((spot, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="luxury-card rounded-2xl overflow-hidden bg-white border border-[#E9DED3] shadow-sm hover:border-[#8C5D00] group transition-all"
+              >
+                <div className="relative w-full aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={spot.src}
+                    alt={spot.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-3 left-3 right-3 text-white">
+                    <h4 className="font-heading text-sm font-bold text-[#DFC47A] truncate">
+                      {spot.title}
+                    </h4>
+                    <p className="text-[11px] text-gray-200 line-clamp-1 font-light mt-0.5">
+                      {spot.desc}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {/* Bottom 2 Wide Cards Row */}
@@ -123,10 +206,10 @@ export default function CorePractices() {
             {/* Image Thumbnail */}
             <div className="relative w-full sm:w-44 h-48 sm:h-full rounded-2xl overflow-hidden shrink-0 border border-[#E9DED3]">
               <Image
-                src="/images/011A6549.webp"
+                src="/images/IMG_0817.webp"
                 alt="Living The Awakening Yogi"
                 fill
-                className="object-cover"
+                className="object-cover object-center"
               />
             </div>
 

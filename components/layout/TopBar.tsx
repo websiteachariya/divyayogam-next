@@ -94,7 +94,7 @@ export default function TopBar({ isScrolled = false }: TopBarProps) {
             <Facebook className="w-3.5 h-3.5" />
           </a>
           <a
-            href="https://www.instagram.com/happyshambala/"
+            href="https://www.instagram.com/divyayogam_official/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"

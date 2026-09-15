@@ -104,7 +104,7 @@ function ClassesContent() {
           message: 'Payment Successful! Your class has been unlocked and active access is granted.',
         });
         const updatedUser = await fetchUser(); // Refresh user enrollments & dashboard state
-        
+
         // Find next available unlocked class or current class to open checkout card automatically
         const fulfilledSlug = data.order?.metadata?.classSlug;
         if (fulfilledSlug && fulfilledSlug !== 'all-in-one') {
@@ -229,10 +229,10 @@ function ClassesContent() {
     ? activeMembership.level === 'DIAMOND'
       ? 50
       : activeMembership.level === 'PLATINUM'
-      ? 30
-      : activeMembership.level === 'GOLD'
-      ? 10
-      : 0
+        ? 30
+        : activeMembership.level === 'GOLD'
+          ? 10
+          : 0
     : 0;
 
   const getClassStatus = (slug: string, seq: number) => {
@@ -536,7 +536,7 @@ function ClassesContent() {
               <div className="space-y-2 text-xs">
                 <div className="flex justify-between py-1.5 border-b border-gray-100">
                   <span className="text-gray-500">Sacred Class Value:</span>
-                <span className="font-bold text-[#47206A]">₹{selectedClass.price.toLocaleString()}</span>
+                  <span className="font-bold text-[#47206A]">₹{selectedClass.price.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between py-1.5 border-b border-gray-100">
                   <span className="text-gray-500">Active Contributionship Tier:</span>
@@ -627,10 +627,10 @@ function ClassesContent() {
               ? activeMembership.level === 'DIAMOND'
                 ? 20
                 : activeMembership.level === 'PLATINUM'
-                ? 10
-                : activeMembership.level === 'GOLD'
-                ? 5
-                : 0
+                  ? 10
+                  : activeMembership.level === 'GOLD'
+                    ? 5
+                    : 0
               : 0;
 
             const finalPrice = Math.round(cls.price * (1 - individualClassDiscountPercent / 100));
@@ -640,11 +640,10 @@ function ClassesContent() {
               <motion.div
                 key={cls.slug}
                 whileHover={{ y: -4 }}
-                className={`rounded-3xl border-2 p-6 transition-all flex flex-col justify-between relative overflow-hidden bg-white/90 shadow-xl ${
-                  isSelected
+                className={`rounded-3xl border-2 p-6 transition-all flex flex-col justify-between relative overflow-hidden bg-white/90 shadow-xl ${isSelected
                     ? 'border-[#47206A] ring-4 ring-[#DFC47A]/40'
                     : 'border-[#DFC47A] hover:border-[#47206A]'
-                }`}
+                  }`}
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">

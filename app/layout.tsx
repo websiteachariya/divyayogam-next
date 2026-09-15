@@ -145,7 +145,7 @@ export default function RootLayout({
                   },
                   sameAs: [
                     'https://www.facebook.com/profile.php?id=61594495401217',
-                    'https://www.instagram.com/happyshambala/',
+                    'https://www.instagram.com/divyayogam_official/',
                     'https://www.youtube.com/@divyayogamofficial',
                   ],
                 },

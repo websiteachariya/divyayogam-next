@@ -1,12 +1,57 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { User, Phone, Mail, Lock, Building, Briefcase, Calendar, Users, AlertCircle, ArrowRight, CheckCircle2, Eye, EyeOff, ChevronDown } from 'lucide-react';
+import { User, Phone, Mail, Lock, Building, Briefcase, Calendar, Users, AlertCircle, ArrowRight, CheckCircle2, Eye, EyeOff, ChevronDown, Search, X } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+
+const BRANCH_CAMPUS_OPTIONS = [
+  'ASM - Villianur',
+  'ASSV - Villianur',
+  'AASC - Villianur',
+  'ACET - Villianur',
+  'ABSM - Thengaithitu',
+  'Akalavya - Thengaithitu',
+  'ASM - Moolakulam',
+  'ASM - Thavalakuppam',
+  'ABSM - Muthrapalayam',
+  'ABSM - MUTHIALPET',
+  'ASM - Erode',
+  'ASM - PERUNDURAI',
+  'ABSM - Karaikal',
+  'ASM - Trichy',
+  'ABSM - Trichy',
+  'ASM - Etimadai',
+  'ABSM - Alapakkam',
+  'ABSM - Valasaravakkam',
+  'ABSM - Nolambur',
+  'ABSM - Adyar',
+  'ABSM - PADMANABHA NAGAR',
+  'ASM - Villupuram',
+  'ABSM - Tindivanam',
+  'ABSM - Karaikal Feeder',
+  'ASM - Perundurai',
+  'ASM - Thillai Nagar',
+  'ABSM - Thiru Nagar',
+  'ASM - Lawspet',
+  'ABSM - SV Patel Salai',
+  'ABSM - Kalapet',
+  'Akalavya - Reddiarpalayam',
+  'ABSM - Saaligramam',
+  'ABSM - KK Nagar',
+  'ABSM - RK Nagar',
+  'ABSM - Virugambakkam',
+  'ABSM - Dasarathapuram',
+  'ABSM - Gorimedu',
+  'ABSM - Maduravoyal',
+  'ASM - Villupuram Feeder',
+  'ABSM - Venkata Nagar',
+  'Akalavya - Periyakattupalayan',
+   'Akalavya - Thengaithitu',
+];
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -27,6 +72,25 @@ export default function RegisterPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [apiError, setApiError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+
+  // Branch / Campus Dropdown State
+  const [isCampusOpen, setIsCampusOpen] = useState(false);
+  const [campusSearch, setCampusSearch] = useState('');
+  const campusDropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (campusDropdownRef.current && !campusDropdownRef.current.contains(event.target as Node)) {
+        setIsCampusOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const filteredCampuses = BRANCH_CAMPUS_OPTIONS.filter((campus) =>
+    campus.toLowerCase().includes(campusSearch.toLowerCase().trim())
+  );
 
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
@@ -176,7 +240,7 @@ export default function RegisterPage() {
                     type="number"
                     value={formData.age}
                     onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-                    placeholder="e.g. 28"
+                    placeholder="Enter your age"
                     className="w-full pl-10 pr-4 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none transition-all"
                   />
                 </div>
@@ -249,6 +313,7 @@ export default function RegisterPage() {
                     <option value="Staff" className="text-[#47206A]">Staff</option>
                     <option value="Head" className="text-[#47206A]">Head</option>
                     <option value="Student" className="text-[#47206A]">Student</option>
+                    <option value="Parent" className="text-[#47206A]">Parent</option>
                     <option value="Corporate" className="text-[#47206A]">Corporate</option>
                     <option value="Others" className="text-[#47206A]">Others</option>
                   </select>
@@ -273,20 +338,86 @@ export default function RegisterPage() {
               </div>
 
               {/* Branch / Campus */}
-              <div>
+              <div className="relative" ref={campusDropdownRef}>
                 <label className="block text-xs font-bold text-[#47206A] uppercase tracking-wider mb-2">
                   Branch / Campus <span className="text-red-500">*</span>
                 </label>
-                <div className="relative">
-                  <Building className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8C5D00]" />
-                  <input
-                    type="text"
-                    value={formData.branchCampus}
-                    onChange={(e) => setFormData({ ...formData, branchCampus: e.target.value })}
-                    placeholder="e.g. Main Campus / South Branch"
-                    className="w-full pl-10 pr-4 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none transition-all"
-                  />
+                
+                {/* Dropdown Toggle Button */}
+                <div
+                  onClick={() => setIsCampusOpen(!isCampusOpen)}
+                  className="relative cursor-pointer"
+                >
+                  <Building className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8C5D00] pointer-events-none" />
+                  <div
+                    className={`w-full pl-10 pr-10 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm transition-all select-none truncate ${
+                      !formData.branchCampus ? 'text-gray-400' : 'text-[#47206A] font-semibold'
+                    }`}
+                  >
+                    {formData.branchCampus || 'Select Branch / Campus'}
+                  </div>
+                  <ChevronDown className={`absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8C5D00] pointer-events-none transition-transform duration-200 ${isCampusOpen ? 'rotate-180' : ''}`} />
                 </div>
+
+                {/* Dropdown Menu */}
+                {isCampusOpen && (
+                  <div className="absolute z-50 left-0 right-0 mt-1.5 bg-white border border-[#E9DED3] rounded-xl shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150">
+                    {/* Search Input Box */}
+                    <div className="p-2 border-b border-[#E9DED3] bg-[#FAF7F2] relative">
+                      <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#8C5D00]" />
+                      <input
+                        type="text"
+                        value={campusSearch}
+                        onChange={(e) => setCampusSearch(e.target.value)}
+                        placeholder="Search campus..."
+                        autoFocus
+                        className="w-full pl-8 pr-7 py-2 bg-white border border-[#E9DED3] rounded-lg text-xs outline-none focus:border-[#47206A] text-[#47206A]"
+                      />
+                      {campusSearch && (
+                        <button
+                          type="button"
+                          onClick={() => setCampusSearch('')}
+                          className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                        >
+                          <X className="w-3.5 h-3.5" />
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Options List with fixed height for 4 items & scroll */}
+                    <div className="max-h-[148px] overflow-y-auto divide-y divide-gray-50 py-1">
+                      {filteredCampuses.length > 0 ? (
+                        filteredCampuses.map((campus) => (
+                          <button
+                            key={campus}
+                            type="button"
+                            onClick={() => {
+                              setFormData({ ...formData, branchCampus: campus });
+                              setIsCampusOpen(false);
+                              setCampusSearch('');
+                              if (errors.branchCampus) {
+                                setErrors((prev) => ({ ...prev, branchCampus: '' }));
+                              }
+                            }}
+                            className={`w-full text-left px-4 py-2.5 text-xs transition-colors hover:bg-[#FAF7F2] flex items-center justify-between ${
+                              formData.branchCampus === campus ? 'bg-[#FAF7F2] text-[#47206A] font-bold' : 'text-gray-700'
+                            }`}
+                          >
+                            <span>{campus}</span>
+                            {formData.branchCampus === campus && (
+                              <CheckCircle2 className="w-3.5 h-3.5 text-[#8C5D00]" />
+                            )}
+                          </button>
+                        ))
+                      ) : (
+                        <div className="p-3 text-center text-xs text-gray-500 font-medium">
+                          No matching campus found
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+
                 {errors.branchCampus && <p className="text-xs text-red-500 mt-1 font-medium">{errors.branchCampus}</p>}
               </div>
 
