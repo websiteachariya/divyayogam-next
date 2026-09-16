@@ -32,7 +32,6 @@ const BRANCH_CAMPUS_OPTIONS = [
   'ABSM - PADMANABHA NAGAR',
   'ASM - Villupuram',
   'ABSM - Tindivanam',
-  'ABSM - Karaikal Feeder',
   'ASM - Perundurai',
   'ASM - Thillai Nagar',
   'ABSM - Thiru Nagar',
@@ -47,10 +46,9 @@ const BRANCH_CAMPUS_OPTIONS = [
   'ABSM - Dasarathapuram',
   'ABSM - Gorimedu',
   'ABSM - Maduravoyal',
-  'ASM - Villupuram Feeder',
   'ABSM - Venkata Nagar',
   'Akalavya - Periyakattupalayan',
-   'Akalavya - Thengaithitu',
+  'Akalavya - Thengaithitu',
 ];
 
 export default function RegisterPage() {
