@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Please select a valid gender' }, { status: 400 });
     }
 
-    const validOccupationPrefixes = ['Staff', 'Head', 'Student', 'Parent', 'Corporate', 'Others'];
+    const validOccupationPrefixes = ['Staff', 'Student', 'Parent', 'Others'];
     if (!occupation || !validOccupationPrefixes.some((pref) => occupation.startsWith(pref))) {
       return NextResponse.json({ error: 'Please select a valid occupation' }, { status: 400 });
     }

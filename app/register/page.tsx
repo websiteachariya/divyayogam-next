@@ -13,33 +13,34 @@ const BRANCH_CAMPUS_OPTIONS = [
   'ASSV - Villianur',
   'AASC - Villianur',
   'ACET - Villianur',
+  'ACCHM - Ousteri',
   'ABSM - Thengaithitu',
   'Akalavya - Thengaithitu',
+  'Akalavya - Reddiarpalayam',
+  'Akalavya - Anugraha',
   'ASM - Moolakulam',
   'ASM - Thavalakuppam',
-  'ABSM - Muthrapalayam',
-  'ABSM - MUTHIALPET',
+  'ABSM - Muthialpet',
   'ASM - Erode',
-  'ASM - PERUNDURAI',
-  'ABSM - Karaikal',
+  'ASM - Erode(F.C)',
+  'ASM - Perundurai(F.C)',
+  'ASM - Karaikal',
   'ASM - Trichy',
-  'ABSM - Trichy',
-  'ASM - Etimadai',
+  'AWGI - Ettimadai',
+  'ASM - Alapakkam(F.C)',
   'ABSM - Alapakkam',
   'ABSM - Valasaravakkam',
   'ABSM - Nolambur',
   'ABSM - Adyar',
   'ABSM - PADMANABHA NAGAR',
-  'ASM - Villupuram',
+  'ASM - Villupuram (K.K.Nagar)',
+  'ABSM - Villupuram (Thillai Nagar)',
   'ABSM - Tindivanam',
-  'ASM - Perundurai',
-  'ASM - Thillai Nagar',
   'ABSM - Thiru Nagar',
-  'ASM - Lawspet',
+  'ABSM - Lawspet',
   'ABSM - SV Patel Salai',
   'ABSM - Kalapet',
-  'Akalavya - Reddiarpalayam',
-  'ABSM - Saaligramam',
+  'ABSM - Saligramam',
   'ABSM - KK Nagar',
   'ABSM - RK Nagar',
   'ABSM - Virugambakkam',
@@ -47,8 +48,7 @@ const BRANCH_CAMPUS_OPTIONS = [
   'ABSM - Gorimedu',
   'ABSM - Maduravoyal',
   'ABSM - Venkata Nagar',
-  'Akalavya - Periyakattupalayan',
-  'Akalavya - Thengaithitu',
+  'Corp  - Corporate',
 ];
 
 export default function RegisterPage() {
@@ -255,9 +255,8 @@ export default function RegisterPage() {
                   <select
                     value={formData.gender}
                     onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
-                    className={`w-full pl-10 pr-10 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none transition-all appearance-none cursor-pointer ${
-                      !formData.gender ? 'text-gray-400' : 'text-[#47206A]'
-                    }`}
+                    className={`w-full pl-10 pr-10 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none transition-all appearance-none cursor-pointer ${!formData.gender ? 'text-gray-400' : 'text-[#47206A]'
+                      }`}
                   >
                     <option value="" disabled hidden>
                       Select Gender
@@ -301,18 +300,15 @@ export default function RegisterPage() {
                   <select
                     value={formData.occupation}
                     onChange={(e) => setFormData({ ...formData, occupation: e.target.value, customOccupation: e.target.value !== 'Others' ? '' : formData.customOccupation })}
-                    className={`w-full pl-10 pr-10 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none transition-all appearance-none cursor-pointer ${
-                      !formData.occupation ? 'text-gray-400' : 'text-[#47206A]'
-                    }`}
+                    className={`w-full pl-10 pr-10 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm outline-none transition-all appearance-none cursor-pointer ${!formData.occupation ? 'text-gray-400' : 'text-[#47206A]'
+                      }`}
                   >
                     <option value="" disabled hidden>
                       Select Occupation
                     </option>
                     <option value="Staff" className="text-[#47206A]">Staff</option>
-                    <option value="Head" className="text-[#47206A]">Head</option>
                     <option value="Student" className="text-[#47206A]">Student</option>
                     <option value="Parent" className="text-[#47206A]">Parent</option>
-                    <option value="Corporate" className="text-[#47206A]">Corporate</option>
                     <option value="Others" className="text-[#47206A]">Others</option>
                   </select>
                   <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8C5D00] pointer-events-none" />
@@ -340,7 +336,7 @@ export default function RegisterPage() {
                 <label className="block text-xs font-bold text-[#47206A] uppercase tracking-wider mb-2">
                   Branch / Campus <span className="text-red-500">*</span>
                 </label>
-                
+
                 {/* Dropdown Toggle Button */}
                 <div
                   onClick={() => setIsCampusOpen(!isCampusOpen)}
@@ -348,9 +344,8 @@ export default function RegisterPage() {
                 >
                   <Building className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8C5D00] pointer-events-none" />
                   <div
-                    className={`w-full pl-10 pr-10 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm transition-all select-none truncate ${
-                      !formData.branchCampus ? 'text-gray-400' : 'text-[#47206A] font-semibold'
-                    }`}
+                    className={`w-full pl-10 pr-10 py-3 bg-[#FAF7F2] border border-[#E9DED3] focus:border-[#47206A] rounded-xl text-sm transition-all select-none truncate ${!formData.branchCampus ? 'text-gray-400' : 'text-[#47206A] font-semibold'
+                      }`}
                   >
                     {formData.branchCampus || 'Select Branch / Campus'}
                   </div>
@@ -397,9 +392,8 @@ export default function RegisterPage() {
                                 setErrors((prev) => ({ ...prev, branchCampus: '' }));
                               }
                             }}
-                            className={`w-full text-left px-4 py-2.5 text-xs transition-colors hover:bg-[#FAF7F2] flex items-center justify-between ${
-                              formData.branchCampus === campus ? 'bg-[#FAF7F2] text-[#47206A] font-bold' : 'text-gray-700'
-                            }`}
+                            className={`w-full text-left px-4 py-2.5 text-xs transition-colors hover:bg-[#FAF7F2] flex items-center justify-between ${formData.branchCampus === campus ? 'bg-[#FAF7F2] text-[#47206A] font-bold' : 'text-gray-700'
+                              }`}
                           >
                             <span>{campus}</span>
                             {formData.branchCampus === campus && (

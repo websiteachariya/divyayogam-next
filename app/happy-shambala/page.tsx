@@ -537,8 +537,8 @@ export default function HappyShambalaLandingPage() {
 
   const testimonialVideos = [
    
+    { id: 'XA0KtAyh6dE', title: 'Quantum Habits & Daily Meditation' },
     { id: 'xLCFA-8bjH0', title: 'Peaceful Mind & Purpose' },
-   
   ];
 
   const outsidePondyEvents = [

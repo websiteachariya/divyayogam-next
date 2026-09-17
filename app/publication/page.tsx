@@ -29,6 +29,7 @@ interface BookItem {
   category: string;
   frontCover: string;
   backCover?: string;
+  coverSpread?: string;
   description: string;
   highlights: string[];
   language: string;
@@ -42,8 +43,7 @@ const PUBLICATIONS: BookItem[] = [
     subTitle: 'Beyond The 5 Senses',
     tagline: 'Awaken Conscious Parenting & Child Mastery',
     category: 'Conscious Parenting & Family Wellness',
-    frontCover: '/images/6.1_Wow Front.webp',
-    backCover: '/images/6.2_Wow back.webp',
+    frontCover: '/images/wow-parent.webp',
     description:
       'A ground-breaking, revolutionary guide for modern parents integrating organ awareness, quantum mindfulness, and 15 sacred steps for nurturing enlightened, emotionally resilient children.',
     highlights: [
@@ -163,11 +163,9 @@ const PUBLICATIONS: BookItem[] = [
 
 export default function PublicationPage() {
   const [selectedBook, setSelectedBook] = useState<BookItem | null>(null);
-  const [activeCover, setActiveCover] = useState<'front' | 'back'>('front');
 
   const openBookModal = (book: BookItem) => {
     setSelectedBook(book);
-    setActiveCover('front');
   };
 
   const closeModal = () => {
@@ -427,45 +425,15 @@ export default function PublicationPage() {
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                   {/* Left Column: Image Viewer */}
                   <div className="md:col-span-5 space-y-3">
-                    <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden bg-[#FAF7F2] border border-[#DFC47A]/50 p-2 shadow-lg flex items-center justify-center">
+                    <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-[#FAF7F2] border border-[#DFC47A]/50 p-2 shadow-lg flex items-center justify-center">
                       <Image
-                        src={
-                          selectedBook.backCover && activeCover === 'back'
-                            ? selectedBook.backCover
-                            : selectedBook.frontCover
-                        }
+                        src={selectedBook.frontCover}
                         alt={selectedBook.title}
                         fill
                         className="object-contain"
                         sizes="(max-width: 768px) 100vw, 300px"
                       />
                     </div>
-
-                    {/* Front / Back Switcher for WOW Parenting */}
-                    {selectedBook.backCover && (
-                      <div className="flex items-center justify-center gap-2 pt-1">
-                        <button
-                          onClick={() => setActiveCover('front')}
-                          className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${
-                            activeCover === 'front'
-                              ? 'bg-[#47206A] text-[#DFC47A] shadow-md'
-                              : 'bg-[#FAF5EF] text-[#5E5865] border border-[#DFC47A]/40'
-                          }`}
-                        >
-                          Front Cover
-                        </button>
-                        <button
-                          onClick={() => setActiveCover('back')}
-                          className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${
-                            activeCover === 'back'
-                              ? 'bg-[#47206A] text-[#DFC47A] shadow-md'
-                              : 'bg-[#FAF5EF] text-[#5E5865] border border-[#DFC47A]/40'
-                          }`}
-                        >
-                          Back Cover
-                        </button>
-                      </div>
-                    )}
                   </div>
 
                   {/* Right Column: Book Details */}

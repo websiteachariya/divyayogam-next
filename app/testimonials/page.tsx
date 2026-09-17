@@ -13,9 +13,9 @@ export default function TestimonialsPage() {
   };
 
   const videos = [
-   
-    { id: 'XA0KtAyh6dE', title: 'Quantum Habits & Daily Meditation', category: 'Life Transformation' },
-    { id: 'xLCFA-8bjH0', title: 'Divineyogam Organ Rejuvenation', category: 'Health & Vitality' },
+    { id: '6D3vQ0FpfX4', title: 'Experience Positive Vibes Like Never Before at Shambala!', category: 'Shambala Experience' },
+    { id: 'cpHU89Aaj0Q', title: 'Inner Transformation & Positive Energy at Shambala', category: 'Inner Transformation' },
+    { id: 'Nnoulm3Ba2Y', title: 'Power of Inner Transformation at Shambala', category: 'Inner Transformation' },
    
   ];
 
