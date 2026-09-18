@@ -50,7 +50,13 @@ import {
 export default function HappyShambalaLandingPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeTab, setActiveTab] = useState<'all' | 'tickets' | 'guidelines'>('all');
-  const [selectedShambalaImg, setSelectedShambalaImg] = useState<{ src: string; title: string } | null>(null);
+  const [selectedShambalaImg, setSelectedShambalaImg] = useState<{ src: string; title: string; rotate?: string } | null>(null);
+
+  // Video Play State
+  const [playingVideos, setPlayingVideos] = useState<Record<string, boolean>>({});
+  const handlePlayVideo = (id: string) => {
+    setPlayingVideos((prev) => ({ ...prev, [id]: true }));
+  };
 
   // Registration & Payment Modal State
   const [selectedTier, setSelectedTier] = useState<TicketTier | null>(null);
@@ -526,19 +532,22 @@ export default function HappyShambalaLandingPage() {
 
   const galleryImages = [
     { src: '/images/IMG_0920.webp', isPending: false, title: 'Shambala Celebration' },
-    { src: '/images/0I5A7781.webp', isPending: false, title: 'Oneness Sadhana Gathering' },
+    { src: '/images/0I5A6967.webp', isPending: false, title: 'Oneness Sadhana Gathering' },
     { src: '/images/IMG_8392.webp', isPending: false, title: 'Spiritual Initiation' },
     { src: '/images/DSC09271.webp', isPending: false, title: 'Consciousness Meditation' },
-    { src: '/images/DSC01509.webp', isPending: false, title: 'Deep Inner Peace' },
-    { src: '/images/0W7A8546.webp', isPending: false, title: 'Sanctuary Satsang' },
-    { src: '/images/DSC01538.webp', isPending: false, title: 'Maha Shambala Moments' },
+    { src: '/images/IMG_0242.webp', isPending: false, title: 'Deep Inner Peace' },
+    { src: '/images/191A4445.webp', isPending: false, title: 'Sanctuary Satsang', rotate: '-rotate-90 scale-[1.35]' },
+    { src: '/images/IMG_3805.webp', isPending: false, title: 'Maha Shambala Moments' },
     { src: '/images/0I5A4602.webp', isPending: false, title: 'Divine Awakening' },
   ];
 
   const testimonialVideos = [
-   
-    { id: 'XA0KtAyh6dE', title: 'Quantum Habits & Daily Meditation' },
-    { id: 'xLCFA-8bjH0', title: 'Peaceful Mind & Purpose' },
+    { id: 'BFmtDtD0WS4', title: 'Life Secrets' },
+    { id: '9ABk6Yz4_uc', title: 'Life Transformation' },
+    { id: 'XA0KtAyh6dE', title: 'Quantum Habits' },
+    { id: 'xLCFA-8bjH0', title: 'Peaceful Mind' },
+    { id: 'Nnoulm3Ba2Y', title: 'Divine Awakening' },
+    { id: 'cpHU89Aaj0Q', title: 'Inner Energy' },
   ];
 
   const outsidePondyEvents = [
@@ -1475,7 +1484,7 @@ export default function HappyShambalaLandingPage() {
               <div className="bg-[#FAF5EF] p-4 rounded-3xl border-2 border-[#E9DED3] shadow-lg space-y-3">
                 <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden shadow-inner">
                   <Image
-                    src="/images/080A0497.webp"
+                    src="/images/DSC01852.webp"
                     alt="Oneness Meditation Guidance"
                     fill
                     className="object-cover object-center"
@@ -1725,7 +1734,7 @@ export default function HappyShambalaLandingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.05 }}
-                onClick={() => item.src && setSelectedShambalaImg({ src: item.src, title: item.title })}
+                onClick={() => item.src && setSelectedShambalaImg({ src: item.src, title: item.title, rotate: item.rotate })}
                 className="relative h-56 sm:h-64 rounded-3xl overflow-hidden border-2 border-[#DFC47A]/60 hover:border-[#8C5D00] shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 group bg-white/95 backdrop-blur-md flex flex-col items-center justify-center text-center cursor-pointer"
               >
                 {item.src && !item.isPending ? (
@@ -1734,7 +1743,7 @@ export default function HappyShambalaLandingPage() {
                       src={item.src}
                       alt={item.title || `Shambala Gallery Image ${idx + 1}`}
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                      className={`object-cover group-hover:scale-110 transition-transform duration-700 ease-out ${item.rotate || ''}`}
                     />
                     {/* Dark Golden Gradient Vignette Overlay with Zoom Icon */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#2A133B]/90 via-black/20 to-transparent opacity-85 group-hover:opacity-95 transition-opacity duration-300 flex items-end justify-between p-4">
@@ -1799,36 +1808,77 @@ export default function HappyShambalaLandingPage() {
             <p className="text-[#5E5865] text-sm sm:text-base font-normal max-w-xl mx-auto">
               Real experiences and spiritual transformations shared by Happy Shambala participants.
             </p>
+           
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {testimonialVideos.map((video, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: (idx % 6) * 0.05 }}
-                className="bg-white/95 rounded-3xl overflow-hidden border-2 border-[#E9DED3] shadow-md hover:shadow-xl transition-all p-2 space-y-2"
-              >
-                <div className="relative w-full h-52 sm:h-56 rounded-2xl overflow-hidden bg-black">
-                  <iframe
-                    suppressHydrationWarning
-                    src={`https://www.youtube.com/embed/${video.id}?enablejsapi=1`}
-                    title={video.title}
-                    className="w-full h-full border-0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-                <div className="px-3 py-1.5 flex items-center justify-between">
-                  <span className="font-heading text-xs font-extrabold text-[#352043] truncate max-w-[220px]">
-                    {video.title}
-                  </span>
-                  <span className="text-[10px] font-bold text-[#8C5D00] uppercase tracking-wider">Testimonial</span>
-                </div>
-              </motion.div>
-            ))}
+            {testimonialVideos.map((video, idx) => {
+              const isPlaying = playingVideos[video.id];
+
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: (idx % 6) * 0.05 }}
+                  className="relative p-2.5 sm:p-3 rounded-tl-[40px] rounded-br-[40px] rounded-tr-[16px] rounded-bl-[16px] border-2 border-[#DFC47A] bg-gradient-to-b from-white via-[#FFFDF9] to-[#FAF4EB] shadow-lg hover:border-[#8C5D00] hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 group"
+                >
+                  <div className="relative w-full aspect-video rounded-tl-[32px] rounded-br-[32px] rounded-tr-[10px] rounded-bl-[10px] overflow-hidden bg-black border border-[#DFC47A]/40 shadow-inner">
+                    {isPlaying ? (
+                      <iframe
+                        suppressHydrationWarning
+                        src={`https://www.youtube.com/embed/${video.id}?autoplay=1&enablejsapi=1`}
+                        title={video.title}
+                        className="w-full h-full border-0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <div
+                        onClick={() => handlePlayVideo(video.id)}
+                        className="w-full h-full cursor-pointer relative flex items-center justify-center group/btn overflow-hidden"
+                      >
+                        <img
+                          src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
+                          alt={`Happy Shambala Testimonial ${idx + 1}`}
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover/btn:scale-105"
+                          onError={(e: any) => {
+                            e.target.onerror = null;
+                            e.target.src = `https://img.youtube.com/vi/${video.id}/0.jpg`;
+                          }}
+                        />
+
+                        {/* Dark Overlay gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent group-hover/btn:from-black/30 transition-colors" />
+
+                        {/* Custom Violet & Gold Play Button from 1st image */}
+                        <div className="relative z-10 w-12 h-12 sm:w-14 sm:h-14 lg:w-12 lg:h-12 rounded-full bg-[#47206A] border-2 border-[#DFC47A] flex items-center justify-center shadow-[0_6px_20px_rgba(71,32,106,0.6)] group-hover/btn:scale-110 group-hover/btn:bg-[#8C5D00] group-hover/btn:border-white transition-all duration-300">
+                          <Play className="w-5 h-5 text-[#DFC47A] group-hover/btn:text-white fill-[#DFC47A] group-hover/btn:fill-white translate-x-0.5" />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <div className="px-3 pt-2 pb-1 flex items-center justify-between gap-2">
+                    <span className="font-heading text-xs sm:text-sm font-extrabold text-[#352043] truncate max-w-[200px]">
+                      {video.title}
+                    </span>
+                    <span className="text-[10px] font-bold text-[#8C5D00] uppercase tracking-wider bg-[#DFC47A]/20 px-2 py-0.5 rounded-full shrink-0">Testimonial</span>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Testimonials Button Below Grid */}
+          <div className="pt-4 sm:pt-6 text-center">
+            <Link
+              href="/testimonials"
+              className="inline-flex items-center gap-2.5 px-7 py-3 rounded-full bg-[#47206A] hover:bg-[#8C5D00] text-[#DFC47A] hover:text-white font-heading font-extrabold text-xs sm:text-sm uppercase tracking-widest shadow-xl hover:scale-105 transition-all duration-300 group border-2 border-[#DFC47A] hover:border-white"
+            >
+              <span>View All Testimonials</span>
+              <ArrowRight className="w-4 h-4 text-[#DFC47A] group-hover:text-white group-hover:translate-x-1 transition-all" />
+            </Link>
           </div>
         </div>
       </section>
@@ -2344,7 +2394,7 @@ export default function HappyShambalaLandingPage() {
                   src={selectedShambalaImg.src}
                   alt={selectedShambalaImg.title}
                   fill
-                  className="object-cover"
+                  className={`object-cover ${selectedShambalaImg.rotate || ''}`}
                 />
               </div>
 

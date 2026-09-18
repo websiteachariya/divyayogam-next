@@ -13,10 +13,18 @@ export default function TestimonialsPage() {
   };
 
   const videos = [
-    { id: '6D3vQ0FpfX4', title: 'Experience Positive Vibes Like Never Before at Shambala!', category: 'Shambala Experience' },
-    { id: 'cpHU89Aaj0Q', title: 'Inner Transformation & Positive Energy at Shambala', category: 'Inner Transformation' },
-    { id: 'Nnoulm3Ba2Y', title: 'Power of Inner Transformation at Shambala', category: 'Inner Transformation' },
-   
+    { id: '9chNgTLtZyE', title: 'Manifestation Wonders', category: 'Shambala Experience' },
+    { id: 'J7e73aQwfHg', title: 'Sacred Secrets', category: 'Shambala Experience' },
+    { id: 'wuhAFM4_l54', title: 'Shambala Event', category: 'Shambala Experience' },
+    { id: 'v6o4VucQues', title: 'Manifestation Journey', category: 'Shambala Experience' },
+    { id: 'yzaVLaPBvr4', title: 'Refreshed Vibes', category: 'Shambala Experience' },
+    { id: 'Hg1EJcZvYZU', title: 'Inner Peace', category: 'Inner Transformation' },
+     { id: 'RY0dnPjP0m0', title: 'Deep Meditation', category: 'Shambala Experience' },
+    { id: 'E0JG9KIRMFQ', title: 'Inner Transformation', category: 'Inner Transformation' },
+    { id: '6D3vQ0FpfX4', title: 'Shambala Experience', category: 'Shambala Experience' },
+    { id: 'clynNZUrNRE', title: 'Mega Shambala', category: 'Shambala Experience' },
+    { id: '9CSryzuSQ8k', title: 'Positive Thoughts', category: 'Meditation & Vibes' },
+    { id: 'JVEJ3gSnIXE', title: 'Positive Energy', category: 'Positive Energy' },
   ];
 
   return (
@@ -177,6 +185,16 @@ export default function TestimonialsPage() {
                         </div>
                       </div>
                     )}
+                  </div>
+
+                  {/* Video Title and Category */}
+                  <div className="px-3 pt-2.5 pb-1 flex items-center justify-between gap-2">
+                    <span className="font-heading text-xs sm:text-sm font-extrabold text-[#352043] line-clamp-1">
+                      {item.title}
+                    </span>
+                    <span className="text-[10px] font-bold text-[#8C5D00] uppercase tracking-wider bg-[#DFC47A]/20 px-2 py-0.5 rounded-full shrink-0">
+                      {item.category}
+                    </span>
                   </div>
                 </motion.div>
               );

@@ -39,7 +39,7 @@ export default function VisionMission() {
 
 
   return (
-    <section className="py-8 sm:py-12 lg:py-14 bg-[#F8F2E8] relative overflow-hidden font-body">
+    <section className="py-6 sm:py-8 lg:py-14 max-[900px]:py-6 bg-[#F8F2E8] relative overflow-hidden font-body">
 
       {/* Background Sacred Geometric Watermark */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none">
@@ -71,10 +71,10 @@ export default function VisionMission() {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-20 sm:space-y-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6 sm:space-y-8 lg:space-y-24 max-[900px]:space-y-6">
 
         {/* 1. THE GUIDING LIGHT: Portrait of Ji + MD Sir_4 + deco-2.webp */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-14 max-[900px]:gap-6 items-center">
 
           {/* Left Column: Portrait of Arawindhan Ji */}
           <motion.div
@@ -88,32 +88,16 @@ export default function VisionMission() {
               {/* Outer Golden Arch Glow */}
               <div className="absolute -inset-2 rounded-t-full bg-gradient-to-tr from-[#C8A34A] via-[#DFC47A] to-[#8C5D00] opacity-30 group-hover:opacity-50 transition-all duration-700 pointer-events-none" />
 
-              {/* Portrait Arch Frame with Waiting for Image to be Uploaded Placeholder */}
-              <div className="relative rounded-t-full rounded-b-[28px] overflow-hidden luxury-card border-2 border-[#E9DED3] p-3 sm:p-4 shadow-xl bg-white">
-                <div className="relative rounded-t-full rounded-b-2xl overflow-hidden bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EF] to-[#F8F2E8] aspect-[4/5] flex flex-col items-center justify-center p-6 text-center border-2 border-dashed border-[#DFC47A]/60">
-                  
-                  {/* Subtle Background Pattern */}
-                  <div className="absolute inset-0 bg-[radial-gradient(#C8A34A_1px,transparent_1px)] [background-size:16px_16px] opacity-15 pointer-events-none" />
-
-                  {/* Pulsing Icon Badge */}
-                  <div className="relative z-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/90 backdrop-blur-sm border-2 border-[#C8A34A]/50 shadow-md flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-500">
-                    <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#C8A34A]/20 to-[#8C5D00]/20 animate-pulse pointer-events-none" />
-                    <UploadCloud className="w-9 h-9 sm:w-10 sm:h-10 text-[#8C5D00]" />
-                  </div>
-
-                  {/* Text Container */}
-                  <div className="relative z-10 space-y-2 max-w-[220px]">
-                    <span className="inline-block px-3.5 py-1 rounded-full bg-[#8C5D00]/10 text-[#8C5D00] text-[11px] font-bold uppercase tracking-widest border border-[#8C5D00]/20">
-                      Pending Upload
-                    </span>
-                    <h4 className="font-heading text-base sm:text-lg font-bold text-[#352043] leading-snug">
-                      Waiting for Image to be Uploaded
-                    </h4>
-                    <p className="text-xs text-[#5E5865] font-light">
-                      Image will appear here once uploaded
-                    </p>
-                  </div>
-
+              {/* Portrait Arch Frame with final.png */}
+              <div className="relative rounded-t-full rounded-b-[28px] overflow-hidden luxury-card border-2 border-[#DFC47A] p-2.5 sm:p-3 shadow-2xl bg-white">
+                <div className="relative rounded-t-full rounded-b-2xl overflow-hidden aspect-[4/5] bg-[#352043] border border-[#DFC47A]/50 shadow-inner">
+                  <Image
+                    src="/images/final.webp"
+                    alt="Santoshi Shri. Arawindhan Ji — Founder & Spiritual Guide"
+                    fill
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                    priority
+                  />
                 </div>
               </div>
             </div>
@@ -125,7 +109,7 @@ export default function VisionMission() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="lg:col-span-7 space-y-6 text-center lg:text-left"
+            className="lg:col-span-7 space-y-4 sm:space-y-5 lg:space-y-6 max-[900px]:space-y-4 text-center lg:text-left"
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full royal-gold-badge text-xs uppercase tracking-widest font-semibold shadow-sm">
               <Sparkles className="w-3.5 h-3.5 text-[#C8A34A]" />
@@ -153,14 +137,14 @@ export default function VisionMission() {
             </p>
 
             {/* Master Quote Box */}
-            <div className="p-5 sm:p-6 rounded-[24px] bg-gradient-to-r from-[#FFFDF9] via-[#FAF5EF] to-[#FFFDF9] border-2 border-[#E9DED3] shadow-md space-y-1 relative text-left">
+            <div className="p-4 sm:p-6 rounded-[24px] bg-gradient-to-r from-[#FFFDF9] via-[#FAF5EF] to-[#FFFDF9] border-2 border-[#E9DED3] shadow-md space-y-1 relative text-left">
               <p className="font-serif italic text-base sm:text-lg text-[#351A4A] font-semibold">
                 “The Divine is not far away. The journey to experience it begins within.”
               </p>
             </div>
 
             {/* CTA Button */}
-            <div className="pt-2">
+            <div className="pt-1 sm:pt-2">
               <Link
                 href="/about"
                 className="inline-flex items-center gap-2.5 px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-full bg-[#47206A] hover:bg-[#C8A34A] text-white hover:text-[#47206A] font-semibold text-[11px] sm:text-xs uppercase tracking-widest shadow-lg hover:scale-105 transition-all duration-300 group"
@@ -174,7 +158,7 @@ export default function VisionMission() {
         </div>
 
         {/* 2. THE ESSENCE OF DIVYA YOGAM & WHAT IS DIVYA YOGAM? */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-20 pt-4 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 xl:gap-20 pt-0 lg:pt-4 max-[900px]:gap-6 max-[900px]:pt-0 relative">
 
           {/* Center Decorative Vector Icon Emblem (Hidden on small/mobile screens) */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none hidden lg:flex flex-col items-center justify-center h-4/5">

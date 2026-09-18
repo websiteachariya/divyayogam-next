@@ -27,6 +27,7 @@ import {
   Crown,
   HeartHandshake,
   Flower2,
+  User,
 } from 'lucide-react';
 
 export default function QuantumHabitsPage() {
@@ -183,7 +184,7 @@ export default function QuantumHabitsPage() {
       quote: '"These daily practices brought more peace, health and positivity into my life and family."',
       name: 'Mahesh S.',
       role: 'Teacher',
-      avatar: '/images/02.webp',
+      avatar: '/images/07.webp',
     },
     {
       quote: '"I feel more connected to myself and the universe. This is truly life changing."',
@@ -666,8 +667,8 @@ export default function QuantumHabitsPage() {
                 </p>
 
                 <div className="flex items-center gap-4 pt-4 border-t border-[#E9DED3]">
-                  <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#8C5D00] relative shrink-0">
-                    <Image src={t.avatar} alt={t.name} fill className="object-cover" />
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#352043] via-[#4A1F66] to-[#2B0E38] border-2 border-[#DFC47A] flex items-center justify-center text-[#DFC47A] shadow-md shrink-0">
+                    <User className="w-6 h-6 text-[#DFC47A]" />
                   </div>
                   <div>
                     <div className="font-extrabold text-[#8C5D00] text-sm">{t.name}</div>

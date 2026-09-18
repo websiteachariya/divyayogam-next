@@ -54,14 +54,14 @@ export default function GalleryPage() {
       objectPosition: 'center center',
     },
     {
-      src: '/images/R_RL3496.webp',
+      src: '/images/0I5A6612.webp',
       title: 'Candlelight Meditation',
       category: 'AWAKENING',
       icon: Sparkles,
       objectPosition: 'center center',
     },
     {
-      src: '/images/2D7A0606.webp',
+      src: '/images/2D7A0612.webp',
       title: 'Community Connection',
       category: 'COMMUNITY SERVICE',
       icon: Users,
@@ -82,7 +82,7 @@ export default function GalleryPage() {
       objectPosition: 'center center',
     },
     {
-      src: '/images/0I5A9374.webp',
+      src: '/images/main-12.webp',
       title: 'Peaceful Environment',
       category: 'SANCTUARY',
       icon: Heart,
@@ -117,7 +117,7 @@ export default function GalleryPage() {
       objectPosition: 'center center',
     },
     {
-      src: '/images/gal-2.webp',
+      src: '/images/Copy of 477272_449105298472745_64071610_o.webp',
       title: 'Ancient Wisdom',
       category: 'TRADITIONAL TEACHINGS',
       icon: Globe,
@@ -138,7 +138,7 @@ export default function GalleryPage() {
       objectPosition: 'center center',
     },
     {
-      src: '/images/gallery3d.webp',
+      src: '/images/IMG_8423.webp',
       title: 'Spiritual Wellness',
       category: 'WORKSHOPS & HEALING',
       icon: Heart,

@@ -4,6 +4,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import BackToTop from '@/components/layout/BackToTop';
 import WhatsAppButton from '@/components/layout/WhatsAppButton';
+import FloatingUpcomingEvent from '@/components/events/FloatingUpcomingEvent';
 import ClientAudioPlayer from '@/components/layout/ClientAudioPlayer';
 import ScrollProgress from '@/components/layout/ScrollProgress';
 import { Manrope, DM_Serif_Display, Cormorant_Garamond } from 'next/font/google';
@@ -181,6 +182,7 @@ export default function RootLayout({
 
         <Footer />
         <BackToTop />
+        <FloatingUpcomingEvent />
         <WhatsAppButton />
         <ClientAudioPlayer />
       </body>
