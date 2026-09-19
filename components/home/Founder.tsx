@@ -40,14 +40,14 @@ export default function Founder() {
               <div className="absolute -inset-2 rounded-t-full bg-gradient-to-tr from-[#C8A34A] via-[#DFC47A] to-[#C8A34A] blur-xl opacity-30 group-hover:opacity-50 transition-all duration-700" />
 
               {/* Portrait Arch Frame matching Reference UI */}
-              <div className="relative rounded-t-full rounded-b-[28px] overflow-hidden luxury-card border-2 border-[#E9DED3] p-3 sm:p-4 shadow-lg bg-white">
-                <div className="relative rounded-t-full rounded-b-2xl overflow-hidden bg-gradient-to-b from-[#FFFDF9] to-[#F8F2E8] aspect-[4/5] flex items-center justify-center">
+              <div className="relative rounded-t-full rounded-b-[28px] overflow-hidden luxury-card border-2 border-[#DFC47A] p-3 sm:p-4 shadow-lg bg-white">
+                <div className="relative rounded-t-full rounded-b-2xl overflow-hidden bg-white aspect-[4/5] flex items-center justify-center">
                   <Image
-                    src="/images/MD Sir_4.webp"
+                    src="/images/mg-found-01.webp"
                     alt="Arawindhan Ji - Founder of Divya Yogam"
-                    width={400}
-                    height={500}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                    width={500}
+                    height={625}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#47206A]/20 via-transparent to-transparent pointer-events-none" />
                 </div>

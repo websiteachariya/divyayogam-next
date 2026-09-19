@@ -88,16 +88,18 @@ export default function VisionMission() {
               {/* Outer Golden Arch Glow */}
               <div className="absolute -inset-2 rounded-t-full bg-gradient-to-tr from-[#C8A34A] via-[#DFC47A] to-[#8C5D00] opacity-30 group-hover:opacity-50 transition-all duration-700 pointer-events-none" />
 
-              {/* Portrait Arch Frame with final.png */}
+              {/* Portrait Arch Frame */}
               <div className="relative rounded-t-full rounded-b-[28px] overflow-hidden luxury-card border-2 border-[#DFC47A] p-2.5 sm:p-3 shadow-2xl bg-white">
-                <div className="relative rounded-t-full rounded-b-2xl overflow-hidden aspect-[4/5] bg-[#352043] border border-[#DFC47A]/50 shadow-inner">
+                <div className="relative rounded-t-full rounded-b-2xl overflow-hidden aspect-[4/5] bg-white border border-[#DFC47A]/50 flex items-center justify-center">
                   <Image
-                    src="/images/final.webp"
+                    src="/images/mg-found-01.webp"
                     alt="Santoshi Shri. Arawindhan Ji — Founder & Spiritual Guide"
-                    fill
-                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                    width={500}
+                    height={625}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
                     priority
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#47206A]/20 via-transparent to-transparent pointer-events-none" />
                 </div>
               </div>
             </div>

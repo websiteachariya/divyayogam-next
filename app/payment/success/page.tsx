@@ -5,8 +5,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { CheckCircle2, ShieldCheck, ArrowRight, Home, BookOpen, Clock, Download } from 'lucide-react';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
+
 
 function PaymentSuccessContent() {
   const searchParams = useSearchParams();
@@ -198,13 +197,11 @@ function PaymentSuccessContent() {
 export default function PaymentSuccessPage() {
   return (
     <div className="min-h-screen bg-[#F8F2E8] text-[#47206A] flex flex-col justify-between">
-      <Navbar />
-      <main className="pt-44 sm:pt-48 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full flex-1 flex items-center justify-center">
+      <main className="pt-32 sm:pt-40 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full flex-1 flex items-center justify-center">
         <Suspense fallback={<div className="text-center py-10">Verifying...</div>}>
           <PaymentSuccessContent />
         </Suspense>
       </main>
-      <Footer />
     </div>
   );
 }

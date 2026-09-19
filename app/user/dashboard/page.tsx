@@ -23,8 +23,7 @@ import {
   Heart,
   Gift
 } from 'lucide-react';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
+
 
 export default function UserDashboardPage() {
   const router = useRouter();
@@ -179,8 +178,6 @@ export default function UserDashboardPage() {
           backgroundImage: "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
         }}
       />
-      <Navbar />
-
       <main className="pt-32 sm:pt-36 lg:pt-40 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1 space-y-6 sm:space-y-8">
         {/* Welcome Top Banner */}
         <div className="bg-gradient-to-r from-[#47206A] via-[#3B104E] to-[#20052C] rounded-3xl border-2 border-[#DFC47A] p-6 sm:p-8 text-white shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 relative overflow-hidden">

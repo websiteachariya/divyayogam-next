@@ -240,26 +240,17 @@ export default function FoundationStoryPage() {
               <div className="absolute -inset-3 rounded-t-full bg-gradient-to-tr from-[#C8A34A] via-[#DFC47A] to-[#8C5D00] blur-2xl opacity-35 group-hover:opacity-60 transition-all duration-700 pointer-events-none" />
 
               {/* Portrait Arch Container */}
-              <div className="relative rounded-t-full rounded-b-[32px] overflow-hidden border-2 border-[#DFC47A]/70 p-3 sm:p-4 shadow-2xl bg-white/95 backdrop-blur-md">
-                <div className="relative rounded-t-full rounded-b-2xl overflow-hidden bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EF] to-[#F8F2E8] aspect-[4/5] flex flex-col items-center justify-center p-4 sm:p-6 text-center border-2 border-dashed border-[#DFC47A]/70">
-                  <div className="absolute inset-0 bg-[radial-gradient(#C8A34A_1px,transparent_1px)] [background-size:16px_16px] opacity-20 pointer-events-none" />
-
-                  <div className="relative z-10 w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-white/90 backdrop-blur-sm border-2 border-[#C8A34A]/60 shadow-lg flex items-center justify-center mb-3 sm:mb-5 group-hover:scale-105 transition-transform duration-500">
-                    <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#C8A34A]/20 to-[#8C5D00]/20 animate-pulse pointer-events-none" />
-                    <UploadCloud className="w-7 h-7 sm:w-10 sm:h-10 text-[#8C5D00]" />
-                  </div>
-
-                  <div className="relative z-10 space-y-1.5 sm:space-y-2 max-w-[240px]">
-                    <span className="inline-block px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full bg-[#8C5D00]/15 text-[#8C5D00] text-[10px] sm:text-[11px] font-extrabold uppercase tracking-widest border border-[#8C5D00]/30 shadow-xs">
-                      Pending Upload
-                    </span>
-                    <h4 className="font-heading text-sm sm:text-lg font-bold text-[#352043] leading-snug">
-                      Waiting for Image to be Uploaded
-                    </h4>
-                    <p className="text-[11px] sm:text-xs text-[#5E5865] font-light">
-                      Founder story photograph will be updated here
-                    </p>
-                  </div>
+              <div className="relative rounded-t-full rounded-b-[32px] overflow-hidden border-2 border-[#DFC47A]/70 p-3 sm:p-4 shadow-2xl bg-white backdrop-blur-md">
+                <div className="relative rounded-t-full rounded-b-2xl overflow-hidden bg-white aspect-[4/5] flex items-center justify-center">
+                  <Image
+                    src="/images/md-self.webp"
+                    alt="Arawindhan Ji - Founder of Divya Yogam"
+                    width={500}
+                    height={625}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#47206A]/20 via-transparent to-transparent pointer-events-none" />
                 </div>
               </div>
             </div>

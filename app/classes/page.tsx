@@ -7,8 +7,7 @@ import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { BookOpen, Crown, Lock, Unlock, CheckCircle2, Award, Sparkles, ShieldCheck, ArrowRight, AlertCircle, Download } from 'lucide-react';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
+
 
 function ClassesContent() {
   const router = useRouter();
@@ -750,7 +749,6 @@ export default function ClassesPage() {
           backgroundImage: "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
         }}
       />
-      <Navbar />
       <main className="pt-32 sm:pt-36 lg:pt-40 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-1">
         <Suspense fallback={<div className="text-center py-10">Loading classes...</div>}>
           <ClassesContent />

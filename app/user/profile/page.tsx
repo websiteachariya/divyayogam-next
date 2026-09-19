@@ -5,8 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { User, Phone, Mail, Building, Briefcase, Calendar, ArrowLeft, Crown } from 'lucide-react';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
+
 
 export default function UserProfilePage() {
   const router = useRouter();
@@ -71,8 +70,6 @@ export default function UserProfilePage() {
           backgroundImage: "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
         }}
       />
-      <Navbar />
-
       <main className="pt-32 sm:pt-36 lg:pt-40 pb-16 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto w-full flex-1">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -145,8 +142,6 @@ export default function UserProfilePage() {
           </div>
         </motion.div>
       </main>
-
-      <Footer />
     </div>
   );
 }

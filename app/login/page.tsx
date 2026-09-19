@@ -5,8 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Mail, Lock, AlertCircle, ArrowRight, Eye, EyeOff } from 'lucide-react';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
+
 
 export default function LoginPage() {
   const router = useRouter();
@@ -57,9 +56,7 @@ export default function LoginPage() {
           backgroundImage: "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
         }}
       />
-      <Navbar />
-
-      <main className="pt-44 sm:pt-48 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-md mx-auto w-full flex-1">
+      <main className="pt-32 sm:pt-40 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-md mx-auto w-full flex-1">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -167,8 +164,6 @@ export default function LoginPage() {
           </div>
         </motion.div>
       </main>
-
-      <Footer />
     </div>
   );
 }

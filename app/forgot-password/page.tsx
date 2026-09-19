@@ -4,8 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Mail, ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
+
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
@@ -52,9 +51,7 @@ export default function ForgotPasswordPage() {
 
   return (
     <div className="min-h-screen bg-[#F8F2E8] text-[#47206A] flex flex-col justify-between">
-      <Navbar />
-
-      <main className="pt-44 sm:pt-48 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-md mx-auto w-full flex-1">
+      <main className="pt-32 sm:pt-40 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-md mx-auto w-full flex-1">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -132,8 +129,6 @@ export default function ForgotPasswordPage() {
           </div>
         </motion.div>
       </main>
-
-      <Footer />
     </div>
   );
 }

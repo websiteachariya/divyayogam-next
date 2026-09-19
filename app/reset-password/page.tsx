@@ -5,8 +5,7 @@ import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Lock, ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
+
 
 function ResetPasswordForm() {
   const router = useRouter();
@@ -171,13 +170,11 @@ function ResetPasswordForm() {
 export default function ResetPasswordPage() {
   return (
     <div className="min-h-screen bg-[#F8F2E8] text-[#47206A] flex flex-col justify-between">
-      <Navbar />
-      <main className="pt-44 sm:pt-48 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-md mx-auto w-full flex-1">
+      <main className="pt-32 sm:pt-40 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-md mx-auto w-full flex-1">
         <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
           <ResetPasswordForm />
         </Suspense>
       </main>
-      <Footer />
     </div>
   );
 }

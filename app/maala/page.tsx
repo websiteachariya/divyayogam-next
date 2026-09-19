@@ -6,8 +6,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Sparkles, Calendar, CheckCircle2, AlertCircle, ArrowRight, User, Phone, Download } from 'lucide-react';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
+
 
 import { useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
@@ -150,8 +149,6 @@ function MaalaContent() {
           backgroundImage: "linear-gradient(rgba(250, 245, 239, 0.5), rgba(250, 245, 239, 0.65)), url('/images/con-6.webp')",
         }}
       />
-      <Navbar />
-
       <main className="pt-32 sm:pt-36 lg:pt-40 pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full flex-1">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
