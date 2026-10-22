@@ -156,8 +156,12 @@ export async function POST(req: NextRequest) {
     const generatedMemberId = `DYM-${new Date().getFullYear()}-${randomSuffix}`;
 
     const host = req.headers.get('host') || 'localhost:3000';
-    const protocol = req.headers.get('x-forwarded-proto') || 'http';
-    const origin = process.env.NEXT_PUBLIC_APP_URL || `${protocol}://${host}`;
+    const isLocalhost = host.includes('localhost') || host.includes('127.0.0.1');
+    const protocol = isLocalhost ? (req.headers.get('x-forwarded-proto') || 'http') : 'https';
+    const configuredAppUrl = process.env.NEXT_PUBLIC_APP_URL?.trim();
+    const origin = (!isLocalhost && configuredAppUrl && !configuredAppUrl.includes('localhost'))
+      ? configuredAppUrl
+      : `${protocol}://${host}`;
 
     // Return URL after Cashfree payment (redirects back to originating page)
     let returnUrl = `${origin}/payment/success?order_id=${cfOrderId}`;
@@ -313,6 +317,7 @@ export async function POST(req: NextRequest) {
       orderNumber: createdOrder.orderNumber,
       memberId: generatedMemberId,
       amount: finalAmount,
+      cashfreeMode: cfResponse.cashfreeMode || 'production',
     });
   } catch (error: any) {
     console.error('Error creating Cashfree order:', error);

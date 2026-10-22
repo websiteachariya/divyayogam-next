@@ -188,6 +188,7 @@ export default function HappyShambalaLandingPage() {
     paymentSessionId: string;
     orderId: string;
     memberId: string;
+    cashfreeMode?: string;
   } | null>(null);
 
   const cardRef = useRef<HTMLDivElement>(null);
@@ -267,6 +268,7 @@ export default function HappyShambalaLandingPage() {
         paymentSessionId: data.paymentSessionId,
         orderId: data.orderId,
         memberId: data.memberId,
+        cashfreeMode: data.cashfreeMode,
       });
 
       setStep('payment');
@@ -283,7 +285,7 @@ export default function HappyShambalaLandingPage() {
     try {
       const scriptLoaded = await loadCashfreeScript();
       if (scriptLoaded && (window as any).Cashfree && orderSession?.paymentSessionId) {
-        const cashfreeMode = (process.env.NEXT_PUBLIC_CASHFREE_ENV || 'production') as 'sandbox' | 'production';
+        const cashfreeMode = ((orderSession?.cashfreeMode || process.env.NEXT_PUBLIC_CASHFREE_ENV || 'production') as string).toLowerCase() as 'sandbox' | 'production';
         const cashfree = (window as any).Cashfree({ mode: cashfreeMode });
         cashfree
           .checkout({
