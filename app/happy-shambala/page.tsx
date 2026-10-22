@@ -246,6 +246,7 @@ export default function HappyShambalaLandingPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          orderType: 'MEMBERSHIP',
           fullName: formData.fullName,
           phone: formData.phone,
           email: formData.email,
