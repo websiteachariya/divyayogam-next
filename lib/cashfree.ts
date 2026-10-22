@@ -4,16 +4,19 @@ export function getCashfreeConfig() {
   const rawAppId = (process.env.CASHFREE_APP_ID || '').trim().replace(/^['"]|['"]$/g, '');
   const rawSecretKey = (process.env.CASHFREE_SECRET_KEY || '').trim().replace(/^['"]|['"]$/g, '');
 
-  // Detect environment
+  const hasTestKeys = rawAppId.toUpperCase().startsWith('TEST') || rawSecretKey.toLowerCase().includes('test');
+  const hasProdKeys = Boolean(rawAppId && rawSecretKey && !hasTestKeys);
+
   let envRaw = (process.env.CASHFREE_ENV || process.env.NEXT_PUBLIC_CASHFREE_ENV || '').trim().replace(/^['"]|['"]$/g, '').toUpperCase();
 
-  // If not explicitly set, auto-detect by key format
-  if (!envRaw) {
-    if (rawAppId.toUpperCase().startsWith('TEST') || rawSecretKey.includes('_test_')) {
-      envRaw = 'SANDBOX';
-    } else {
-      envRaw = 'PRODUCTION';
-    }
+  // If credentials are live production keys, ALWAYS enforce PRODUCTION mode
+  // Even if CASHFREE_ENV in Vercel was previously set to SANDBOX!
+  if (hasProdKeys) {
+    envRaw = 'PRODUCTION';
+  } else if (hasTestKeys) {
+    envRaw = 'SANDBOX';
+  } else if (!envRaw) {
+    envRaw = 'PRODUCTION';
   }
 
   const isProduction = envRaw === 'PRODUCTION';
